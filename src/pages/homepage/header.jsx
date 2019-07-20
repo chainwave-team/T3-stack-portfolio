@@ -35,7 +35,7 @@ class SectionHeader extends Component {
           >
             {!loading && (
               <Fade>
-                <Container>
+                <Container py={6}>
                   <Heading as="h2" pb={3} fontSize={[5, 5, 6]}>
                     {options.header_name}
                   </Heading>

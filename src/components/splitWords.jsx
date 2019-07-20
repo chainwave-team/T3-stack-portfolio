@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { animated, useTransition } from 'react-spring'
-import uniqid from 'uniqid'
+import { Transition } from 'react-spring/renderprops'
 
 class SplitWords extends Component {
   static propTypes = {
@@ -18,7 +17,7 @@ class SplitWords extends Component {
   }
 
   componentDidMount() {
-    this.Timer = setInterval(() => {
+    this.timer = setInterval(() => {
       this.setState((state, props) => {
         return {
           counter: state.counter + 1,
@@ -29,36 +28,25 @@ class SplitWords extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.Timer)
+    clearInterval(this.timer)
   }
 
   render() {
     const { word } = this.state
-    return <SplitText word={word} />
+    return (
+      <div style={{ minHeight: '80px', position: 'relative' }}>
+        <Transition
+          items={word}
+          from={{ opacity: 0, transform: 'scale(0)', position: 'absolute' }}
+          enter={{ opacity: 1, transform: 'scale(1)' }}
+          leave={{ opacity: 0, transform: 'scale(0)' }}
+          delay={-500}
+        >
+          {item => item && (props => <span style={props}>{item}️</span>)}
+        </Transition>
+      </div>
+    )
   }
-}
-
-export function SplitText({ word }) {
-  const wordArray = word.split('')
-  const transitions = useTransition(wordArray, item => item, {
-    from: { opacity: 0, overflow: 'hidden' },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    trail: 50
-  })
-  return transitions.map(({ item, key, props }) => (
-    <animated.span key={uniqid(key)} style={props}>
-      {item}
-    </animated.span>
-  ))
-}
-
-SplitText.propTypes = {
-  word: PropTypes.string
-}
-
-SplitText.defaultProps = {
-  word: ''
 }
 
 export default SplitWords
