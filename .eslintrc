@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "implicit-arrow-linebreak": "off",
+    "comma-dangle": "off",
+    "no-absolute-path": 0,
+    "no-console": "off"
+  },
+  "globals": {
+    "graphql": true
+  }
+}
