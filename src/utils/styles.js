@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    overflow-x: hidden;
   }
 
   body {
@@ -36,7 +37,6 @@ const GlobalStyle = createGlobalStyle`
   
     &:hover,
     &:focus {
-      opacity: 0.8;
       color: ${colors.pink};
     }
   }

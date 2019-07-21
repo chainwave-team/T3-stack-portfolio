@@ -1,78 +1,133 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import uniqid from 'uniqid'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
+import MediaQuery from 'react-responsive'
+import { Transition } from 'react-spring/renderprops'
+import styled from 'styled-components'
 
-import { Flex, Button, Container, Text, Box, Card } from '../utils/rebass'
-import Link from './link'
+import { Flex, Button, Container, Box, Card } from '../utils/rebass'
+import { breakpoints, colors, space } from '../utils/theme'
+import Menu from './menu'
+import CloseIcon from '../images/close.svg'
+import MenuIcon from '../images/menu.svg'
 
-const linkStyle = { color: 'white' }
+const Icon = styled(Box).attrs({
+  width: space[4],
+  height: space[4],
+  fill: colors.cyan
+})``
 
-const Header = ({ siteTitle, links }) => (
-  <Box as="section" position="relative">
-    <Box position="absolute" width={1}>
-      <Headroom>
-        <Card width={1} bg="darkBlue" boxShadow={3}>
-          <Container py={0}>
-            <Flex
-              py={[2]}
-              as="nav"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Box>
-                <Button as={ScrollLink} to="main" smooth isDynamic>
-                  {siteTitle}
-                </Button>
-              </Box>
-              <Flex as="ul" alignItems="center">
-                {links.map(({ name, link, target, anchor }, index) => (
-                  <Text as="li" key={uniqid(index)} mx={2}>
-                    {anchor ? (
-                      <ScrollLink style={linkStyle} to={link} smooth isDynamic>
-                        {name}
-                      </ScrollLink>
+function Header({ siteTitle }) {
+  const node = useRef()
+  const [open, toggle] = useState(false)
+  const handleItemClick = () => toggle(false)
+
+  // outside click
+  const handleClick = e => !node.current.contains(e.target) && toggle(false)
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  return (
+    <Box as="section" position="relative" zIndex={1} width={1} ref={node}>
+      <Box
+        position="absolute"
+        width="100%"
+        style={{ top: '0', bottom: '0', left: '0', right: '0' }}
+      >
+        <MediaQuery minWidth={breakpoints[1]}>
+          {matches => (
+            <Headroom style={{ maxWidth: '100%' }}>
+              <Card bg="darkBlue" boxShadow={3}>
+                <Container py={0}>
+                  <Flex
+                    py={[3]}
+                    as="nav"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    position="relative"
+                  >
+                    <Button
+                      as={ScrollLink}
+                      to="main"
+                      smooth
+                      isDynamic
+                      onClick={() => toggle(false)}
+                    >
+                      {siteTitle}
+                    </Button>
+                    {matches ? (
+                      <Menu click={() => null} />
                     ) : (
-                      <Link to={link} style={linkStyle} target={target || ``}>
-                        {name}
-                      </Link>
+                      <Box
+                        style={{
+                          width: space[4],
+                          height: space[4],
+                          right: 0,
+                          top: 0
+                        }}
+                        role="button"
+                        position="relative"
+                        onClick={() => toggle(!open)}
+                      >
+                        <Transition
+                          items={open}
+                          from={{
+                            opacity: 0,
+                            right: 0,
+                            top: 0,
+                            position: 'absolute'
+                          }}
+                          enter={{ opacity: 1 }}
+                          leave={{ opacity: 0 }}
+                        >
+                          {toggled =>
+                            toggled
+                              ? props => <Icon as={CloseIcon} style={props} />
+                              : props => <Icon as={MenuIcon} style={props} />
+                          }
+                        </Transition>
+                      </Box>
                     )}
-                  </Text>
-                ))}
-                <Box ml={3}>
-                  <Button as="a" target="_blank" to="#contact">
-                    Me contacter
-                  </Button>
-                </Box>
-              </Flex>
-            </Flex>
-          </Container>
-        </Card>
-      </Headroom>
-    </Box>
-  </Box>
-)
+                  </Flex>
+                </Container>
+              </Card>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      anchor: PropTypes.bool,
-      target: PropTypes.string
-    })
+              <Transition
+                items={open && !matches}
+                from={{
+                  transform: 'translate3d(0,-100%,0)',
+                  opacity: 0,
+                  zIndex: -1,
+                  position: 'relative'
+                }}
+                enter={{ transform: 'translate3d(0,0,0)', opacity: 1 }}
+                leave={{ transform: 'translate3d(0,-100%,0)', opacity: 0 }}
+              >
+                {show =>
+                  show &&
+                  (props => (
+                    <div style={props}>
+                      <Card bg="blue">
+                        <Container py={0}>
+                          <Menu vertical click={() => handleItemClick()} />️
+                        </Container>
+                      </Card>
+                    </div>
+                  ))
+                }
+              </Transition>
+            </Headroom>
+          )}
+        </MediaQuery>
+      </Box>
+    </Box>
   )
 }
 
-Header.defaultProps = {
-  siteTitle: `J`,
-  links: [
-    { name: 'Compétences', link: 'skills', anchor: true },
-    { name: 'Portfolio', link: 'portfolio', anchor: true },
-    { name: 'Blog', link: 'https://wp-headless.fr', target: `_blank` }
-  ]
-}
+Header.propTypes = { siteTitle: PropTypes.string }
+Header.defaultProps = { siteTitle: `J` }
 
 export default Header

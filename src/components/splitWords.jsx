@@ -34,7 +34,7 @@ class SplitWords extends Component {
   render() {
     const { word } = this.state
     return (
-      <div style={{ minHeight: '80px', position: 'relative' }}>
+      <div style={{ minHeight: '100px', position: 'relative' }}>
         <Transition
           items={word}
           from={{ opacity: 0, transform: 'scale(0)', position: 'absolute' }}

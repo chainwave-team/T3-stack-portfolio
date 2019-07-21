@@ -57,7 +57,7 @@ class SectionHeader extends Component {
 
                 return (
                   <div key={uniqid(i)}>
-                    <Flex justifyContent="center">
+                    <Flex justifyContent="center" flexWrap="wrap">
                       <Box width={[1, 1, 1 / 2]} p={4}>
                         <Mockup imageUrl={imageUrl || ``} siteUrl={demoLink} />
                       </Box>
