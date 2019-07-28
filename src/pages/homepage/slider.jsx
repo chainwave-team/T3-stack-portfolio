@@ -12,7 +12,7 @@ import Html from '../../components/html'
 export default function SectionHeader({ items }) {
   const settings = {
     dots: false,
-    autoplay: false,
+    autoplay: true,
     arrows: true,
     infinite: true,
     lazyLoad: true,

@@ -1,57 +1,48 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import { Container, Text, Box } from '../utils/rebass'
 import GlobalStyle from '../utils/styles'
 import Header from './header'
 import theme from '../utils/theme'
-import { getOptions } from '../api'
+import { childrenProps } from '../utils/prop-types'
 
-class Layout extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  }
+export default function Layout({ children }) {
+  const { options } = useStaticQuery(
+    graphql`
+      query Layout {
+        options: wordpressAcfOptions {
+          options {
+            portfolio {
+              footer_text
+            }
+          }
+        }
+      }
+    `
+  )
 
-  state = { loading: true, options: {} }
+  const footerText = options.options.portfolio.footer_text
 
-  componentDidMount() {
-    getOptions().then(options =>
-      this.setState({
-        loading: false,
-        options
-      })
-    )
-  }
-
-  render() {
-    const { children } = this.props
-    const { loading, options } = this.state
-
-    return (
-      <ThemeProvider theme={theme}>
-        <main id="main">
-          {!loading && (
-            <>
-              <GlobalStyle />
-              <Header />
-              <main>{children}</main>
-              <Box
-                as="footer"
-                style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}
-              >
-                <Container py={0}>
-                  <Text m={0} py={[3, 3, 4]} textAlign="center">
-                    {options.portfolio.footer_text}
-                  </Text>
-                </Container>
-              </Box>
-            </>
-          )}
-        </main>
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <main id="main">
+        <GlobalStyle />
+        <Header />
+        <main>{children}</main>
+        <Box as="footer" style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>
+          <Container py={0}>
+            <Text m={0} py={[3, 3, 4]} textAlign="center">
+              {footerText}
+            </Text>
+          </Container>
+        </Box>
+      </main>
+    </ThemeProvider>
+  )
 }
 
-export default Layout
+Layout.propTypes = {
+  children: childrenProps.isRequired
+}

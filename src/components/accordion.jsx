@@ -5,7 +5,7 @@ import { Transition } from 'react-spring/renderprops'
 
 import { Box, Text, Heading, Link } from '../utils/rebass'
 
-function Accordion({ title, content, opened }) {
+export default function Accordion({ title, content, opened }) {
   const [items, toggleItems] = useState(opened ? [content] : [])
   return (
     <Box>
@@ -51,5 +51,3 @@ Accordion.propTypes = {
 Accordion.defaultProps = {
   opened: false
 }
-
-export default Accordion

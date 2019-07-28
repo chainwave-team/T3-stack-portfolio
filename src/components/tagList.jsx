@@ -9,7 +9,7 @@ const TagList = ({ technologies }) => (
     {technologies.map(({ name }, i) => (
       <span
         key={uniqid(i)}
-        style={{ paddingLeft: i === 0 ? 0 : 10, display: 'inline-block' }}
+        style={{ paddingLeft: i === 0 ? 0 : 8, display: 'inline-block' }}
       >
         {name}
       </span>

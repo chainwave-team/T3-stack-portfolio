@@ -21,14 +21,32 @@ const IndexPage = ({ data }) => {
     return { ...item, project_type: projectType }
   })
 
+  // Format names from WordPress/graphQL to React
+  const {
+    header_name: title,
+    header_textarea: textarea,
+    header_titres: subTitles,
+    label_bouton_contact: buttonLabel,
+    skills_titre: skillsTitle,
+    skills,
+    footer
+  } = options.options.portfolio
+
+  const titlesList = subTitles.map(item => item.titre_metier)
+
   // console.log({ options, projectsList })
   return (
     <Layout>
       <SEO title="Home" />
-      <SectionHeader />
-      <SectionSkills />
+      <SectionHeader
+        title={title}
+        textarea={textarea}
+        subTitles={titlesList}
+        buttonLabel={buttonLabel}
+      />
+      <SectionSkills title={skillsTitle} items={skills} />
       <SectionSlider items={projectsList} />
-      <SectionFooter />
+      <SectionFooter items={footer} />
     </Layout>
   )
 }
