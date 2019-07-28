@@ -60,7 +60,8 @@ export const colors = {
 
 export const fonts = {
   heading: `"avenir next", avenir, sans-serif`,
-  text: `"Courier Next", courier, monospace;`
+  text: `"Courier Next", courier, monospace;`,
+  apple: `'San Francisco Text', 'avenir', sans-serif`
 }
 
 export const fontWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900]

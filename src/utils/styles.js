@@ -9,7 +9,7 @@ export const isDev = process.env.NODE_ENV === 'development'
 const GlobalStyle = createGlobalStyle`
 
   ${normalize};
-  ${isDev && tachyonsDebug};  
+  ${!isDev && tachyonsDebug};  
 
   html {
     font-size: 62.5%;
@@ -39,6 +39,26 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       color: ${colors.pink};
     }
+  }
+  
+  /* Custom ScrollBar */ 
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${colors.darkBlue}; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${colors.blue}; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${colors.pink}; 
   }
 `
 

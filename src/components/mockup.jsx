@@ -1,12 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
+import uniqid from 'uniqid'
 
 import Link from './link'
+import { Box, Flex, Card, Text } from '../utils/rebass'
 
 const trimUrl = url => (url !== '' ? url.split('//')[1] : '')
-
-const $screenWidth = '580px'
+const screenWidth = '720px'
+const screenHeight = '450px'
 const colors = {
   dark: {
     bg: '#252525',
@@ -23,126 +26,86 @@ const colors = {
 }
 const theme = 'dark'
 
-const Mockup = ({ imageUrl, siteUrl }) => (
-  <Screen>
-    <Navbar>
-      <CircleList>
-        <div />
-        <div />
-        <div />
-      </CircleList>
-      {siteUrl !== '' && (
-        <Url to={siteUrl} target="_blank">
-          <span className="host">https://</span>
-          <span className="domain">{trimUrl(siteUrl)}</span>
-        </Url>
-      )}
-    </Navbar>
-    <Relative>
-      <ScrollBottom />
-      <Viewport
-        className="viewport"
-        style={{ backgroundImage: `url(${imageUrl})` }}
-      />
-    </Relative>
-  </Screen>
+const Mockup = ({ siteUrl, fluid }) => (
+  <Box m="auto" width={screenWidth} maxWidth="100%">
+    <Screen>
+      <Navbar>
+        <Flex mr={3}>
+          {['#fc605c', '#fdbc40', '#34c749'].map((color, i) => (
+            <Card
+              key={uniqid(color)}
+              bg={color}
+              height="8px"
+              width="8px"
+              mx={i === 1 ? `5px` : `0`}
+              borderRadius={6}
+            />
+          ))}
+        </Flex>
+        {siteUrl !== '' && (
+          <Links to={siteUrl} target="_blank">
+            <LinkSpan color={colors[theme].light}>https://</LinkSpan>
+            <LinkSpan color={colors[theme].font}>{trimUrl(siteUrl)}</LinkSpan>
+          </Links>
+        )}
+      </Navbar>
+      <Scrollable width={1} height="100%">
+        <Img fluid={fluid} maxWidth="100%" />
+      </Scrollable>
+    </Screen>
+  </Box>
 )
 
 Mockup.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  fluid: PropTypes.objectOf(PropTypes.any).isRequired,
   siteUrl: PropTypes.string.isRequired
 }
 
-const Screen = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: ${$screenWidth};
-  max-width: 100%;
-
+const Screen = styled(Box)`
+  margin: 10px;
+  height: ${screenHeight};
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  overflow: hidden;
   background-color: ${colors[theme].bg};
-  height: 400px;
+  overflow: hidden;
 `
 
-const Navbar = styled.div`
-  width: 100%;
-  display: flex;
+const Navbar = styled(Flex)`
+  width: ${screenWidth};
+  height: 30px;
   padding: 11px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   background-image: ${colors[theme].nav};
 `
-
-const CircleList = styled.div`
+const Links = styled(Link)`
   display: flex;
-  div {
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-
-    &:nth-child(1) {
-      background-color: #fc605c; // red
-    }
-    &:nth-child(2) {
-      background-color: #fdbc40; // Yellow
-      margin: 0 5px;
-    }
-    &:nth-child(3) {
-      background-color: #34c749; // Green
-    }
+  &:hover {
+    opacity: 0.8;
   }
 `
-
-const Url = styled(Link)`
-  margin: 0 0 0 10px;
-  //line-height: 1;
-  font-family: 'San Francisco Text', 'avenir';
+const LinkSpan = styled(Text).attrs({
+  as: 'span',
+  m: 0,
+  fontFamily: 'apple'
+})`
+  line-height: 1;
   font-size: 10px;
   font-weight: 400;
-  .host {
-    color: ${colors[theme].light};
-  }
-  .domain {
-    color: ${colors[theme].font};
-  }
 `
-const Relative = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
-`
-const ScrollZone = styled.span`
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 45%;
-  z-index: 5;
-`
-const ScrollBottom = styled(ScrollZone)`
-  bottom: 0;
-  cursor: s-resize;
-  &:hover + .viewport {
-    background-position: 0 100%;
-  }
-`
-const Viewport = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  background-color: #333;
 
-  /* Animation content */
-  transition: background-position 8s;
-  background-position: 0 0;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  cursor: n-resize;
-  overflow: hidden;
+const Scrollable = styled(Box)`
+  overflow: auto;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${colors[theme].bg};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${colors[theme].font};
+  }
 `
 
 export default Mockup

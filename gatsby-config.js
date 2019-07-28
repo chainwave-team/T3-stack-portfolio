@@ -1,3 +1,6 @@
+const WP_URL = 'wp-headless.fr'
+const PROTOCOL = 'https'
+
 module.exports = {
   siteMetadata: {
     title: `Julien CARON`,
@@ -19,6 +22,31 @@ module.exports = {
         rule: {
           include: /images/ // See below to configure properly
         }
+      }
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        baseUrl: `${WP_URL}`,
+        protocol: `${PROTOCOL}`,
+        hostingWPCOM: false,
+        useACF: true,
+        acfOptionPageIds: [],
+        cookies: {},
+        verboseOutput: false,
+        perPage: 100,
+        searchAndReplaceContentUrls: {
+          sourceUrl: `${PROTOCOL}://${WP_URL}(?!(/wp-content))`,
+          replacementUrl: ''
+        },
+        includedRoutes: [
+          '**/media',
+          '**/project_type',
+          '**/tags',
+          '**/wp/v2/projets',
+          '**/options',
+          '**/acf/v3/options'
+        ]
       }
     },
     `gatsby-transformer-sharp`,
