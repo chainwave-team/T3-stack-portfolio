@@ -15,13 +15,15 @@
       "version": "detect"
     }
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": "error",
     "implicit-arrow-linebreak": "off",
     "comma-dangle": "off",
     "no-absolute-path": 0,
-    "no-console": "off"
+    "no-console": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "globals": {
     "graphql": true
