@@ -12,7 +12,7 @@ export default function SplitWords({ words }) {
       setWord(words[count % words.length])
     }, 3000)
     return () => clearInterval(interval)
-  }, [])
+  }, [count, words])
 
   return (
     <div style={{ minHeight: '100px', position: 'relative' }}>

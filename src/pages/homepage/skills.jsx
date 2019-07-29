@@ -32,13 +32,18 @@ const SectionSkills = ({ title, items }) => (
 )
 
 SectionSkills.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       titre: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired
     })
-  ).isRequired
+  )
+}
+
+SectionSkills.defaultProps = {
+  title: '',
+  items: [{ titre: '', content: '' }]
 }
 
 export default SectionSkills

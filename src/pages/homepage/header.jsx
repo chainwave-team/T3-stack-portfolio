@@ -40,10 +40,17 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
 )
 
 SectionHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  textarea: PropTypes.string.isRequired,
-  subTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  buttonLabel: PropTypes.string.isRequired
+  title: PropTypes.string,
+  textarea: PropTypes.string,
+  subTitles: PropTypes.arrayOf(PropTypes.string),
+  buttonLabel: PropTypes.string
+}
+
+SectionHeader.defaultProps = {
+  title: '',
+  textarea: '',
+  subTitles: [''],
+  buttonLabel: ''
 }
 
 export default SectionHeader

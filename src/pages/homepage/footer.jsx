@@ -28,7 +28,11 @@ const SectionFooter = ({ items }) => (
 )
 
 SectionFooter.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
+  items: PropTypes.arrayOf(PropTypes.object)
+}
+
+SectionFooter.defaultProps = {
+  items: []
 }
 
 export default SectionFooter
