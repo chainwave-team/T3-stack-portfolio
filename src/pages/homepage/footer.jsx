@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Container, Flex, Box } from '../../utils/rebass'
 import FooterCard from '../../components/footerCard'
+import Fade from '../../components/fade'
 
 const SectionFooter = ({ items }) => (
   <Container as="section" id="contact">
@@ -19,7 +20,9 @@ const SectionFooter = ({ items }) => (
             flexDirection="column"
             style={{ minHeight: 300 }}
           >
-            <FooterCard {...itemProps} />
+            <Fade>
+              <FooterCard {...itemProps} />
+            </Fade>
           </Flex>
         ))}
       </Flex>

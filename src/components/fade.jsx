@@ -1,25 +1,29 @@
 import React from 'react'
-import { Transition } from 'react-spring/renderprops'
+import VisibilitySensor from 'react-visibility-sensor'
 import PropTypes from 'prop-types'
+import { Spring } from 'react-spring/renderprops'
 
 import { Box } from '../utils/rebass'
 
 const Fade = ({ children }) => (
-  <Transition
-    items={children}
-    from={{ opacity: 0 }}
-    enter={{ opacity: 1 }}
-    leave={{ opacity: 0 }}
-  >
-    {show =>
-      show &&
-      (css => (
-        <Box style={css} m={0} p={0}>
-          {children}
-        </Box>
-      ))
-    }
-  </Transition>
+  <VisibilitySensor partialVisibility delay={300}>
+    {({ isVisible }) => (
+      <Spring
+        to={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible
+            ? 'translate3d(0, 0, 0) scale(1) skew(0, 0)'
+            : 'translate3d(0, -10%, 0) scale(0.5) skew(5deg, 3deg)'
+        }}
+      >
+        {css => (
+          <Box style={css} m={0} p={0}>
+            {children}
+          </Box>
+        )}
+      </Spring>
+    )}
+  </VisibilitySensor>
 )
 
 Fade.propTypes = {
