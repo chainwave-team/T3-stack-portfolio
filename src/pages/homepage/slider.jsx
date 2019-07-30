@@ -2,12 +2,15 @@ import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
 
-import SlickHelper from '../../utils/slick-helper'
+// import SlickHelper from '../../utils/slick-helper'
 import { Flex, Box, Heading, Text, Container, Card } from '../../utils/rebass'
 import { imageProps } from '../../utils/prop-types'
 import Mockup from '../../components/mockup'
 import TagList from '../../components/tagList'
 import Html from '../../components/html'
+
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 export default function SectionHeader({ items }) {
   const settings = {
@@ -23,7 +26,7 @@ export default function SectionHeader({ items }) {
 
   return (
     <Container as="section" id="portfolio">
-      <SlickHelper />
+      {/* <SlickHelper /> */}
       <Slider {...settings}>
         {items.map(
           ({
