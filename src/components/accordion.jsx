@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
-import { Transition } from 'react-spring/renderprops'
+import { Spring } from 'react-spring/renderprops'
 
 import { Box, Text, Heading, Link } from '../utils/rebass'
 
-export default function Accordion({ title, content, opened }) {
-  const [items, toggleItems] = useState(opened ? [content] : [])
+export default function Accordion({ title, content, defaultOpen }) {
+  const [open, toggle] = useState(defaultOpen)
+  const [height, setHeight] = useState(0)
+
+  const ref = useRef(null)
+
   return (
     <Box>
       <Heading
@@ -19,25 +23,29 @@ export default function Accordion({ title, content, opened }) {
         fontSize={[3, 3, 4]}
         py={[3]}
         role="button"
-        onClick={() => toggleItems(items.length ? [] : [content])}
+        onClick={() => {
+          toggle(!open)
+          setHeight(ref.current.scrollHeight)
+        }}
       >
         {title}
       </Heading>
 
-      <Transition
-        items={items}
-        from={{ overflow: 'hidden', height: 0, opacity: 0 }}
-        enter={{ height: 'auto', opacity: 1 }}
-        leave={{ height: 0, opacity: 0 }}
+      <Spring
+        from={{
+          overflow: 'hidden',
+          height: 0
+        }}
+        to={{ height: open ? height || 'auto' : 0 }}
       >
-        {item => styles => (
+        {styles => (
           <animated.div style={styles}>
-            <Text py={3} px={0} m={0}>
-              {item}
+            <Text ref={ref} py={3} px={0} m={0}>
+              {content}
             </Text>
           </animated.div>
         )}
-      </Transition>
+      </Spring>
     </Box>
   )
 }
@@ -45,9 +53,9 @@ export default function Accordion({ title, content, opened }) {
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  opened: PropTypes.bool
+  defaultOpen: PropTypes.bool
 }
 
 Accordion.defaultProps = {
-  opened: false
+  defaultOpen: false
 }

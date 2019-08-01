@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 import normalize from './normalize'
 import tachyonsDebug from './tachyons-debug'
-import { colors, fonts, transitions } from './theme'
+import { colors, fonts } from './theme'
 
 export const isDev = process.env.NODE_ENV === 'development'
 
@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     text-decoration: none;
     color: ${colors.cyan};
-    transition: all ${transitions[0]} ease-in-out;
+    transition: color 200ms ease;
   
     &:hover,
     &:focus {
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
   
   /* Custom ScrollBar */ 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
   }
   
   /* Track */

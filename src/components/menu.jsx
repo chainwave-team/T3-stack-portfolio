@@ -33,7 +33,7 @@ const Menu = ({ links, vertical, click }) => (
         </BaseLink>
       </Text>
     ))}
-    <Box ml={vertical ? 0 : 2}>
+    <Box ml={vertical ? 0 : 3}>
       <Button
         as={ScrollLink}
         to="contact"

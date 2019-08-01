@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Transition } from 'react-spring/renderprops'
+import { Transition, config } from 'react-spring/renderprops'
 
 export default function SplitWords({ words }) {
   const [count, setCount] = useState(0)
@@ -22,6 +22,7 @@ export default function SplitWords({ words }) {
         enter={{ opacity: 1, transform: 'scale(1)' }}
         leave={{ opacity: 0, transform: 'scale(0)' }}
         delay={-500}
+        config={config.slow}
       >
         {item => item && (props => <span style={props}>{item}️</span>)}
       </Transition>

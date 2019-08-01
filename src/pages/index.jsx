@@ -9,6 +9,8 @@ import SectionSkills from './homepage/skills'
 import SectionSlider from './homepage/slider'
 import SectionFooter from './homepage/footer'
 
+// import Acc from '../components/Acc'
+
 const IndexPage = ({ data }) => {
   const { options, projects, categories } = data
 
@@ -38,6 +40,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
+      {/* <Acc/> */}
       <SectionHeader
         title={title}
         textarea={textarea}
