@@ -28,7 +28,6 @@ const ArrowStyle = styled(Box).attrs({
   }
 `
 
-// eslint-disable-next-line
 export const Arrow = props => (
   <MediaQuery minWidth={breakpoints[1]}>
     {matches => (matches ? <ArrowStyle {...props} /> : null)}
@@ -46,16 +45,3 @@ export const BackArrow = props => (
     <Back />
   </Arrow>
 )
-
-export const settings = {
-  dots: false,
-  autoplay: true,
-  arrows: true,
-  infinite: true,
-  lazyLoad: true,
-  speed: 800,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  nextArrow: <NextArrow />,
-  prevArrow: <BackArrow />
-}
