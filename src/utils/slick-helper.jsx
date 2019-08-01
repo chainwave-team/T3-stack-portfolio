@@ -29,16 +29,22 @@ const ArrowStyle = styled(Box).attrs({
 `
 
 // eslint-disable-next-line
-export const Arrow = ({ style, sideCss, children, ...rest }) => (
+export const Arrow = props => (
   <MediaQuery minWidth={breakpoints[1]}>
-    {matches =>
-      matches ? (
-        <ArrowStyle {...rest} style={{ ...style, ...sideCss }}>
-          {children}
-        </ArrowStyle>
-      ) : null
-    }
+    {matches => (matches ? <ArrowStyle {...props} /> : null)}
   </MediaQuery>
+)
+
+export const NextArrow = props => (
+  <Arrow {...props} style={{ right: 0 }}>
+    <Next />
+  </Arrow>
+)
+
+export const BackArrow = props => (
+  <Arrow {...props} style={{ left: 0 }}>
+    <Back />
+  </Arrow>
 )
 
 export const settings = {
@@ -50,14 +56,6 @@ export const settings = {
   speed: 800,
   slidesToShow: 1,
   slidesToScroll: 1,
-  nextArrow: (
-    <Arrow sideCss={{ right: 0 }}>
-      <Next />
-    </Arrow>
-  ),
-  prevArrow: (
-    <Arrow sideCss={{ left: 0 }}>
-      <Back />
-    </Arrow>
-  )
+  nextArrow: <NextArrow />,
+  prevArrow: <BackArrow />
 }
