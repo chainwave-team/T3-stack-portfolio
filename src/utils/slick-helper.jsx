@@ -28,26 +28,34 @@ const ArrowStyle = styled(Box).attrs({
   }
 `
 
-export const Arrow = props => (
-  <MediaQuery minWidth={breakpoints[1]}>
-    {matches => (matches ? <ArrowStyle {...props} /> : null)}
-  </MediaQuery>
-)
+export function NextArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <ArrowStyle
+      className={className}
+      style={{ ...style, right: 0 }}
+      onClick={onClick}
+    >
+      <Next />
+    </ArrowStyle>
+  )
+}
 
-export const NextArrow = props => (
-  <Arrow {...props} style={{ right: 0 }}>
-    <Next />
-  </Arrow>
-)
+export function BackArrow(props) {
+  const { className, style, onClick } = props
+  return (
+    <ArrowStyle
+      className={className}
+      style={{ ...style, left: 0 }}
+      onClick={onClick}
+    >
+      <Back />
+    </ArrowStyle>
+  )
+}
 
-export const BackArrow = props => (
-  <Arrow {...props} style={{ left: 0, transform: 'rotate(180deg)' }}>
-    <Next />
-  </Arrow>
-)
-
-// export const BackArrow = props => (
-//   <Arrow {...props} style={{ left: 0 }}>
-//     <Back />
-//   </Arrow>
+// export const Arrow = props => (
+//   <MediaQuery minWidth={breakpoints[1]}>
+//     {matches => (matches ? <ArrowStyle {...props} /> : null)}
+//   </MediaQuery>
 // )
