@@ -82,7 +82,8 @@ module.exports = {
         respectDNT: true,
         exclude: ['/preview/**', '/do-not-track/me/too/']
       }
-    }
+    },
+    `gatsby-plugin-netlify`
     // {
     //   resolve: `gatsby-plugin-netlify`,
     //   options: {

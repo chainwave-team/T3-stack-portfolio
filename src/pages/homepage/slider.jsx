@@ -16,11 +16,11 @@ import 'slick-carousel/slick/slick.css'
 const SectionHeader = ({ items }) => {
   const settings = {
     dots: false,
-    autoplay: true,
+    // autoplay: true,
     arrows: true,
     infinite: true,
     lazyLoad: true,
-    speed: 800,
+    // speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
