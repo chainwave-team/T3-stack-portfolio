@@ -41,7 +41,13 @@ export const NextArrow = props => (
 )
 
 export const BackArrow = props => (
-  <Arrow {...props} style={{ left: 0 }}>
-    <Back />
+  <Arrow {...props} style={{ left: 0, transform: 'rotate(180deg)' }}>
+    <Next />
   </Arrow>
 )
+
+// export const BackArrow = props => (
+//   <Arrow {...props} style={{ left: 0 }}>
+//     <Back />
+//   </Arrow>
+// )
