@@ -83,28 +83,27 @@ module.exports = {
         exclude: ['/preview/**', '/do-not-track/me/too/']
       }
     },
-    `gatsby-plugin-netlify`
-    // {
-    //   resolve: `gatsby-plugin-netlify`,
-    //   options: {
-    // headers: {
-    //   '/*': [
-    //     'X-Frame-Options: DENY',
-    //     'X-XSS-Protection: 1; mode=block',
-    //     'X-Content-Type-Options: nosniff',
-    //     `Content-Security-Policy: ${directivesToCspHeader(cspDirectives)}`,
-    //     'Referrer-Policy: no-referrer-when-downgrade',
-    //     'cache-control: public,max-age=31536000,immutable'
-    //   ]
-    // }, // option to add more headers. `Link` headers are transformed by the below criteria
-    // allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
-    // mergeSecurityHeaders: true, // boolean to turn off the default security headers
-    // mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
-    // mergeCachingHeaders: true, // boolean to turn off the default caching headers
-    // // transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
-    // generateMatchPathRewrites: true // boolean to turn off automatic creation of redirect rules for client only paths
-    //   }
-    // }
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          '/*': [
+            // 'X-Frame-Options: DENY',
+            // 'X-XSS-Protection: 1; mode=block',
+            // 'X-Content-Type-Options: nosniff',
+            // `Content-Security-Policy: ${directivesToCspHeader(cspDirectives)}`,
+            // 'Referrer-Policy: no-referrer-when-downgrade',
+            'cache-control: public,max-age=31536000,immutable'
+          ]
+        } // option to add more headers. `Link` headers are transformed by the below criteria
+        // allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
+        // mergeSecurityHeaders: true, // boolean to turn off the default security headers
+        // mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
+        // mergeCachingHeaders: true, // boolean to turn off the default caching headers
+        // transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
+        // generateMatchPathRewrites: true // boolean to turn off automatic creation of redirect rules for client only paths
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
