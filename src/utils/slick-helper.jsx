@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import MediaQuery from 'react-responsive'
 
 import { Box } from './rebass'
-import { breakpoints, colors } from './theme'
+import { mediaQueries, colors } from './theme'
 import Next from '../images/next.svg'
 import Back from '../images/back.svg'
 
@@ -19,6 +18,10 @@ const ArrowStyle = styled(Box).attrs({
   cursor: pointer;
 
   svg {
+    display: none;
+    ${mediaQueries.medium} {
+      display: block;
+    }
     fill: ${colors.cyan};
     transition: fill 200ms ease;
   }
