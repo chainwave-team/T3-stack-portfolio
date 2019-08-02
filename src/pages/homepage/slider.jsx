@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import { Flex, Box, Heading, Text, Container, Card } from '../../utils/rebass'
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
@@ -31,25 +32,28 @@ const SectionHeader = ({ items }) => {
       <Fade>
         <Slider {...settings}>
           {items.map(
-            ({
-              id,
-              wordpress_id: wpId,
-              tags,
-              excerpt,
-              title,
-              acf,
-              project_type: projectType,
-              featured_media: image
-            }) => {
+            (
+              {
+                id,
+                wordpress_id: wpId,
+                tags,
+                excerpt,
+                title,
+                acf,
+                project_type: projectType,
+                featured_media: image
+              },
+              i
+            ) => {
               const { lien_demo: demoLink } = acf
               const category = projectType[0]
               const { fluid } = image.localFile.childImageSharp
 
               return (
-                <article key={id} id={`projects-${wpId}`}>
+                <Article key={id} id={`projects-${wpId}`}>
                   <Flex justifyContent="center" flexWrap="wrap">
                     <Box width={[1, 1, 1 / 2, 2 / 3]}>
-                      <Mockup fluid={fluid} siteUrl={demoLink} />
+                      <Mockup fluid={fluid} siteUrl={demoLink} index={i} />
                     </Box>
                     <Flex
                       flexDirection="column"
@@ -70,7 +74,7 @@ const SectionHeader = ({ items }) => {
                       </Box>
                     </Flex>
                   </Flex>
-                </article>
+                </Article>
               )
             }
           )}
@@ -79,6 +83,12 @@ const SectionHeader = ({ items }) => {
     </Container>
   )
 }
+
+const Article = styled.article`
+  :focus {
+    outline: none;
+  }
+`
 
 SectionHeader.propTypes = {
   items: PropTypes.arrayOf(

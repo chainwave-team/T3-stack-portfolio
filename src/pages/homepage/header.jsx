@@ -57,7 +57,7 @@ function SectionHeader({ title, textarea, subTitles, buttonLabel }) {
                       justifyContent="center"
                       alignItems="center"
                     >
-                      <Box width={1} pa={3}>
+                      <Box width="100%" pa={3}>
                         <Fade>
                           <CoderSVG width="100%" />
                         </Fade>

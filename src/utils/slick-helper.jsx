@@ -29,33 +29,41 @@ const ArrowStyle = styled(Box).attrs({
 `
 
 export function NextArrow(props) {
+  // eslint-disable-next-line
   const { className, style, onClick } = props
   return (
-    <ArrowStyle
-      className={className}
-      style={{ ...style, right: 0 }}
-      onClick={onClick}
-    >
-      <Next />
-    </ArrowStyle>
+    <MediaQuery minWidth={breakpoints[1]}>
+      {matches =>
+        matches ? (
+          <ArrowStyle
+            className={className}
+            style={{ ...style, right: 0 }}
+            onClick={onClick}
+          >
+            <Next />
+          </ArrowStyle>
+        ) : null
+      }
+    </MediaQuery>
   )
 }
 
 export function BackArrow(props) {
+  // eslint-disable-next-line
   const { className, style, onClick } = props
   return (
-    <ArrowStyle
-      className={className}
-      style={{ ...style, left: 0 }}
-      onClick={onClick}
-    >
-      <Back />
-    </ArrowStyle>
+    <MediaQuery minWidth={breakpoints[1]}>
+      {matches =>
+        matches ? (
+          <ArrowStyle
+            className={className}
+            style={{ ...style, left: 0 }}
+            onClick={onClick}
+          >
+            <Back />
+          </ArrowStyle>
+        ) : null
+      }
+    </MediaQuery>
   )
 }
-
-// export const Arrow = props => (
-//   <MediaQuery minWidth={breakpoints[1]}>
-//     {matches => (matches ? <ArrowStyle {...props} /> : null)}
-//   </MediaQuery>
-// )
