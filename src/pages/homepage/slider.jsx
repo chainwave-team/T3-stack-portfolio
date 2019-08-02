@@ -21,7 +21,6 @@ const SectionHeader = ({ items }) => {
     arrows: true,
     infinite: true,
     lazyLoad: true,
-    // speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
