@@ -5,11 +5,9 @@ import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import SectionHeader from './homepage/header'
-import SectionSkills from './homepage/skills'
 import SectionSlider from './homepage/slider'
 import SectionFooter from './homepage/footer'
-
-// import Acc from '../components/Acc'
+import SectionAccordion from './homepage/accordion'
 
 const IndexPage = ({ data }) => {
   const { options, projects, categories } = data
@@ -22,6 +20,9 @@ const IndexPage = ({ data }) => {
       : []
     return { ...item, project_type: projectType }
   })
+
+  // Filter if post.status === publish
+  const publicProjects = projectsList.filter(el => el.status === 'publish')
 
   // Format names from WordPress/graphQL to React
   const {
@@ -36,19 +37,17 @@ const IndexPage = ({ data }) => {
 
   const titlesList = subTitles.map(item => item.titre_metier)
 
-  // console.log({ options, projectsList })
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <Acc/> */}
       <SectionHeader
         title={title}
         textarea={textarea}
         subTitles={titlesList}
         buttonLabel={buttonLabel}
       />
-      <SectionSkills title={skillsTitle} items={skills} />
-      <SectionSlider items={projectsList} />
+      <SectionAccordion title={skillsTitle} items={skills} />
+      <SectionSlider items={publicProjects} />
       <SectionFooter items={footer} />
     </Layout>
   )

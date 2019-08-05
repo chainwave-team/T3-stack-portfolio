@@ -5,38 +5,31 @@ import { Spring } from 'react-spring/renderprops'
 
 import { Box, Text, Heading, Link } from '../utils/rebass'
 
-export default function Accordion({ title, content, defaultOpen }) {
-  const [open, toggle] = useState(defaultOpen)
-  const [height, setHeight] = useState(0)
-
+export default function Accordion({ title, content, open, toggle, height }) {
   const ref = useRef(null)
+
+  const getHeight = (o, h) => {
+    const tmpHeight = Number.isNaN(h) ? 'auto' : h
+    return o ? tmpHeight : 0
+  }
 
   return (
     <Box>
       <Heading
-        style={{
-          borderBottom: '1px solid',
-          cursor: 'pointer',
-          display: 'block'
-        }}
+        style={{ borderBottom: '1px solid', cursor: 'pointer' }}
         as={Link}
         fontSize={[3, 3, 4]}
         py={[3]}
         role="button"
-        onClick={() => {
-          toggle(!open)
-          setHeight(ref.current.scrollHeight)
-        }}
+        display="block"
+        onClick={() => toggle(ref.current.scrollHeight)}
       >
         {title}
       </Heading>
 
       <Spring
-        from={{
-          overflow: 'hidden',
-          height: 0
-        }}
-        to={{ height: open ? height || 'auto' : 0 }}
+        from={{ overflow: 'hidden', height: getHeight(!open, height) }}
+        to={{ height: getHeight(open, height) }}
       >
         {styles => (
           <animated.div style={styles}>
@@ -53,9 +46,12 @@ export default function Accordion({ title, content, defaultOpen }) {
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  defaultOpen: PropTypes.bool
+  open: PropTypes.bool,
+  toggle: PropTypes.func.isRequired,
+  height: PropTypes.number
 }
 
 Accordion.defaultProps = {
-  defaultOpen: false
+  open: false,
+  height: 0
 }
