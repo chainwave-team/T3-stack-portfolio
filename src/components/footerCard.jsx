@@ -7,6 +7,8 @@ import { Flex, Heading, Link as RebassLink, Text } from '../utils/rebass'
 import Link from './link'
 import { shadows } from '../utils/theme'
 
+const isMail = link => /(mailto:)/g.test(link)
+
 function FooterCard({ titre, intro, links }) {
   const [hover, setHover] = useState(false)
   const hoverState = useSpring({
@@ -33,7 +35,7 @@ function FooterCard({ titre, intro, links }) {
         py={[4]}
         px={[3]}
         bg={hover ? `transparent` : `blue`}
-        style={{ minHeight: `240px` }}
+        style={{ minHeight: `260px` }}
       >
         <div>
           <Heading fontSize={[4]} as="h3">
@@ -47,6 +49,7 @@ function FooterCard({ titre, intro, links }) {
               <Link
                 as={RebassLink}
                 to={lien}
+                target={isMail(lien) ? '' : '_blank'}
                 style={{ display: `block` }}
                 key={uniqid(index)}
               >

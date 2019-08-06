@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-size: 1.5em;
+    font-size: 1.6em;
     line-height: 1.2;
     font-family: ${fonts.text};
     font-weight: 400;

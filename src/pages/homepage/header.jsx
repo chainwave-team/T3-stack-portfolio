@@ -33,7 +33,7 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
                 </Heading>
               </Fade>
               <Fade>
-                <div style={{ maxWidth: '600px' }}>
+                <div style={{ maxWidth: '650px' }}>
                   <Html __html={textarea} />
                 </div>
               </Fade>
@@ -54,7 +54,7 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
               >
                 <Box width="100%" pa={3}>
                   <Fade>
-                    <CoderSVG width="100%" />
+                    <CoderSVG width="100%" height="100%" />
                   </Fade>
                 </Box>
               </Flex>
