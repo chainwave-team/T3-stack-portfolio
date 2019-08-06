@@ -12,12 +12,12 @@ import CoderSVG from '../../images/coder.svg'
 
 const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
   <MediaQuery minWidth={breakpoints[1]}>
-    {notSmall => (
+    {matches => (
       <Flex
         as="section"
         id="top"
         alignItems="center"
-        style={{ minHeight: notSmall ? '100vh' : '60vh' }}
+        style={{ minHeight: !matches ? '60vh' : '100vh' }}
       >
         <Container py={6}>
           <Flex mx={-3} justifyContent="space-between" alignItems="center">
