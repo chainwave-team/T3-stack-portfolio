@@ -59,13 +59,7 @@ export default function Header({ siteTitle }) {
                   alignItems="center"
                   position="relative"
                 >
-                  <Button
-                    as={ScrollLink}
-                    to="main"
-                    smooth
-                    isDynamic
-                    onClick={() => toggle(false)}
-                  >
+                  <Button as={ScrollLink} to="main" smooth isDynamic>
                     {siteTitle}
                   </Button>
                   {matches ? (

@@ -30,7 +30,7 @@ export default function Layout({ children }) {
       <>
         <GlobalStyle />
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Box as="footer" style={{ backgroundColor: `rgba(0, 0, 0, 0.5)` }}>
           <Container py={0}>
             <Text m={0} py={[3, 3, 4]} textAlign="center">
