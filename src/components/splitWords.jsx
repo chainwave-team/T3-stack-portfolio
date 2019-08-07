@@ -10,7 +10,12 @@ export default function SplitWords({ words }) {
   const [count, setCount] = useState(0)
   const [word, setWord] = useState(words[0])
   const transitions = useTransition(word, null, {
-    from: { opacity: 0, transform: 'scale(0)', position: 'absolute' },
+    from: {
+      opacity: 0,
+      transform: 'scale(0)',
+      position: 'absolute',
+      wordBreak: 'break-word'
+    },
     enter: { opacity: 1, transform: 'scale(1)' },
     leave: { opacity: 0, transform: 'scale(0)' }
   })

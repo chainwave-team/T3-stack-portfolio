@@ -26,7 +26,7 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
             </Heading>
           </Fade>
           <Fade>
-            <Heading as="h1" pb={4} fontSize={[6, 6, 7]}>
+            <Heading as="h1" pb={4} fontSize={[5, 6, 7]}>
               <SplitWords words={subTitles} />
             </Heading>
           </Fade>
