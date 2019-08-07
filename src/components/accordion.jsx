@@ -8,10 +8,15 @@ import { Box, Text, Heading, Link } from '../utils/rebass'
 export default function Accordion({ title, content, open, toggle, height }) {
   const ref = useRef(null)
 
+  // const getHeight = (o, h) => {
+  //   const tmpHeight = Number.isNaN(h) ? 'auto' : h
+  //   const out = o ? `${tmpHeight}px` : `0`
+  //   return out.toString()
+  // }
+
   const getHeight = (o, h) => {
-    const tmpHeight = Number.isNaN(h) ? 'auto' : h
-    const out = o ? `${tmpHeight}px` : `0`
-    return out.toString()
+    const tmpHeight = Number.isNaN(h) || typeof h === 'undefined' ? 'auto' : h
+    return o ? tmpHeight : 0
   }
 
   return (

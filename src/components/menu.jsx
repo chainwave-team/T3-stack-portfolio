@@ -8,46 +8,44 @@ import Link from './link'
 
 export default function Menu({ links, vertical, click }) {
   return (
-    <div>
-      <Flex
-        as="ul"
-        m={0}
-        alignItems="center"
-        flexDirection={vertical ? 'column' : 'row'}
-        py={vertical ? 4 : 0}
-      >
-        {links.map(({ name, link, target, anchor }, index) => (
-          <Text
-            as="li"
-            key={uniqid(index)}
-            mx={vertical ? 0 : 2}
-            py={vertical ? 3 : 0}
-          >
-            <BaseLink
-              as={anchor ? ScrollLink : Link}
-              color="white"
-              to={link}
-              target={target || ``}
-              onClick={() => click()}
-              {...(anchor && { smooth: true, isDynamic: true })}
-            >
-              {name}
-            </BaseLink>
-          </Text>
-        ))}
-        <Box ml={vertical ? 0 : 3}>
-          <Button
-            as={ScrollLink}
-            to="contact"
-            smooth
-            isDynamic
+    <Flex
+      as="ul"
+      m={0}
+      alignItems="center"
+      flexDirection={vertical ? 'column' : 'row'}
+      py={vertical ? 4 : 0}
+    >
+      {links.map(({ name, link, target, anchor }, index) => (
+        <Text
+          as="li"
+          key={uniqid(index)}
+          mx={vertical ? 0 : 2}
+          py={vertical ? 3 : 0}
+        >
+          <BaseLink
+            as={anchor ? ScrollLink : Link}
+            color="white"
+            to={link}
+            target={target || ``}
             onClick={() => click()}
+            {...(anchor && { smooth: true, isDynamic: true })}
           >
-            Me contacter
-          </Button>
-        </Box>
-      </Flex>
-    </div>
+            {name}
+          </BaseLink>
+        </Text>
+      ))}
+      <Box ml={vertical ? 0 : 3}>
+        <Button
+          as={ScrollLink}
+          to="contact"
+          smooth
+          isDynamic
+          onClick={() => click()}
+        >
+          Me contacter
+        </Button>
+      </Box>
+    </Flex>
   )
 }
 

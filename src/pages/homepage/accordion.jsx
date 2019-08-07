@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
+
 import { Container, Box, Heading, Card } from '../../utils/rebass'
 import Fade from '../../components/fade'
 import { breakpoints } from '../../utils/theme'
@@ -29,13 +30,17 @@ export default function SectionAccordion({ title, items }) {
   return (
     <MediaQuery minWidth={breakpoints[1]}>
       {matches => (
-        <Container as="section" id="skills" width={matches && `100%`}>
+        <Container
+          as="section"
+          id="skills"
+          style={!matches ? { width: `100%` } : {}}
+        >
           <Fade>
             <Card
               bg="blue"
-              py={[5, 5, 5, 6]}
-              px={[4, 4, 4, 5]}
-              width={[1, 1, 2 / 3, 3 / 5]}
+              py={[5, 6]}
+              px={[4, 5]}
+              width={[1, 1, 3 / 4, 3 / 5]}
               m="auto"
               boxShadow={1}
             >

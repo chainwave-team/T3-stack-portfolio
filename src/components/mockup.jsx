@@ -58,7 +58,7 @@ const Mockup = ({ siteUrl, fluid, index }) => {
         <ScrollWrap position="relative">
           <ScrollSVG />
           <Scrollable width={1} maxHeight="100%">
-            <Img fluid={fluid} maxWidth="100%" />
+            <Img fluid={fluid} maxWidth="100%" loading="auto" />
           </Scrollable>
         </ScrollWrap>
       </Screen>
