@@ -35,7 +35,9 @@ export default function SplitWords({ words }) {
             delay={-500}
             config={config.slow}
           >
-            {item => item && (props => <span style={props}>{item}️</span>)}
+            {item =>
+              item && (props => <span style={props}>{item.trim()}️</span>)
+            }
           </Transition>
         </Box>
       )}

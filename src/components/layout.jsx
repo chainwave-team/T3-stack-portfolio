@@ -27,7 +27,7 @@ export default function Layout({ children }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <main id="main">
+      <>
         <GlobalStyle />
         <Header />
         <main>{children}</main>
@@ -38,7 +38,7 @@ export default function Layout({ children }) {
             </Text>
           </Container>
         </Box>
-      </main>
+      </>
     </ThemeProvider>
   )
 }
