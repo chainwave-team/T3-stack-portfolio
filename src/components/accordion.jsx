@@ -10,7 +10,8 @@ export default function Accordion({ title, content, open, toggle, height }) {
 
   const getHeight = (o, h) => {
     const tmpHeight = Number.isNaN(h) ? 'auto' : h
-    return o ? tmpHeight : 0
+    const out = o ? `${tmpHeight}px` : `0`
+    return out.toString()
   }
 
   return (

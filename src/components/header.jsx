@@ -16,7 +16,7 @@ const Icon = styled(Box).attrs({
   fill: colors.cyan,
   position: 'absolute'
 })``
-const AnimIcon = animated(Icon)
+const Anim = animated.div
 
 export default function Header({ siteTitle }) {
   const node = useRef()
@@ -82,11 +82,15 @@ export default function Header({ siteTitle }) {
                       position="relative"
                       onClick={() => toggle(!open)}
                     >
-                      {iconTransitions.map(({ item, props }) =>
+                      {iconTransitions.map(({ item, key, props }) =>
                         item ? (
-                          <AnimIcon style={props} as={CloseIcon} />
+                          <Anim key={key} style={props}>
+                            <Icon as={CloseIcon} />
+                          </Anim>
                         ) : (
-                          <AnimIcon style={props} as={MenuIcon} />
+                          <Anim key={key} style={props}>
+                            <Icon as={MenuIcon} />
+                          </Anim>
                         )
                       )}
                     </Box>
