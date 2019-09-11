@@ -10,19 +10,29 @@ import SectionFooter from './homepage/footer'
 import SectionAccordion from './homepage/accordion'
 
 const IndexPage = ({ data }) => {
-  const { options, projects, categories } = data
+  const { projects, home, categories, tags } = data
 
   // Merge categories into projects list
-  const projectsList = projects.nodes.map(item => {
-    const projectId = item.project_type[0] || false
-    const projectType = projectId
-      ? categories.nodes.filter(el => el.wordpress_id === projectId)
-      : []
-    return { ...item, project_type: projectType }
-  })
+  const projectsWithTax = projects.edges.map(({ node }) => ({
+    ...node,
+    categories:
+      node.project_cat.length > 0
+        ? categories.nodes.filter(
+            cat => node.project_cat.indexOf(cat.wordpress_id) !== -1
+          )
+        : [],
+    tags:
+      node.project_cat.length > 0
+        ? tags.nodes.filter(
+            tag => node.project_tag.indexOf(tag.wordpress_id) !== -1
+          )
+        : []
+  }))
 
   // Filter if post.status === publish
-  const publicProjects = projectsList.filter(el => el.status === 'publish')
+  const publicProjects = projectsWithTax.filter(
+    node => node.status === 'publish'
+  )
 
   // Format names from WordPress/graphQL to React
   const {
@@ -33,13 +43,13 @@ const IndexPage = ({ data }) => {
     skills_titre: skillsTitle,
     skills,
     footer
-  } = options.options.portfolio
+  } = home.acf
 
   const titlesList = subTitles.map(item => item.titre_metier)
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Portfolio" />
       <SectionHeader
         title={title}
         textarea={textarea}
@@ -55,13 +65,16 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    options: PropTypes.shape({
-      options: PropTypes.object
-    }),
     projects: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.object)
+      edges: PropTypes.arrayOf(PropTypes.object)
+    }),
+    home: PropTypes.shape({
+      acf: PropTypes.object
     }),
     categories: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.object)
+    }),
+    tags: PropTypes.shape({
       nodes: PropTypes.arrayOf(PropTypes.object)
     })
   })
@@ -69,9 +82,10 @@ IndexPage.propTypes = {
 
 IndexPage.defaultProps = {
   data: {
-    options: { options: {} },
-    projects: { nodes: [] },
-    categories: { nodes: [] }
+    home: { acf: {} },
+    tags: { nodes: [] },
+    categories: { nodes: [] },
+    projects: { edges: [] }
   }
 }
 
@@ -79,72 +93,74 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    options: wordpressAcfOptions {
-      options {
-        github_url
+    home: wordpressPage(wordpress_id: { eq: 765 }) {
+      acf {
+        header_name
         header_textarea
-        linkedin_url
-        malt_url
-        portfolio {
-          header_name
-          header_textarea
-          label_bouton_contact
-          skills_titre
-          projets_titre
-          footer_text
-          footer {
-            titre
-            intro
-            links {
-              label
-              lien
-            }
-          }
-          header_titres {
-            titre_metier
-          }
-          skills {
-            titre
-            content
+        label_bouton_contact
+        skills_titre
+        footer_text
+        footer_small
+        header_titres {
+          titre_metier
+        }
+        skills {
+          titre
+          content
+        }
+        footer {
+          intro
+          titre
+          links {
+            label
+            lien
           }
         }
       }
     }
-    projects: allWordpressWpProjets(limit: 20) {
-      nodes {
-        id
-        wordpress_id
-        title
-        date(formatString: "MMM YY")
-        status
-        excerpt
-        content
-        tags {
+    projects: allWordpressWpPortfolio {
+      edges {
+        node {
           id
-          name
-        }
-        project_type
-        acf {
-          lien_demo
-          lien_sources
-        }
-        featured_media {
-          alt_text
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 720, quality: 100) {
-                ...GatsbyImageSharpFluid
+          project_cat
+          project_tag
+          slug
+          status
+          template
+          title
+          wordpress_id
+          excerpt
+          content
+          acf {
+            lien_demo
+            lien_sources
+          }
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 720, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
       }
     }
-    categories: allWordpressWpProjectType {
+    categories: allWordpressWpProjectCat {
       nodes {
-        name
-        wordpress_id
         id
+        name
+        slug
+        wordpress_id
+      }
+    }
+    tags: allWordpressWpProjectTag {
+      nodes {
+        id
+        name
+        slug
+        wordpress_id
       }
     }
   }

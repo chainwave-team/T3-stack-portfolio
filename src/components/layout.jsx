@@ -9,21 +9,20 @@ import theme from '../utils/theme'
 import { childrenProps } from '../utils/prop-types'
 
 export default function Layout({ children }) {
-  const { options } = useStaticQuery(
+  const { home } = useStaticQuery(
     graphql`
       query Layout {
-        options: wordpressAcfOptions {
-          options {
-            portfolio {
-              footer_text
-            }
+        home: wordpressPage(wordpress_id: { eq: 765 }) {
+          acf {
+            footer_text
+            footer_small
           }
         }
       }
     `
   )
 
-  const footerText = options.options.portfolio.footer_text
+  const { footer_text: footerText, footer_small: footerSmall } = home.acf
 
   return (
     <ThemeProvider theme={theme}>
@@ -35,6 +34,9 @@ export default function Layout({ children }) {
           <Container py={0}>
             <Text m={0} py={[3, 3, 4]} textAlign="center">
               {footerText}
+            </Text>
+            <Text m={0} py={[3]} textAlign="center">
+              <small>{footerSmall}</small>
             </Text>
           </Container>
         </Box>

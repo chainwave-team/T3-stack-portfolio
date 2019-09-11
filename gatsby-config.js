@@ -1,4 +1,4 @@
-const WP_URL = 'wp-headless.fr'
+const WP_URL = 'portfolio.wp-headless.fr'
 const PROTOCOL = 'https'
 
 module.exports = {
@@ -40,12 +40,14 @@ module.exports = {
           replacementUrl: ''
         },
         includedRoutes: [
+          '**/project_cat',
+          '**/project_tag',
+          '**/pages',
           '**/media',
-          '**/project_type',
-          '**/tags',
-          '**/wp/v2/projets',
-          '**/options',
-          '**/acf/v3/options'
+          '**/portfolio'
+        ],
+        excludedRoutes: [
+          '/acf/**'
         ]
       }
     },
