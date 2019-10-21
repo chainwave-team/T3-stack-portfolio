@@ -12,8 +12,19 @@ import SectionAccordion from './homepage/accordion'
 const IndexPage = ({ data }) => {
   const { projects, home, categories, tags } = data
 
+  // Filter project with image
+  const withImageProjects = projects.edges.filter(({ node }) => {
+    if (node.featured_media.localFile === null) {
+      console.warn(
+        `The post "${node.title}" (id: ${node.wordpress_id}) n'a pas d'image`
+      )
+      return false
+    }
+    return true
+  })
+
   // Merge categories into projects list
-  const projectsWithTax = projects.edges.map(({ node }) => ({
+  const projectsWithTax = withImageProjects.map(({ node }) => ({
     ...node,
     categories:
       node.project_cat.length > 0
@@ -129,7 +140,6 @@ export const pageQuery = graphql`
           template
           title
           wordpress_id
-          excerpt
           content
           acf {
             lien_demo

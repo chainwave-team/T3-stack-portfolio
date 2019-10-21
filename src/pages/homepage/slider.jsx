@@ -34,10 +34,10 @@ const SectionHeader = ({ items }) => {
             const {
               id,
               wordpress_id: wpId,
-              excerpt,
               title,
               acf,
               categories,
+              content,
               tags,
               featured_media: image
             } = node
@@ -63,7 +63,7 @@ const SectionHeader = ({ items }) => {
                       <Heading>{title}</Heading>
                     </Box>
                     <Card boxShadow={3} bg="blue" p={3} my={2}>
-                      <Html __html={excerpt} />
+                      <Html __html={content} />
                     </Card>
                     <Box px={3}>
                       <TagList technologies={tags} />
@@ -91,7 +91,7 @@ SectionHeader.propTypes = {
       id: PropTypes.string.isRequired,
       wordpress_id: PropTypes.number.isRequired,
       tags: PropTypes.array,
-      excerpt: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       acf: PropTypes.shape({
         lien_demo: PropTypes.string
