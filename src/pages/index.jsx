@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
 
   // Filter project with image
   const withImageProjects = projects.edges.filter(({ node }) => {
-    if (node.featured_media.localFile === null) {
+    if (node.featured_media === null) {
       console.warn(
         `The post "${node.title}" (id: ${node.wordpress_id}) n'a pas d'image`
       )
