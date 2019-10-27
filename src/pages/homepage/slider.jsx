@@ -42,7 +42,8 @@ const SectionHeader = ({ items }) => {
               tags,
               featured_media: image
             } = node
-            const { lien_demo: demoLink } = acf
+            const { lien_demo: demoLink, lien_sources: srcLink } = acf
+            console.log(acf)
             const category = categories[0]
             const { fluid } = image.localFile.childImageSharp
 
@@ -50,7 +51,13 @@ const SectionHeader = ({ items }) => {
               <Article key={id} id={`projects-${wpId}`}>
                 <Flex justifyContent="center" flexWrap="wrap">
                   <Box width={[1, 1, 1 / 2, 2 / 3]}>
-                    <Mockup fluid={fluid} siteUrl={demoLink} index={i} />
+                    <Mockup
+                      fluid={fluid}
+                      siteUrl={demoLink}
+                      srcUrl={srcLink}
+                      index={i}
+                      title={title}
+                    />
                   </Box>
                   <Flex
                     flexDirection="column"

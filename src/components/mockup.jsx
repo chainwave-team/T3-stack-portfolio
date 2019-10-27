@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
 import uniqid from 'uniqid'
 
 import Link from './link'
+import GithubCorner from './github-corner'
 import { Box, Flex, Card, Text } from '../utils/rebass'
 import ScrollSVG from '../images/arrows-v-alt.svg'
 import { colors as themeColors, transitions } from '../utils/theme'
@@ -30,7 +30,7 @@ const colors = {
 
 const getTheme = index => (index % 2 === 0 ? 'dark' : 'light')
 
-const Mockup = ({ siteUrl, fluid, index }) => {
+const Mockup = ({ siteUrl, fluid, index, title, srcUrl }) => {
   const theme = getTheme(index)
   return (
     <Box m="auto" width={screenWidth} maxWidth="100%">
@@ -56,9 +56,17 @@ const Mockup = ({ siteUrl, fluid, index }) => {
           )}
         </Navbar>
         <ScrollWrap position="relative">
+          {srcUrl !== '' && <GithubCorner url={srcUrl} />}
           <ScrollSVG />
+
           <Scrollable width={1} maxHeight="100%">
-            <Img fluid={fluid} maxWidth="100%" />
+            <img
+              src={fluid.src}
+              srcSet={fluid.srcSet}
+              width="100%"
+              height="auto"
+              alt={title}
+            />
           </Scrollable>
         </ScrollWrap>
       </Screen>
@@ -69,7 +77,13 @@ const Mockup = ({ siteUrl, fluid, index }) => {
 Mockup.propTypes = {
   fluid: PropTypes.objectOf(PropTypes.any).isRequired,
   siteUrl: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  srcUrl: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired
+}
+
+Mockup.defaultProps = {
+  srcUrl: ''
 }
 
 const move = keyframes`
@@ -105,7 +119,7 @@ const LinkSpan = styled(Text).attrs({
   font-weight: 400;
 `
 const ScrollWrap = styled(Box)`
-  svg {
+  & > svg {
     opacity: 1;
     transition: opacity 200ms;
     position: absolute;
@@ -118,7 +132,7 @@ const ScrollWrap = styled(Box)`
     width: ${ScrollIconSize}px;
     animation: ${move} ${transitions[3]}s ease-out infinite;
   }
-  :hover svg {
+  &:hover > svg {
     opacity: 0;
   }
 `
