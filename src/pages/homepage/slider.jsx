@@ -20,7 +20,6 @@ const SectionHeader = ({ items }) => {
     // autoplay: true,
     arrows: true,
     infinite: true,
-    lazyLoad: 'ondemand',
     pauseOnHover: true,
     slidesToShow: 1,
     slidesToScroll: 1,
