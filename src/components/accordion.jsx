@@ -4,6 +4,7 @@ import { animated } from 'react-spring'
 import { Spring } from 'react-spring/renderprops'
 
 import { Box, Text, Heading, Link } from '../utils/rebass'
+import Html from './html'
 
 export default function Accordion({ title, content, open, toggle, height }) {
   const ref = useRef(null)
@@ -22,12 +23,15 @@ export default function Accordion({ title, content, open, toggle, height }) {
   return (
     <Box>
       <Heading
-        style={{ borderBottom: '1px solid', cursor: 'pointer' }}
+        style={{
+          borderBottom: '1px solid',
+          cursor: 'pointer',
+          display: 'block'
+        }}
         as={Link}
         fontSize={[3, 3, 4]}
         py={[3]}
         role="button"
-        display="block"
         onClick={() => toggle(ref.current.scrollHeight)}
       >
         {title}
@@ -39,8 +43,8 @@ export default function Accordion({ title, content, open, toggle, height }) {
       >
         {styles => (
           <animated.div style={styles}>
-            <Text ref={ref} py={3} px={0} m={0}>
-              {content}
+            <Text ref={ref} py={3} px={0} m={0} as="div">
+              <Html __html={content.html} />
             </Text>
           </animated.div>
         )}
@@ -51,7 +55,9 @@ export default function Accordion({ title, content, open, toggle, height }) {
 
 Accordion.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    html: PropTypes.string
+  }),
   open: PropTypes.bool,
   toggle: PropTypes.func.isRequired,
   height: PropTypes.number
@@ -59,5 +65,8 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   open: false,
-  height: 0
+  height: 0,
+  content: {
+    html: ''
+  }
 }

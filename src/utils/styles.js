@@ -9,7 +9,7 @@ export const isDev = process.env.NODE_ENV === 'development'
 const GlobalStyle = createGlobalStyle`
 
   ${normalize};
-  ${isDev && tachyonsDebug};  
+  ${isDev && tachyonsDebug};
 
   html {
     font-size: 62.5%;

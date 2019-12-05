@@ -6,11 +6,10 @@ import PropTypes from 'prop-types'
 import { Container, Heading, Flex, Button, Box } from '../../utils/rebass'
 import Html from '../../components/html'
 import { breakpoints } from '../../utils/theme'
-import SplitWords from '../../components/splitWords'
 import Fade from '../../components/fade'
 import CoderSVG from '../../images/coder.svg'
 
-const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
+const SectionHeader = ({ title, textarea, subTitle, buttonLabel }) => (
   <Flex
     as="section"
     id="top"
@@ -27,7 +26,7 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
           </Fade>
           <Fade>
             <Heading as="h1" pb={4} fontSize={[5, 6, 7]}>
-              <SplitWords words={subTitles} />
+              {subTitle}
             </Heading>
           </Fade>
           <Fade>
@@ -65,14 +64,14 @@ const SectionHeader = ({ title, textarea, subTitles, buttonLabel }) => (
 SectionHeader.propTypes = {
   title: PropTypes.string,
   textarea: PropTypes.string,
-  subTitles: PropTypes.arrayOf(PropTypes.string),
+  subTitle: PropTypes.string,
   buttonLabel: PropTypes.string
 }
 
 SectionHeader.defaultProps = {
   title: '',
   textarea: '',
-  subTitles: [''],
+  subTitle: '',
   buttonLabel: ''
 }
 

@@ -7,10 +7,10 @@ import SEO from '../components/seo'
 import SectionHeader from './homepage/header'
 import SectionSlider from './homepage/slider'
 import SectionFooter from './homepage/footer'
-import SectionAccordion from './homepage/accordion'
+import ServicesSection from './homepage/Services'
 
 const IndexPage = ({ data }) => {
-  const { projects, home, categories, tags } = data
+  const { projects, home, categories, tags, homepage } = data
 
   // Filter project with image
   const withImageProjects = projects.edges.filter(({ node }) => {
@@ -46,28 +46,23 @@ const IndexPage = ({ data }) => {
   )
 
   // Format names from WordPress/graphQL to React
-  const {
-    header_name: title,
-    header_textarea: textarea,
-    header_titres: subTitles,
-    label_bouton_contact: buttonLabel,
-    skills_titre: skillsTitle,
-    skills,
-    footer
-  } = home.acf
+  const { skills_titre: skillsTitle, skills, footer } = home.acf
 
-  const titlesList = subTitles.map(item => item.titre_metier)
+  console.log({ homepage })
 
   return (
     <Layout>
       <SEO title="Portfolio" />
       <SectionHeader
-        title={title}
-        textarea={textarea}
-        subTitles={titlesList}
-        buttonLabel={buttonLabel}
+        title={homepage.data.name}
+        textarea={homepage.data.introduction.html}
+        subTitle={homepage.data.job}
+        buttonLabel={homepage.data.header_contact_button_label}
       />
-      <SectionAccordion title={skillsTitle} items={skills} />
+      <ServicesSection
+        title={homepage.data.services_introduction.text}
+        items={homepage.data.services}
+      />
       <SectionSlider items={publicProjects} />
       <SectionFooter items={footer} />
     </Layout>
@@ -76,6 +71,33 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
+    homepage: PropTypes.shape({
+      uid: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      data: PropTypes.shape({
+        name: PropTypes.string,
+        header_contact_button_label: PropTypes.string,
+        job: PropTypes.string,
+        title: PropTypes.shape({
+          text: PropTypes.string
+        }),
+        introduction: PropTypes.shape({
+          html: PropTypes.string
+        }),
+        // Services
+        services_introduction: PropTypes.shape({
+          text: PropTypes.string
+        }),
+        services: PropTypes.arrayOf(
+          PropTypes.shape({
+            service_title: PropTypes.string,
+            service_textarea: PropTypes.shape({
+              html: PropTypes.string
+            })
+          })
+        )
+      })
+    }),
     projects: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object)
     }),
@@ -93,6 +115,29 @@ IndexPage.propTypes = {
 
 IndexPage.defaultProps = {
   data: {
+    homepage: {
+      type: 'homepage',
+      data: {
+        name: '',
+        header_contact_button_label: '',
+        job: '',
+        title: {
+          text: ''
+        },
+        introduction: {
+          html: ''
+        },
+        services_introduction: {
+          text: ''
+        },
+        services: {
+          service_title: '',
+          service_textarea: {
+            html: ''
+          }
+        }
+      }
+    },
     home: { acf: {} },
     tags: { nodes: [] },
     categories: { nodes: [] },
@@ -104,6 +149,30 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
+    homepage: prismicHomepage {
+      uid
+      type
+      data {
+        name
+        introduction {
+          html
+        }
+        title {
+          text
+        }
+        job
+        header_contact_button_label
+        services_introduction {
+          text
+        }
+        services {
+          service_title
+          service_textarea {
+            html
+          }
+        }
+      }
+    }
     home: wordpressPage(wordpress_id: { eq: 765 }) {
       acf {
         header_name

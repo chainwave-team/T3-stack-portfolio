@@ -1,6 +1,10 @@
 const WP_URL = 'portfolio.wp-headless.fr'
 const PROTOCOL = 'https'
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
     title: `Julien CARON`,
@@ -25,6 +29,14 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `junscuzzy-portfolio`,
+        accessToken: `${process.env.API_KEY}`,
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`
+      }
+    },
+    {
       resolve: `gatsby-source-wordpress`,
       options: {
         baseUrl: `${WP_URL}`,
@@ -46,9 +58,7 @@ module.exports = {
           '**/media',
           '**/portfolio'
         ],
-        excludedRoutes: [
-          '/acf/**'
-        ]
+        excludedRoutes: ['/acf/**']
       }
     },
     `gatsby-transformer-sharp`,

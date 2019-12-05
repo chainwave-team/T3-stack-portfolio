@@ -3,12 +3,12 @@ import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
 
-import { Container, Box, Heading, Card } from '../../utils/rebass'
+import { Container, Heading, Card } from '../../utils/rebass'
 import Fade from '../../components/fade'
 import { breakpoints } from '../../utils/theme'
 import Accordion from '../../components/accordion'
 
-export default function SectionAccordion({ title, items }) {
+export default function ServicesSection({ title, items }) {
   const initialsState = []
   items.forEach((_, i) => {
     initialsState.push({ key: i + 1, height: 0, open: false })
@@ -47,18 +47,16 @@ export default function SectionAccordion({ title, items }) {
               <Heading lineHeight="1" pb={4}>
                 {title}
               </Heading>
-              <Box py={3}>
-                {items.map(({ titre, content }, i) => (
-                  <Accordion
-                    key={uniqid(i)}
-                    title={titre}
-                    content={content}
-                    open={sections[i].open}
-                    toggle={h => toggleClick(i, h)}
-                    height={sections[i].height}
-                  />
-                ))}
-              </Box>
+              {items.map(({ service_title, service_textarea }, i) => (
+                <Accordion
+                  key={uniqid(i)}
+                  title={service_title}
+                  content={service_textarea}
+                  open={sections[i].open}
+                  toggle={h => toggleClick(i, h)}
+                  height={sections[i].height}
+                />
+              ))}
             </Card>
           </Fade>
         </Container>
@@ -67,17 +65,28 @@ export default function SectionAccordion({ title, items }) {
   )
 }
 
-SectionAccordion.propTypes = {
+ServicesSection.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      titre: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired
+      service_title: PropTypes.string,
+      service_textarea: PropTypes.shape({
+        text: PropTypes.string,
+        html: PropTypes.string
+      })
     })
   )
 }
 
-SectionAccordion.defaultProps = {
+ServicesSection.defaultProps = {
   title: '',
-  items: [{ titre: '', content: '' }]
+  items: [
+    {
+      service_title: '',
+      service_textarea: {
+        text: '',
+        html: ''
+      }
+    }
+  ]
 }

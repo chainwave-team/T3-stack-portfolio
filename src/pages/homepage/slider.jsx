@@ -42,7 +42,7 @@ const SectionHeader = ({ items }) => {
               featured_media: image
             } = node
             const { lien_demo: demoLink, lien_sources: srcLink } = acf
-            console.log(acf)
+            // console.log(acf)
             const category = categories[0]
             const { fluid } = image.localFile.childImageSharp
 
