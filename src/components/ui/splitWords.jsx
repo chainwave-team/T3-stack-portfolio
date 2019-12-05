@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
 import { useTransition, animated } from 'react-spring'
 
-import { Box } from '../utils/rebass'
-import { breakpoints } from '../utils/theme'
+import { Box } from '../../utils/rebass'
+import { breakpoints } from '../../utils/theme'
 
 export default function SplitWords({ words }) {
   const [count, setCount] = useState(0)

@@ -3,8 +3,8 @@ import uniqid from 'uniqid'
 import { Link as ScrollLink } from 'react-scroll'
 
 import PropTypes from 'prop-types'
-import { Box, Button, Flex, Text, Link as BaseLink } from '../utils/rebass'
-import Link from './link'
+import { Box, Button, Flex, Text, Link as BaseLink } from '../../utils/rebass'
+import Link from '../ui/link'
 
 export default function Menu({ links, vertical, click }) {
   return (

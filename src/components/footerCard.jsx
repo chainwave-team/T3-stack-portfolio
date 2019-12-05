@@ -4,12 +4,13 @@ import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
 
 import { Flex, Heading, Link as RebassLink, Text } from '../utils/rebass'
-import Link from './link'
+import Link from './ui/link'
 import { shadows } from '../utils/theme'
+import Html from './ui/html'
 
 const isMail = link => /(mailto:)/g.test(link)
 
-function FooterCard({ titre, intro, links }) {
+function FooterCard({ title, intro, links }) {
   const [hover, setHover] = useState(false)
   const hoverState = useSpring({
     transform: hover ? 'scale(1.05)' : 'scale(1)',
@@ -39,9 +40,9 @@ function FooterCard({ titre, intro, links }) {
       >
         <div>
           <Heading fontSize={[4]} as="h3">
-            {titre}
+            {title}
           </Heading>
-          <Text>{intro}</Text>
+          <Html __html={intro.html} />
         </div>
         <div>
           {links &&
@@ -63,7 +64,7 @@ function FooterCard({ titre, intro, links }) {
 }
 
 FooterCard.propTypes = {
-  titre: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   intro: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({

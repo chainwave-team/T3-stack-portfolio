@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { colors } from '../utils/theme'
+import { colors } from '../../utils/theme'
 
 const Link = styled.a`
   svg {

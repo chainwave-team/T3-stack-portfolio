@@ -2,15 +2,15 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/Layout/layout'
+import SEO from '../components/Layout/seo'
 import SectionHeader from './homepage/header'
 import SectionSlider from './homepage/slider'
-import SectionFooter from './homepage/footer'
 import ServicesSection from './homepage/Services'
+import propTypes from '../utils/prop-types'
 
 const IndexPage = ({ data }) => {
-  const { projects, home, categories, tags, homepage } = data
+  const { projects, categories, tags, homepage } = data
 
   // Filter project with image
   const withImageProjects = projects.edges.filter(({ node }) => {
@@ -45,18 +45,11 @@ const IndexPage = ({ data }) => {
     node => node.status === 'publish'
   )
 
-  // Format names from WordPress/graphQL to React
-  const { skills_titre: skillsTitle, skills, footer } = home.acf
-
-  console.log({ homepage })
-
   return (
     <Layout>
       <SEO title="Portfolio" />
       <SectionHeader
-        title={homepage.data.name}
         textarea={homepage.data.introduction.html}
-        subTitle={homepage.data.job}
         buttonLabel={homepage.data.header_contact_button_label}
       />
       <ServicesSection
@@ -64,7 +57,6 @@ const IndexPage = ({ data }) => {
         items={homepage.data.services}
       />
       <SectionSlider items={publicProjects} />
-      <SectionFooter items={footer} />
     </Layout>
   )
 }
@@ -75,34 +67,20 @@ IndexPage.propTypes = {
       uid: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       data: PropTypes.shape({
-        name: PropTypes.string,
         header_contact_button_label: PropTypes.string,
-        job: PropTypes.string,
-        title: PropTypes.shape({
-          text: PropTypes.string
-        }),
-        introduction: PropTypes.shape({
-          html: PropTypes.string
-        }),
-        // Services
-        services_introduction: PropTypes.shape({
-          text: PropTypes.string
-        }),
+        title: propTypes.textarea,
+        introduction: propTypes.textarea,
+        services_introduction: propTypes.textarea,
         services: PropTypes.arrayOf(
           PropTypes.shape({
             service_title: PropTypes.string,
-            service_textarea: PropTypes.shape({
-              html: PropTypes.string
-            })
+            service_textarea: propTypes.textarea
           })
         )
       })
     }),
     projects: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object)
-    }),
-    home: PropTypes.shape({
-      acf: PropTypes.object
     }),
     categories: PropTypes.shape({
       nodes: PropTypes.arrayOf(PropTypes.object)
@@ -118,9 +96,7 @@ IndexPage.defaultProps = {
     homepage: {
       type: 'homepage',
       data: {
-        name: '',
         header_contact_button_label: '',
-        job: '',
         title: {
           text: ''
         },
@@ -138,7 +114,6 @@ IndexPage.defaultProps = {
         }
       }
     },
-    home: { acf: {} },
     tags: { nodes: [] },
     categories: { nodes: [] },
     projects: { edges: [] }
@@ -149,18 +124,16 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    homepage: prismicHomepage {
+    homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
       uid
       type
       data {
-        name
         introduction {
           html
         }
         title {
           text
         }
-        job
         header_contact_button_label
         services_introduction {
           text
@@ -169,31 +142,6 @@ export const pageQuery = graphql`
           service_title
           service_textarea {
             html
-          }
-        }
-      }
-    }
-    home: wordpressPage(wordpress_id: { eq: 765 }) {
-      acf {
-        header_name
-        header_textarea
-        label_bouton_contact
-        skills_titre
-        footer_text
-        footer_small
-        header_titres {
-          titre_metier
-        }
-        skills {
-          titre
-          content
-        }
-        footer {
-          intro
-          titre
-          links {
-            label
-            lien
           }
         }
       }

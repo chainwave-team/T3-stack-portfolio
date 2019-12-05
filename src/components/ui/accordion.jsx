@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
 import { Spring } from 'react-spring/renderprops'
 
-import { Box, Text, Heading, Link } from '../utils/rebass'
+import { Box, Text, Heading, Link } from '../../utils/rebass'
 import Html from './html'
 
 export default function Accordion({ title, content, open, toggle, height }) {

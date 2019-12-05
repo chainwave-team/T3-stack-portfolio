@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import uniqid from 'uniqid'
 
-import { Text } from '../utils/rebass'
+import { Text } from '../../utils/rebass'
 
 const TagList = ({ technologies }) => (
   <Text>

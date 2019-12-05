@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
 
 import { Container, Heading, Card } from '../../utils/rebass'
-import Fade from '../../components/fade'
+import Fade from '../../components/ui/fade'
 import { breakpoints } from '../../utils/theme'
-import Accordion from '../../components/accordion'
+import Accordion from '../../components/ui/accordion'
 
 export default function ServicesSection({ title, items }) {
   const initialsState = []

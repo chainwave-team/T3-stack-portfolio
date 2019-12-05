@@ -6,11 +6,11 @@ import MediaQuery from 'react-responsive'
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 
-import { Flex, Button, Container, Box, Card } from '../utils/rebass'
-import { breakpoints, colors, space } from '../utils/theme'
+import { Flex, Button, Container, Box, Card } from '../../utils/rebass'
+import { breakpoints, colors, space } from '../../utils/theme'
 import Menu from './menu'
-import CloseIcon from '../images/close.svg'
-import MenuIcon from '../images/menu.svg'
+import CloseIcon from '../../images/close.svg'
+import MenuIcon from '../../images/menu.svg'
 
 const Icon = styled(Box).attrs({
   fill: colors.cyan,

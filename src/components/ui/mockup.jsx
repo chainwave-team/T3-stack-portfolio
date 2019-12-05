@@ -5,9 +5,9 @@ import uniqid from 'uniqid'
 
 import Link from './link'
 import GithubCorner from './github-corner'
-import { Box, Flex, Card, Text } from '../utils/rebass'
-import ScrollSVG from '../images/arrows-v-alt.svg'
-import { colors as themeColors, transitions } from '../utils/theme'
+import { Box, Flex, Card, Text } from '../../utils/rebass'
+import ScrollSVG from '../../images/arrows-v-alt.svg'
+import { colors as themeColors, transitions } from '../../utils/theme'
 
 const trimUrl = url => (url !== '' ? url.split('//')[1] : '')
 const screenWidth = '720px'
