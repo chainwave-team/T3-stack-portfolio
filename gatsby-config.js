@@ -1,6 +1,3 @@
-const WP_URL = 'portfolio.wp-headless.fr'
-const PROTOCOL = 'https'
-
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
@@ -34,31 +31,6 @@ module.exports = {
         repositoryName: `junscuzzy-portfolio`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`
-      }
-    },
-    {
-      resolve: `gatsby-source-wordpress`,
-      options: {
-        baseUrl: `${WP_URL}`,
-        protocol: `${PROTOCOL}`,
-        hostingWPCOM: false,
-        useACF: true,
-        acfOptionPageIds: [],
-        cookies: {},
-        verboseOutput: false,
-        perPage: 100,
-        searchAndReplaceContentUrls: {
-          sourceUrl: `${PROTOCOL}://${WP_URL}(?!(/wp-content))`,
-          replacementUrl: ''
-        },
-        includedRoutes: [
-          '**/project_cat',
-          '**/project_tag',
-          '**/pages',
-          '**/media',
-          '**/portfolio'
-        ],
-        excludedRoutes: ['/acf/**']
       }
     },
     `gatsby-transformer-sharp`,

@@ -48,7 +48,7 @@ const Mockup = ({ siteUrl, fluid, index, title, srcUrl }) => {
               />
             ))}
           </Flex>
-          {siteUrl !== '' && (
+          {siteUrl && siteUrl !== '' && (
             <Links to={siteUrl} target="_blank">
               <LinkSpan color={colors[theme].light}>https://</LinkSpan>
               <LinkSpan color={colors[theme].font}>{trimUrl(siteUrl)}</LinkSpan>

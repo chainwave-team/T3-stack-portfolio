@@ -1,7 +1,7 @@
 {
   "name": "gatsby-portfolio",
   "private": false,
-  "description": "A simple portoflio with Gatsby",
+  "description": "A simple portfolio made with Gatsby",
   "version": "0.1.0",
   "author": "Julien <juliencaron18@gmail.com>",
   "keywords": [
@@ -23,7 +23,6 @@
     "gatsby-plugin-styled-components": "^3.1.0",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
-    "gatsby-source-wordpress": "^3.1.11",
     "gatsby-transformer-sharp": "^2.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

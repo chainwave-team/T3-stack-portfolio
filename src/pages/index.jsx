@@ -10,53 +10,23 @@ import ServicesSection from './homepage/Services'
 import propTypes from '../utils/prop-types'
 
 const IndexPage = ({ data }) => {
-  const { projects, categories, tags, homepage } = data
-
-  // Filter project with image
-  const withImageProjects = projects.edges.filter(({ node }) => {
-    if (node.featured_media === null) {
-      console.warn(
-        `The post "${node.title}" (id: ${node.wordpress_id}) n'a pas d'image`
-      )
-      return false
-    }
-    return true
-  })
-
-  // Merge categories into projects list
-  const projectsWithTax = withImageProjects.map(({ node }) => ({
-    ...node,
-    categories:
-      node.project_cat.length > 0
-        ? categories.nodes.filter(
-            cat => node.project_cat.indexOf(cat.wordpress_id) !== -1
-          )
-        : [],
-    tags:
-      node.project_cat.length > 0
-        ? tags.nodes.filter(
-            tag => node.project_tag.indexOf(tag.wordpress_id) !== -1
-          )
-        : []
-  }))
-
-  // Filter if post.status === publish
-  const publicProjects = projectsWithTax.filter(
-    node => node.status === 'publish'
-  )
+  const {
+    introduction,
+    header_contact_button_label,
+    services_introduction,
+    services
+  } = data.homepage.data
+  const projects = data.projects.nodes.map(({ data }) => data)
 
   return (
     <Layout>
       <SEO title="Portfolio" />
       <SectionHeader
-        textarea={homepage.data.introduction.html}
-        buttonLabel={homepage.data.header_contact_button_label}
+        textarea={introduction.html}
+        buttonLabel={header_contact_button_label}
       />
-      <ServicesSection
-        title={homepage.data.services_introduction.text}
-        items={homepage.data.services}
-      />
-      <SectionSlider items={publicProjects} />
+      <ServicesSection title={services_introduction.text} items={services} />
+      <SectionSlider projects={projects} />
     </Layout>
   )
 }
@@ -80,13 +50,11 @@ IndexPage.propTypes = {
       })
     }),
     projects: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.object)
-    }),
-    categories: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.object)
-    }),
-    tags: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.object)
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          data: propTypes.project
+        })
+      )
     })
   })
 }
@@ -113,10 +81,7 @@ IndexPage.defaultProps = {
           }
         }
       }
-    },
-    tags: { nodes: [] },
-    categories: { nodes: [] },
-    projects: { edges: [] }
+    }
   }
 }
 
@@ -146,48 +111,85 @@ export const pageQuery = graphql`
         }
       }
     }
-    projects: allWordpressWpPortfolio {
-      edges {
-        node {
-          id
-          project_cat
-          project_tag
-          slug
-          status
-          template
-          title
-          wordpress_id
-          content
-          acf {
-            lien_demo
-            lien_sources
+    projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
+      nodes {
+        data {
+          demo_link {
+            link_type
+            url
+            target
           }
-          featured_media {
+          full_screen {
+            alt
+            url
             localFile {
               childImageSharp {
-                fluid(maxWidth: 720, quality: 100) {
-                  ...GatsbyImageSharpFluid
+                fluid {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                  originalImg
+                  originalName
+                  presentationWidth
+                  presentationHeight
                 }
               }
             }
           }
+          html {
+            html
+            text
+          }
+          project_type {
+            document {
+              data {
+                title {
+                  text
+                  html
+                }
+              }
+            }
+          }
+          relations {
+            tech_tags {
+              id
+              document {
+                data {
+                  description {
+                    html
+                    text
+                  }
+                  title {
+                    html
+                    text
+                  }
+                }
+              }
+            }
+          }
+          source_link {
+            link_type
+            url
+            target
+          }
+          title {
+            html
+            text
+          }
+          video {
+            link_type
+            target
+            name
+            kind
+            url
+            size
+          }
         }
-      }
-    }
-    categories: allWordpressWpProjectCat {
-      nodes {
-        id
-        name
-        slug
-        wordpress_id
-      }
-    }
-    tags: allWordpressWpProjectTag {
-      nodes {
-        id
-        name
-        slug
-        wordpress_id
       }
     }
   }

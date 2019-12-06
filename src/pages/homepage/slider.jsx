@@ -1,20 +1,20 @@
 import React from 'react'
 import Slider from 'react-slick'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import uniqid from 'uniqid'
 
 import { Flex, Box, Heading, Text, Container, Card } from '../../utils/rebass'
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
-import { imageProps } from '../../utils/prop-types'
+// import { imageProps } from '../../utils/prop-types'
 import Mockup from '../../components/ui/mockup'
-import TagList from '../../components/ui/tagList'
 import Html from '../../components/ui/html'
 import Fade from '../../components/ui/fade'
 
 import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
 
-const SectionHeader = ({ items }) => {
+const SectionHeader = ({ projects }) => {
   const settings = {
     dots: false,
     // autoplay: true,
@@ -30,32 +30,31 @@ const SectionHeader = ({ items }) => {
     <Container as="section" id="portfolio">
       <Fade>
         <Slider {...settings}>
-          {items.map((node, i) => {
-            const {
-              id,
-              wordpress_id: wpId,
-              title,
-              acf,
-              categories,
-              content,
-              tags,
-              featured_media: image
-            } = node
-            const { lien_demo: demoLink, lien_sources: srcLink } = acf
-            // console.log(acf)
-            const category = categories[0]
-            const { fluid } = image.localFile.childImageSharp
-
-            return (
-              <Article key={id} id={`projects-${wpId}`}>
+          {projects.map(
+            (
+              {
+                slug,
+                demo_link,
+                source_link,
+                title,
+                full_screen,
+                project_type,
+                relations,
+                html
+              },
+              i
+            ) => (
+              <Article key={uniqid(slug)}>
                 <Flex justifyContent="center" flexWrap="wrap">
                   <Box width={[1, 1, 1 / 2, 2 / 3]}>
                     <Mockup
-                      fluid={fluid}
-                      siteUrl={demoLink}
-                      srcUrl={srcLink}
+                      fluid={
+                        full_screen.localFile.childImageSharp.fluid || null
+                      }
+                      siteUrl={demo_link ? demo_link.url : ''}
+                      srcUrl={source_link ? source_link.url : ''}
                       index={i}
-                      title={title}
+                      title={title.text}
                     />
                   </Box>
                   <Flex
@@ -66,20 +65,44 @@ const SectionHeader = ({ items }) => {
                     mx={-3}
                   >
                     <Box px={3}>
-                      {category && <Text color="cyan">{category.name}</Text>}
-                      <Heading>{title}</Heading>
+                      {project_type && project_type.document && (
+                        <Text color="cyan">
+                          {project_type.document[0].data.title
+                            ? project_type.document[0].data.title.text
+                            : ''}
+                        </Text>
+                      )}
+                      <Heading>{title && title.text}</Heading>
                     </Box>
                     <Card boxShadow={3} bg="blue" p={3} my={2}>
-                      <Html __html={content} />
+                      <Html __html={html.html} />
                     </Card>
                     <Box px={3}>
-                      <TagList technologies={tags} />
+                      {relations && (
+                        <Text>
+                          {relations.map((tag, i) => (
+                            <span
+                              title={
+                                tag.tech_tags.document[0].data.description &&
+                                tag.tech_tags.document[0].data.description.text
+                              }
+                              key={uniqid(i)}
+                              style={{
+                                paddingRight: 8,
+                                display: 'inline-block'
+                              }}
+                            >
+                              {tag.tech_tags.document[0].data.title.text}
+                            </span>
+                          ))}
+                        </Text>
+                      )}
                     </Box>
                   </Flex>
                 </Flex>
               </Article>
             )
-          })}
+          )}
         </Slider>
       </Fade>
     </Container>
@@ -92,27 +115,8 @@ const Article = styled.article`
   }
 `
 
-SectionHeader.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      wordpress_id: PropTypes.number.isRequired,
-      tags: PropTypes.array,
-      content: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      acf: PropTypes.shape({
-        lien_demo: PropTypes.string
-      }),
-      project_type: PropTypes.array,
-      featured_media: PropTypes.shape({
-        localFile: imageProps
-      })
-    })
-  )
-}
+SectionHeader.propTypes = {}
 
-SectionHeader.defaultProps = {
-  items: []
-}
+SectionHeader.defaultProps = {}
 
 export default SectionHeader
