@@ -1,5 +1,21 @@
-# PHPStorm
+# Ignore output
+.cache
+generators
+public
+
+# Ignore data .md & assets
+data
+static
+custom_types
+generators
+
+# Ignore declarations
+*.d.ts
+
+# Editors & OS
 .idea
+.vscode
+.DS_store
 
 # Logs
 logs

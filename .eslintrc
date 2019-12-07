@@ -1,31 +1,43 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb", 
+    "prettier",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint", 
+    "react"
+  ],
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": "error",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/camelcase": "off",
+    "camelcase": "off",
     "implicit-arrow-linebreak": "off",
     "comma-dangle": "off",
     "no-absolute-path": 0,
     "no-console": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "camelcase": "off"
+    // "react-hooks/rules-of-hooks": "error",
+    // "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }]
   },
+  
   "globals": {
     "graphql": true
   }

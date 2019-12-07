@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es5",             
+        "module": "commonjs",                    
+        "lib": ["dom", "es2015", "es2017"],              
+        "allowJs": true,            
+        "checkJs": false,             
+        "jsx": "preserve",     
+        "sourceMap": true,                
+        "removeComments": true,                
+        "noEmit": true,                   
+        "isolatedModules": true,        
+        "strict": true,    
+        "allowSyntheticDefaultImports": true, 
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "preserveConstEnums": true
+    },
+    "exclude": ["node_modules", "public", ".cache"]
+  }
