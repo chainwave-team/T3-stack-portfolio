@@ -1,0 +1,53 @@
+{
+    "Main" : {
+      "site_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Site Name"
+        }
+      },
+      "job" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Job"
+        }
+      },
+      "email" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Email"
+        }
+      }
+    },
+    "Social" : {
+      "malt_url" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Malt URL"
+        }
+      },
+      "linkedin_url" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Linkedin URL"
+        }
+      },
+      "github_url" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Github URL"
+        }
+      }
+    },
+    "Footer" : {
+      "footer_text" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Footer text"
+        }
+      }
+    }
+  }

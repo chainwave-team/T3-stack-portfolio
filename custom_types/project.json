@@ -1,0 +1,108 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title"
+        }
+      },
+      "project_type" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "project_type" ],
+          "label" : "Project Type"
+        }
+      },
+      "demo_link" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Demo Link"
+        }
+      },
+      "source_link" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "Source Link"
+        }
+      },
+      "relations" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "tech_tags" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "tech_tags" ],
+                "label" : "Tech tags"
+              }
+            }
+          },
+          "label" : "Relations"
+        }
+      }
+    },
+    "SEO" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Unique ID",
+          "placeholder" : "Type an SEO-friendly identifier..."
+        }
+      },
+      "meta_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Meta Title",
+          "placeholder" : "Meta title..."
+        }
+      },
+      "meta_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Meta Description",
+          "placeholder" : "Meta Description..."
+        }
+      },
+      "canonical" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "brewery", "country" ],
+          "label" : "Canonical URL",
+          "placeholder" : "Select the category to use in the canonical URL"
+        }
+      }
+    },
+    "Body" : {
+      "html" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+          "allowTargetBlank" : true,
+          "label" : "Html"
+        }
+      }
+    },
+    "Media" : {
+      "full_screen" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Full Screen"
+        }
+      },
+      "video" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "media",
+          "label" : "Video"
+        }
+      }
+    }
+  }

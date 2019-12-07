@@ -1,0 +1,43 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title"
+        }
+      }
+    },
+    "SEO" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Unique ID",
+          "placeholder" : "Type an SEO-friendly identifier..."
+        }
+      },
+      "meta_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Meta Title",
+          "placeholder" : "Meta title..."
+        }
+      },
+      "meta_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Meta Description",
+          "placeholder" : "Meta Description..."
+        }
+      },
+      "canonical" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "brewery", "country" ],
+          "label" : "Canonical URL",
+          "placeholder" : "Select the category to use in the canonical URL"
+        }
+      }
+    }
+  }
