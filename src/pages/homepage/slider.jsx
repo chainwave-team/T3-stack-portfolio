@@ -80,13 +80,13 @@ const SectionHeader = ({ projects }) => {
                     <Box px={3}>
                       {relations && (
                         <Text>
-                          {relations.map((tag, i) => (
+                          {relations.map((tag, idx) => (
                             <span
                               title={
                                 tag.tech_tags.document[0].data.description &&
                                 tag.tech_tags.document[0].data.description.text
                               }
-                              key={uniqid(i)}
+                              key={uniqid(idx)}
                               style={{
                                 paddingRight: 8,
                                 display: 'inline-block'

@@ -3,7 +3,7 @@ import { animated, useSpring } from 'react-spring'
 import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
 
-import { Flex, Heading, Link as RebassLink, Text } from '../utils/rebass'
+import { Flex, Heading, Link as RebassLink } from '../utils/rebass'
 import Link from './ui/link'
 import { shadows } from '../utils/theme'
 import Html from './ui/html'

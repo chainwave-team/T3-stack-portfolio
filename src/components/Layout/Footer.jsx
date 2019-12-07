@@ -91,10 +91,9 @@ export default function Footer() {
         </Fade>
         <Fade>
           <Row pt={4}>
-            <Text
-              m={0}
-              color={colors.grey[8]}
-            >{`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}</Text>
+            <Text m={0} color={colors.grey[8]}>
+              {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
+            </Text>
             <div>
               <Link
                 to={linkedin_url.url}

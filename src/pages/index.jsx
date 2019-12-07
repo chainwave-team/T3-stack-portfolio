@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
     services_introduction,
     services
   } = data.homepage.data
-  const projects = data.projects.nodes.map(({ data }) => data)
+  const projects = data.projects.nodes.map(({ projectsData }) => projectsData)
 
   return (
     <Layout>
