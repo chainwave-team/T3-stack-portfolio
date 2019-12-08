@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box } from '@theme-ui/components'
+import { Box } from 'rebass'
 
-import styled from '../utils/styled'
+import styled from './styled'
 
 import Next from '../images/next.svg'
 import Back from '../images/back.svg'

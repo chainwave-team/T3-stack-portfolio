@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { useRef } from 'react'
 import { animated } from 'react-spring'
 import { Spring } from 'react-spring/renderprops'
-import { Box, Text, Heading, Link } from '@theme-ui/components'
+import { Box, Text, Heading, Link } from 'rebass'
 
 import Html from './Html'
 

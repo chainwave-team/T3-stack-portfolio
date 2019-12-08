@@ -1,7 +1,7 @@
 import React from 'react'
 import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
-import { Box, Button, Flex, Text, Link as BaseLink } from '@theme-ui/components'
+import { Box, Button, Flex, Text, Link as BaseLink } from 'rebass'
 
 import PropTypes from 'prop-types'
 import Link from '../ui/link'

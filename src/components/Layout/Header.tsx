@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
 import { useBreakpointIndex } from '@theme-ui/match-media'
-import { Flex, Button, Box, Card } from '@theme-ui/components'
+import { Flex, Button, Box, Card } from 'rebass'
 import { useClickAway } from 'react-use'
 
 import styled from '../../utils/styled'
@@ -62,7 +62,12 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
       ref={node}
     >
       <Headroom style={{ maxWidth: '100%' }}>
-        <Card bg="darkBlue" boxShadow={3}>
+        <Card
+          sx={{
+            bgg: 'darkBlue',
+            boxShadow: 3
+          }}
+        >
           <Container>
             <Flex
               sx={{

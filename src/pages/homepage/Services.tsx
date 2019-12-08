@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import React, { useState } from 'react'
 import uuid from 'uuid'
 import { useBreakpointIndex } from '@theme-ui/match-media'
-import { Heading, Card } from '@theme-ui/components'
+import { Heading, Card } from 'rebass'
 
 import Fade from '../../components/ui/fade'
 import Accordion from '../../components/ui/Accordion'

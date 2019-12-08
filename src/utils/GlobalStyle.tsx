@@ -13,7 +13,7 @@ export default () => (
   <Global
     styles={css`
       ${normalize};
-      ${!isDev && tachyonsDebug};
+      ${isDev && tachyonsDebug};
 
       html {
         font-size: 62.5%;

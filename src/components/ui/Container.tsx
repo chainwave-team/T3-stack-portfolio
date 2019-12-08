@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Box } from '@theme-ui/components'
+import { Box } from 'rebass'
 
 import { Children } from '../../utils/types'
 

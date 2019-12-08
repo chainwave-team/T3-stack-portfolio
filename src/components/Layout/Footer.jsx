@@ -2,38 +2,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import styled from '@emotion/styled'
-import { Flex, Button, Text, Heading, Box } from '@theme-ui/components'
+import { Button, Text, Heading } from 'rebass'
 
+import styled from '../../utils/styled'
 import BaseLink from '../ui/link'
 import Fade from '../ui/fade'
+import Row from '../ui/Row'
+import Col from '../ui/Col'
 import Container from '../ui/Container'
 
 const Link = styled(BaseLink)`
   margin-left: ${props => props.theme.space[3]}px;
-`
-const Row = styled(Flex)`
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-
-  & > * {
-    margin-top: ${props => props.theme.space[3]}px;
-    margin-bottom: ${props => props.theme.space[3]}px;
-  }
-
-  ${props => props.theme.mediaQueries.onlySmall} {
-    & > * {
-      width: 100%;
-    }
-  }
-
-  ${props => props.theme.mediaQueries.medium} {
-    & > * {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
 `
 
 export default function Footer() {
@@ -76,13 +55,13 @@ export default function Footer() {
   } = prismicOptions.data
 
   return (
-    <footer style={{ backgroundColor: `rgba(0, 0, 0, 1)` }}>
+    <footer sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
       <Container py={[4, 5]}>
-        <Fade>
-          <Row py={[5]}>
-            <Box mb={[3]}>
-              <Heading fontSize={5}>{footer_text}</Heading>
-            </Box>
+        <Row py={[5]} fade>
+          <Col>
+            <Heading fontSize={5}>{footer_text}</Heading>
+          </Col>
+          <Col>
             <Button
               sx={{
                 px: 5,
@@ -92,13 +71,13 @@ export default function Footer() {
             >
               Contact
             </Button>
-          </Row>
-        </Fade>
+          </Col>
+        </Row>
         <Fade>
           <hr />
         </Fade>
-        <Fade>
-          <Row pt={4}>
+        <Row pt={4} fade>
+          <Col>
             <Text
               sx={{
                 m: 0,
@@ -107,23 +86,23 @@ export default function Footer() {
             >
               {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
             </Text>
-            <div>
-              <Link
-                to={linkedin_url.url}
-                target={linkedin_url.target}
-                style={{ marginLeft: 0 }}
-              >
-                Linkedin
-              </Link>
-              <Link to={malt_url.url} target={malt_url.target}>
-                Malt
-              </Link>
-              <Link to={github_url.url} target={github_url.target}>
-                Github
-              </Link>
-            </div>
-          </Row>
-        </Fade>
+          </Col>
+          <Col>
+            <Link
+              to={linkedin_url.url}
+              target={linkedin_url.target}
+              style={{ marginLeft: 0 }}
+            >
+              Linkedin
+            </Link>
+            <Link to={malt_url.url} target={malt_url.target}>
+              Malt
+            </Link>
+            <Link to={github_url.url} target={github_url.target}>
+              Github
+            </Link>
+          </Col>
+        </Row>
       </Container>
     </footer>
   )

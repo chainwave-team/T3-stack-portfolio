@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Link as ScrollLink } from 'react-scroll'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Heading, Flex, Button, Box } from '@theme-ui/components'
+import { Heading, Flex, Button, Box } from 'rebass'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 
 import Html from '../../components/ui/Html'

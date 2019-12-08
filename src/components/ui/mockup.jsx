@@ -2,7 +2,7 @@ import React from 'react'
 import { keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
-import { Box, Flex, Card, Text } from '@theme-ui/components'
+import { Box, Flex, Card, Text } from 'rebass'
 
 import Link from './link'
 import GithubCorner from './GithubCorner'

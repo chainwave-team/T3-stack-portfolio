@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import uuid from 'uuid'
 import PropTypes from 'prop-types'
-import { Flex, Heading, Link as RebassLink } from '@theme-ui/components'
+import { Flex, Heading, Link as RebassLink } from 'rebass'
 
 import Link from './ui/link'
 import { shadows } from '../gatsby-plugin-theme-ui'

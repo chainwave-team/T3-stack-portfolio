@@ -3,7 +3,7 @@ import { jsx, Flex, Box } from 'theme-ui'
 import Slider from 'react-slick'
 import styled from '@emotion/styled'
 import uuid from 'uuid'
-import { Heading, Text, Card } from '@theme-ui/components'
+import { Heading, Text, Card } from 'rebass'
 
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
 import Mockup from '../../components/ui/mockup'
