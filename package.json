@@ -94,12 +94,5 @@
       "yarn lint:fix",
       "git add"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": [
-        "yarn type-check && lint-staged"
-      ]
-    }
   }
 }
