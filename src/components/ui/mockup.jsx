@@ -1,13 +1,13 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from '@emotion/styled'
+import { keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
-import uniqid from 'uniqid'
+import uuid from 'uuid'
+import { Box, Flex, Card, Text } from '@theme-ui/components'
 
 import Link from './link'
-import GithubCorner from './github-corner'
-import { Box, Flex, Card, Text } from '../../utils/rebass'
+import GithubCorner from './GithubCorner'
 import ScrollSVG from '../../images/arrows-v-alt.svg'
-import { colors as themeColors, transitions } from '../../utils/theme'
 
 const trimUrl = url => (url !== '' ? url.split('//')[1] : '')
 const screenWidth = '720px'
@@ -31,15 +31,15 @@ const colors = {
 const getTheme = index => (index % 2 === 0 ? 'dark' : 'light')
 
 const Mockup = ({ siteUrl, fluid, index, title, srcUrl }) => {
-  const theme = getTheme(index)
+  const colorTheme = getTheme(index)
   return (
     <Box m="auto" width={screenWidth} maxWidth="100%">
-      <Screen bg={colors[theme].bg}>
-        <Navbar style={{ backgroundImage: colors[theme].nav }}>
+      <Screen bg={colors[colorTheme].bg}>
+        <Navbar style={{ backgroundImage: colors[colorTheme].nav }}>
           <Flex mr={3}>
             {['#fc605c', '#fdbc40', '#34c749'].map((color, i) => (
               <Card
-                key={uniqid(color)}
+                key={uuid(color)}
                 bg={color}
                 height="8px"
                 width="8px"
@@ -50,8 +50,12 @@ const Mockup = ({ siteUrl, fluid, index, title, srcUrl }) => {
           </Flex>
           {siteUrl && siteUrl !== '' && (
             <Links to={siteUrl} target="_blank">
-              <LinkSpan color={colors[theme].light}>https://</LinkSpan>
-              <LinkSpan color={colors[theme].font}>{trimUrl(siteUrl)}</LinkSpan>
+              <LinkSpan as="span" color={colors[colorTheme].light}>
+                https://
+              </LinkSpan>
+              <LinkSpan as="span" color={colors[colorTheme].font}>
+                {trimUrl(siteUrl)}
+              </LinkSpan>
             </Links>
           )}
         </Navbar>
@@ -98,7 +102,7 @@ const Screen = styled(Box)`
   overflow: hidden;
 `
 const Navbar = styled(Flex)`
-  width: ${screenWidth};
+  width: ${props => props.screenWidth};
   height: 30px;
   padding: 11px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -109,11 +113,9 @@ const Links = styled(Link)`
     opacity: 0.8;
   }
 `
-const LinkSpan = styled(Text).attrs({
-  as: 'span',
-  m: 0,
-  fontFamily: 'apple'
-})`
+const LinkSpan = styled(Text)`
+  margin: 0;
+  font-family: ${props => props.fonts.apple};
   line-height: 1;
   font-size: 10px;
   font-weight: 400;
@@ -127,15 +129,16 @@ const ScrollWrap = styled(Box)`
     left: calc(50% - (${ScrollIconSize}px / 2));
     transform: translate(-100%);
     z-index: 5;
-    fill: ${themeColors.cyan};
+    fill: ${props => props.themeColors.cyan};
     height: ${ScrollIconSize}px;
     width: ${ScrollIconSize}px;
-    animation: ${move} ${transitions[3]}s ease-out infinite;
+    animation: ${move} ${props => props.transitions[3]}s ease-out infinite;
   }
   &:hover > svg {
     opacity: 0;
   }
 `
+
 const Scrollable = styled(Box)`
   overflow: auto;
   overflow-x: hidden;
@@ -145,10 +148,10 @@ const Scrollable = styled(Box)`
     width: 2px;
   }
   ::-webkit-scrollbar-track {
-    background: ${colors.light.bg};
+    background: ${props => props.colors.light.bg};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${colors.light.font};
+    background: ${props => props.colors.light.font};
   }
 `
 

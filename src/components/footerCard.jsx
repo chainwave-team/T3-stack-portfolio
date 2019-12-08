@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
-import uniqid from 'uniqid'
+import uuid from 'uuid'
 import PropTypes from 'prop-types'
+import { Flex, Heading, Link as RebassLink } from '@theme-ui/components'
 
-import { Flex, Heading, Link as RebassLink } from '../utils/rebass'
 import Link from './ui/link'
-import { shadows } from '../utils/theme'
-import Html from './ui/html'
+import { shadows } from '../gatsby-plugin-theme-ui'
+import Html from './ui/Html'
 
 const isMail = link => /(mailto:)/g.test(link)
 
@@ -42,7 +42,7 @@ function FooterCard({ title, intro, links }) {
           <Heading fontSize={[4]} as="h3">
             {title}
           </Heading>
-          <Html __html={intro.html} />
+          <Html html={intro.html} />
         </div>
         <div>
           {links &&
@@ -52,7 +52,7 @@ function FooterCard({ title, intro, links }) {
                 to={lien}
                 target={isMail(lien) ? '' : '_blank'}
                 style={{ display: `block` }}
-                key={uniqid(index)}
+                key={uuid(index)}
               >
                 {label}
               </Link>

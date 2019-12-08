@@ -2,8 +2,7 @@ import React from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 import PropTypes from 'prop-types'
 import { Spring, config } from 'react-spring/renderprops'
-
-import { Box } from '../../utils/rebass'
+import { Box } from '@theme-ui/components'
 
 const Fade = ({ children }) => (
   <VisibilitySensor partialVisibility delay={300}>

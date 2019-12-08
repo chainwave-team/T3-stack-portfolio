@@ -1,14 +1,16 @@
-import React from 'react'
+/* eslint-disable import/no-unresolved */
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { Flex, Button, Text, Heading, Box } from '@theme-ui/components'
 
-import { Flex, Button, Container, Text, Heading, Box } from '../../utils/rebass'
-import { colors, space, mediaQueries } from '../../utils/theme'
 import BaseLink from '../ui/link'
 import Fade from '../ui/fade'
+import Container from '../ui/Container'
 
 const Link = styled(BaseLink)`
-  margin-left: ${space[3]}px;
+  margin-left: ${props => props.theme.space[3]}px;
 `
 const Row = styled(Flex)`
   justify-content: space-between;
@@ -16,17 +18,17 @@ const Row = styled(Flex)`
   flex-wrap: wrap;
 
   & > * {
-    margin-top: ${space[3]}px;
-    margin-bottom: ${space[3]}px;
+    margin-top: ${props => props.theme.space[3]}px;
+    margin-bottom: ${props => props.theme.space[3]}px;
   }
 
-  ${mediaQueries.onlySmall} {
+  ${props => props.theme.mediaQueries.onlySmall} {
     & > * {
       width: 100%;
     }
   }
 
-  ${mediaQueries.medium} {
+  ${props => props.theme.mediaQueries.medium} {
     & > * {
       margin-top: 0;
       margin-bottom: 0;
@@ -81,7 +83,13 @@ export default function Footer() {
             <Box mb={[3]}>
               <Heading fontSize={5}>{footer_text}</Heading>
             </Box>
-            <Button px={5} py={3} fontSize={3}>
+            <Button
+              sx={{
+                px: 5,
+                py: 3,
+                fontSize: 3
+              }}
+            >
               Contact
             </Button>
           </Row>
@@ -91,7 +99,12 @@ export default function Footer() {
         </Fade>
         <Fade>
           <Row pt={4}>
-            <Text m={0} color={colors.grey[8]}>
+            <Text
+              sx={{
+                m: 0,
+                color: 'grey.8'
+              }}
+            >
               {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
             </Text>
             <div>

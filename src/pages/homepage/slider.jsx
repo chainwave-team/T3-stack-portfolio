@@ -1,14 +1,14 @@
 import React from 'react'
 import Slider from 'react-slick'
 // import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import uniqid from 'uniqid'
+import styled from '@emotion/styled'
+import uuid from 'uuid'
+import { Flex, Box, Heading, Text, Container, Card } from '@theme-ui/components'
 
-import { Flex, Box, Heading, Text, Container, Card } from '../../utils/rebass'
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
 // import { imageProps } from '../../utils/prop-types'
 import Mockup from '../../components/ui/mockup'
-import Html from '../../components/ui/html'
+import Html from '../../components/ui/Html'
 import Fade from '../../components/ui/fade'
 
 import 'slick-carousel/slick/slick.css'
@@ -44,7 +44,7 @@ const SectionHeader = ({ projects }) => {
               },
               i
             ) => (
-              <Article key={uniqid(slug)}>
+              <Article key={uuid(slug)}>
                 <Flex justifyContent="center" flexWrap="wrap">
                   <Box width={[1, 1, 1 / 2, 2 / 3]}>
                     <Mockup
@@ -75,7 +75,7 @@ const SectionHeader = ({ projects }) => {
                       <Heading>{title && title.text}</Heading>
                     </Box>
                     <Card boxShadow={3} bg="blue" p={3} my={2}>
-                      <Html __html={html.html} />
+                      <Html html={html.html} />
                     </Card>
                     <Box px={3}>
                       {relations && (
@@ -86,7 +86,7 @@ const SectionHeader = ({ projects }) => {
                                 tag.tech_tags.document[0].data.description &&
                                 tag.tech_tags.document[0].data.description.text
                               }
-                              key={uniqid(idx)}
+                              key={uuid(idx)}
                               style={{
                                 paddingRight: 8,
                                 display: 'inline-block'

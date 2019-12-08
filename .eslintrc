@@ -8,14 +8,19 @@
     "sourceType": "module"
   },
   "extends": [
-    "airbnb", 
+    "airbnb",
     "prettier",
-    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "plugins": [
-    "@typescript-eslint", 
+    "@typescript-eslint",
     "react"
   ],
   "env": {
@@ -24,20 +29,41 @@
     "node": true
   },
   "rules": {
-    "prettier/prettier": "error",
     "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
     "camelcase": "off",
     "implicit-arrow-linebreak": "off",
     "comma-dangle": "off",
     "no-absolute-path": 0,
     "no-console": "off",
+    "prettier/prettier": "error",
+    "react/jsx-indent": "off",
     // "react-hooks/rules-of-hooks": "error",
     // "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }]
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".tsx",
+          ".jsx"
+        ]
+      }
+    ]
   },
-  
+  "overrides": [
+    // Override some TypeScript rules just for .js files
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
   "globals": {
     "graphql": true
   }

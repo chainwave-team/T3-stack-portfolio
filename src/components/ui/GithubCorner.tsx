@@ -1,12 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
-import { colors } from '../../utils/theme'
+import styled from '../../utils/styled'
 
 const Link = styled.a`
   svg {
-    fill: ${colors.cyan};
+    fill: ${props => props.theme.colors.cyan};
     position: absolute;
     top: 0;
     right: 0;
@@ -16,7 +14,7 @@ const Link = styled.a`
   }
 `
 
-export default function GithubCorner({ url }) {
+export default function GithubCorner({ url }: { url: string }) {
   return (
     <Link href={url} aria-label="View source on GitHub" target="_blank">
       <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
@@ -36,8 +34,4 @@ export default function GithubCorner({ url }) {
       </svg>
     </Link>
   )
-}
-
-GithubCorner.propTypes = {
-  url: PropTypes.string.isRequired
 }

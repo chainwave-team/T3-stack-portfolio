@@ -1,33 +1,31 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { Box } from '@theme-ui/components'
 
-import { Box } from './rebass'
-import { mediaQueries, colors } from './theme'
 import Next from '../images/next.svg'
 import Back from '../images/back.svg'
 
-const ArrowStyle = styled(Box).attrs({
-  fill: 'cyan',
-  position: 'absolute',
-  top: '50%'
-})`
+const ArrowStyle = styled(Box)`
   width: 32px;
   height: 32px;
   margin: 0 -32px;
+  fill: ${props => props.colors.cyan};
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
 
   svg {
     display: none;
-    ${mediaQueries.medium} {
+    ${props => props.mediaQueries.medium} {
       display: block;
     }
-    fill: ${colors.cyan};
+    fill: ${props => props.colors.cyan};
     transition: fill 200ms ease;
   }
 
   svg:hover {
-    fill: ${colors.pink};
+    fill: ${props => props.colors.pink};
   }
 `
 

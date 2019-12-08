@@ -2,9 +2,9 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/Layout/layout'
+import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/seo'
-import SectionHeader from './homepage/header'
+import SectionHeader from './homepage/Header'
 import SectionSlider from './homepage/slider'
 import ServicesSection from './homepage/Services'
 import propTypes from '../utils/prop-types'
@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
         buttonLabel={header_contact_button_label}
       />
       <ServicesSection title={services_introduction.text} items={services} />
-      <SectionSlider projects={projects} />
+      {/* <SectionSlider projects={projects} /> */}
     </Layout>
   )
 }

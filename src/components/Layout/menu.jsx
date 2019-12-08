@@ -1,26 +1,30 @@
 import React from 'react'
-import uniqid from 'uniqid'
+import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
+import { Box, Button, Flex, Text, Link as BaseLink } from '@theme-ui/components'
 
 import PropTypes from 'prop-types'
-import { Box, Button, Flex, Text, Link as BaseLink } from '../../utils/rebass'
 import Link from '../ui/link'
 
 export default function Menu({ links, vertical, click }) {
   return (
     <Flex
       as="ul"
-      m={0}
-      alignItems="center"
-      flexDirection={vertical ? 'column' : 'row'}
-      py={vertical ? 4 : 0}
+      sx={{
+        m: 0,
+        alignItems: 'center',
+        flexDirection: vertical ? 'column' : 'row',
+        py: vertical ? 4 : 0
+      }}
     >
       {links.map(({ name, link, target, anchor }, index) => (
         <Text
           as="li"
-          key={uniqid(index)}
-          mx={vertical ? 0 : 2}
-          py={vertical ? 3 : 0}
+          key={uuid(index)}
+          sx={{
+            mx: vertical ? 0 : 2,
+            py: vertical ? 3 : 0
+          }}
         >
           <BaseLink
             as={anchor ? ScrollLink : Link}
