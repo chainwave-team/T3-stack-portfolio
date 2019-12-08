@@ -55,6 +55,7 @@
     "@types/react-headroom": "^2.2.1",
     "@types/react-helmet": "^5.0.14",
     "@types/react-scroll": "^1.5.4",
+    "@types/react-slick": "^0.23.4",
     "@types/theme-ui": "^0.2.5",
     "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.10.0",

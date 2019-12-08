@@ -1,13 +1,11 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import Slider from 'react-slick'
-// import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import uuid from 'uuid'
-import { Flex, Box, Heading, Text, Card } from '@theme-ui/components'
+import { Heading, Text, Card } from '@theme-ui/components'
 
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
-// import { imageProps } from '../../utils/prop-types'
 import Mockup from '../../components/ui/mockup'
 import Html from '../../components/ui/Html'
 import Fade from '../../components/ui/fade'
@@ -16,7 +14,16 @@ import Container from '../../components/ui/Container'
 import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
 
-export default function SectionHeader({ projects }) {
+import { PrismicProject } from '../../utils/types'
+
+type Props = {
+  nodes: Array<{
+    data: PrismicProject
+    uid: string
+  }>
+}
+
+export default function SectionHeader({ nodes }: Props) {
   const settings = {
     dots: false,
     // autoplay: true,
@@ -32,17 +39,19 @@ export default function SectionHeader({ projects }) {
     <Container as="section" id="portfolio" section>
       <Fade>
         <Slider {...settings}>
-          {projects.map(
+          {nodes.map(
             (
               {
-                slug,
-                demo_link,
-                source_link,
-                title,
-                full_screen,
-                project_type,
-                relations,
-                html
+                data: {
+                  demo_link,
+                  source_link,
+                  title,
+                  full_screen,
+                  project_type,
+                  relations,
+                  html
+                },
+                uid: slug
               },
               i
             ) => (

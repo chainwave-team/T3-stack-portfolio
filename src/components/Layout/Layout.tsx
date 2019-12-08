@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider } from 'theme-ui'
+import { ThemeProvider as Theme } from 'theme-ui'
 
 import GlobalStyle from '../../utils/GlobalStyle'
 import Header from './Header'
@@ -9,13 +9,13 @@ import { Children } from '../../utils/types'
 
 export default function Layout({ children }: { children: Children }) {
   return (
-    <ThemeProvider theme={theme}>
+    <Theme theme={theme}>
       <>
         <GlobalStyle />
         <Header />
         <main id="main">{children}</main>
         <Footer />
       </>
-    </ThemeProvider>
+    </Theme>
   )
 }
