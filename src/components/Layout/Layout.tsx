@@ -5,8 +5,9 @@ import GlobalStyle from '../../utils/GlobalStyle'
 import Header from './Header'
 import Footer from './Footer'
 import theme from '../../gatsby-plugin-theme-ui'
+import { Children } from '../../utils/types'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: Children }) {
   return (
     <ThemeProvider theme={theme}>
       <>

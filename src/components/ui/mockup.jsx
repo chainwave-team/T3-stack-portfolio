@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
@@ -8,6 +7,7 @@ import { Box, Flex, Card, Text } from '@theme-ui/components'
 import Link from './link'
 import GithubCorner from './GithubCorner'
 import ScrollSVG from '../../images/arrows-v-alt.svg'
+import styled from '../../utils/styled'
 
 const trimUrl = url => (url !== '' ? url.split('//')[1] : '')
 const screenWidth = '720px'
@@ -102,7 +102,7 @@ const Screen = styled(Box)`
   overflow: hidden;
 `
 const Navbar = styled(Flex)`
-  width: ${props => props.screenWidth};
+  width: ${props => props.theme.screenWidth};
   height: 30px;
   padding: 11px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -115,7 +115,7 @@ const Links = styled(Link)`
 `
 const LinkSpan = styled(Text)`
   margin: 0;
-  font-family: ${props => props.fonts.apple};
+  font-family: ${props => props.theme.fonts.apple};
   line-height: 1;
   font-size: 10px;
   font-weight: 400;
@@ -129,10 +129,10 @@ const ScrollWrap = styled(Box)`
     left: calc(50% - (${ScrollIconSize}px / 2));
     transform: translate(-100%);
     z-index: 5;
-    fill: ${props => props.themeColors.cyan};
+    fill: ${props => props.theme.colors.cyan};
     height: ${ScrollIconSize}px;
     width: ${ScrollIconSize}px;
-    animation: ${move} ${props => props.transitions[3]}s ease-out infinite;
+    animation: ${move} ${props => props.theme.transitions[3]}s ease-out infinite;
   }
   &:hover > svg {
     opacity: 0;
@@ -148,10 +148,10 @@ const Scrollable = styled(Box)`
     width: 2px;
   }
   ::-webkit-scrollbar-track {
-    background: ${props => props.colors.light.bg};
+    background: ${colors.light.bg};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${props => props.colors.light.font};
+    background: ${colors.light.font};
   }
 `
 

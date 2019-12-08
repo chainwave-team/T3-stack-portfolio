@@ -1,20 +1,22 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import Slider from 'react-slick'
 // import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import uuid from 'uuid'
-import { Flex, Box, Heading, Text, Container, Card } from '@theme-ui/components'
+import { Flex, Box, Heading, Text, Card } from '@theme-ui/components'
 
 import { BackArrow, NextArrow } from '../../utils/slick-helper'
 // import { imageProps } from '../../utils/prop-types'
 import Mockup from '../../components/ui/mockup'
 import Html from '../../components/ui/Html'
 import Fade from '../../components/ui/fade'
+import Container from '../../components/ui/Container'
 
 import 'slick-carousel/slick/slick.css'
 // import 'slick-carousel/slick/slick-theme.css'
 
-const SectionHeader = ({ projects }) => {
+export default function SectionHeader({ projects }) {
   const settings = {
     dots: false,
     // autoplay: true,
@@ -27,7 +29,7 @@ const SectionHeader = ({ projects }) => {
     prevArrow: <BackArrow />
   }
   return (
-    <Container as="section" id="portfolio">
+    <Container as="section" id="portfolio" section>
       <Fade>
         <Slider {...settings}>
           {projects.map(
@@ -45,8 +47,13 @@ const SectionHeader = ({ projects }) => {
               i
             ) => (
               <Article key={uuid(slug)}>
-                <Flex justifyContent="center" flexWrap="wrap">
-                  <Box width={[1, 1, 1 / 2, 2 / 3]}>
+                <Flex
+                  sx={{
+                    justifyContent: 'center',
+                    flexWrap: 'wrap'
+                  }}
+                >
+                  <Box sx={{ width: ['full', 'full', '1/2', '2/3'] }}>
                     <Mockup
                       fluid={
                         full_screen.localFile.childImageSharp.fluid || null
@@ -58,15 +65,17 @@ const SectionHeader = ({ projects }) => {
                     />
                   </Box>
                   <Flex
-                    flexDirection="column"
-                    justifyContent="center"
-                    width={[1, 1, 1 / 3]}
-                    p={3}
-                    mx={-3}
+                    sx={{
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      width: ['full', 'full', '1/3'],
+                      p: 3,
+                      mx: -3
+                    }}
                   >
                     <Box px={3}>
                       {project_type && project_type.document && (
-                        <Text color="cyan">
+                        <Text sx={{ color: 'cyan' }}>
                           {project_type.document[0].data.title
                             ? project_type.document[0].data.title.text
                             : ''}
@@ -74,7 +83,14 @@ const SectionHeader = ({ projects }) => {
                       )}
                       <Heading>{title && title.text}</Heading>
                     </Box>
-                    <Card boxShadow={3} bg="blue" p={3} my={2}>
+                    <Card
+                      sx={{
+                        boxShadow: 3,
+                        bg: 'blue',
+                        p: 3,
+                        my: 2
+                      }}
+                    >
                       <Html html={html.html} />
                     </Card>
                     <Box px={3}>
@@ -87,8 +103,8 @@ const SectionHeader = ({ projects }) => {
                                 tag.tech_tags.document[0].data.description.text
                               }
                               key={uuid(idx)}
-                              style={{
-                                paddingRight: 8,
+                              sx={{
+                                paddingRight: 3,
                                 display: 'inline-block'
                               }}
                             >
@@ -114,9 +130,3 @@ const Article = styled.article`
     outline: none;
   }
 `
-
-SectionHeader.propTypes = {}
-
-SectionHeader.defaultProps = {}
-
-export default SectionHeader

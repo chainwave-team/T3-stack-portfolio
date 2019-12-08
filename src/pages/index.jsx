@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/seo'
 import SectionHeader from './homepage/Header'
-import SectionSlider from './homepage/slider'
+import SectionSlider from './homepage/Slider'
 import ServicesSection from './homepage/Services'
 import propTypes from '../utils/prop-types'
 
@@ -16,7 +16,10 @@ const IndexPage = ({ data }) => {
     services_introduction,
     services
   } = data.homepage.data
-  const projects = data.projects.nodes.map(({ projectsData }) => projectsData)
+  const projects = data.projects.nodes.map(({ data: projectsData, uid }) => ({
+    ...projectsData,
+    slug: uid
+  }))
 
   return (
     <Layout>
@@ -26,7 +29,7 @@ const IndexPage = ({ data }) => {
         buttonLabel={header_contact_button_label}
       />
       <ServicesSection title={services_introduction.text} items={services} />
-      {/* <SectionSlider projects={projects} /> */}
+      <SectionSlider projects={projects} />
     </Layout>
   )
 }

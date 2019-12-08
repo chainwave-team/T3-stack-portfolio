@@ -1,6 +1,7 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import { Box } from '@theme-ui/components'
+
+import styled from '../utils/styled'
 
 import Next from '../images/next.svg'
 import Back from '../images/back.svg'
@@ -9,7 +10,7 @@ const ArrowStyle = styled(Box)`
   width: 32px;
   height: 32px;
   margin: 0 -32px;
-  fill: ${props => props.colors.cyan};
+  fill: ${props => props.theme.colors.cyan};
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -17,15 +18,15 @@ const ArrowStyle = styled(Box)`
 
   svg {
     display: none;
-    ${props => props.mediaQueries.medium} {
+    ${props => props.theme.mediaQueries.medium} {
       display: block;
     }
-    fill: ${props => props.colors.cyan};
+    fill: ${props => props.theme.colors.cyan};
     transition: fill 200ms ease;
   }
 
   svg:hover {
-    fill: ${props => props.colors.pink};
+    fill: ${props => props.theme.colors.pink};
   }
 `
 

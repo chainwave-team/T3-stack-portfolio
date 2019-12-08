@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import React from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Heading, Flex, Button, Box } from '@theme-ui/components'
