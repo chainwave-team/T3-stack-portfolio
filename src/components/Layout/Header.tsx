@@ -9,7 +9,7 @@ import { Flex, Button, Box, Card } from 'rebass'
 import { useClickAway } from 'react-use'
 
 import styled from '../../utils/styled'
-import Menu from './menu'
+import Menu from './Menu'
 import CloseIcon from '../../images/close.svg'
 import MenuIcon from '../../images/menu.svg'
 import Container from '../ui/Container'
@@ -64,7 +64,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
       <Headroom style={{ maxWidth: '100%' }}>
         <Card
           sx={{
-            bgg: 'darkBlue',
+            bg: 'darkBlue',
             boxShadow: 3
           }}
         >

@@ -2,10 +2,6 @@
 import { jsx } from 'theme-ui'
 import { Box } from 'rebass'
 
-// type Props = {
-//     fade?: boolean
-// }
-
 const Col = props => (
   <Box
     {...props}

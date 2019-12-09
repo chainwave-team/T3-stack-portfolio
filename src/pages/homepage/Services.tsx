@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 import { Heading, Card } from 'rebass'
 
-import Fade from '../../components/ui/fade'
+import Fade from '../../components/ui/Fade'
 import Accordion from '../../components/ui/Accordion'
 import Container from '../../components/ui/Container'
 

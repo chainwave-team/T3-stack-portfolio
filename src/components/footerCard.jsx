@@ -4,7 +4,7 @@ import uuid from 'uuid'
 import PropTypes from 'prop-types'
 import { Flex, Heading, Link as RebassLink } from 'rebass'
 
-import Link from './ui/link'
+import Link from './ui/Link'
 import { shadows } from '../gatsby-plugin-theme-ui'
 import Html from './ui/Html'
 

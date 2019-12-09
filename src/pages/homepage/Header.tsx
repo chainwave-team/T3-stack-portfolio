@@ -5,9 +5,11 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Heading, Flex, Button, Box } from 'rebass'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 
+import Row from '../../components/ui/Row'
+import Col from '../../components/ui/Col'
 import Html from '../../components/ui/Html'
 import Container from '../../components/ui/Container'
-import Fade from '../../components/ui/fade'
+import Fade from '../../components/ui/Fade'
 import CoderSVG from '../../images/coder.svg'
 
 type Props = {
@@ -43,68 +45,51 @@ export default function SectionHeader({
         minHeight: '100vh'
       }}
     >
-      <Container py={6}>
-        <Flex
-          sx={{
-            pt: 4,
-            mx: -3,
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}
-        >
-          <Box width={[1, 1, 1, 7 / 12]} px={3} alignItems="center">
-            <Fade>
-              <Heading
-                as="h2"
-                sx={{
-                  pb: 3,
-                  fontSize: [5, 5, 6]
-                }}
-              >
-                {site_name}
-              </Heading>
-            </Fade>
-            <Fade>
-              <Heading
-                as="h1"
-                sx={{
-                  pb: 4,
-                  fontSize: [5, 6, 7]
-                }}
-              >
-                {job}
-              </Heading>
-            </Fade>
-            <Fade>
-              <div style={{ maxWidth: '650px' }}>
-                <Html html={textarea} />
-              </div>
-            </Fade>
-            <Fade>
-              <Box py={3}>
-                <Button as={ScrollLink} to="contact" smooth isDynamic>
-                  {buttonLabel}
-                </Button>
-              </Box>
-            </Fade>
-          </Box>
-          {mediaIndex > 2 ? (
-            <Flex
+      <Container section>
+        <Row fade sx={{ pt: 4 }}>
+          <Col sx={{ width: ['full', 'full', 'full', '7/12'] }}>
+            <Heading
+              as="h2"
               sx={{
-                width: '5/12',
-                px: 3,
+                pb: 3,
+                fontSize: [5, 5, 6]
+              }}
+            >
+              {site_name}
+            </Heading>
+            <Heading
+              as="h1"
+              sx={{
+                pb: 4,
+                fontSize: [5, 6, 7]
+              }}
+            >
+              {job}
+            </Heading>
+            <div style={{ maxWidth: '650px' }}>
+              <Html html={textarea} />
+            </div>
+            <Box py={3}>
+              <Button as={ScrollLink} to="contact" smooth isDynamic>
+                {buttonLabel}
+              </Button>
+            </Box>
+          </Col>
+          {mediaIndex > 2 ? (
+            <Col
+              sx={{
+                flex: 1,
+                display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center'
               }}
             >
               <Box sx={{ width: 'full' }}>
-                <Fade>
-                  <CoderSVG width="100%" height="100%" />
-                </Fade>
+                <CoderSVG width="100%" height="100%" />
               </Box>
-            </Flex>
+            </Col>
           ) : null}
-        </Flex>
+        </Row>
       </Container>
     </Flex>
   )

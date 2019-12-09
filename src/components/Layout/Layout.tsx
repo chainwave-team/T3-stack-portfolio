@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider as Theme } from 'theme-ui'
 
-import GlobalStyle from '../../utils/GlobalStyle'
+import GlobalStyle from '../styles/GlobalStyle'
 import Header from './Header'
 import Footer from './Footer'
 import theme from '../../gatsby-plugin-theme-ui'

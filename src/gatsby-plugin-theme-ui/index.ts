@@ -1,4 +1,4 @@
-import tailwind from '../utils/tailwind'
+import tailwind from './tailwind-theme'
 
 export type Theme = {
   space: Array<number>
@@ -89,20 +89,12 @@ const baseTheme: Theme = {
     medium: 1000,
     large: 1250,
     ...tailwind.sizes,
-    container: 1024
+    container: 1180
   },
   breakpoints: [...tailwind.breakpoints]
   // styles: {
   //   root: {}, h1: {}
   // }
-}
-
-// Extends
-export const mediaQueries = {
-  onlySmall: `@media screen and (max-width: ${baseTheme.breakpoints[0] - 1}px)`,
-  small: `@media screen and (min-width: ${baseTheme.breakpoints[0]}px)`,
-  medium: `@media screen and (min-width: ${baseTheme.breakpoints[1]}px)`,
-  large: `@media screen and (min-width: ${baseTheme.breakpoints[2]}px)`
 }
 
 export const buttons = {
@@ -113,6 +105,6 @@ export const buttons = {
 }
 
 // merge
-const theme = { ...baseTheme, mediaQueries, buttons }
+const theme = { ...baseTheme, buttons }
 
 export default theme

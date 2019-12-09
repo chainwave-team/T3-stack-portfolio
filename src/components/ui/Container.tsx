@@ -1,24 +1,34 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Box } from 'rebass'
-
+import { Box, SxProps } from 'rebass'
 import { Children } from '../../utils/types'
 
-type Props = {
+type Props = Partial<SxProps> & {
+  children: Children
   section?: boolean
-  children?: Children
+  id?: string
 }
 
-export default function Container({ section, ...props }: Props) {
+export default function Container({
+  section = false,
+  id = '',
+  children,
+  ...props
+}: Props) {
   return (
     <Box
       {...props}
+      id={id}
+      as={section ? 'section' : 'div'}
       sx={{
         maxWidth: 'container',
+        position: 'relative',
         width: '90%',
         mx: 'auto',
         py: section ? 6 : 0
       }}
-    />
+    >
+      {children}
+    </Box>
   )
 }

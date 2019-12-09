@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 
 import Layout from '../components/Layout/Layout'
-import SEO from '../components/Layout/seo'
+import SEO from '../components/Layout/SEO'
 import SectionHeader from './homepage/Header'
 import SectionSlider from './homepage/Slider'
 import ServicesSection from './homepage/Services'

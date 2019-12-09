@@ -7,6 +7,7 @@ export type Children =
   | boolean
   | null
   | undefined
+  | string
 
 export type PrismicLink = {
   link_type: string

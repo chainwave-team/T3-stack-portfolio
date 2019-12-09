@@ -2,13 +2,14 @@
 import { jsx } from 'theme-ui'
 import { Flex } from 'rebass'
 
-import Fade from './fade'
+import Fade from './Fade'
 
 type Props = {
   fade?: boolean
 }
 
 const Row = (props: Props) => {
+  const { fade } = props
   const Component = (
     <Flex
       {...props}
@@ -21,7 +22,7 @@ const Row = (props: Props) => {
     />
   )
 
-  return props.fade ? <Fade>{Component}</Fade> : Component
+  return fade ? <Fade>{Component}</Fade> : Component
 }
 
 export default Row

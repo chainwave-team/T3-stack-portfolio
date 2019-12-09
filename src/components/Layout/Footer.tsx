@@ -5,8 +5,8 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Button, Text, Heading } from 'rebass'
 
 import styled from '../../utils/styled'
-import BaseLink from '../ui/link'
-import Fade from '../ui/fade'
+import BaseLink from '../ui/Link'
+import Fade from '../ui/Fade'
 import Row from '../ui/Row'
 import Col from '../ui/Col'
 import Container from '../ui/Container'
@@ -56,8 +56,8 @@ export default function Footer() {
 
   return (
     <footer sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
-      <Container py={[4, 5]}>
-        <Row py={[5]} fade>
+      <Container sx={{ py: [4, 5] }}>
+        <Row sx={{ py: 5 }} fade>
           <Col>
             <Heading fontSize={5}>{footer_text}</Heading>
           </Col>
@@ -76,7 +76,7 @@ export default function Footer() {
         <Fade>
           <hr />
         </Fade>
-        <Row pt={4} fade>
+        <Row sx={{ pt: 4 }} fade>
           <Col>
             <Text
               sx={{

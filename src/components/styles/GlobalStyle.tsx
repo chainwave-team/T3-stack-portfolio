@@ -3,7 +3,7 @@ import { Global, css } from '@emotion/core'
 
 import normalize from './normalize'
 import tachyonsDebug from './tachyons-debug'
-import theme from '../gatsby-plugin-theme-ui'
+import theme from '../../gatsby-plugin-theme-ui'
 
 const { colors, fonts } = theme
 
