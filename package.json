@@ -30,7 +30,6 @@
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.2.3",
-    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-headroom": "^3.0.0",

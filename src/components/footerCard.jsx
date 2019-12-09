@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import uuid from 'uuid'
-import PropTypes from 'prop-types'
 import { Flex, Heading, Link as RebassLink } from 'rebass'
 
 import Link from './ui/Link'
@@ -63,16 +62,16 @@ function FooterCard({ title, intro, links }) {
   )
 }
 
-FooterCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  intro: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      lien: PropTypes.string.isRequired
-    })
-  )
-}
+// FooterCard.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   intro: PropTypes.string.isRequired,
+//   links: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       label: PropTypes.string.isRequired,
+//       lien: PropTypes.string.isRequired
+//     })
+//   )
+// }
 
 FooterCard.defaultProps = {
   links: []
