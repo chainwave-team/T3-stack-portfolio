@@ -2,10 +2,9 @@
 import { jsx } from 'theme-ui'
 import uuid from 'uuid'
 
+import { PrismicProject } from '../../utils/types'
 import Container from '../../components/ui/Container'
 import Carousel from '../../components/Carousel/Carousel'
-
-import { PrismicProject } from '../../utils/types'
 import ProjectCard from '../../components/ui/ProjectCard'
 import Row from '../../components/ui/Row'
 import Col from '../../components/ui/Col'

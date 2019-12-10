@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Box } from 'rebass'
+import { jsx, Box } from 'theme-ui'
 
-import Next from '../../images/next.svg'
-import Back from '../../images/back.svg'
+import Next from '../../assets/svg/next.svg'
+import Back from '../../assets/svg/back.svg'
 
 const style = {
   width: '32px',

@@ -1,26 +1,22 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Box, Styled } from 'theme-ui'
 import { Link as ScrollLink } from 'react-scroll'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Heading, Flex, Button, Box } from 'rebass'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 
 import Row from '../../components/ui/Row'
 import Col from '../../components/ui/Col'
 import Html from '../../components/ui/Html'
 import Container from '../../components/ui/Container'
-import Fade from '../../components/ui/Fade'
-import CoderSVG from '../../images/coder.svg'
+import CoderSVG from '../../assets/svg/coder.svg'
+import Button from '../../components/ui/Button'
 
 type Props = {
   textarea?: string
   buttonLabel?: string
 }
 
-export default function SectionHeader({
-  textarea = '',
-  buttonLabel = ''
-}: Props) {
+export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
   const mediaIndex = useBreakpointIndex()
   const { prismicOptions } = useStaticQuery(
     graphql`
@@ -48,31 +44,16 @@ export default function SectionHeader({
       <Container section>
         <Row fade sx={{ pt: 4 }}>
           <Col sx={{ width: ['full', 'full', 'full', '7/12'] }}>
-            <Heading
-              as="h2"
-              sx={{
-                pb: 3,
-                fontSize: [5, 5, 6]
-              }}
-            >
-              {site_name}
-            </Heading>
-            <Heading
-              as="h1"
-              sx={{
-                pb: 4,
-                fontSize: [5, 6, 7]
-              }}
-            >
-              {job}
-            </Heading>
+            <Styled.h3>{site_name}</Styled.h3>
+            <Styled.h2>{job}</Styled.h2>
+
             <div style={{ maxWidth: '650px' }}>
               <Html html={textarea} />
             </div>
             <Box py={3}>
-              <Button as={ScrollLink} to="contact" smooth isDynamic>
-                {buttonLabel}
-              </Button>
+              <ScrollLink to="contact" smooth isDynamic>
+                <Button>{buttonLabel}</Button>
+              </ScrollLink>
             </Box>
           </Col>
           {mediaIndex > 2 ? (

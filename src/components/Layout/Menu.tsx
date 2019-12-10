@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Box, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
-import { Box, Button, Flex, Text } from 'rebass'
 
 import Link from '../ui/Link'
+import Button from '../ui/Button'
 
 type MenuItem = {
   name: string
@@ -19,10 +19,21 @@ type Props = {
   click: () => void
 }
 
+// ? Move this logic in Link Component ?
+type linkType = {
+  key: string
+  sx: any
+  to: string
+  onClick: () => void
+  as: any
+  smooth?: boolean
+  isDynamic?: boolean
+  target?: string
+}
+
 export default function Menu({ links, vertical, click }: Props) {
   return (
     <Flex
-      as="ul"
       sx={{
         m: 0,
         alignItems: 'center',
@@ -31,30 +42,28 @@ export default function Menu({ links, vertical, click }: Props) {
       }}
     >
       {links &&
-        links.map(({ name, link, target, anchor = false }, index) => (
-          <Text
-            as="li"
-            key={uuid(index)}
-            sx={{
+        links.map(({ name, link, target, anchor = false }, index) => {
+          const props: linkType = {
+            key: uuid(),
+            sx: {
               mx: vertical ? 0 : 2,
               py: vertical ? 3 : 0,
-              '& > *': {
-                color: 'white'
-              }
-            }}
-          >
-            {anchor ? (
-              <ScrollLink to={link} onClick={() => click()} smooth isDynamic>
-                {name}
-              </ScrollLink>
-            ) : (
-              <Link to={link} target={target || ``} onClick={() => click()}>
-                {name}
-              </Link>
-            )}
-          </Text>
-        ))}
-      <Box ml={vertical ? 0 : 3}>
+              color: 'white'
+            },
+            to: link,
+            onClick: () => click(),
+            as: anchor ? ScrollLink : Link
+          }
+
+          if (anchor) {
+            props.smooth = true
+            props.isDynamic = true
+          } else {
+            props.target = target || ''
+          }
+          return <Styled.a {...props}>{name}</Styled.a>
+        })}
+      <Box sx={{ ml: vertical ? 0 : 3 }}>
         <Button
           as={ScrollLink}
           to="contact"

@@ -1,9 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Box, Styled } from 'theme-ui'
 import { useRef } from 'react'
-import { animated } from 'react-spring'
-import { Spring } from 'react-spring/renderprops'
-import { Box, Text, Heading, Link } from 'rebass'
+import { animated, useSpring, config } from 'react-spring'
 
 import Html from './Html'
 
@@ -17,8 +15,13 @@ type Props = {
   }
 }
 
-export default function Accordion(props: Props) {
-  const { title, content, open, toggle, height } = props
+export default function Accordion({
+  title,
+  content,
+  open = false,
+  toggle,
+  height = 0
+}: Props) {
   const ref = useRef(null)
 
   const getHeight = (o: boolean, h: number) => {
@@ -26,54 +29,33 @@ export default function Accordion(props: Props) {
     return o ? tmpHeight : 0
   }
 
+  const props = useSpring({
+    from: { height: getHeight(!open, height) },
+    to: { height: getHeight(open, height) },
+    config: config.gentle
+  })
+
   return (
     <Box>
-      <Heading
-        sx={{
-          borderBottom: '1px solid',
-          cursor: 'pointer',
-          display: 'block',
-          fontSize: [3, 3, 4],
-          py: 3,
-          color: 'white',
-          fontFamily: 'heading',
-          fontWeight: 7
-        }}
-        as={Link}
-        role="button"
-        onClick={() => toggle(ref.current.scrollHeight)}
-      >
-        {title}
-      </Heading>
+      <Styled.h4>
+        <Styled.a
+          sx={{
+            borderBottom: '1px solid',
+            display: 'block',
+            py: 3,
+            color: 'white'
+          }}
+          onClick={() => toggle(ref.current.scrollHeight)}
+        >
+          {title}
+        </Styled.a>
+      </Styled.h4>
 
-      <Spring
-        from={{ overflow: 'hidden', height: getHeight(!open, height) }}
-        to={{ height: getHeight(open, height) }}
-      >
-        {styles => (
-          <animated.div style={styles}>
-            <Text
-              ref={ref}
-              sx={{
-                py: 3,
-                px: 0,
-                m: 0
-              }}
-              as="div"
-            >
-              <Html html={content.html} />
-            </Text>
-          </animated.div>
-        )}
-      </Spring>
+      <animated.div style={{ overflow: 'hidden', ...props }}>
+        <div ref={ref} sx={{ py: 2 }}>
+          {content ? <Html html={content.html} /> : null}
+        </div>
+      </animated.div>
     </Box>
   )
-}
-
-Accordion.defaultProps = {
-  open: false,
-  height: 0,
-  content: {
-    html: ''
-  }
 }

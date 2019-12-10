@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Flex } from 'rebass'
+import { jsx, Flex, SxProps } from 'theme-ui'
 
 import Fade from './Fade'
 
-type Props = {
+type Props = Partial<SxProps> & {
   fade?: boolean
 }
 

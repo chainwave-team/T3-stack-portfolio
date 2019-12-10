@@ -5,6 +5,6 @@ However, you can define a theme type by creating another styled instance.
 
 import styled, { CreateStyled } from '@emotion/styled'
 
-import { Theme } from '../gatsby-plugin-theme-ui'
+import { themeType } from '../styles/themeType'
 
-export default styled as CreateStyled<Theme>
+export default styled as CreateStyled<themeType>

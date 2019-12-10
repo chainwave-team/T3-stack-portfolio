@@ -1,30 +1,23 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import { useState, useRef } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
 import { useBreakpointIndex } from '@theme-ui/match-media'
-import { Flex, Button, Box, Card } from 'rebass'
 import { useClickAway } from 'react-use'
 
-import styled from '../../utils/styled'
 import Menu from './Menu'
-import CloseIcon from '../../images/close.svg'
-import MenuIcon from '../../images/menu.svg'
+import CloseIcon from '../../assets/svg/close.svg'
+import MenuIcon from '../../assets/svg/menu.svg'
 import Container from '../ui/Container'
+import Button from '../ui/Button'
 
-const Icon = styled(Box)`
-  fill: ${p => p.theme.colors.cyan};
-  position: absolute;
-`
-const IconWrap = styled(Box)`
-  width: ${p => p.theme.space[4]}px;
-  height: ${p => p.theme.space[4]}px;
-  right: 0;
-  top: 0;
-  position: relative;
-`
+const iconStyle = {
+  fill: 'cyan',
+  position: 'absolute'
+}
+
 const Anim = animated.div
 
 export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
@@ -49,8 +42,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
   const matches: boolean = index > 1
 
   return (
-    <Box
-      as="header"
+    <header
       sx={{
         top: '0',
         left: '0',
@@ -62,7 +54,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
       ref={node}
     >
       <Headroom style={{ maxWidth: '100%' }}>
-        <Card
+        <div
           sx={{
             bg: 'darkBlue',
             boxShadow: 3
@@ -90,23 +82,33 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
               {matches ? (
                 <Menu click={() => null} />
               ) : (
-                <IconWrap role="button" onClick={() => setOpen(!open)}>
+                <Box
+                  role="button"
+                  onClick={() => setOpen(!open)}
+                  sx={{
+                    width: 6,
+                    height: 6,
+                    right: '0',
+                    top: '0',
+                    position: 'relative'
+                  }}
+                >
                   {iconTransitions.map(({ item, key, props }) =>
                     item ? (
                       <Anim key={key} style={props}>
-                        <Icon as={CloseIcon} />
+                        <CloseIcon sx={iconStyle} />
                       </Anim>
                     ) : (
                       <Anim key={key} style={props}>
-                        <Icon as={MenuIcon} />
+                        <MenuIcon sx={iconStyle} />
                       </Anim>
                     )
                   )}
-                </IconWrap>
+                </Box>
               )}
             </Flex>
           </Container>
-        </Card>
+        </div>
         {menuTransitions.map(({ item, key, props }) =>
           item ? (
             <animated.div
@@ -125,6 +127,6 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
           ) : null
         )}
       </Headroom>
-    </Box>
+    </header>
   )
 }

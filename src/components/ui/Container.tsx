@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Box, SxProps } from 'rebass'
+import { jsx, Box, SxProps } from 'theme-ui'
 import { Children } from '../../utils/types'
 
 type Props = Partial<SxProps> & {

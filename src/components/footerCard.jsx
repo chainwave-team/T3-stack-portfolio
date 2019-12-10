@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import uuid from 'uuid'
-import { Flex, Heading, Link as RebassLink } from 'rebass'
+// import { Flex, Heading, Link as RebassLink } from 'rebass'
 
 import Link from './ui/Link'
-import { shadows } from '../gatsby-plugin-theme-ui'
+import { shadows } from '../styles/theme'
 import Html from './ui/Html'
 
 const isMail = link => /(mailto:)/g.test(link)

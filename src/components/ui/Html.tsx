@@ -1,23 +1,14 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, Box } from 'theme-ui'
 
-import styled from '../../utils/styled'
+import theme from '../../styles/theme'
 
-const HTML = styled.div`
-  .wysiwyg h1,
-  .wysiwyg h2,
-  .wysiwyg p {
-    color: ${props => props.theme.colors.black};
+const { styles } = theme
+
+export default function Html({ html }: { html?: string }) {
+  if (html) {
+    // eslint-disable-next-line react/no-danger
+    return <Box sx={styles} dangerouslySetInnerHTML={{ __html: html }} />
   }
-
-  .wysiwyg h1 {
-    font-size: ${props => props.theme.fontSizes[5]};
-  }
-
-  .wysiwyg h2 {
-    font-size: ${props => props.theme.fontSizes[4]};
-  }
-`
-
-export default function({ html }: { html: string }) {
-  return <HTML dangerouslySetInnerHTML={{ __html: html }} />
+  return null
 }

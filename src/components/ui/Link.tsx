@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Link as BaseLink } from 'rebass'
 import { Link as GatsbyLink } from 'gatsby'
 
 import { Children } from '../../utils/types'
@@ -34,9 +33,9 @@ const Link = ({
     )
   }
   return (
-    <BaseLink href={to} {...other}>
+    <a href={to} {...other}>
       {children}
-    </BaseLink>
+    </a>
   )
 }
 export default Link

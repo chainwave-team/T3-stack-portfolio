@@ -3,7 +3,7 @@
   "private": false,
   "description": "A simple portfolio made with Gatsby",
   "version": "0.1.0",
-  "author": "Julien <juliencaron18@gmail.com>",
+  "author": "Julien <juliencaron@protonmail.com>",
   "keywords": [
     "gatsby"
   ],
@@ -40,7 +40,6 @@
     "react-spring": "^8.0.27",
     "react-use": "^13.11.0",
     "react-visibility-sensor": "^5.0.2",
-    "rebass": "^4.0.7",
     "slick-carousel": "^1.8.1",
     "theme-ui": "^0.2.49",
     "uuid": "^3.3.3"
@@ -55,7 +54,6 @@
     "@types/react-scroll": "^1.5.4",
     "@types/react-slick": "^0.23.4",
     "@types/react-visibility-sensor": "^5.0.1",
-    "@types/rebass": "^4.0.3",
     "@types/theme-ui": "^0.2.5",
     "@types/uuid": "^3.4.6",
     "@typescript-eslint/eslint-plugin": "^2.10.0",

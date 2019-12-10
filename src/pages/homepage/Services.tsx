@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import React, { useState } from 'react'
+import { jsx, Styled } from 'theme-ui'
+import { useState } from 'react'
 import uuid from 'uuid'
 import { useBreakpointIndex } from '@theme-ui/match-media'
-import { Heading, Card } from 'rebass'
 
 import Fade from '../../components/ui/Fade'
 import Accordion from '../../components/ui/Accordion'
@@ -58,7 +57,7 @@ export default function ServicesSection({ title, items }: Props) {
       style={!matches ? { width: `100%` } : {}}
     >
       <Fade>
-        <Card
+        <div
           sx={{
             bg: 'blue',
             py: [5, 6],
@@ -68,18 +67,7 @@ export default function ServicesSection({ title, items }: Props) {
             boxShadow: 1
           }}
         >
-          <Heading
-            sx={{
-              fontSize: [4, 5],
-              lineHeight: 1,
-              pb: 4,
-              color: 'white',
-              fontFamily: 'heading',
-              fontWeight: 7
-            }}
-          >
-            {title}
-          </Heading>
+          <Styled.h3 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h3>
           {items.map(({ service_title, service_textarea }, i: number) => (
             <Accordion
               key={uuid(i)}
@@ -90,7 +78,7 @@ export default function ServicesSection({ title, items }: Props) {
               height={sections[i].height}
             />
           ))}
-        </Card>
+        </div>
       </Fade>
     </Container>
   )

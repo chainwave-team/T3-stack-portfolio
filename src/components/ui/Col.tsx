@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Box } from 'rebass'
+import { jsx, Box, SxProps } from 'theme-ui'
 
-const Col = props => (
+const Col = (props: Partial<SxProps>) => (
   <Box
     {...props}
     sx={{

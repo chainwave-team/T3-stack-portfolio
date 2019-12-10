@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
-import { Flex, Text, Heading } from 'rebass'
 
 import { PrismicText, PrismicTechTag } from '../../utils/types'
 import Html from './Html'
@@ -24,8 +23,10 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
         mx: [0, 0, -3]
       }}
     >
-      <Text sx={{ color: 'cyan' }}>{projectType ? projectType.text : ''}</Text>
-      <Heading>{title && title.text}</Heading>
+      <Styled.p sx={{ color: 'cyan' }}>
+        {projectType ? projectType.text : ''}
+      </Styled.p>
+      <Styled.h4>{title && title.text}</Styled.h4>
       <div
         sx={{
           boxShadow: 3,
@@ -37,7 +38,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       >
         {html && <Html html={html.html} />}
       </div>
-      <Text>
+      <Styled.p>
         {tags.map(tag => (
           <span
             title={tag.description ? tag.description.text : ''}
@@ -47,7 +48,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
             {tag.title.text}
           </span>
         ))}
-      </Text>
+      </Styled.p>
     </Flex>
   )
 }

@@ -1,19 +1,31 @@
 /* eslint-disable import/no-unresolved */
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Button, Text, Heading } from 'rebass'
 
-import styled from '../../utils/styled'
 import BaseLink from '../ui/Link'
 import Fade from '../ui/Fade'
 import Row from '../ui/Row'
 import Col from '../ui/Col'
 import Container from '../ui/Container'
+import Button from '../ui/Button'
+import { PrismicLink } from '../../utils/types'
 
-const Link = styled(BaseLink)`
-  margin-left: ${props => props.theme.space[3]}px;
-`
+type LinkProps = {
+  link: PrismicLink
+  label: string
+}
+
+const Link = ({ link, label }: LinkProps) => (
+  <Styled.a
+    as={BaseLink}
+    to={link.url}
+    target={link.target}
+    sx={{ ml: 3, color: 'white' }}
+  >
+    {label}
+  </Styled.a>
+)
 
 export default function Footer() {
   const { prismicOptions } = useStaticQuery(
@@ -59,18 +71,10 @@ export default function Footer() {
       <Container sx={{ py: [4, 5] }}>
         <Row sx={{ py: 5 }} fade>
           <Col>
-            <Heading fontSize={5}>{footer_text}</Heading>
+            <Styled.h4>{footer_text}</Styled.h4>
           </Col>
           <Col>
-            <Button
-              sx={{
-                px: 5,
-                py: 3,
-                fontSize: 3
-              }}
-            >
-              Contact
-            </Button>
+            <Button sx={{ px: 5, py: 3, fontSize: 3 }}>Contact</Button>
           </Col>
         </Row>
         <Fade>
@@ -78,29 +82,14 @@ export default function Footer() {
         </Fade>
         <Row sx={{ pt: 4 }} fade>
           <Col>
-            <Text
-              sx={{
-                m: 0,
-                color: 'grey.8'
-              }}
-            >
+            <Styled.p sx={{ m: 0 }}>
               {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
-            </Text>
+            </Styled.p>
           </Col>
           <Col>
-            <Link
-              to={linkedin_url.url}
-              target={linkedin_url.target}
-              style={{ marginLeft: 0 }}
-            >
-              Linkedin
-            </Link>
-            <Link to={malt_url.url} target={malt_url.target}>
-              Malt
-            </Link>
-            <Link to={github_url.url} target={github_url.target}>
-              Github
-            </Link>
+            <Link link={linkedin_url} label="Linkedin" sx={{ ml: 0 }} />
+            <Link link={malt_url} label="Malt" />
+            <Link link={github_url} label="Github" />
           </Col>
         </Row>
       </Container>
