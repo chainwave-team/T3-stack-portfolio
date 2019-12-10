@@ -54,4 +54,5 @@ export type themeType = {
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styles: any
+  buttons: any
 }

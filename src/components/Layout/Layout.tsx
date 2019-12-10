@@ -1,5 +1,5 @@
-import React from 'react'
-import { ThemeProvider as Theme, Styled } from 'theme-ui'
+/** @jsx jsx */
+import { ThemeProvider as Theme, Styled, jsx } from 'theme-ui'
 
 import GlobalStyle from '../../styles/GlobalStyle'
 import Header from './Header'
@@ -13,7 +13,9 @@ export default function Layout({ children }: { children: Children }) {
       <Styled.root>
         <GlobalStyle />
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" sx={{ flex: 1 }}>
+          {children}
+        </main>
         <Footer />
       </Styled.root>
     </Theme>

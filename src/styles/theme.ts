@@ -73,7 +73,10 @@ const theme: themeType = {
     root: {
       ...typography.root,
       bg: 'darkBlue',
-      color: 'text'
+      color: 'text',
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh'
     },
     a: linkStyle,
     button: linkStyle,
