@@ -1,37 +1,37 @@
 [
     {
-        "id": "blog_post",
-        "name": "Blog Post", 
+        "id": "post",
+        "name": "Post",
         "repeatable": true,
-        "value": "blog_post.json"
+        "value": "post.json"
     },
     {
         "id": "homepage",
-        "name": "Homepage", 
+        "name": "Homepage",
         "repeatable": false,
         "value": "homepage.json"
     },
     {
         "id": "options",
-        "name": "Options", 
+        "name": "Options",
         "repeatable": false,
         "value": "options.json"
     },
     {
         "id": "project",
-        "name": "Project", 
+        "name": "Project",
         "repeatable": true,
         "value": "project.json"
     },
     {
         "id": "project_type",
-        "name": "Project Type", 
+        "name": "Project Type",
         "repeatable": true,
         "value": "project_type.json"
     },
     {
         "id": "tech_tags",
-        "name": "Tech Tags", 
+        "name": "Tech Tags",
         "repeatable": true,
         "value": "tech_tags.json"
     }
