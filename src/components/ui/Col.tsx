@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import { jsx, Box, SxProps } from 'theme-ui'
+import { jsx } from 'theme-ui'
 
-const Col = (props: Partial<SxProps>) => (
-  <Box
+const Col = (props: any) => (
+  <div
     {...props}
     sx={{
-      my: 3,
+      py: 3,
       px: 3,
-      width: ['full', 'auto']
+      width: ['full', 'auto'],
+      boxSizing: 'border-box'
     }}
   />
 )

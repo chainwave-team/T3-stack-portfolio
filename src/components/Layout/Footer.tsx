@@ -17,14 +17,9 @@ type LinkProps = {
 }
 
 const Link = ({ link, label }: LinkProps) => (
-  <Styled.a
-    as={BaseLink}
-    to={link.url}
-    target={link.target}
-    sx={{ ml: 3, color: 'white' }}
-  >
+  <BaseLink to={link.url} target={link.target} sx={{ ml: 3, color: 'white' }}>
     {label}
-  </Styled.a>
+  </BaseLink>
 )
 
 export default function Footer() {
@@ -87,8 +82,11 @@ export default function Footer() {
             </Styled.p>
           </Col>
           <Col>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link link={linkedin_url} label="Linkedin" sx={{ ml: 0 }} />
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link link={malt_url} label="Malt" />
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link link={github_url} label="Github" />
           </Col>
         </Row>

@@ -17,7 +17,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [7, 8],
+    fontSize: [6, 7],
     mt: 2
   },
   h2: {
@@ -26,7 +26,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [6, 7],
+    fontSize: [5, 6],
     mt: 2
   },
   h3: {
@@ -35,7 +35,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [5, 6],
+    fontSize: [4, 5],
     mt: 3
   },
   h4: {
@@ -44,7 +44,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [4, 5]
+    fontSize: [3, 4]
   },
   h5: {
     fontFamily: 'heading',
@@ -52,7 +52,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [3, 4]
+    fontSize: [2, 3]
   },
   h6: {
     fontFamily: 'heading',
@@ -60,11 +60,16 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 2,
-    fontSize: [2, 3]
+    fontSize: [1, 2]
   },
   pre: {
     fontFamily: 'monospace',
     overflowX: 'auto',
+    bg: 'black',
+    my: 4,
+    mx: -4,
+    px: 4,
+    py: 3,
     code: {
       color: 'inherit'
     }

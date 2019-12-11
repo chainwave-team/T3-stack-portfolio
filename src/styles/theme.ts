@@ -56,7 +56,8 @@ const theme: themeType = {
   breakpoints: ['640px', '768px', '1024px', '1280px'],
   sizes: {
     ...sizes,
-    container: 1180
+    container: 1180,
+    blog: 780
   },
   buttons: {
     primary: {

@@ -1,18 +1,19 @@
 /** @jsx jsx */
-import { jsx, Flex, SxProps } from 'theme-ui'
+import { jsx } from 'theme-ui'
 
 import Fade from './Fade'
 
-type Props = Partial<SxProps> & {
+type Props = {
   fade?: boolean
 }
 
 const Row = (props: Props) => {
   const { fade } = props
   const Component = (
-    <Flex
+    <div
       {...props}
       sx={{
+        display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',

@@ -1,33 +1,31 @@
 /** @jsx jsx */
-import { jsx, Box, SxProps } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { Children } from '../../utils/types'
 
-type Props = Partial<SxProps> & {
+type Props = {
   children: Children
   section?: boolean
-  id?: string
+  size?: 'blog' | 'container' | 'full'
 }
 
 export default function Container({
-  section = false,
-  id = '',
+  section,
   children,
+  size,
   ...props
 }: Props) {
   return (
-    <Box
+    <div
       {...props}
-      id={id}
-      as={section ? 'section' : 'div'}
       sx={{
-        maxWidth: 'container',
+        maxWidth: size || 'container',
         position: 'relative',
-        width: '90%',
+        width: size === 'full' ? '100%' : '90%',
         mx: 'auto',
         py: section ? 6 : 0
       }}
     >
       {children}
-    </Box>
+    </div>
   )
 }

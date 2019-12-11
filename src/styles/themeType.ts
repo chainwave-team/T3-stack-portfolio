@@ -51,6 +51,7 @@ export type themeType = {
   breakpoints: Array<number | string>
   sizes: object & {
     container: number
+    blog: number
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styles: any

@@ -67,7 +67,7 @@ export default function ServicesSection({ title, items }: Props) {
             boxShadow: 1
           }}
         >
-          <Styled.h3 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h3>
+          <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
           {items.map(({ service_title, service_textarea }, i: number) => (
             <Accordion
               key={uuid(i)}

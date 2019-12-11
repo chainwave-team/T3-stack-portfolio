@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Styled } from 'theme-ui'
+import { jsx, Flex } from 'theme-ui'
 
 import AppleButtons from './AppleButtons'
 import Link from '../ui/Link'
@@ -27,8 +27,7 @@ export default function Navbar({ theme, url = '', screenWidth }: Props) {
       <AppleButtons />
 
       {url && url !== '' && (
-        <Styled.a
-          as={Link}
+        <Link
           to={url}
           target="_blank"
           sx={{
@@ -43,7 +42,7 @@ export default function Navbar({ theme, url = '', screenWidth }: Props) {
         >
           <span sx={{ color: colors[theme].light }}>https://</span>
           <span sx={{ color: colors[theme].font }}>{trimUrl(url)}</span>
-        </Styled.a>
+        </Link>
       )}
     </Flex>
   )

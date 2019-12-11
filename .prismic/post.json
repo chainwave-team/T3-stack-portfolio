@@ -119,6 +119,19 @@
                                     "label": "Quote",
                                     "placeholder": "Post Quote..."
                                 }
+                            },
+                            "source_name": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Source Name"
+                                }
+                            },
+                            "source_link": {
+                                "type": "Link",
+                                "config": {
+                                    "allowTargetBlank": true,
+                                    "label": "Source Link"
+                                }
                             }
                         },
                         "repeat": {}
@@ -129,6 +142,18 @@
                         "description": "An image with an optional caption",
                         "icon": "image",
                         "non-repeat": {
+                            "image_size": {
+                                "type": "Select",
+                                "config": {
+                                    "options": [
+                                        "blog",
+                                        "container",
+                                        "full"
+                                    ],
+                                    "default_value": "blog",
+                                    "label": "Image size"
+                                }
+                            },
                             "image": {
                                 "type": "Image",
                                 "config": {
@@ -140,11 +165,10 @@
                                 }
                             },
                             "caption": {
-                                "type": "StructuredText",
+                                "type": "Text",
                                 "config": {
-                                    "single": "heading3",
                                     "label": "Caption",
-                                    "placeholder": "Image Caption..."
+                                    "placeholder": "Image Caption...."
                                 }
                             }
                         },

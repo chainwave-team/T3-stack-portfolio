@@ -8,9 +8,13 @@ type Props = {
 }
 
 const Hero = ({ title, meta }: Props) => (
-  <Container section>
-    <Styled.h2 as="h1">{title}</Styled.h2>
-    {meta ? <Styled.p sx={{ textAlign: 'right' }}>{meta}</Styled.p> : null}
+  <Container section sx={{ maxWidth: 'blog', mt: 5 }}>
+    <Styled.h1 as="h1">{title}</Styled.h1>
+    {meta ? (
+      <Styled.p sx={{ textAlign: 'right', color: 'grey.medium' }}>
+        {meta}
+      </Styled.p>
+    ) : null}
   </Container>
 )
 

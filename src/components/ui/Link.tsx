@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { Link as GatsbyLink } from 'gatsby'
 
 import { Children } from '../../utils/types'
@@ -10,6 +10,8 @@ type Props = {
   // pass it only to GatsbyLink
   activeClassName?: string
   partiallyActive?: boolean
+  // Else <a></a>
+  target?: string
 }
 
 const Link = ({
@@ -17,25 +19,27 @@ const Link = ({
   to,
   activeClassName,
   partiallyActive,
+  target = '',
   ...other
 }: Props) => {
   const internal = /^\/(?!\/)/.test(to)
   if (internal) {
     return (
-      <GatsbyLink
+      <Styled.a
+        as={GatsbyLink}
         to={to}
         activeClassName={activeClassName || 'active'}
         partiallyActive={partiallyActive || false}
         {...other}
       >
         {children}
-      </GatsbyLink>
+      </Styled.a>
     )
   }
   return (
-    <a href={to} {...other}>
+    <Styled.a href={to} target={target} {...other}>
       {children}
-    </a>
+    </Styled.a>
   )
 }
 export default Link
