@@ -20,8 +20,9 @@ export default function Button(props: Props) {
       py: 2
     },
     large: {
-      px: 4,
-      py: 3
+      px: 5,
+      py: 3,
+      fontSize: 3
     }
   }
 
@@ -40,9 +41,9 @@ export default function Button(props: Props) {
         fontSize: 'inherit',
         fontWeight: 'bold',
         m: 0,
-        ...padding[size || 'medium'],
         border: '2px solid',
-        borderRadius: 0
+        borderRadius: 0,
+        ...padding[size || 'medium']
       }}
     >
       {children}

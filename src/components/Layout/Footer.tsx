@@ -69,7 +69,7 @@ export default function Footer() {
             <Styled.h3>{footer_text}</Styled.h3>
           </Col>
           <Col>
-            <Button sx={{ px: 5, py: 3, fontSize: 3 }}>Contact</Button>
+            <Button size="large">Contact</Button>
           </Col>
         </Row>
         <Fade>
