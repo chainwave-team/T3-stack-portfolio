@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { ThemeProvider as Theme, Styled, jsx } from 'theme-ui'
 
-import GlobalStyle from '../../styles/GlobalStyle'
+import GlobalStyle from '../../styles/Global'
 import Header from './Header'
 import Footer from './Footer'
 import theme from '../../styles/theme'

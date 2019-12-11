@@ -66,7 +66,7 @@ export default function Footer() {
       <Container sx={{ py: [4, 5] }}>
         <Row sx={{ py: 5 }} fade>
           <Col>
-            <Styled.h4>{footer_text}</Styled.h4>
+            <Styled.h3>{footer_text}</Styled.h3>
           </Col>
           <Col>
             <Button sx={{ px: 5, py: 3, fontSize: 3 }}>Contact</Button>
