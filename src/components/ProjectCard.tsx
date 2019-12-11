@@ -2,8 +2,8 @@
 import { jsx, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
 
-import { PrismicText, PrismicTechTag } from '../../utils/types'
-import Html from './Html'
+import { PrismicText, PrismicTechTag } from '../utils/types'
+import Html from './ui/Html'
 
 type Props = {
   index: number
@@ -26,7 +26,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       <Styled.p sx={{ color: 'cyan' }}>
         {projectType ? projectType.text : ''}
       </Styled.p>
-      <Styled.h4>{title && title.text}</Styled.h4>
+      <Styled.h3>{title && title.text}</Styled.h3>
       <div
         sx={{
           boxShadow: 3,

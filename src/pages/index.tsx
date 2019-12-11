@@ -3,9 +3,9 @@ import React from 'react'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
-import SectionHeader from './homepage/Header'
-import SectionSlider from './homepage/Slider'
-import ServicesSection from './homepage/Services'
+import SectionHeader from '../sections/homepage/Header'
+import SectionSlider from '../sections/homepage/Slider'
+import ServicesSection from '../sections/homepage/Services'
 import { PrismicProject, PrismicText } from '../utils/types'
 
 type Props = {

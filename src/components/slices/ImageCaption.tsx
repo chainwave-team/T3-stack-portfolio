@@ -26,7 +26,7 @@ export default function ImageCaption({ slice }: ImageCaptionSliceProps) {
     const { fluid } = image.localFile.childImageSharp
     return (
       <Container size={image_size}>
-        <div sx={{ py: 5 }}>
+        <div sx={{ my: 5 }}>
           <Img fluid={fluid} alt={image.alt || ''} />
           {caption ? (
             <Styled.p sx={{ textAlign: 'center' }}>{caption}</Styled.p>
