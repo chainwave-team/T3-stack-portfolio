@@ -4,7 +4,7 @@ import { Children } from '../../utils/types'
 
 type Props = {
   children: Children
-  variant?: 'primary' /* | 'secondary' */
+  variant?: 'primary' | 'secondary'
   size?: 'small' | 'medium' | 'large'
 }
 

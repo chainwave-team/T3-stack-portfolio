@@ -7,6 +7,7 @@ import uuid from 'uuid'
 import Layout from '../components/Layout/Layout'
 import Hero from '../components/ui/Hero'
 import Text from '../components/slices/Text'
+import Code from '../components/slices/Code'
 import Quote from '../components/slices/Quote'
 import ImageCaption from '../components/slices/ImageCaption'
 import { PrismicText } from '../utils/types'
@@ -65,6 +66,17 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on PrismicPostBodyCode {
+            id
+            slice_type
+            slice_label
+            primary {
+              code {
+                html
+                text
+              }
+            }
+          }
         }
       }
     }
@@ -94,6 +106,13 @@ const PostSlices = ({ slices }: { slices: Array<Slice> }) => {
           return (
             <Fragment key={uuid()}>
               <Quote slice={slice} />
+            </Fragment>
+          )
+
+        case 'code':
+          return (
+            <Fragment key={uuid()}>
+              <Code slice={slice} />
             </Fragment>
           )
 

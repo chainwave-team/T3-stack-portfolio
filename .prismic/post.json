@@ -97,7 +97,7 @@
                             "text": {
                                 "type": "StructuredText",
                                 "config": {
-                                    "multi": "paragraph, preformatted, heading2, heading3, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
+                                    "multi": "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
                                     "allowTargetBlank": true,
                                     "label": "Text",
                                     "placeholder": "Post text..."
@@ -169,6 +169,39 @@
                                 "config": {
                                     "label": "Caption",
                                     "placeholder": "Image Caption...."
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "code": {
+                        "type": "Slice",
+                        "fieldset": "Code",
+                        "description": "A block Code section",
+                        "icon": "code",
+                        "display": "list",
+                        "non-repeat": {
+                            "code": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "preformatted",
+                                    "allowTargetBlank": true,
+                                    "label": "Code",
+                                    "labels": [
+                                        "javascript",
+                                        "jsx",
+                                        "typescript",
+                                        "tsx",
+                                        "bash",
+                                        "yaml",
+                                        "json",
+                                        "css",
+                                        "scss",
+                                        "markdown",
+                                        "graphql",
+                                        "sql",
+                                        "php"
+                                    ]
                                 }
                             }
                         },

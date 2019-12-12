@@ -1,3 +1,4 @@
+import { link } from 'fs'
 import typography from './typography'
 import sizes from './sizes'
 import colors from './colors'
@@ -14,7 +15,7 @@ const linkStyle = {
   }
 }
 
-const theme: themeType = {
+export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     body: `"Courier Next", courier, monospace;`, // ? Fira
@@ -67,6 +68,14 @@ const theme: themeType = {
       '&:hover': {
         color: 'secondary'
       }
+    },
+    secondary: {
+      fontWeight: 'bold',
+      color: 'secondary',
+      bg: 'transparent',
+      '&:hover': {
+        color: 'primary'
+      }
     }
   },
   styles: {
@@ -107,5 +116,3 @@ const theme: themeType = {
     }
   }
 }
-
-export default theme

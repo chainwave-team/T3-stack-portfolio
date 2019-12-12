@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
+const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
+
 module.exports = {
   siteMetadata: {
     title: `Julien CARON`,
@@ -32,14 +34,13 @@ module.exports = {
         repositoryName: `junscuzzy-portfolio`,
         accessToken: `${process.env.API_KEY}`,
         linkResolver: () => post => `/${post.uid}`,
-        // htmlSerializer: () => prismicHtmlSerializer,
+        htmlSerializer: () => prismicHtmlSerializer,
         lang: 'fr-fr'
       }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

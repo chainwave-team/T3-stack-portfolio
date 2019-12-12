@@ -1,3 +1,5 @@
+import dracula from '@theme-ui/prism/presets/dracula'
+
 const typography = {
   root: {
     fontFamily: 'body',
@@ -26,7 +28,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [5, 6],
+    fontSize: [3, 4, 5, 7],
     mt: 2
   },
   h3: {
@@ -44,7 +46,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 1,
-    fontSize: [3, 4]
+    fontSize: [3, 4, 5, 7]
   },
   h5: {
     fontFamily: 'heading',
@@ -69,12 +71,13 @@ const typography = {
     my: 4,
     mx: -4,
     px: 4,
-    py: 3,
-    code: {
-      color: 'inherit'
-    }
+    py: 3
+    // code: {
+    //   color: 'inherit'
+    // }
   },
   code: {
+    // ...dracula,
     fontFamily: 'monospace',
     fontSize: 'inherit'
   },
