@@ -1,31 +1,34 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import Container from '../ui/Container'
-import PrismCode from '../ui/PrismCode'
+import Container from '../ui/Container.tsx'
+import { ProgrammingLangs } from '../ui/PrismCode/utils.tsx'
+import PrismCode from '../ui/PrismCode/PrismCode.tsx'
+import Fade from '../ui/Fade'
 
 export type TextSliceProps = {
   slice: {
     primary: {
-      code: {
-        html?: string
+      code?: {
+        html: string
+        text: string
+        raw: {
+          label?: ProgrammingLangs
+        }[]
       }
     }
-    slice_label?: string
   }
 }
 
 export default function Code({ slice }: TextSliceProps) {
-  const code = slice.primary.code.html || ''
-  const language = slice.slice_label || 'markup'
+  const { code } = slice.primary
+  if (!code) return null
 
   return (
     <Container sx={{ maxWidth: 'blog' }}>
-      <PrismCode
-        code={code}
-        language={language}
-        plugins="line-numbers copy-to-clipboard"
-      />
+      <Fade>
+        <PrismCode code={code} />
+      </Fade>
     </Container>
   )
 }

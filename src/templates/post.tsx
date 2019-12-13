@@ -74,6 +74,9 @@ export const pageQuery = graphql`
               code {
                 html
                 text
+                raw {
+                  label
+                }
               }
             }
           }
@@ -84,9 +87,7 @@ export const pageQuery = graphql`
 `
 
 type Slice = {
-  //   id: string
   slice_type: string
-  //   __typename: string
   primary: any
 }
 

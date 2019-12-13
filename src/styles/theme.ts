@@ -1,8 +1,6 @@
-import { link } from 'fs'
 import typography from './typography'
 import sizes from './sizes'
 import colors from './colors'
-import { themeType } from './themeType'
 
 const linkStyle = {
   color: 'cyan',
@@ -46,7 +44,6 @@ export default {
     heading: 1.125
   },
   colors,
-  radii: [0, 1, 2, 4, 8, 9999],
   shadows: [
     '0',
     '0px 0px 4px 2px rgba( 0, 0, 0, 0.2 )',
@@ -95,6 +92,14 @@ export default {
       width: '100%',
       borderCollapse: 'separate',
       borderSpacing: 0
+    },
+    pre: {
+      fontFamily: 'monospace',
+      fontSize: 'inherit'
+    },
+    code: {
+      fontFamily: 'monospace',
+      fontSize: 'inherit'
     },
     // ul: {
     //   padding: 0

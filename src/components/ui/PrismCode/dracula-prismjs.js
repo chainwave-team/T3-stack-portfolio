@@ -9,28 +9,23 @@ const dracula = css`
  * Adapted for theme-ui/prismic.js by Julien Caron [@junscuzzy]
  */
 
+  pre.line-numbers,
+  code.line-numbers {
+    .line-numbers-rows {
+      border-color: #6272a4 !important; /* dracula comment */
+      & > span:before {
+        color: #6272a4 !important; /* dracula comment */
+      }
+    }
+  }
+
   code[class*='language-'],
   pre[class*='language-'] {
     color: #f8f8f2;
-    background: none;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     text-align: left;
     line-height: 1.5;
     hyphens: none;
-  }
-
-  /* Code blocks */
-  pre[class*='language-'] {
-    padding: 3em 2em;
-    margin: 3em -2em;
-    overflow: auto;
-    border-radius: 0.5em;
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  :not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    background: rgba(0, 0, 0, 0.4);
   }
 
   /* Inline code */

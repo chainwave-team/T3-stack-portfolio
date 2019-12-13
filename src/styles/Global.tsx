@@ -1,8 +1,8 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
 
-import normalize from '../libs/normalize'
-import tachyonsDebug from '../libs/tachyons-debug'
+import normalize from './normalize'
+import tachyonsDebug from './tachyons-debug'
 import theme from './theme'
 
 const { colors } = theme
@@ -13,7 +13,7 @@ export default () => (
   <Global
     styles={css`
       ${normalize};
-      ${!isDev && tachyonsDebug};
+      ${isDev && tachyonsDebug};
 
       /* Custom ScrollBar */
       ::-webkit-scrollbar {

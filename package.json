@@ -25,6 +25,7 @@
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-react-svg": "^2.1.1",
     "gatsby-plugin-sharp": "^2.2.7",
+    "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
