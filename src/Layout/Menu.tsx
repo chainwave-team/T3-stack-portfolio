@@ -56,23 +56,22 @@ export default function Menu({ links, vertical, click }: Props) {
           }
 
           if (anchor) {
-            props.smooth = true
-            props.isDynamic = true
-          } else {
-            props.target = target || ''
+            return (
+              <Styled.a {...props} as={ScrollLink} smooth isDynamic>
+                {name}
+              </Styled.a>
+            )
           }
-          return <Styled.a {...props}>{name}</Styled.a>
+          return (
+            <Link {...props} target={props.target || ''}>
+              {name}
+            </Link>
+          )
         })}
       <Box sx={{ ml: vertical ? 0 : 3 }}>
-        <Button
-          as={ScrollLink}
-          to="contact"
-          smooth
-          isDynamic
-          onClick={() => click()}
-        >
-          Me contacter
-        </Button>
+        <ScrollLink smooth isDynamic to="contact" onClick={() => click()}>
+          <Button>Me contacter</Button>
+        </ScrollLink>
       </Box>
     </Flex>
   )

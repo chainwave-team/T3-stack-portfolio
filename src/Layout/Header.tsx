@@ -70,15 +70,14 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
               }}
               as="nav"
             >
-              <Button
-                as={ScrollLink}
-                to="main"
+              <ScrollLink
                 smooth
                 isDynamic
+                to="main"
                 onClick={() => setOpen(false)}
               >
-                {siteTitle}
-              </Button>
+                <Button>{siteTitle}</Button>
+              </ScrollLink>
               {matches ? (
                 <Menu click={() => null} />
               ) : (

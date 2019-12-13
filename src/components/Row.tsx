@@ -1,15 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import Fade from './Fade'
-
-type Props = {
-  fade?: boolean
-}
-
-const Row = (props: Props) => {
-  const { fade } = props
-  const Component = (
+const Row = (props: any) => {
+  return (
     <div
       {...props}
       sx={{
@@ -21,8 +14,6 @@ const Row = (props: Props) => {
       }}
     />
   )
-
-  return fade ? <Fade>{Component}</Fade> : Component
 }
 
 export default Row

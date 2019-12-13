@@ -7,6 +7,7 @@ import Container from '../../components/Container'
 import Carousel from '../../components/Carousel/Carousel'
 import ProjectCard from '../../components/ProjectCard'
 import Row from '../../components/Row'
+import Fade from '../../components/Fade'
 import Col from '../../components/Col'
 import Mockup from '../../components/Mockup/Mockup'
 
@@ -36,11 +37,14 @@ export default function SectionSlider({ nodes }: Props) {
             },
             index
           ) => (
-              <article key={uuid()} sx={{ ':focus': { outline: 'none' } }}>
-                <Row fade>
+            <article key={uuid()} sx={{ ':focus': { outline: 'none' } }}>
+              <Fade>
+                <Row>
                   <Col sx={{ width: ['full', 'full', '2/3'] }}>
                     <Mockup
-                      fluid={full_screen.localFile.childImageSharp.fluid || null}
+                      fluid={
+                        full_screen.localFile.childImageSharp.fluid || null
+                      }
                       siteUrl={demo_link ? demo_link.url : ''}
                       srcUrl={source_link ? source_link.url : ''}
                       index={index}
@@ -59,8 +63,9 @@ export default function SectionSlider({ nodes }: Props) {
                     />
                   </Col>
                 </Row>
-              </article>
-            )
+              </Fade>
+            </article>
+          )
         )}
       </Carousel>
     </Container>

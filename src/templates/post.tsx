@@ -101,6 +101,7 @@ export default function PostTemplate({ data: { prismicPost } }: Props) {
       <div sx={{ mb: 6 }}>
         {data.body ? <PostSlices slices={data.body} /> : null}
       </div>
+      <div id="contact">contact</div>
     </Layout>
   )
 }

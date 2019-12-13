@@ -64,32 +64,36 @@ export default function Footer() {
   return (
     <footer sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
       <Container sx={{ py: [4, 5] }}>
-        <Row sx={{ py: 5 }} fade>
-          <Col>
-            <Styled.h3>{footer_text}</Styled.h3>
-          </Col>
-          <Col>
-            <Button size="large">Contact</Button>
-          </Col>
-        </Row>
+        <Fade>
+          <Row sx={{ py: 5 }}>
+            <Col>
+              <Styled.h3>{footer_text}</Styled.h3>
+            </Col>
+            <Col>
+              <Button size="large">Contact</Button>
+            </Col>
+          </Row>
+        </Fade>
         <Fade>
           <hr />
         </Fade>
-        <Row sx={{ pt: 4 }} fade>
-          <Col>
-            <Styled.p sx={{ m: 0 }}>
-              {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
-            </Styled.p>
-          </Col>
-          <Col>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <Link link={linkedin_url} label="Linkedin" sx={{ ml: 0 }} />
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <Link link={malt_url} label="Malt" />
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <Link link={github_url} label="Github" />
-          </Col>
-        </Row>
+        <Fade>
+          <Row sx={{ pt: 4 }}>
+            <Col>
+              <Styled.p sx={{ m: 0 }}>
+                {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
+              </Styled.p>
+            </Col>
+            <Col>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link link={linkedin_url} label="Linkedin" sx={{ ml: 0 }} />
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link link={malt_url} label="Malt" />
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link link={github_url} label="Github" />
+            </Col>
+          </Row>
+        </Fade>
       </Container>
     </footer>
   )
