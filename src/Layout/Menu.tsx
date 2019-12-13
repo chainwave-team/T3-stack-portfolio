@@ -42,7 +42,7 @@ export default function Menu({ links, vertical, click }: Props) {
       }}
     >
       {links &&
-        links.map(({ name, link, target, anchor = false }, index) => {
+        links.map(({ name, link, target, anchor = false }) => {
           const props: linkType = {
             key: uuid(),
             sx: {
@@ -63,7 +63,7 @@ export default function Menu({ links, vertical, click }: Props) {
             )
           }
           return (
-            <Link {...props} target={props.target || ''}>
+            <Link {...props} target={target || ''}>
               {name}
             </Link>
           )

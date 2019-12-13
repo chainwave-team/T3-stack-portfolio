@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import uuid from 'uuid'
@@ -78,3 +79,4 @@ FooterCard.defaultProps = {
 }
 
 export default FooterCard
+*/
