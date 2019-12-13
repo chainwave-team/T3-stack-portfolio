@@ -4,7 +4,7 @@ import { useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 import { useSpring, animated, config } from 'react-spring'
 
-import { Children } from '../../utils/types'
+import { Children } from '../utils/types'
 
 export default function Fade({ children }: { children: Children }) {
   const [isVisible, setVisible] = useState(false)

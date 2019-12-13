@@ -4,12 +4,12 @@ import { graphql } from 'gatsby'
 import { Fragment } from 'react'
 import uuid from 'uuid'
 
-import Layout from '../components/Layout/Layout'
-import Hero from '../components/ui/Hero'
-import Text from '../components/slices/Text'
-import Code from '../components/slices/Code'
-import Quote from '../components/slices/Quote'
-import ImageCaption from '../components/slices/ImageCaption'
+import Layout from '../Layout/Layout'
+import Hero from '../components/Hero'
+import Text from '../slices/Text'
+import Code from '../slices/Code'
+import Quote from '../slices/Quote'
+import ImageCaption from '../slices/ImageCaption'
 import { PrismicText } from '../utils/types'
 
 export const pageQuery = graphql`

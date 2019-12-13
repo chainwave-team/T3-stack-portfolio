@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import theme from '../../styles/theme'
+import theme from '../styles/theme'
 
 const { styles } = theme
 

@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import Layout from '../components/Layout/Layout'
-import SEO from '../components/Layout/SEO'
+import Layout from '../Layout/Layout'
+import SEO from '../Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
 import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'

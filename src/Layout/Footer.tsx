@@ -3,13 +3,13 @@
 import { jsx, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import BaseLink from '../ui/Link'
-import Fade from '../ui/Fade'
-import Row from '../ui/Row'
-import Col from '../ui/Col'
-import Container from '../ui/Container'
-import Button from '../ui/Button'
-import { PrismicLink } from '../../utils/types'
+import BaseLink from '../components/Link'
+import Fade from '../components/Fade'
+import Row from '../components/Row'
+import Col from '../components/Col'
+import Container from '../components/Container'
+import Button from '../components/Button'
+import { PrismicLink } from '../utils/types'
 
 type LinkProps = {
   link: PrismicLink

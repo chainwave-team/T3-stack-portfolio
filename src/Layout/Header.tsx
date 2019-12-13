@@ -10,8 +10,8 @@ import { useClickAway } from 'react-use'
 import Menu from './Menu'
 import CloseIcon from '../../assets/svg/close.svg'
 import MenuIcon from '../../assets/svg/menu.svg'
-import Container from '../ui/Container'
-import Button from '../ui/Button'
+import Container from '../components/Container'
+import Button from '../components/Button'
 
 const iconStyle = {
   fill: 'cyan',

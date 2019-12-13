@@ -4,12 +4,12 @@ import { Link as ScrollLink } from 'react-scroll'
 import { graphql, useStaticQuery } from 'gatsby'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 
-import Row from '../../components/ui/Row'
-import Col from '../../components/ui/Col'
-import Html from '../../components/ui/Html'
-import Container from '../../components/ui/Container'
+import Row from '../../components/Row'
+import Col from '../../components/Col'
+import Html from '../../components/Html'
+import Container from '../../components/Container'
 import CoderSVG from '../../assets/svg/coder.svg'
-import Button from '../../components/ui/Button'
+import Button from '../../components/Button'
 
 type Props = {
   textarea?: string

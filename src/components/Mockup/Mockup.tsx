@@ -2,7 +2,7 @@
 import { jsx, Box } from 'theme-ui'
 import { keyframes } from '@emotion/core'
 
-import GithubCorner from '../ui/GithubCorner'
+import GithubCorner from '../GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
 import Navbar from './Navbar'
 import { colors, screen } from './config'

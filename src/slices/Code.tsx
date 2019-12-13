@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import Container from '../ui/Container.tsx'
 import { ProgrammingLangs } from '../ui/PrismCode/utils.tsx'
 import PrismCode from '../ui/PrismCode/PrismCode.tsx'
-import Fade from '../ui/Fade'
+import Fade from '../components/Fade'
 
 export type TextSliceProps = {
   slice: {

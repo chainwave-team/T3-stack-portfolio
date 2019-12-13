@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import { Link as GatsbyLink } from 'gatsby'
 
-import { Children } from '../../utils/types'
+import { Children } from '../utils/types'
 
 type Props = {
   to: string

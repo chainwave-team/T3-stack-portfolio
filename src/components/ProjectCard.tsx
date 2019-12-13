@@ -3,7 +3,7 @@ import { jsx, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
 
 import { PrismicText, PrismicTechTag } from '../utils/types'
-import Html from './ui/Html'
+import Html from './Html'
 
 type Props = {
   index: number

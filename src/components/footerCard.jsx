@@ -3,9 +3,9 @@ import { animated, useSpring } from 'react-spring'
 import uuid from 'uuid'
 // import { Flex, Heading, Link as RebassLink } from 'rebass'
 
-import Link from './ui/Link'
+import Link from './Link'
 import { shadows } from '../styles/theme'
-import Html from './ui/Html'
+import Html from './Html'
 
 const isMail = link => /(mailto:)/g.test(link)
 

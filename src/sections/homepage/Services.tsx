@@ -4,9 +4,9 @@ import { useState } from 'react'
 import uuid from 'uuid'
 import { useBreakpointIndex } from '@theme-ui/match-media'
 
-import Fade from '../../components/ui/Fade'
-import Accordion from '../../components/ui/Accordion'
-import Container from '../../components/ui/Container'
+import Fade from '../../components/Fade'
+import Accordion from '../../components/Accordion'
+import Container from '../../components/Container'
 
 type Section = {
   key: number

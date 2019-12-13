@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Html from '../ui/Html'
-import Container from '../ui/Container'
+import Html from '../components/Html'
+import Container from '../components/Container'
 
 export type TextSliceProps = {
   slice: { primary: { text: { html: string } } }

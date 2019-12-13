@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import Img from 'gatsby-image'
-import Container from '../ui/Container'
+import Container from '../components/Container'
 
 export type ImageCaptionSliceProps = {
   slice: {
