@@ -51,3 +51,8 @@ export type PrismicProject = {
   }
   relations: Array<{ tech_tags: { document: { data: PrismicTechTag } } }>
 }
+
+export type Slice = {
+  slice_type: string
+  primary: any
+}

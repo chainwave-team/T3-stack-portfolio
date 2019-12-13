@@ -1,16 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { Fragment } from 'react'
-import uuid from 'uuid'
 
 import Layout from '../Layout/Layout'
 import Hero from '../components/Hero'
-import Text from '../slices/Text'
-import Code from '../slices/Code'
-import Quote from '../slices/Quote'
-import ImageCaption from '../slices/ImageCaption'
-import { PrismicText } from '../utils/types'
+import { PrismicText, Slice } from '../utils/types'
+import PostSlices from '../components/PostSlices'
 
 export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
@@ -85,52 +80,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
-type Slice = {
-  slice_type: string
-  primary: any
-}
-
-// Sort and display the different slice options
-const PostSlices = ({ slices }: { slices: Array<Slice> }) => {
-  return slices.map(slice => {
-    const res = (() => {
-      switch (slice.slice_type) {
-        case 'text':
-          return (
-            <Fragment key={uuid()}>
-              <Text slice={slice} />
-            </Fragment>
-          )
-
-        case 'quote':
-          return (
-            <Fragment key={uuid()}>
-              <Quote slice={slice} />
-            </Fragment>
-          )
-
-        case 'code':
-          return (
-            <Fragment key={uuid()}>
-              <Code slice={slice} />
-            </Fragment>
-          )
-
-        case 'image_with_caption':
-          return (
-            <Fragment key={uuid()}>
-              <ImageCaption slice={slice} />
-            </Fragment>
-          )
-
-        default:
-          return null
-      }
-    })()
-    return res
-  })
-}
 
 type Props = {
   data: {
