@@ -8,8 +8,8 @@ import { useBreakpointIndex } from '@theme-ui/match-media'
 import { useClickAway } from 'react-use'
 
 import Menu from './Menu'
-import CloseIcon from '../../assets/svg/close.svg'
-import MenuIcon from '../../assets/svg/menu.svg'
+import CloseIcon from '../assets/svg/close.svg'
+import MenuIcon from '../assets/svg/menu.svg'
 import Container from '../components/Container'
 import Button from '../components/Button'
 
