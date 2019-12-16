@@ -23,7 +23,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
         mx: [0, 0, -3]
       }}
     >
-      <Styled.p sx={{ color: 'cyan' }}>
+      <Styled.p sx={{ color: 'primary' }}>
         {projectType ? projectType.text : ''}
       </Styled.p>
       <Styled.h3>{title && title.text}</Styled.h3>

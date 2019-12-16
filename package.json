@@ -82,7 +82,7 @@
     "develop": "gatsby develop",
     "lint": "eslint --ignore-path .gitignore src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "yarn lint --fix",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "graphql-types": "graphql get-schema",

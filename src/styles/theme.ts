@@ -3,7 +3,7 @@ import sizes from './sizes'
 import colors from './colors'
 
 const linkStyle = {
-  color: 'cyan',
+  color: 'primary',
   textDecoration: 'none',
   cursor: 'pointer',
   transition: 'color 200ms ease',
@@ -79,7 +79,7 @@ export default {
     ...typography,
     root: {
       ...typography.root,
-      bg: 'darkBlue',
+      bg: 'bg',
       color: 'text',
       display: 'flex',
       flexDirection: 'column',
@@ -99,7 +99,17 @@ export default {
     },
     code: {
       fontFamily: 'monospace',
-      fontSize: 'inherit'
+      '&.inline-code': {
+        fontSize: 'text',
+        fontFamily: 'code',
+        lineHeight: 'body',
+        fontWeight: 'body',
+        color: 'dracula.green',
+        bg: 'black',
+        px: 2,
+        py: 1,
+        borderRadius: '0.5rem'
+      }
     },
     // ul: {
     //   padding: 0

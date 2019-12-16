@@ -34,8 +34,9 @@ const codeBlock = [
   'sql',
   'php'
 ]
+// console.log({ Elements })
 
-const htmlSerializer = (type, element) => {
+const htmlSerializer = (type, element, content) => {
   switch (type) {
     case Elements.preformatted: {
       const language = codeBlock.includes(element.label)
@@ -48,6 +49,9 @@ const htmlSerializer = (type, element) => {
         element.text,
         Prism.languages[language]
       )}</code></pre>`
+    }
+    case Elements.em: {
+      return `<code class="inline-code">${content}</code>`
     }
 
     // case Elements.heading2: {

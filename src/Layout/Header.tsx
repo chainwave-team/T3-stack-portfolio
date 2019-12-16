@@ -14,7 +14,7 @@ import Container from '../components/Container'
 import Button from '../components/Button'
 
 const iconStyle = {
-  fill: 'cyan',
+  fill: 'primary',
   position: 'absolute'
 }
 
@@ -56,7 +56,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
       <Headroom style={{ maxWidth: '100%' }}>
         <div
           sx={{
-            bg: 'darkBlue',
+            bg: 'bg',
             boxShadow: 3
           }}
         >
@@ -81,30 +81,30 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
               {matches ? (
                 <Menu click={() => null} />
               ) : (
-                <Box
-                  role="button"
-                  onClick={() => setOpen(!open)}
-                  sx={{
-                    width: 6,
-                    height: 6,
-                    right: '0',
-                    top: '0',
-                    position: 'relative'
-                  }}
-                >
-                  {iconTransitions.map(({ item, key, props }) =>
-                    item ? (
-                      <Anim key={key} style={props}>
-                        <CloseIcon sx={iconStyle} />
-                      </Anim>
-                    ) : (
-                      <Anim key={key} style={props}>
-                        <MenuIcon sx={iconStyle} />
-                      </Anim>
-                    )
-                  )}
-                </Box>
-              )}
+                  <Box
+                    role="button"
+                    onClick={() => setOpen(!open)}
+                    sx={{
+                      width: 6,
+                      height: 6,
+                      right: '0',
+                      top: '0',
+                      position: 'relative'
+                    }}
+                  >
+                    {iconTransitions.map(({ item, key, props }) =>
+                      item ? (
+                        <Anim key={key} style={props}>
+                          <CloseIcon sx={iconStyle} />
+                        </Anim>
+                      ) : (
+                          <Anim key={key} style={props}>
+                            <MenuIcon sx={iconStyle} />
+                          </Anim>
+                        )
+                    )}
+                  </Box>
+                )}
             </Flex>
           </Container>
         </div>

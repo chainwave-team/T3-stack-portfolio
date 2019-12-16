@@ -2,9 +2,11 @@
 import { jsx, Styled } from 'theme-ui'
 import Img from 'gatsby-image'
 import Container from '../components/Container'
+import Fade from '../components/Fade'
 
 export type ImageCaptionSliceProps = {
   slice: {
+    slice_label?: 'blog' | 'container' | 'full'
     primary: {
       image?: {
         alt?: string
@@ -14,23 +16,26 @@ export type ImageCaptionSliceProps = {
           }
         }
       }
-      image_size: 'blog' | 'container' | 'full'
       caption?: string
     }
   }
 }
 
-export default function ImageCaption({ slice }: ImageCaptionSliceProps) {
-  const { image, caption, image_size } = slice.primary
+export default function ImageCaption({
+  slice: { primary, slice_label }
+}: ImageCaptionSliceProps) {
+  const { image, caption } = primary
   if (image && image.localFile && image.localFile.childImageSharp) {
     const { fluid } = image.localFile.childImageSharp
     return (
-      <Container size={image_size}>
+      <Container size={slice_label || 'blog'}>
         <div sx={{ my: 5 }}>
-          <Img fluid={fluid} alt={image.alt || ''} />
-          {caption ? (
-            <Styled.p sx={{ textAlign: 'center' }}>{caption}</Styled.p>
-          ) : null}
+          <Fade>
+            <Img fluid={fluid} alt={image.alt || ''} />
+            {caption ? (
+              <Styled.p sx={{ textAlign: 'center' }}>{caption}</Styled.p>
+            ) : null}
+          </Fade>
         </div>
       </Container>
     )

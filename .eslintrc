@@ -48,7 +48,6 @@
     "comma-dangle": "off",
     "no-absolute-path": 0,
     "no-console": "off",
-    "prettier/prettier": "error",
     "react/jsx-indent": "off",
     // "react-hooks/rules-of-hooks": "error",
     // "react-hooks/exhaustive-deps": "warn",
@@ -70,7 +69,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "prettier/prettier": "error",
   },
   "overrides": [
     // Override some TypeScript rules just for .js files

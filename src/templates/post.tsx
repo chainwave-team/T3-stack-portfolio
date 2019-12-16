@@ -3,6 +3,7 @@ import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 
 import Layout from '../Layout/Layout'
+import SEO from '../Layout/SEO'
 import Hero from '../components/Hero'
 import { PrismicText, Slice } from '../utils/types'
 import PostSlices from '../components/PostSlices'
@@ -21,20 +22,25 @@ export const pageQuery = graphql`
           ... on PrismicPostBodyImageWithCaption {
             id
             slice_type
+            slice_label
             prismicId
             primary {
               image {
                 alt
                 localFile {
                   childImageSharp {
-                    fluid {
+                    fluid(
+                      jpegQuality: 100
+                      pngQuality: 100
+                      quality: 100
+                      maxWidth: 1920
+                    ) {
                       ...GatsbyImageSharpFluid
                     }
                   }
                 }
               }
               caption
-              image_size
             }
           }
           ... on PrismicPostBodyQuote {
@@ -97,6 +103,7 @@ export default function PostTemplate({ data: { prismicPost } }: Props) {
   const { data, first_publication_date } = prismicPost
   return (
     <Layout>
+      <SEO title={data.title.text || ''} />
       <Hero title={data.title.text || ''} meta={first_publication_date} />
       <div sx={{ mb: 6 }}>
         {data.body ? <PostSlices slices={data.body} /> : null}

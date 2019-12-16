@@ -10,7 +10,7 @@ import Button from '../Button'
 
 import dracula from './dracula-prismjs'
 import { ProgrammingLangs, cssByLang, getPrettyName } from './utils'
-import { toolbar, pre } from './style'
+import { toolbar, pre, wrapper } from './style'
 
 import 'prismjs/components/prism-markup-templating' // Must be first
 import 'prismjs/components/prism-javascript'
@@ -50,9 +50,8 @@ export default function PrismCode({ code }: Props) {
   })
 
   return (
-    <pre
-      className="line-numbers"
-      sx={pre}
+    <div
+      sx={wrapper}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
@@ -78,9 +77,11 @@ export default function PrismCode({ code }: Props) {
         ) : null}
       </div>
 
-      <code className={`language-${language}`}>
-        <Html html={code.html} />
-      </code>
-    </pre>
+      <pre className="line-numbers" sx={pre}>
+        <code className={`language-${language}`}>
+          <Html html={code.html} />
+        </code>
+      </pre>
+    </div>
   )
 }

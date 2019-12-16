@@ -16,17 +16,20 @@ export const toolbar = {
   }
 }
 
-export const pre = {
+export const wrapper = {
   position: 'relative',
-  maxWidth: '100%',
   overflowX: 'auto',
+  boxShadow: 1,
   bg: 'rgba(0, 0, 0, 0.4)',
+  borderRadius: '0.5rem',
   my: [4, 5],
   mx: [-3, -4],
-  px: [3, 4],
   py: [4, 5],
-  borderRadius: '0.5rem',
-  boxShadow: 1
+  px: [3, 4]
+}
+
+export const pre = {
+  maxWidth: '100%'
 }
 
 export default {

@@ -13,7 +13,7 @@ export default () => (
   <Global
     styles={css`
       ${normalize};
-      ${isDev && tachyonsDebug};
+      ${!isDev && tachyonsDebug};
 
       /* Custom ScrollBar */
       ::-webkit-scrollbar {
@@ -22,7 +22,7 @@ export default () => (
 
       /* Track */
       ::-webkit-scrollbar-track {
-        background: ${colors.darkBlue};
+        background: ${colors.bg};
       }
 
       /* Handle */
@@ -33,7 +33,7 @@ export default () => (
 
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
-        background: ${colors.pink};
+        background: ${colors.secondary};
         transition: background 200ms;
       }
     `}

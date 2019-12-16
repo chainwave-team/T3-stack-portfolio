@@ -28,15 +28,13 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
     graphql`
       query {
         site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+          ...siteMetaData
         }
       }
     `
   )
+
+  console.log({ site })
 
   const metaDescription = description || site.siteMetadata.description
 

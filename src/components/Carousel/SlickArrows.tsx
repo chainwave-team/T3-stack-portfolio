@@ -10,14 +10,14 @@ const style = {
   display: 'block',
   my: 0,
   mx: -4,
-  fill: 'cyan',
+  fill: 'primary',
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
   cursor: 'pointer',
   svg: {
     display: ['none', 'none', 'block'],
-    fill: 'cyan',
+    fill: 'primary',
     transition: 'fill 200ms ease',
     '&:hover': {
       fill: 'pink'

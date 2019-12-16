@@ -56,7 +56,7 @@ const Mockup = ({ siteUrl = '', fluid, index, srcUrl = '' }: Props) => {
               left: `calc(50% - (${ScrollIconSize}px / 2))`,
               transform: 'translate(-100%)',
               zIndex: '5',
-              fill: 'cyan',
+              fill: 'primary',
               height: `${ScrollIconSize}px`,
               width: `${ScrollIconSize}px`,
               animation: `${move} 200s ease-out infinite`

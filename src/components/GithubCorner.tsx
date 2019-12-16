@@ -11,7 +11,7 @@ export default function GithubCorner({ url }: { url: string }) {
     >
       <svg
         sx={{
-          fill: 'cyan',
+          fill: 'primary',
           position: 'absolute',
           top: '0',
           right: '0',
