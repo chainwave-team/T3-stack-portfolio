@@ -36,7 +36,7 @@ const codeBlock = [
 ]
 // console.log({ Elements })
 
-const htmlSerializer = (type, element, content) => {
+const htmlSerializer = (type, element, content, ...rest) => {
   switch (type) {
     case Elements.preformatted: {
       const language = codeBlock.includes(element.label)
@@ -50,9 +50,10 @@ const htmlSerializer = (type, element, content) => {
         Prism.languages[language]
       )}</code></pre>`
     }
-    case Elements.em: {
-      return `<code class="inline-code">${content}</code>`
-    }
+    // case Elements.em: {
+    //   console.log({ type, element, content, rest })
+    //   return `<code class="inline-code">${content}</code>`
+    // }
 
     // case Elements.heading2: {
     //   return `<h2 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${

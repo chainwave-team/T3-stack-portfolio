@@ -153,18 +153,6 @@
                         "description": "An image with an optional caption",
                         "icon": "image",
                         "non-repeat": {
-                            "image_size": {
-                                "type": "Select",
-                                "config": {
-                                    "options": [
-                                        "blog",
-                                        "container",
-                                        "full"
-                                    ],
-                                    "default_value": "blog",
-                                    "label": "Image size"
-                                }
-                            },
                             "image": {
                                 "type": "Image",
                                 "config": {
