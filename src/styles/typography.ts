@@ -2,8 +2,7 @@ const typography = {
   root: {
     fontFamily: 'body',
     lineHeight: 'body',
-    fontWeight: 'body',
-    bg: 'bg'
+    fontWeight: 'body'
   },
   p: {
     color: 'text',

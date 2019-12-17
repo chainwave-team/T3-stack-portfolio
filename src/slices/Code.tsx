@@ -25,7 +25,7 @@ export default function Code({ slice }: TextSliceProps) {
   if (!code) return null
 
   return (
-    <Container sx={{ maxWidth: 'blog' }}>
+    <Container sx={{ maxWidth: ['full', 'blog'], width: ['full', '100%'] }}>
       <Fade>
         <PrismCode code={code} />
       </Fade>

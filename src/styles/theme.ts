@@ -97,6 +97,7 @@ export default {
       fontFamily: 'monospace',
       fontSize: 'inherit'
     },
+    // Used for inline <code> in textarea
     code: {
       fontFamily: 'monospace',
       '&.inline-code': {
@@ -105,10 +106,10 @@ export default {
         lineHeight: 'body',
         fontWeight: 'body',
         color: 'dracula.green',
-        bg: 'black',
+        bg: 'rgba(0, 0, 0, 0.4)',
+        borderRadius: '0.5rem',
         px: 2,
-        py: 1,
-        borderRadius: '0.5rem'
+        py: 1
       }
     },
     // ul: {

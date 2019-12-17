@@ -1,5 +1,5 @@
 export const toolbar = {
-  mt: 4,
+  mt: [2, 4],
   position: 'absolute',
   fontSize: 1,
   top: 0,
@@ -18,17 +18,17 @@ export const toolbar = {
 
 export const wrapper = {
   position: 'relative',
-  overflowX: 'auto',
   boxShadow: 1,
   bg: 'rgba(0, 0, 0, 0.4)',
   borderRadius: '0.5rem',
-  my: [4, 5],
-  mx: [-3, -4],
-  py: [4, 5],
-  px: [3, 4]
+  my: 5,
+  mx: [0, -4]
 }
 
 export const pre = {
+  py: 5,
+  px: [3, 4],
+  overflowX: 'auto',
   maxWidth: '100%'
 }
 
