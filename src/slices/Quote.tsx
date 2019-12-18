@@ -34,8 +34,8 @@ function Source({ source_name, source_link }: SourceProps) {
           {source}
         </Link>
       ) : (
-        source
-      )}
+          source
+        )}
     </Styled.p>
   )
 }
@@ -43,14 +43,14 @@ function Source({ source_name, source_link }: SourceProps) {
 export default function Quote({ slice }: QuoteSliceProps) {
   const { quote, ...source } = slice.primary
   return (
-    <Container sx={{ maxWidth: 'blog' }}>
+    <Container sx={{ maxWidth: ['full', 'blog'], width: ['full', '100%'] }}>
       <div
         sx={{
           bg: 'blue',
-          my: 4,
+          my: 5,
           py: 3,
-          mx: [-3, -4],
-          px: [3, 4]
+          mx: [0, -4],
+          px: 4
         }}
       >
         <Html html={quote.html} />

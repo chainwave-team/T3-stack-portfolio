@@ -64,6 +64,7 @@ export default function PrismCode({ code }: Props) {
             border: 'none',
             opacity: isHover ? 1 : 0,
             transition: 'opacity 200ms',
+            zIndex: 25,
             ':hover': {
               opacity: 1
             }
