@@ -126,7 +126,8 @@
                             "quote": {
                                 "type": "StructuredText",
                                 "config": {
-                                    "single": "paragraph",
+                                    "single": "paragraph, strong, em, hyperlink",
+                                    "allowTargetBlank": true,
                                     "label": "Quote",
                                     "placeholder": "Post Quote..."
                                 }
