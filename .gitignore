@@ -72,6 +72,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.development
 
 # gatsby files
 .cache/
