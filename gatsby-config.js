@@ -13,6 +13,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 85
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -38,8 +47,7 @@ module.exports = {
         lang: 'fr-fr'
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+
     `gatsby-plugin-emotion`,
     `gatsby-plugin-theme-ui`,
     {
