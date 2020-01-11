@@ -2,7 +2,7 @@
   "name": "gatsby-portfolio",
   "private": false,
   "description": "A simple portfolio made with Gatsby",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Julien <juliencaron@protonmail.com>",
   "keywords": [
     "gatsby"
