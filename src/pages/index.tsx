@@ -6,7 +6,7 @@ import SEO from '../Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
 import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'
-import { PrismicProject, PrismicText } from '../utils/types'
+import { PrismicProject, PrismicText, ServicesStatus } from '../utils/types'
 
 type Props = {
   data: {
@@ -18,6 +18,7 @@ type Props = {
         introduction: PrismicText
         services_introduction: PrismicText
         services: Array<{
+          status: ServicesStatus
           service_title: string
           service_textarea: PrismicText
         }>
@@ -71,6 +72,7 @@ export const pageQuery = graphql`
           text
         }
         services {
+          status
           service_title
           service_textarea {
             html

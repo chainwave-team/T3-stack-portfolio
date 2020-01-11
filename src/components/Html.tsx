@@ -1,11 +1,20 @@
 /** @jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
 
-export default function Html({ html }: { html?: string }) {
+type Props = {
+  html?: string
+  style?: React.CSSProperties
+}
+
+export default function Html({ html, style }: Props) {
   const { theme } = useThemeUI()
+  const CSS = {
+    ...theme.styles,
+    ...style
+  }
   if (html) {
     /* eslint-disable-next-line react/no-danger */
-    return <div sx={theme.styles} dangerouslySetInnerHTML={{ __html: html }} />
+    return <div sx={CSS} dangerouslySetInnerHTML={{ __html: html }} />
   }
   return null
 }

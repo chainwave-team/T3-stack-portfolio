@@ -15,7 +15,7 @@ const dracula = {
 
 const palette = {
   black: `#000000`,
-  // white: `#ffffff`,
+  white: `#ffffff`,
   // cyan: `rgb(91, 192, 190)`,
   blue: `rgb(28, 37, 65)`,
   darkBlue: `rgb(11, 19, 43)`,

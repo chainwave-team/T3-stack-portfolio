@@ -4,8 +4,10 @@ import { useRef } from 'react'
 import { animated, useSpring, config } from 'react-spring'
 
 import Html from './Html'
+import { ServicesStatus } from '../utils/types'
 
 type Props = {
+  status: ServicesStatus
   title?: string
   toggle: (height: number) => void
   open?: boolean
@@ -17,6 +19,7 @@ type Props = {
 
 export default function Accordion({
   title,
+  status,
   content,
   open = false,
   toggle,
@@ -37,19 +40,23 @@ export default function Accordion({
 
   return (
     <Box>
-      <Styled.h4>
-        <Styled.a
-          sx={{
-            borderBottom: '1px solid',
-            display: 'block',
-            py: 3,
-            color: 'white'
-          }}
-          onClick={() => toggle(ref.current.scrollHeight)}
-        >
-          {title}
-        </Styled.a>
-      </Styled.h4>
+      <Styled.a
+        sx={{
+          borderBottom: '1px solid',
+          py: 3,
+          width: '100%',
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}
+        onClick={() => toggle(ref.current.scrollHeight)}
+      >
+        <Styled.h4 sx={{ m: 0 }}>{title}</Styled.h4>
+        {status === 'soon' && (
+          <Styled.p sx={{ color: 'secondary', m: 0 }}>Prochainement !</Styled.p>
+        )}
+      </Styled.a>
 
       <animated.div style={{ overflow: 'hidden', ...props }}>
         <div ref={ref} sx={{ py: 2 }}>

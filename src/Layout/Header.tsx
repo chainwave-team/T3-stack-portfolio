@@ -23,6 +23,7 @@ const Anim = animated.div
 export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
   const node = useRef()
   const { theme } = useThemeUI()
+  const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
   const [open, setOpen] = useState(false)
   const menuTransitions = useTransition(open, null, {
     from: { transform: 'translate3d(0, -100%, 0)', opacity: 0 },
@@ -37,9 +38,6 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
 
   // outside click
   useClickAway(node, () => setOpen(false))
-
-  const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
-  console.log({ isLargeScreen })
 
   return (
     <header

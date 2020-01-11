@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import Fade from '../../components/Fade'
 import Accordion from '../../components/Accordion'
 import Container from '../../components/Container'
+import { ServicesStatus } from '../../utils/types'
 
 type Section = {
   key: number
@@ -15,6 +16,7 @@ type Section = {
 }
 
 type Service = {
+  status: ServicesStatus
   service_title: string
   service_textarea: {
     text: string
@@ -51,30 +53,33 @@ export default function ServicesSection({ title, items }: Props) {
   const isLarge = useMediaQuery({ minWidth: theme.breakpoints[1] })
 
   return (
-    <Container section id="skills" size={isLarge ? 'container' : 'full'}>
+    <Container section id="skills" size={isLarge ? 'blog' : 'full'}>
       <Fade>
         <div
           sx={{
             bg: 'blue',
             py: [5, 6],
             px: [4, 5],
-            width: ['full', 'full', '3/4', '3/5'],
-            m: 'auto',
+            width: 'full',
             boxShadow: 1,
             maxWidth: 'fit-content'
           }}
         >
           <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
-          {items.map(({ service_title, service_textarea }, i: number) => (
-            <Accordion
-              key={uuid()}
-              title={service_title}
-              content={service_textarea}
-              open={sections[i].open}
-              toggle={h => toggleClick(i, h)}
-              height={sections[i].height}
-            />
-          ))}
+          {items.map(
+            ({ service_title, service_textarea, status }, i: number) =>
+              status !== 'hide' && (
+                <Accordion
+                  key={uuid()}
+                  title={service_title}
+                  content={service_textarea}
+                  open={sections[i].open}
+                  toggle={h => toggleClick(i, h)}
+                  height={sections[i].height}
+                  status={status}
+                />
+              )
+          )}
         </div>
       </Fade>
     </Container>

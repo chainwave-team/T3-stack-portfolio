@@ -4,18 +4,21 @@ import { Children } from '../utils/types'
 
 type Props = {
   children: Children
+  id?: string
   section?: boolean
   size?: 'blog' | 'container' | 'full'
 }
 
 export default function Container({
-  section,
   children,
+  id,
+  section,
   size,
   ...props
 }: Props) {
   return (
     <div
+      id={id || ''}
       {...props}
       sx={{
         maxWidth: size || 'container',

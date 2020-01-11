@@ -57,3 +57,5 @@ export type Slice = {
   slice_label?: string
   primary: any
 }
+
+export type ServicesStatus = 'default' | 'soon' | 'hide'
