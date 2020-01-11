@@ -36,7 +36,7 @@
     "react-dom": "^16.8.6",
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
-    "react-responsive": "^7.0.0",
+    "react-responsive": "^8.0.1",
     "react-scroll": "^1.7.12",
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",

@@ -4,8 +4,11 @@ import { useState, useRef } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
-import { useBreakpointIndex } from '@theme-ui/match-media'
+// import { useBreakpointIndex } from '@theme-ui/match-media'
+import { useMediaQuery } from 'react-responsive'
 import { useClickAway } from 'react-use'
+
+import theme from '../styles/theme'
 
 import Menu from './Menu'
 import CloseIcon from '../assets/svg/close.svg'
@@ -38,8 +41,10 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
   useClickAway(node, () => setOpen(false))
 
   // media queries
-  const index: number = useBreakpointIndex()
-  const matches: boolean = index > 1
+  // const index: number = useBreakpointIndex()
+  // const matches: boolean = index > 1
+
+  const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
 
   return (
     <header
@@ -78,33 +83,33 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
               >
                 <Button>{siteTitle}</Button>
               </ScrollLink>
-              {matches ? (
+              {isLargeScreen ? (
                 <Menu click={() => null} />
               ) : (
-                  <Box
-                    role="button"
-                    onClick={() => setOpen(!open)}
-                    sx={{
-                      width: 6,
-                      height: 6,
-                      right: '0',
-                      top: '0',
-                      position: 'relative'
-                    }}
-                  >
-                    {iconTransitions.map(({ item, key, props }) =>
-                      item ? (
-                        <Anim key={key} style={props}>
-                          <CloseIcon sx={iconStyle} />
-                        </Anim>
-                      ) : (
-                          <Anim key={key} style={props}>
-                            <MenuIcon sx={iconStyle} />
-                          </Anim>
-                        )
-                    )}
-                  </Box>
-                )}
+                <Box
+                  role="button"
+                  onClick={() => setOpen(!open)}
+                  sx={{
+                    width: 6,
+                    height: 6,
+                    right: '0',
+                    top: '0',
+                    position: 'relative'
+                  }}
+                >
+                  {iconTransitions.map(({ item, key, props }) =>
+                    item ? (
+                      <Anim key={key} style={props}>
+                        <CloseIcon sx={iconStyle} />
+                      </Anim>
+                    ) : (
+                      <Anim key={key} style={props}>
+                        <MenuIcon sx={iconStyle} />
+                      </Anim>
+                    )
+                  )}
+                </Box>
+              )}
             </Flex>
           </Container>
         </div>
