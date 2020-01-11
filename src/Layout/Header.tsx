@@ -39,6 +39,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
   useClickAway(node, () => setOpen(false))
 
   const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
+  console.log({ isLargeScreen })
 
   return (
     <header

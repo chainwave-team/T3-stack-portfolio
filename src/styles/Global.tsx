@@ -15,6 +15,12 @@ export default () => (
       ${normalize};
       ${isDev && tachyonsDebug};
 
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
       /* Custom ScrollBar */
       ::-webkit-scrollbar {
         width: 8px;
