@@ -1,14 +1,11 @@
 /** @jsx jsx */
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, useThemeUI } from 'theme-ui'
 import { useState, useRef } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
-// import { useBreakpointIndex } from '@theme-ui/match-media'
 import { useMediaQuery } from 'react-responsive'
 import { useClickAway } from 'react-use'
-
-import theme from '../styles/theme'
 
 import Menu from './Menu'
 import CloseIcon from '../assets/svg/close.svg'
@@ -25,6 +22,7 @@ const Anim = animated.div
 
 export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
   const node = useRef()
+  const { theme } = useThemeUI()
   const [open, setOpen] = useState(false)
   const menuTransitions = useTransition(open, null, {
     from: { transform: 'translate3d(0, -100%, 0)', opacity: 0 },
@@ -39,10 +37,6 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
 
   // outside click
   useClickAway(node, () => setOpen(false))
-
-  // media queries
-  // const index: number = useBreakpointIndex()
-  // const matches: boolean = index > 1
 
   const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
 

@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 import { useState } from 'react'
 import uuid from 'uuid'
-import { useBreakpointIndex } from '@theme-ui/match-media'
+import { useMediaQuery } from 'react-responsive'
 
 import Fade from '../../components/Fade'
 import Accordion from '../../components/Accordion'
@@ -47,15 +47,11 @@ export default function ServicesSection({ title, items }: Props) {
   }
 
   // media queries
-  const index: number = useBreakpointIndex()
-  const matches: boolean = index > 1
+  const { theme } = useThemeUI()
+  const isLarge = useMediaQuery({ minWidth: theme.breakpoints[1] })
 
   return (
-    <Container
-      as="section"
-      id="skills"
-      style={!matches ? { width: `100%` } : {}}
-    >
+    <Container section id="skills" size={isLarge ? 'container' : 'full'}>
       <Fade>
         <div
           sx={{
@@ -64,13 +60,14 @@ export default function ServicesSection({ title, items }: Props) {
             px: [4, 5],
             width: ['full', 'full', '3/4', '3/5'],
             m: 'auto',
-            boxShadow: 1
+            boxShadow: 1,
+            maxWidth: 'fit-content'
           }}
         >
           <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
           {items.map(({ service_title, service_textarea }, i: number) => (
             <Accordion
-              key={uuid(i)}
+              key={uuid()}
               title={service_title}
               content={service_textarea}
               open={sections[i].open}

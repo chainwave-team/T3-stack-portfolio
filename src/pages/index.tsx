@@ -43,11 +43,11 @@ function IndexPage({ data: { homepage, projects } }: Props) {
   return (
     <Layout>
       <SEO title="Portfolio" />
-      {/* <SectionHeader
+      <SectionHeader
         textarea={introduction.html}
         buttonLabel={header_contact_button_label}
       />
-      <ServicesSection title={services_introduction.text} items={services} /> */}
+      <ServicesSection title={services_introduction.text} items={services} />
       <SectionSlider nodes={projects.nodes} />
     </Layout>
   )

@@ -1401,11 +1401,6 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theme-ui/match-media@^0.2.49":
-  version "0.2.49"
-  resolved "https://registry.yarnpkg.com/@theme-ui/match-media/-/match-media-0.2.49.tgz#3119a9070e5cf55a9e840dfae9484f07f99202c1"
-  integrity sha512-zlXg3x2Didzavu+9rwuN6cWTYc1snXr0NpzKJIQSY2fLQ2Ob0ZEbKkqSkewPTtr7DginWrdSy9/ybGDUDMW6vg==
-
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -1535,6 +1530,13 @@
   version "5.0.14"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.14.tgz#a07979ccb2cee088e74e735c84058fc8607d32e4"
   integrity sha512-Q73FFg7+LjblfSQUNbnjrwy2T1avBP8yevEgNrkDjyz1rBbnXkuOQcEV7I5wvmAic9FLUk0CnkLieEDej84Zkw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-responsive@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-responsive/-/react-responsive-8.0.2.tgz#959fdc32f72e38b807e32be617a74be2c315081b"
+  integrity sha512-DTvm3Hb77v0hme7L4GYzRjLQqlZP+zNImFBzdKbSH7CsQ5c7QebGnSQX2Xf3BaA0rm/TQE57eFMhMGLcMe/A9w==
   dependencies:
     "@types/react" "*"
 

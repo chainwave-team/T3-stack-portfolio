@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Styled } from 'theme-ui'
+import { jsx, Flex, Box, Styled, useThemeUI } from 'theme-ui'
 import { Link as ScrollLink } from 'react-scroll'
 import { graphql, useStaticQuery } from 'gatsby'
-import { useBreakpointIndex } from '@theme-ui/match-media'
+import { useMediaQuery } from 'react-responsive'
 
 import Row from '../../components/Row'
 import Col from '../../components/Col'
@@ -18,7 +18,8 @@ type Props = {
 }
 
 export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
-  const mediaIndex = useBreakpointIndex()
+  const { theme } = useThemeUI()
+  const isLarge = useMediaQuery({ minWidth: theme.breakpoints[2] })
   const { prismicOptions } = useStaticQuery(
     graphql`
       query HomepageHeader {
@@ -52,13 +53,13 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
               <div style={{ maxWidth: '650px' }}>
                 <Html html={textarea} />
               </div>
-              <Box py={3}>
+              <Box sx={{ py: 3 }}>
                 <ScrollLink to="contact" smooth isDynamic>
                   <Button>{buttonLabel}</Button>
                 </ScrollLink>
               </Box>
             </Col>
-            {mediaIndex > 2 ? (
+            {isLarge && (
               <Col
                 sx={{
                   flex: 1,
@@ -71,7 +72,7 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
                   <CoderSVG width="100%" height="100%" />
                 </Box>
               </Col>
-            ) : null}
+            )}
           </Row>
         </Fade>
       </Container>
