@@ -153,3 +153,42 @@ export const pageQuery = graphql`
     }
   }
 `
+
+/*
+query MyQuery {
+  allPrismicPost(limit: 3) {
+    edges {
+      node {
+        id
+        uid
+        data {
+          title {
+            text
+          }
+          thumbnail {
+            localFile {
+              childImageSharp {
+                fixed {
+                  src
+                }
+              }
+            }
+          }
+          canonical {
+            document {
+              data {
+                title {
+                  text
+                }
+              }
+              
+            }
+          }
+          published_date(formatString: "DD-MM-YYYY")
+        }
+        last_publication_date(formatString: "DD-MM-YYYY")
+      }
+    }
+  }
+}
+*/
