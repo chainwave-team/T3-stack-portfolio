@@ -22,24 +22,24 @@ type Props = {
 export default function SectionSlider({ nodes }: Props) {
   return (
     <Container id="portfolio" section>
-      <Carousel>
-        {nodes.map(
-          (
-            {
-              data: {
-                demo_link,
-                source_link,
-                title,
-                full_screen,
-                project_type,
-                relations,
-                html
-              }
-            },
-            index
-          ) => (
-            <article key={uuid()} sx={{ ':focus': { outline: 'none' } }}>
-              <Fade>
+      <Fade>
+        <Carousel>
+          {nodes.map(
+            (
+              {
+                data: {
+                  demo_link,
+                  source_link,
+                  title,
+                  full_screen,
+                  project_type,
+                  relations,
+                  html
+                }
+              },
+              index
+            ) => (
+              <article key={uuid()} sx={{ ':focus': { outline: 'none' } }}>
                 <Row>
                   <Col sx={{ width: ['full', 'full', '2/3'] }}>
                     <Mockup
@@ -62,11 +62,11 @@ export default function SectionSlider({ nodes }: Props) {
                     />
                   </Col>
                 </Row>
-              </Fade>
-            </article>
-          )
-        )}
-      </Carousel>
+              </article>
+            )
+          )}
+        </Carousel>
+      </Fade>
     </Container>
   )
 }
