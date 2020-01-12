@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, Styled, useThemeUI } from 'theme-ui'
-import { Link as ScrollLink } from 'react-scroll'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 import { useMediaQuery } from 'react-responsive'
 
 import Row from '../../components/Row'
@@ -56,9 +55,9 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
               </div>
 
               <Flex sx={{ py: 3 }}>
-                <ScrollLink to="contact" smooth isDynamic>
+                <Link to="/contact">
                   <Button>{buttonLabel}</Button>
-                </ScrollLink>
+                </Link>
                 <div sx={{ px: 3 }}>
                   <SocialIcons />
                 </div>

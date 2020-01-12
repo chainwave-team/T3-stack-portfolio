@@ -9,29 +9,32 @@ import Button from '../components/Button'
 type MenuItem = {
   name: string
   link: string
-  target?: string | null
+  target?: string
   anchor?: boolean
 }
 
 type Props = {
-  links: Array<MenuItem>
+  path: string
   vertical?: boolean
-  click: () => void
+  click?: () => void
 }
 
-// ? Move this logic in Link Component ?
-type linkType = {
-  key: string
-  sx: any
-  to: string
-  onClick: () => void
-  as: any
-  smooth?: boolean
-  isDynamic?: boolean
-  target?: string
-}
+export default function Menu({ vertical = false, click, path }: Props) {
+  const isHome = path === '/'
+  const menu: MenuItem[] = [
+    {
+      name: 'Compétences',
+      link: isHome ? 'skills' : '/#skills',
+      anchor: isHome
+    },
+    {
+      name: 'Portfolio',
+      link: isHome ? 'portfolio' : '/#portfolio',
+      anchor: isHome
+    },
+    { name: 'Blog', link: '/blog' }
+  ]
 
-export default function Menu({ links, vertical, click }: Props) {
   return (
     <Flex
       sx={{
@@ -41,47 +44,37 @@ export default function Menu({ links, vertical, click }: Props) {
         py: vertical ? 4 : 0
       }}
     >
-      {links &&
-        links.map(({ name, link, target, anchor = false }) => {
-          const props: linkType = {
-            key: uuid(),
-            sx: {
-              mx: vertical ? 0 : 2,
-              py: vertical ? 3 : 0,
-              color: 'white'
-            },
-            to: link,
-            onClick: () => click(),
-            as: anchor ? ScrollLink : Link
-          }
+      {menu.map(({ name, link, target = '', anchor = false }) => {
+        const props = {
+          key: uuid(),
+          sx: {
+            mx: vertical ? 0 : 2,
+            py: vertical ? 3 : 0,
+            color: 'white'
+          },
+          to: link,
+          onClick: () => click(),
+          as: anchor ? ScrollLink : Link
+        }
 
-          if (anchor) {
-            return (
-              <Styled.a {...props} as={ScrollLink} smooth isDynamic>
-                {name}
-              </Styled.a>
-            )
-          }
+        if (anchor) {
           return (
-            <Link {...props} target={target || ''}>
+            <Styled.a {...props} as={ScrollLink} smooth isDynamic>
               {name}
-            </Link>
+            </Styled.a>
           )
-        })}
+        }
+        return (
+          <Link {...props} target={target || ''}>
+            {name}
+          </Link>
+        )
+      })}
       <Box sx={{ ml: vertical ? 0 : 3 }}>
-        <ScrollLink smooth isDynamic to="contact" onClick={() => click()}>
+        <Link to="/contact" onClick={() => click()}>
           <Button>Me contacter</Button>
-        </ScrollLink>
+        </Link>
       </Box>
     </Flex>
   )
-}
-
-Menu.defaultProps = {
-  vertical: false,
-  links: [
-    { name: 'Compétences', link: 'skills', anchor: true },
-    { name: 'Portfolio', link: 'portfolio', anchor: true },
-    { name: 'Blog', link: 'https://wp-headless.fr', target: `_blank` }
-  ]
 }

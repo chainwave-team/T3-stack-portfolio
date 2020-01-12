@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
 import BaseLink from '../components/Link'
 import Fade from '../components/Fade'
@@ -16,7 +16,7 @@ type LinkProps = {
   label: string
 }
 
-const Link = ({ link, label }: LinkProps) => (
+const ExternalLink = ({ link, label }: LinkProps) => (
   <BaseLink to={link.url} target={link.target} sx={{ ml: 3, color: 'white' }}>
     {label}
   </BaseLink>
@@ -70,7 +70,9 @@ export default function Footer() {
               <Styled.h3>{footer_text}</Styled.h3>
             </Col>
             <Col>
-              <Button size="large">Contact</Button>
+              <Link to="/contact">
+                <Button size="large">Contact</Button>
+              </Link>
             </Col>
           </Row>
         </Fade>
@@ -86,11 +88,15 @@ export default function Footer() {
             </Col>
             <Col>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link link={linkedin_url} label="Linkedin" sx={{ ml: 0 }} />
+              <ExternalLink
+                link={linkedin_url}
+                label="Linkedin"
+                sx={{ ml: 0 }}
+              />
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link link={malt_url} label="Malt" />
+              <ExternalLink link={malt_url} label="Malt" />
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link link={github_url} label="Github" />
+              <ExternalLink link={github_url} label="Github" />
             </Col>
           </Row>
         </Fade>

@@ -15,6 +15,7 @@ import {
 } from '../utils/types'
 
 type Props = {
+  path: string
   data: {
     homepage: {
       type: string
@@ -44,7 +45,7 @@ type Props = {
   }
 }
 
-function IndexPage({ data: { homepage, projects, posts } }: Props) {
+function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
   const {
     introduction,
     header_contact_button_label,
@@ -53,7 +54,7 @@ function IndexPage({ data: { homepage, projects, posts } }: Props) {
   } = homepage.data
 
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO title="Portfolio" />
       <SectionHeader
         textarea={introduction.html}

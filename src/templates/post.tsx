@@ -88,6 +88,7 @@ export const pageQuery = graphql`
 `
 
 type Props = {
+  path: string
   data: {
     prismicPost: {
       first_publication_date: string
@@ -99,10 +100,15 @@ type Props = {
   }
 }
 
-export default function PostTemplate({ data: { prismicPost } }: Props) {
+export default function PostTemplate(props: Props) {
+  const {
+    path,
+    data: { prismicPost }
+  } = props
   const { data, first_publication_date } = prismicPost
+  console.log({ props })
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO title={data.title.text || ''} />
       <Hero title={data.title.text || ''} meta={first_publication_date} />
       <div sx={{ mb: 6 }}>

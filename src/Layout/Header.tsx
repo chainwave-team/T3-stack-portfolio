@@ -7,6 +7,7 @@ import { useTransition, animated } from 'react-spring'
 import { useMediaQuery } from 'react-responsive'
 import { useClickAway } from 'react-use'
 
+import { Link } from 'gatsby'
 import Menu from './Menu'
 import CloseIcon from '../assets/svg/close.svg'
 import MenuIcon from '../assets/svg/menu.svg'
@@ -20,7 +21,32 @@ const iconStyle = {
 
 const Anim = animated.div
 
-export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
+type LogoProps = {
+  path: string
+  onClick: () => void
+  siteTitle?: string
+}
+
+function Logo({ path, onClick, siteTitle = 'J' }: LogoProps) {
+  if (path === '/') {
+    return (
+      <ScrollLink smooth isDynamic to="main" onClick={onClick}>
+        <Button>{siteTitle}</Button>
+      </ScrollLink>
+    )
+  }
+  return (
+    <Link to="/" onClick={onClick}>
+      <Button>{siteTitle}</Button>
+    </Link>
+  )
+}
+
+type Props = {
+  path: string
+}
+
+export default function Header({ path }: Props) {
   const node = useRef()
   const { theme } = useThemeUI()
   const isLargeScreen = useMediaQuery({ minWidth: theme.breakpoints[1] })
@@ -68,16 +94,9 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
               }}
               as="nav"
             >
-              <ScrollLink
-                smooth
-                isDynamic
-                to="main"
-                onClick={() => setOpen(false)}
-              >
-                <Button>{siteTitle}</Button>
-              </ScrollLink>
+              <Logo path={path} onClick={() => setOpen(false)} />
               {isLargeScreen ? (
-                <Menu click={() => null} />
+                <Menu path={path} />
               ) : (
                 <Box
                   role="button"
@@ -119,7 +138,7 @@ export default function Header({ siteTitle = 'J' }: { siteTitle?: string }) {
                 ...props
               }}
             >
-              <Menu vertical click={() => setOpen(false)} />
+              <Menu path={path} vertical click={() => setOpen(false)} />
             </animated.div>
           ) : null
         )}

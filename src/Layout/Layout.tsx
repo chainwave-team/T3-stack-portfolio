@@ -6,13 +6,18 @@ import Header from './Header'
 import Footer from './Footer'
 import { Children } from '../utils/types'
 
-export default function Layout({ children }: { children: Children }) {
+type Props = {
+  path: string
+  children: Children
+}
+
+export default function Layout({ children, path }: Props) {
   const { theme } = useThemeUI()
   return (
     <Theme theme={theme}>
       <Styled.root>
         <GlobalStyle />
-        <Header />
+        <Header path={path} />
         <main id="main" sx={{ flex: 1 }}>
           {children}
         </main>
