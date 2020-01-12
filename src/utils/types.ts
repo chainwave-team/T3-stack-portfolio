@@ -40,6 +40,16 @@ export type PrismicTechType = {
   title: PrismicText
 }
 
+export type PrismicRelationsOfTechTags = Array<{
+  tech_tags: {
+    document: Array<{
+      // uid: string
+      // id: string
+      data: PrismicTechTag
+    }>
+  }
+}>
+
 export type PrismicProject = {
   title: PrismicText
   demo_link?: PrismicLink
@@ -49,13 +59,30 @@ export type PrismicProject = {
   project_type?: {
     document: Array<{ data: PrismicTechType }>
   }
-  relations: Array<{ tech_tags: { document: { data: PrismicTechTag } } }>
+  relations: PrismicRelationsOfTechTags
 }
 
 export type Slice = {
   slice_type: string
   slice_label?: string
   primary: any
+}
+
+export type PrismicPost = {
+  uid: string
+  last_publication_date: string
+  first_publication_date: string
+  data: {
+    title: PrismicText
+    thumbnail?: PrismicImage
+    canonical?: Array<{
+      data: {
+        title: PrismicText
+      }
+    }>
+    published_date?: string
+    relations: PrismicRelationsOfTechTags
+  }
 }
 
 export type ServicesStatus = 'default' | 'soon' | 'hide'

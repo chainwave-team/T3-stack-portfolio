@@ -1,16 +1,16 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from 'theme-ui'
-import uuid from 'uuid'
 
 import { PrismicText, PrismicTechTag } from '../utils/types'
 import Html from './Html'
+import TagList from './TagList'
 
 type Props = {
   index: number
   title: PrismicText
   html?: PrismicText
   projectType: PrismicText
-  tags: Array<PrismicTechTag>
+  tags: PrismicTechTag[]
 }
 
 export default function ProjectCard({ title, projectType, tags, html }: Props) {
@@ -38,17 +38,9 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       >
         {html && <Html html={html.html} />}
       </div>
-      <Styled.p>
-        {tags.map(tag => (
-          <span
-            title={tag.description ? tag.description.text : ''}
-            key={uuid()}
-            sx={{ pr: 3, display: 'inline-block' }}
-          >
-            {tag.title.text}
-          </span>
-        ))}
-      </Styled.p>
+      <div sx={{ my: 3 }}>
+        <TagList tags={tags} />
+      </div>
     </Flex>
   )
 }

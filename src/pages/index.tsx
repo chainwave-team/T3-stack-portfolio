@@ -6,7 +6,13 @@ import SEO from '../Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
 import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'
-import { PrismicProject, PrismicText, ServicesStatus } from '../utils/types'
+import LastPosts from '../sections/LastPosts'
+import {
+  PrismicProject,
+  PrismicText,
+  ServicesStatus,
+  PrismicPost
+} from '../utils/types'
 
 type Props = {
   data: {
@@ -30,10 +36,15 @@ type Props = {
         data: PrismicProject
       }>
     }
+    posts: {
+      edges: Array<{
+        node: PrismicPost
+      }>
+    }
   }
 }
 
-function IndexPage({ data: { homepage, projects } }: Props) {
+function IndexPage({ data: { homepage, projects, posts } }: Props) {
   const {
     introduction,
     header_contact_button_label,
@@ -50,6 +61,7 @@ function IndexPage({ data: { homepage, projects } }: Props) {
       />
       <ServicesSection title={services_introduction.text} items={services} />
       <SectionSlider nodes={projects.nodes} />
+      <LastPosts posts={posts.edges} />
     </Layout>
   )
 }
@@ -77,6 +89,58 @@ export const pageQuery = graphql`
           service_textarea {
             html
           }
+        }
+      }
+    }
+    posts: allPrismicPost(
+      limit: 3
+      sort: { fields: first_publication_date, order: DESC }
+    ) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            thumbnail {
+              localFile {
+                childImageSharp {
+                  fixed {
+                    ...GatsbyImageSharpFixed
+                  }
+                }
+              }
+            }
+            canonical {
+              document {
+                data {
+                  title {
+                    text
+                  }
+                }
+              }
+            }
+            relations {
+              tech_tags {
+                document {
+                  data {
+                    title {
+                      html
+                      text
+                    }
+                    description {
+                      html
+                      text
+                    }
+                  }
+                }
+              }
+            }
+            published_date(formatString: "DD-MM-YYYY")
+          }
+          first_publication_date(formatString: "DD-MM-YYYY")
+          last_publication_date(formatString: "DD-MM-YYYY")
         }
       }
     }
@@ -116,7 +180,6 @@ export const pageQuery = graphql`
           }
           relations {
             tech_tags {
-              id
               document {
                 data {
                   description {
@@ -153,42 +216,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-/*
-query MyQuery {
-  allPrismicPost(limit: 3) {
-    edges {
-      node {
-        id
-        uid
-        data {
-          title {
-            text
-          }
-          thumbnail {
-            localFile {
-              childImageSharp {
-                fixed {
-                  src
-                }
-              }
-            }
-          }
-          canonical {
-            document {
-              data {
-                title {
-                  text
-                }
-              }
-              
-            }
-          }
-          published_date(formatString: "DD-MM-YYYY")
-        }
-        last_publication_date(formatString: "DD-MM-YYYY")
-      }
-    }
-  }
-}
-*/

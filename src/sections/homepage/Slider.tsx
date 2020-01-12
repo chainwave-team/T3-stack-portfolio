@@ -10,6 +10,7 @@ import Row from '../../components/Row'
 import Fade from '../../components/Fade'
 import Col from '../../components/Col'
 import Mockup from '../../components/Mockup/Mockup'
+import { getTagsFromRelation } from '../../utils/utils'
 
 type Props = {
   nodes: Array<{
@@ -56,9 +57,7 @@ export default function SectionSlider({ nodes }: Props) {
                       title={title}
                       html={html}
                       index={index}
-                      tags={relations.map(
-                        data => data.tech_tags.document[0].data
-                      )}
+                      tags={getTagsFromRelation(relations)}
                       projectType={project_type.document[0].data.title}
                     />
                   </Col>

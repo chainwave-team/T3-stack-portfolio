@@ -34,8 +34,6 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
     `
   )
 
-  console.log({ site })
-
   const metaDescription = description || site.siteMetadata.description
 
   return (
