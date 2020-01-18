@@ -1,5 +1,39 @@
 import { css } from '@emotion/core'
 
+import theme from './theme'
+
+const { colors } = theme
+
+const scrollBar = css`
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  /* Custom ScrollBar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${colors.bg};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${colors.blue};
+    transition: background 200ms;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${colors.secondary};
+    transition: background 200ms;
+  }
+`
+
 const tachyonsDebug = css`
   /*
   DEBUG (PESTICIDE)
@@ -313,4 +347,4 @@ const tachyonsDebug = css`
   }
 `
 
-export default tachyonsDebug
+export { scrollBar, tachyonsDebug }
