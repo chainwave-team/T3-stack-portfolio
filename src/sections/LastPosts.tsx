@@ -76,25 +76,25 @@ export default function LastPosts({ posts, title, button }: Props) {
 
   return (
     <Container section id="blog">
-      <Fade>
-        <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
-        <Flex
-          sx={{
-            mx: -settings.gutterSize,
-            my: 5,
-            minHeight: settings.cardHeight * 1.2,
-            justifyItems: 'center',
-            flexWrap: 'wrap'
-          }}
-        >
-          {posts.map(({ node }) => (
-            <div key={node.uid} sx={{ width: isLarge ? '1/3' : 'full' }}>
+      <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
+      <Flex
+        sx={{
+          mx: -settings.gutterSize,
+          my: 5,
+          minHeight: settings.cardHeight * 1.2,
+          justifyItems: 'center',
+          flexWrap: 'wrap'
+        }}
+      >
+        {posts.map(({ node }) => (
+          <div key={node.uid} sx={{ width: isLarge ? '1/3' : 'full' }}>
+            <Fade>
               <PostCard {...node} />
-            </div>
-          ))}
-        </Flex>
-        <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
-      </Fade>
+            </Fade>
+          </div>
+        ))}
+      </Flex>
+      <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
     </Container>
   )
 }

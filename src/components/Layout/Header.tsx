@@ -80,7 +80,7 @@ export default function Header({ path }: Props) {
       <Headroom style={{ maxWidth: '100%' }}>
         <div
           sx={{
-            bg: 'bg',
+            bg: 'background',
             boxShadow: 3
           }}
         >
