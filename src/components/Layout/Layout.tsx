@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { ThemeProvider as Theme, Styled, jsx, useThemeUI } from 'theme-ui'
 
+import 'normalize.css'
+
 import GlobalStyle from '../../styles/Global'
 import Header from './Header'
 import Footer from './Footer'

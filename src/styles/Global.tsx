@@ -1,7 +1,5 @@
 import React from 'react'
 import { Global, css } from '@emotion/core'
-
-import normalize from './normalize'
 import tachyonsDebug from './tachyons-debug'
 import theme from './theme'
 
@@ -12,7 +10,6 @@ const isDev: boolean = process.env.NODE_ENV === 'development'
 export default () => (
   <Global
     styles={css`
-      ${normalize};
       ${isDev && tachyonsDebug};
 
       *,
