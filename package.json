@@ -29,6 +29,7 @@
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.2.3",
+    "normalize.css": "^8.0.1",
     "prismic-dom": "^2.1.0",
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
@@ -73,10 +74,6 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.1",
-    "graphql": "^14.5.8",
-    "graphql-cli": "^3.0.14",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
     "prettier": "^1.18.2",
     "typescript": "^3.7.3"
   },
@@ -84,20 +81,11 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint --ignore-path .gitignore src/**/*.{js,jsx,ts,tsx}",
-    "lint:fix": "yarn lint --fix",
     "start": "yarn develop",
     "serve": "gatsby serve",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "graphql-types": "graphql get-schema",
     "type-check": "tsc",
     "clean": "rm -rf node_modules .cache public",
     "refresh": "yarn clean && yarn",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn lint:fix",
-      "git add"
-    ]
   }
 }
