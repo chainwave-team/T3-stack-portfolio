@@ -3,8 +3,8 @@ import { jsx, Box, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
 
-import Link from '../components/Link'
-import Button from '../components/Button'
+import Link from '../Link'
+import Button from '../Button'
 
 type MenuItem = {
   name: string

@@ -9,10 +9,10 @@ import { useClickAway } from 'react-use'
 
 import { Link } from 'gatsby'
 import Menu from './Menu'
-import CloseIcon from '../assets/svg/close.svg'
-import MenuIcon from '../assets/svg/menu.svg'
-import Container from '../components/Container'
-import Button from '../components/Button'
+import CloseIcon from '../../assets/svg/close.svg'
+import MenuIcon from '../../assets/svg/menu.svg'
+import Container from '../Container'
+import Button from '../Button'
 
 const iconStyle = {
   fill: 'primary',

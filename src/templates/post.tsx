@@ -2,8 +2,8 @@
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 
-import Layout from '../Layout/Layout'
-import SEO from '../Layout/SEO'
+import Layout from '../components/Layout/Layout'
+import SEO from '../components/Layout/SEO'
 import Hero from '../components/Hero'
 import { PrismicText, Slice } from '../utils/types'
 import PostSlices from '../components/PostSlices'
