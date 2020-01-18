@@ -21,7 +21,8 @@ const theme: Theme = {
     body: `"Courier Next", courier, monospace;`, // ? Fira
     heading: `"avenir next", avenir, sans-serif`,
     apple: `'San Francisco Text', 'avenir', sans-serif`,
-    code: 'Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace' // TODO : Fira
+    mono:
+      '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
   },
   fontSizes: [
     '12px',
@@ -93,12 +94,12 @@ const theme: Theme = {
       borderSpacing: 0
     },
     pre: {
-      fontFamily: 'monospace',
+      fontFamily: 'mono',
       fontSize: 'inherit'
     },
     // Used for inline <code> in textarea
     code: {
-      fontFamily: 'monospace',
+      fontFamily: 'mono',
       '&.inline-code': {
         fontSize: 'text',
         fontFamily: 'code',

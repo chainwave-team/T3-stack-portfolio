@@ -1,3 +1,17 @@
+import { css } from '@emotion/core'
+
+import FiraCode from '../assets/fonts/FiraMono-Regular.otf'
+
+export const fontFaces = css`
+  @font-face {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'),
+      url(${FiraCode}) format('woOpenTypeff2');
+  }
+`
+
 const typography = {
   root: {
     fontFamily: 'body',

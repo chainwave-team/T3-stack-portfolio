@@ -21,6 +21,8 @@ const dracula = css`
 
   code[class*='language-'],
   pre[class*='language-'] {
+    font-family: 'Fira Code', Menlo, Monaco, Consolas, 'Liberation Mono',
+      'Courier New', monospace;
     color: #f8f8f2;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     text-align: left;
