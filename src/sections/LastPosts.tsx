@@ -83,7 +83,6 @@ export default function LastPosts({ posts, title, button }: Props) {
           mx: -settings.gutterSize,
           my: 4,
           minHeight: settings.cardHeight * 1.75,
-          border: `white 2px solid`,
           justifyItems: 'center',
           alignItems: 'center',
           flexWrap: 'wrap'
