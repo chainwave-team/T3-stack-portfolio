@@ -29,37 +29,39 @@ function PostCard({ data, ...props }: PrismicPost) {
   const date = customDate || last_publication_date || first_publication_date
 
   return (
-    <Link to={`/${uid}`}>
-      <animated.div
-        style={{
-          overflow: 'hidden',
-          ...hoverState
-        }}
-        sx={{
-          boxShadow: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          m: settings.gutterSize,
-          py: [4],
-          px: [3],
-          bg: hover ? 'transparent' : 'blue',
-          minHeight: settings.cardHeight,
-          cursor: 'pointer',
-          color: 'white'
-        }}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <div>
-          <Styled.p sx={{ color: 'grey.light', mt: 0, fontSize: 1 }}>
-            {date}
-          </Styled.p>
-          <Styled.h4 sx={{}}>{title.text}</Styled.h4>
-        </div>
-        <TagList tags={getTagsFromRelation(relations)} />
-      </animated.div>
-    </Link>
+    <Fade>
+      <Link to={`/${uid}`}>
+        <animated.div
+          style={{
+            overflow: 'hidden',
+            ...hoverState
+          }}
+          sx={{
+            boxShadow: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            m: settings.gutterSize,
+            py: [4],
+            px: [3],
+            bg: hover ? 'transparent' : 'blue',
+            minHeight: settings.cardHeight,
+            cursor: 'pointer',
+            color: 'white'
+          }}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          <div>
+            <Styled.p sx={{ color: 'grey.light', mt: 0, fontSize: 1 }}>
+              {date}
+            </Styled.p>
+            <Styled.h4 sx={{}}>{title.text}</Styled.h4>
+          </div>
+          <TagList tags={getTagsFromRelation(relations)} />
+        </animated.div>
+      </Link>
+    </Fade>
   )
 }
 
@@ -79,17 +81,17 @@ export default function LastPosts({ posts, title, button }: Props) {
       <Flex
         sx={{
           mx: -settings.gutterSize,
-          my: 5,
-          minHeight: settings.cardHeight * 1.2,
+          my: 4,
+          minHeight: settings.cardHeight * 1.75,
+          border: `white 2px solid`,
           justifyItems: 'center',
+          alignItems: 'center',
           flexWrap: 'wrap'
         }}
       >
         {posts.map(({ node }) => (
           <div key={node.uid} sx={{ width: isLarge ? '1/3' : 'full' }}>
-            <Fade>
-              <PostCard {...node} />
-            </Fade>
+            <PostCard {...node} />
           </div>
         ))}
       </Flex>

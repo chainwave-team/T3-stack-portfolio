@@ -12,7 +12,7 @@ import theme from '../../styles/theme'
 import { fontFaces } from '../../styles/typography'
 
 // Styles (scrollbar & conditional debug CSS)
-const debugCSS = false
+const debugCSS = true
 const isDev: boolean = debugCSS && process.env.NODE_ENV === 'development'
 
 interface LayoutProps {

@@ -68,9 +68,8 @@ export default function ServicesSection({ title, items }: Props) {
         {items.map(
           ({ service_title, service_textarea, status }, i: number) =>
             status !== 'hide' && (
-              <Fade>
+              <Fade key={uuid()}>
                 <Accordion
-                  key={uuid()}
                   title={service_title}
                   content={service_textarea}
                   open={sections[i].open}
