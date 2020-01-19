@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Styled, useThemeUI } from 'theme-ui'
+import { jsx, Flex, Box, Styled } from 'theme-ui'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import { useMediaQuery } from 'react-responsive'
 
@@ -11,6 +11,7 @@ import CoderSVG from '../../assets/svg/coder.svg'
 import Button from '../../components/Button'
 import Fade from '../../components/Fade'
 import SocialIcons from '../../components/SocialIcons'
+import { breakpoints } from '../../styles/theme'
 
 type Props = {
   textarea?: string
@@ -18,8 +19,7 @@ type Props = {
 }
 
 export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
-  const { theme } = useThemeUI()
-  const isLarge = useMediaQuery({ minWidth: theme.breakpoints[2] })
+  const isLarge = useMediaQuery({ minWidth: breakpoints[2] })
   const { prismicOptions } = useStaticQuery(
     graphql`
       query HomepageHeader {
@@ -32,7 +32,7 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
       }
     `
   )
-  const { job, site_name } = prismicOptions.data
+  const { job } = prismicOptions.data
 
   return (
     <Flex

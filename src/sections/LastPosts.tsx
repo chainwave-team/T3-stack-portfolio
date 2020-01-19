@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, Styled, Flex } from 'theme-ui'
+import { jsx, Styled, Flex } from 'theme-ui'
 import { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { useMediaQuery } from 'react-responsive'
@@ -11,6 +11,7 @@ import Container from '../components/Container'
 import Button from '../components/Button'
 import TagList from '../components/TagList'
 import Fade from '../components/Fade'
+import { breakpoints } from '../styles/theme'
 
 type Post = { node: PrismicPost }
 
@@ -19,7 +20,6 @@ const settings = { gutterSize: 3, cardHeight: 250 }
 function PostCard({ data, ...props }: PrismicPost) {
   const { uid, first_publication_date, last_publication_date } = props
   const { title, published_date: customDate, relations } = data
-  const { theme } = useThemeUI()
   const [hover, setHover] = useState(false)
   const hoverState = useSpring({
     transform: hover ? 'scale(1.05)' : 'scale(1)',
@@ -33,10 +33,10 @@ function PostCard({ data, ...props }: PrismicPost) {
       <animated.div
         style={{
           overflow: 'hidden',
-          boxShadow: theme.shadows[3],
           ...hoverState
         }}
         sx={{
+          boxShadow: 2,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -71,8 +71,7 @@ type Props = {
 
 export default function LastPosts({ posts, title, button }: Props) {
   if (!posts || posts.length < 1) return null
-  const { theme } = useThemeUI()
-  const isLarge = useMediaQuery({ minWidth: theme.breakpoints[1] })
+  const isLarge = useMediaQuery({ minWidth: breakpoints[1] })
 
   return (
     <Container section id="blog">

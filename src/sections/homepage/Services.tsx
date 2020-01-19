@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, useThemeUI } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { useState } from 'react'
 import uuid from 'uuid'
 import { useMediaQuery } from 'react-responsive'
@@ -8,6 +8,7 @@ import Fade from '../../components/Fade'
 import Accordion from '../../components/Accordion'
 import Container from '../../components/Container'
 import { ServicesStatus } from '../../utils/types'
+import { breakpoints } from '../../styles/theme'
 
 type Section = {
   key: number
@@ -49,8 +50,7 @@ export default function ServicesSection({ title, items }: Props) {
   }
 
   // media queries
-  const { theme } = useThemeUI()
-  const isLarge = useMediaQuery({ minWidth: theme.breakpoints[1] })
+  const isLarge = useMediaQuery({ minWidth: breakpoints[1] })
 
   return (
     <Container section id="skills" size={isLarge ? 'blog' : 'full'}>
@@ -84,17 +84,4 @@ export default function ServicesSection({ title, items }: Props) {
       </div>
     </Container>
   )
-}
-
-ServicesSection.defaultProps = {
-  title: '',
-  items: [
-    {
-      service_title: '',
-      service_textarea: {
-        text: '',
-        html: ''
-      }
-    }
-  ]
 }

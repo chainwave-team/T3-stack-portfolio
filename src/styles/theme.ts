@@ -15,7 +15,11 @@ const linkStyle = {
   }
 }
 
-const theme: Theme = {
+export const breakpoints = ['640px', '768px', '1024px', '1280px']
+
+export type MyTheme = Theme
+
+const theme: Readonly<MyTheme> = {
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     body: `"Courier Next", courier, monospace;`, // ? Fira
@@ -24,17 +28,7 @@ const theme: Theme = {
     mono:
       '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
   },
-  fontSizes: [
-    '12px',
-    '14px',
-    '16px',
-    '20px',
-    '24px',
-    '32px',
-    '48px',
-    '64px',
-    '96px'
-  ],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     thin: 200,
     normal: 400,
@@ -53,7 +47,7 @@ const theme: Theme = {
     '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
     '4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
   ],
-  breakpoints: ['640px', '768px', '1024px', '1280px'],
+  breakpoints,
   sizes: {
     ...sizes,
     container: 1180,
