@@ -45,6 +45,10 @@ export default function PrismCode({ code }: Props) {
   const [isHover, setHover] = React.useState(false)
   const language = code.raw[0].label ? code.raw[0].label : 'markup'
 
+  const handleClick = () => {
+    copyToClipboard(code.text)
+  }
+
   React.useEffect(() => {
     Prism.highlightAll()
   })
@@ -59,7 +63,7 @@ export default function PrismCode({ code }: Props) {
       <div sx={toolbar}>
         <Button
           size="small"
-          onClick={() => copyToClipboard(code.text)}
+          onClick={handleClick}
           sx={{
             border: 'none',
             opacity: isHover ? 1 : 0,

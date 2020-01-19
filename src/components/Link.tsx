@@ -7,6 +7,7 @@ import { Children } from '../utils/types'
 type Props = {
   to: string
   children: Children
+  onClick?: () => void
   // pass it only to GatsbyLink
   activeClassName?: string
   partiallyActive?: boolean
@@ -20,9 +21,17 @@ const Link = ({
   activeClassName,
   partiallyActive,
   target = '',
+  onClick,
   ...other
 }: Props) => {
   const internal = /^\/(?!\/)/.test(to)
+
+  const handleClick = () => {
+    if (typeof onClick !== 'undefined') {
+      onClick()
+    }
+  }
+
   if (internal) {
     return (
       <Styled.a
@@ -30,6 +39,7 @@ const Link = ({
         to={to}
         activeClassName={activeClassName || 'active'}
         partiallyActive={partiallyActive || false}
+        onClick={handleClick}
         {...other}
       >
         {children}
@@ -37,7 +47,7 @@ const Link = ({
     )
   }
   return (
-    <Styled.a href={to} target={target} {...other}>
+    <Styled.a href={to} target={target} onClick={handleClick} {...other}>
       {children}
     </Styled.a>
   )

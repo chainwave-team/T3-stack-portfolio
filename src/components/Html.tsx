@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
+import { jsx, useThemeUI, SxStyleProp } from 'theme-ui'
 
 type Props = {
   html?: string
-  style?: React.CSSProperties
+  style?: SxStyleProp
 }
 
 export default function Html({ html, style }: Props) {

@@ -4,6 +4,8 @@ import typography from './typography'
 import sizes from './sizes'
 import colors from './colors'
 
+export { colors }
+
 const linkStyle = {
   color: 'primary',
   textDecoration: 'none',

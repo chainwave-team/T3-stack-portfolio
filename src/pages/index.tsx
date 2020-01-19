@@ -60,7 +60,10 @@ function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
         textarea={introduction.html}
         buttonLabel={header_contact_button_label}
       />
-      <ServicesSection title={services_introduction.text} items={services} />
+      <ServicesSection
+        title={services_introduction.text || ''}
+        items={services}
+      />
       <SectionSlider nodes={projects.nodes} />
       <LastPosts posts={posts.edges} />
     </Layout>

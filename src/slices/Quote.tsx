@@ -34,8 +34,8 @@ function Source({ source_name, source_link }: SourceProps) {
           {source}
         </Link>
       ) : (
-          source
-        )}
+        source
+      )}
     </Styled.p>
   )
 }

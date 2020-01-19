@@ -35,6 +35,12 @@ export default function Menu({ vertical = false, click, path }: Props) {
     { name: 'Blog', link: '/blog' }
   ]
 
+  const handleClick = () => {
+    if (typeof click !== 'undefined') {
+      click()
+    }
+  }
+
   return (
     <Flex
       sx={{
@@ -53,7 +59,7 @@ export default function Menu({ vertical = false, click, path }: Props) {
             color: 'white'
           },
           to: link,
-          onClick: () => click(),
+          onClick: handleClick,
           as: anchor ? ScrollLink : Link
         }
 
@@ -71,7 +77,7 @@ export default function Menu({ vertical = false, click, path }: Props) {
         )
       })}
       <Box sx={{ ml: vertical ? 0 : 3 }}>
-        <Link to="/contact" onClick={() => click()}>
+        <Link to="/contact" onClick={handleClick}>
           <Button>Me contacter</Button>
         </Link>
       </Box>

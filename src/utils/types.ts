@@ -9,6 +9,8 @@ export type Children =
   | undefined
   | string
 
+export type ContainerSize = 'blog' | 'container' | 'full'
+
 export type PrismicLink = {
   link_type: string
   url: string
@@ -64,7 +66,7 @@ export type PrismicProject = {
 
 export type Slice = {
   slice_type: string
-  slice_label?: string
+  slice_label?: ContainerSize
   primary: any
 }
 

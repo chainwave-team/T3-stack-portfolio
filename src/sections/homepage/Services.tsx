@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import Fade from '../../components/Fade'
 import Accordion from '../../components/Accordion'
 import Container from '../../components/Container'
-import { ServicesStatus } from '../../utils/types'
+import { ServicesStatus, PrismicText } from '../../utils/types'
 import { breakpoints } from '../../styles/theme'
 
 type Section = {
@@ -19,10 +19,7 @@ type Section = {
 type Service = {
   status: ServicesStatus
   service_title: string
-  service_textarea: {
-    text: string
-    html: string
-  }
+  service_textarea: PrismicText
 }
 
 type Props = {

@@ -1,8 +1,6 @@
 import { css } from '@emotion/core'
 
-import theme from './theme'
-
-const { colors } = theme
+import { colors } from './theme'
 
 const scrollBar = css`
   *,
@@ -18,7 +16,7 @@ const scrollBar = css`
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: ${colors.bg};
+    background: ${colors.background};
   }
 
   /* Handle */

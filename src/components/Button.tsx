@@ -6,10 +6,11 @@ type Props = {
   children: Children
   variant?: 'primary' | 'secondary'
   size?: 'small' | 'medium' | 'large'
+  onClick?: () => void
 }
 
 export default function Button(props: Props) {
-  const { children, variant, size } = props
+  const { children, variant, size, onClick } = props
   const padding = {
     small: {
       px: 2,
@@ -45,6 +46,7 @@ export default function Button(props: Props) {
         borderRadius: 0,
         ...padding[size || 'medium']
       }}
+      onClick={onClick}
     >
       {children}
     </button>

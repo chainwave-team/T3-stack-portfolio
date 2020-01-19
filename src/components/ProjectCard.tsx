@@ -9,8 +9,8 @@ type Props = {
   index: number
   title: PrismicText
   html?: PrismicText
-  projectType: PrismicText
-  tags: PrismicTechTag[]
+  projectType?: PrismicText
+  tags?: PrismicTechTag[]
 }
 
 export default function ProjectCard({ title, projectType, tags, html }: Props) {
@@ -38,9 +38,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       >
         {html && <Html html={html.html} />}
       </div>
-      <div sx={{ my: 3 }}>
-        <TagList tags={tags} />
-      </div>
+      <div sx={{ my: 3 }}>{tags && <TagList tags={tags} />}</div>
     </Flex>
   )
 }

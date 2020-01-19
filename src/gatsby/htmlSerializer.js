@@ -36,7 +36,7 @@ const codeBlock = [
 ]
 // console.log({ Elements })
 
-const htmlSerializer = (type, element, content, ...rest) => {
+const htmlSerializer = (type, element /* , content, ...rest */) => {
   switch (type) {
     case Elements.preformatted: {
       const language = codeBlock.includes(element.label)

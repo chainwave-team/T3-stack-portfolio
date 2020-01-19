@@ -44,12 +44,14 @@ export default function SectionSlider({ nodes }: Props) {
                   <Col sx={{ width: ['full', 'full', '2/3'] }}>
                     <Mockup
                       fluid={
-                        full_screen.localFile.childImageSharp.fluid || null
+                        (full_screen &&
+                          full_screen.localFile &&
+                          full_screen.localFile.childImageSharp.fluid) ||
+                        null
                       }
                       siteUrl={demo_link ? demo_link.url : ''}
                       srcUrl={source_link ? source_link.url : ''}
                       index={index}
-                      title={title.text}
                     />
                   </Col>
                   <Col sx={{ width: ['full', 'full', '1/3'] }}>
@@ -58,7 +60,11 @@ export default function SectionSlider({ nodes }: Props) {
                       html={html}
                       index={index}
                       tags={getTagsFromRelation(relations)}
-                      projectType={project_type.document[0].data.title}
+                      projectType={
+                        project_type
+                          ? project_type.document[0].data.title
+                          : undefined
+                      }
                     />
                   </Col>
                 </Row>
