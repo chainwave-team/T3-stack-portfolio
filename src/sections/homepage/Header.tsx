@@ -1,14 +1,12 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from 'theme-ui'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-import Row from '../../components/Row'
-import Col from '../../components/Col'
 import Html from '../../components/Html'
 import Container from '../../components/Container'
-import Button from '../../components/Button'
 import Fade from '../../components/Fade'
 import SocialIcons from '../../components/SocialIcons'
+import ContactButton from '../../components/ContactButton'
 
 type Props = {
   textarea?: string
@@ -41,24 +39,16 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
     >
       <Container size="blog">
         <Fade>
-          <Row sx={{ pt: 4 }}>
-            <Col sx={{ width: ['full', 'full', 'full', 'full'] }}>
-              <Styled.h1 sx={{ my: 4 }}>{job}</Styled.h1>
-
-              <div style={{ maxWidth: '650px' }}>
-                <Html html={textarea} style={{ fontSize: [2, 3] }} />
+          <div>
+            <Styled.h1 sx={{ my: 4 }}>{job}</Styled.h1>
+            <Html html={textarea} style={{ fontSize: [2, 3] }} />
+            <Flex sx={{ py: 3 }}>
+              <ContactButton title={buttonLabel || ''} />
+              <div sx={{ px: 3 }}>
+                <SocialIcons />
               </div>
-
-              <Flex sx={{ py: 3 }}>
-                <Link to="/contact">
-                  <Button>{buttonLabel}</Button>
-                </Link>
-                <div sx={{ px: 3 }}>
-                  <SocialIcons />
-                </div>
-              </Flex>
-            </Col>
-          </Row>
+            </Flex>
+          </div>
         </Fade>
       </Container>
     </Flex>

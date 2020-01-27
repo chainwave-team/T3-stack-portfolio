@@ -58,11 +58,12 @@ export default function Footer() {
     github_url,
     malt_url,
     linkedin_url,
-    footer_text
+    footer_text,
+    email: mail
   } = prismicOptions.data
 
   return (
-    <footer sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
+    <footer id="footer" sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
       <Container sx={{ py: [4, 5] }}>
         <Fade>
           <Row sx={{ py: 5 }}>
@@ -70,9 +71,10 @@ export default function Footer() {
               <Styled.h3>{footer_text}</Styled.h3>
             </Col>
             <Col>
-              <Link to="/contact">
+              {/* <Link to="/contact">
                 <Button size="large">Contact</Button>
-              </Link>
+              </Link> */}
+              <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
             </Col>
           </Row>
         </Fade>

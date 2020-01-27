@@ -68,6 +68,7 @@ export default function Header({ path }: Props) {
 
   return (
     <header
+      id="header"
       sx={{
         top: '0',
         left: '0',

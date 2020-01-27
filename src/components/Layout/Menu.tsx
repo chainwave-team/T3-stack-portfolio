@@ -4,7 +4,7 @@ import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
 
 import Link from '../Link'
-import Button from '../Button'
+import ContactButton from '../ContactButton'
 
 type MenuItem = {
   name: string
@@ -77,9 +77,7 @@ export default function Menu({ vertical = false, click, path }: Props) {
         )
       })}
       <Box sx={{ ml: vertical ? 0 : 3 }}>
-        <Link to="/contact" onClick={handleClick}>
-          <Button>Me contacter</Button>
-        </Link>
+        <ContactButton onClick={handleClick} />
       </Box>
     </Flex>
   )
