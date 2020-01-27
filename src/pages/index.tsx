@@ -6,7 +6,7 @@ import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
 import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'
-import LastPosts from '../sections/LastPosts'
+// import LastPosts from '../sections/LastPosts'
 import {
   PrismicProject,
   PrismicText,
@@ -45,7 +45,10 @@ type Props = {
   }
 }
 
-function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
+function IndexPage({
+  path,
+  data: { homepage, projects /* , posts */ }
+}: Props) {
   const {
     introduction,
     header_contact_button_label,
@@ -65,7 +68,7 @@ function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
         items={services}
       />
       <SectionSlider nodes={projects.nodes} />
-      <LastPosts posts={posts.edges} />
+      {/* <LastPosts posts={posts.edges} /> */}
     </Layout>
   )
 }

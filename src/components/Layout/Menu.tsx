@@ -31,8 +31,8 @@ export default function Menu({ vertical = false, click, path }: Props) {
       name: 'Portfolio',
       link: isHome ? 'portfolio' : '/#portfolio',
       anchor: isHome
-    },
-    { name: 'Blog', link: '/blog' }
+    }
+    // { name: 'Blog', link: '/blog' }
   ]
 
   const handleClick = () => {
