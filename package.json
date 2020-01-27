@@ -5,8 +5,19 @@
   "version": "0.2.0",
   "author": "Julien <juliencaron@protonmail.com>",
   "keywords": [
-    "gatsby"
+    "gatsby", "react", "graphql", "prism", "prismic", "typescript"
   ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "lint": "eslint --ignore-path .gitignore src/**/*.{js,jsx,ts,tsx}",
+    "start": "yarn develop",
+    "serve": "gatsby serve",
+    "type-check": "tsc",
+    "clean": "rm -rf node_modules .cache public",
+    "refresh": "yarn clean && yarn",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
   "license": "MIT",
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.23",
@@ -75,16 +86,5 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "prettier": "^1.18.2",
     "typescript": "^3.7.3"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "lint": "eslint --ignore-path .gitignore src/**/*.{js,jsx,ts,tsx}",
-    "start": "yarn develop",
-    "serve": "gatsby serve",
-    "type-check": "tsc",
-    "clean": "rm -rf node_modules .cache public",
-    "refresh": "yarn clean && yarn",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
 }
