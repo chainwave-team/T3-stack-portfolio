@@ -76,6 +76,7 @@
             "config": {
               "options": [
                 "default",
+                "new",
                 "soon",
                 "hide"
               ],

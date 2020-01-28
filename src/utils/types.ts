@@ -87,4 +87,4 @@ export type PrismicPost = {
   }
 }
 
-export type ServicesStatus = 'default' | 'soon' | 'hide'
+export type ServicesStatus = 'default' | 'soon' | 'hide' | 'new'

@@ -14,6 +14,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-transformer-sharp`,
+    // 'gatsby-plugin-webpack-bundle-analyzer',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {

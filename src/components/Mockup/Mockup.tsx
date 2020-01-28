@@ -88,13 +88,6 @@ const Mockup = ({ fluid, title = '', siteUrl = '', srcUrl = '' }: Props) => {
         </div>
         <div sx={style.scrollArea}>
           <Img fadeIn fluid={fluid} alt={title} />
-          {/* <img
-            src={fluid.src}
-            srcSet={fluid.srcSet}
-            width="100%"
-            height="auto"
-            alt={title}
-          /> */}
         </div>
       </div>
     </div>

@@ -58,6 +58,11 @@ export default function Accordion({
             Prochainement !
           </Styled.p>
         )}
+        {status === 'new' && (
+          <Styled.p sx={{ color: 'secondary', fontFamily: 'mono', m: 0 }}>
+            New !
+          </Styled.p>
+        )}
       </Styled.a>
 
       <animated.div style={{ overflow: 'hidden', ...props }}>
