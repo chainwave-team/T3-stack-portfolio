@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import uuid from 'uuid'
+import loadable from '@loadable/component'
 
 import { PrismicProject } from '../../utils/types'
 import Container from '../../components/Container'
@@ -9,10 +10,12 @@ import ProjectCard from '../../components/ProjectCard'
 import Row from '../../components/Row'
 import Fade from '../../components/Fade'
 import Col from '../../components/Col'
-import Mockup from '../../components/Mockup/Mockup'
+// import Mockup from '../../components/Mockup/Mockup'
 import { getTagsFromRelation } from '../../utils/utils'
 
-type Props = {
+const Mockup = loadable(() => import('../../components/Mockup/Mockup'))
+
+interface Props {
   nodes: Array<{
     data: PrismicProject
     uid: string
@@ -44,16 +47,12 @@ export default function SectionSlider({ nodes }: Props) {
                   <Row>
                     <Col sx={{ width: ['full', 'full', '2/3'] }}>
                       <Mockup
-                        title={title}
+                        title={title?.text || ''}
                         fluid={
-                          (full_screen &&
-                            full_screen.localFile &&
-                            full_screen.localFile.childImageSharp.fluid) ||
-                          null
+                          full_screen?.localFile?.childImageSharp?.fluid || null
                         }
                         siteUrl={demo_link ? demo_link.url : ''}
                         srcUrl={source_link ? source_link.url : ''}
-                        index={index}
                       />
                     </Col>
                     <Col sx={{ width: ['full', 'full', '1/3'] }}>
@@ -62,11 +61,7 @@ export default function SectionSlider({ nodes }: Props) {
                         html={html}
                         index={index}
                         tags={getTagsFromRelation(relations)}
-                        projectType={
-                          project_type
-                            ? project_type.document[0].data.title
-                            : undefined
-                        }
+                        projectType={project_type?.document[0].data.title}
                       />
                     </Col>
                   </Row>
