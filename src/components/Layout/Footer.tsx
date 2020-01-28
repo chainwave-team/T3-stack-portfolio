@@ -82,9 +82,9 @@ export default function Footer() {
           <hr />
         </Fade>
         <Fade>
-          <Row sx={{ pt: 4 }}>
+          <Row sx={{ pt: 4, fontFamily: 'mono' }}>
             <Col>
-              <Styled.p sx={{ m: 0 }}>
+              <Styled.p sx={{ m: 0, fontFamily: 'mono' }}>
                 {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
               </Styled.p>
             </Col>
@@ -97,6 +97,7 @@ export default function Footer() {
               />
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <ExternalLink link={malt_url} label="Malt" />
+
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <ExternalLink link={github_url} label="Github" />
             </Col>

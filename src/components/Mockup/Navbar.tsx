@@ -31,7 +31,7 @@ export default function Navbar({ theme, url = '', screenWidth }: Props) {
           to={url}
           target="_blank"
           sx={{
-            fontFamily: 'apple',
+            fontFamily: 'body',
             lineHeight: '1',
             fontSize: '10px',
             fontWeight: '400',

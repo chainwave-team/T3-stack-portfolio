@@ -54,7 +54,9 @@ export default function Accordion({
       >
         <Styled.h4 sx={{ m: 0 }}>{title}</Styled.h4>
         {status === 'soon' && (
-          <Styled.p sx={{ color: 'secondary', m: 0 }}>Prochainement !</Styled.p>
+          <Styled.p sx={{ color: 'secondary', fontFamily: 'mono', m: 0 }}>
+            Prochainement !
+          </Styled.p>
         )}
       </Styled.a>
 

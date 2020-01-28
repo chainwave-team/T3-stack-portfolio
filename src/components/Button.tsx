@@ -41,6 +41,7 @@ export default function Button(props: Props) {
         textDecoration: 'none',
         fontSize: 'inherit',
         fontWeight: 'bold',
+        fontFamily: 'mono',
         m: 0,
         border: '2px solid',
         borderRadius: 0,

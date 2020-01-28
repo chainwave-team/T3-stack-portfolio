@@ -51,22 +51,23 @@ export default function ServicesSection({ title, items }: Props) {
 
   return (
     <Container section id="skills" size={isLarge ? 'blog' : 'full'}>
-      <div
-        sx={{
-          bg: 'blue',
-          py: [5, 6],
-          px: [4, 5],
-          width: 'full',
-          boxShadow: 1,
-          maxWidth: 'fit-content'
-        }}
-      >
-        <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
-        {items.map(
-          ({ service_title, service_textarea, status }, i: number) =>
-            status !== 'hide' && (
-              <Fade key={uuid()}>
+      <Fade>
+        <div
+          sx={{
+            bg: 'blue',
+            py: [5, 6],
+            px: [4, 5],
+            width: 'full',
+            boxShadow: 1,
+            maxWidth: 'fit-content'
+          }}
+        >
+          <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
+          {items.map(
+            ({ service_title, service_textarea, status }, i: number) =>
+              status !== 'hide' && (
                 <Accordion
+                  key={uuid()}
                   title={service_title}
                   content={service_textarea}
                   open={sections[i].open}
@@ -74,10 +75,10 @@ export default function ServicesSection({ title, items }: Props) {
                   height={sections[i].height}
                   status={status}
                 />
-              </Fade>
-            )
-        )}
-      </div>
+              )
+          )}
+        </div>
+      </Fade>
     </Container>
   )
 }

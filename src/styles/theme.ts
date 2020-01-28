@@ -24,11 +24,9 @@ export type MyTheme = Theme
 const theme: Readonly<MyTheme> = {
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: `"Courier Next", courier, monospace;`, // ? Fira
+    body: `'SF Pro Display','-apple-system','BlinkMacSystemFont','San Francisco','Helvetica Neue','Helvetica','Ubuntu','Roboto','Noto','Segoe UI','Arial',sans-serif`,
     heading: `"avenir next", avenir, sans-serif`,
-    apple: `'San Francisco Text', 'avenir', sans-serif`,
-    mono:
-      '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+    mono: `"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
@@ -39,7 +37,7 @@ const theme: Readonly<MyTheme> = {
     heading: 700
   },
   lineHeights: {
-    body: 1.4,
+    body: 1.75,
     heading: 1.125
   },
   colors,

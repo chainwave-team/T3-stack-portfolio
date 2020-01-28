@@ -34,7 +34,7 @@ const colors = {
   text: `rgba(255, 255, 255, 0.9)`,
   background: palette.darkBlue,
   heading: palette.white,
-  primary: dracula.cyan,
+  primary: palette.cyan,
   secondary: dracula.pink
 }
 

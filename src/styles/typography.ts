@@ -14,13 +14,13 @@ export const fontFaces = css`
 
 const typography = {
   root: {
-    fontFamily: 'body',
+    fontFamily: 'mono',
     lineHeight: 'body',
     fontWeight: 'body'
   },
   p: {
     color: 'text',
-    fontFamily: 'body',
+    fontFamily: 'mono',
     fontWeight: 'body',
     lineHeight: 'body'
   },

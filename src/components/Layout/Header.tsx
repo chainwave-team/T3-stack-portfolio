@@ -75,7 +75,8 @@ export default function Header({ path }: Props) {
         right: '0',
         zIndex: 1,
         width: '100%',
-        position: 'absolute'
+        position: 'absolute',
+        fontFamily: 'mono'
       }}
       ref={node}
     >
