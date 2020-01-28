@@ -18,7 +18,7 @@
     "lint": "eslint --ignore-path .gitignore src/**/*.{js,jsx,ts,tsx}",
     "start": "yarn develop",
     "serve": "gatsby serve",
-    "type-check": "tsc",
+    "tsc": "tsc",
     "clean": "rm -rf node_modules .cache public",
     "refresh": "yarn clean && yarn",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""

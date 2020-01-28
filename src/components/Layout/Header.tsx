@@ -46,7 +46,7 @@ type Props = {
 }
 
 export default function Header({ path }: Props) {
-  const node = useRef()
+  const node = useRef<HTMLDivElement>(null)
 
   const [open, setOpen] = useState(false)
   const menuTransitions = useTransition(open, null, {

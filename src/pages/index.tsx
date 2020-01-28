@@ -6,7 +6,6 @@ import loadable from '@loadable/component'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
-// import ServicesSection from '../sections/homepage/Services'
 import SectionSlider from '../sections/homepage/Slider'
 // import LastPosts from '../sections/LastPosts'
 import {

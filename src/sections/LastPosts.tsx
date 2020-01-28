@@ -2,7 +2,6 @@
 import { jsx, Styled, Flex } from 'theme-ui'
 import { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
-import { useMediaQuery } from 'react-responsive'
 
 import Link from '../components/Link'
 import { PrismicPost } from '../utils/types'
@@ -11,7 +10,6 @@ import Container from '../components/Container'
 import Button from '../components/Button'
 import TagList from '../components/TagList'
 import Fade from '../components/Fade'
-import { breakpoints } from '../styles/theme'
 
 type Post = { node: PrismicPost }
 
@@ -73,8 +71,6 @@ type Props = {
 
 export default function LastPosts({ posts, title, button }: Props) {
   if (!posts || posts.length < 1) return null
-  const isLarge = useMediaQuery({ minWidth: breakpoints[1] })
-
   return (
     <Container section id="blog">
       <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
@@ -89,7 +85,7 @@ export default function LastPosts({ posts, title, button }: Props) {
         }}
       >
         {posts.map(({ node }) => (
-          <div key={node.uid} sx={{ width: isLarge ? '1/3' : 'full' }}>
+          <div key={node.uid} sx={{ width: ['full', 'full', '1/3'] }}>
             <PostCard {...node} />
           </div>
         ))}

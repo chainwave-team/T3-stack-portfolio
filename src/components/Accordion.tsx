@@ -25,7 +25,7 @@ export default function Accordion({
   toggle,
   height = 0
 }: Props) {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
 
   const getHeight = (o: boolean, h: number) => {
     const tmpHeight = Number.isNaN(h) || typeof h === 'undefined' ? 'auto' : h
