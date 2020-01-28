@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
-import React, { lazy, Suspense } from 'react'
+import React /* , { lazy, Suspense } */ from 'react'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
-// import SectionSlider from '../sections/homepage/Slider'
+import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'
 // import LastPosts from '../sections/LastPosts'
 import {
@@ -14,7 +14,15 @@ import {
   PrismicPost
 } from '../utils/types'
 
-const SectionSlider = lazy(() => import('../sections/homepage/Slider'))
+import {
+  Desktop,
+  Tablet,
+  Phablet,
+  Mobile,
+  NotMobile
+} from '../utils/MediaQueries'
+
+// const SectionSlider = lazy(() => import('../sections/homepage/Slider'))
 
 type Props = {
   path: string
@@ -65,13 +73,26 @@ function IndexPage({
         textarea={introduction.html}
         buttonLabel={header_contact_button_label}
       />
+      <Desktop>string Desktop</Desktop>
+      <Desktop>
+        <div>Node</div>
+      </Desktop>
+      <Desktop>
+        <div>Nodes</div>
+        <div>Nodes</div>
+      </Desktop>
+
+      <Tablet>string Tablet</Tablet>
+      <Phablet>string Phablet</Phablet>
+      <Mobile>string Mobile</Mobile>
+      <NotMobile>string NotMobile</NotMobile>
       <ServicesSection
         title={services_introduction.text || ''}
         items={services}
       />
-      <Suspense fallback="...loading">
-        <SectionSlider nodes={projects.nodes} />
-      </Suspense>
+      {/* <Suspense fallback="...loading"> */}
+      <SectionSlider nodes={projects.nodes} />
+      {/* </Suspense> */}
       {/* <LastPosts posts={posts.edges} /> */}
     </Layout>
   )
