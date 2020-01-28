@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
-import SectionSlider from '../sections/homepage/Slider'
+// import SectionSlider from '../sections/homepage/Slider'
 import ServicesSection from '../sections/homepage/Services'
 // import LastPosts from '../sections/LastPosts'
 import {
@@ -13,6 +13,8 @@ import {
   ServicesStatus,
   PrismicPost
 } from '../utils/types'
+
+const SectionSlider = lazy(() => import('../sections/homepage/Slider'))
 
 type Props = {
   path: string
@@ -67,7 +69,9 @@ function IndexPage({
         title={services_introduction.text || ''}
         items={services}
       />
-      <SectionSlider nodes={projects.nodes} />
+      <Suspense fallback="...loading">
+        <SectionSlider nodes={projects.nodes} />
+      </Suspense>
       {/* <LastPosts posts={posts.edges} /> */}
     </Layout>
   )
