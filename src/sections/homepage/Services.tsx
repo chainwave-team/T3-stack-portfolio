@@ -2,13 +2,11 @@
 import { jsx, Styled } from 'theme-ui'
 import { useState } from 'react'
 import uuid from 'uuid'
-import { useMediaQuery } from 'react-responsive'
 
 import Fade from '../../components/Fade'
 import Accordion from '../../components/Accordion'
 import Container from '../../components/Container'
 import { ServicesStatus, PrismicText } from '../../utils/types'
-import { breakpoints } from '../../styles/theme'
 
 type Section = {
   key: number
@@ -46,11 +44,12 @@ export default function ServicesSection({ title, items }: Props) {
     )
   }
 
-  // media queries
-  const isLarge = useMediaQuery({ minWidth: breakpoints[1] })
-
   return (
-    <Container section id="skills" size={isLarge ? 'blog' : 'full'}>
+    <Container
+      section
+      id="skills"
+      sx={{ width: ['full', 'full', 'blog', 'blog'], maxWidth: 'full' }}
+    >
       <Fade>
         <div
           sx={{

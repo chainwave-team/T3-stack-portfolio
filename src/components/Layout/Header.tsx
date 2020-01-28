@@ -4,7 +4,6 @@ import { useState, useRef } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
-import { useMediaQuery } from 'react-responsive'
 import { useClickAway } from 'react-use'
 import { Link } from 'gatsby'
 
@@ -13,7 +12,6 @@ import CloseIcon from '../../assets/svg/close.svg'
 import MenuIcon from '../../assets/svg/menu.svg'
 import Container from '../Container'
 import Button from '../Button'
-import { breakpoints } from '../../styles/theme'
 
 const iconStyle = {
   fill: 'primary',
@@ -49,7 +47,6 @@ type Props = {
 
 export default function Header({ path }: Props) {
   const node = useRef()
-  const isLargeScreen = useMediaQuery({ minWidth: breakpoints[1] })
 
   const [open, setOpen] = useState(false)
   const menuTransitions = useTransition(open, null, {
@@ -98,9 +95,12 @@ export default function Header({ path }: Props) {
               as="nav"
             >
               <Logo path={path} onClick={() => setOpen(false)} />
-              {isLargeScreen ? (
+
+              <span sx={{ display: ['none', 'none', 'block'] }}>
                 <Menu path={path} />
-              ) : (
+              </span>
+
+              <span sx={{ display: ['block', 'block', 'none'] }}>
                 <Box
                   role="button"
                   onClick={() => setOpen(!open)}
@@ -124,7 +124,7 @@ export default function Header({ path }: Props) {
                     )
                   )}
                 </Box>
-              )}
+              </span>
             </Flex>
           </Container>
         </div>

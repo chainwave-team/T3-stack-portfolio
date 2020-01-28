@@ -5,7 +5,12 @@
   "version": "0.2.0",
   "author": "Julien <juliencaron@protonmail.com>",
   "keywords": [
-    "gatsby", "react", "graphql", "prism", "prismic", "typescript"
+    "gatsby",
+    "react",
+    "graphql",
+    "prism",
+    "prismic",
+    "typescript"
   ],
   "scripts": {
     "build": "gatsby build",
@@ -47,7 +52,6 @@
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.8.0",
-    "react-responsive": "^8.0.1",
     "react-scroll": "^1.7.12",
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
@@ -67,7 +71,6 @@
     "@types/react-headroom": "^2.2.1",
     "@types/react-helmet": "^5.0.14",
     "@types/react-icons": "^3.0.0",
-    "@types/react-responsive": "^8.0.2",
     "@types/react-scroll": "^1.5.4",
     "@types/react-slick": "^0.23.4",
     "@types/react-visibility-sensor": "^5.0.1",
