@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { keyframes, css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import GithubCorner from '../GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
@@ -86,13 +87,14 @@ const Mockup = ({ fluid, title = '', siteUrl = '', srcUrl = '' }: Props) => {
           <ScrollSVG />
         </div>
         <div sx={style.scrollArea}>
-          <img
+          <Img fadeIn fluid={fluid} alt={title} />
+          {/* <img
             src={fluid.src}
             srcSet={fluid.srcSet}
             width="100%"
             height="auto"
             alt={title}
-          />
+          /> */}
         </div>
       </div>
     </div>
