@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
+import loadable from '@loadable/component'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
+// import ServicesSection from '../sections/homepage/Services'
 import SectionSlider from '../sections/homepage/Slider'
-import ServicesSection from '../sections/homepage/Services'
 // import LastPosts from '../sections/LastPosts'
 import {
   PrismicProject,
@@ -14,6 +15,8 @@ import {
   ServicesStatus,
   PrismicPost
 } from '../utils/types'
+
+const ServicesSection = loadable(() => import('../sections/homepage/Services'))
 
 type Props = {
   path: string

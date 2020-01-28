@@ -18,7 +18,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "noUnusedLocals": false
+        "noUnusedLocals": false,
+        "downlevelIteration": true
         // "noUnusedParameters": true,
         // "preserveConstEnums": true
     },

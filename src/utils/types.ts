@@ -65,7 +65,7 @@ export type PrismicProject = {
 }
 
 export type Slice = {
-  slice_type: string
+  slice_type: 'text' | 'quote' | 'code' | 'image_with_caption'
   slice_label?: ContainerSize
   primary: any
 }

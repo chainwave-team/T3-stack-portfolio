@@ -22,7 +22,7 @@ export type ImageCaptionSliceProps = {
   }
 }
 
-export default function ImageCaption({
+export default function ImageWithCaption({
   slice: { primary, slice_label }
 }: ImageCaptionSliceProps) {
   const { image, caption } = primary
