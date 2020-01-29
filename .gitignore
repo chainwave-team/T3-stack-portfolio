@@ -7,14 +7,13 @@ public
 data
 static
 custom_types
-generators
 
 # Ignore declarations
 *.d.ts
 
 # Editors & OS
 .idea
-.vscode
+# .vscode
 .DS_store
 
 # Logs
