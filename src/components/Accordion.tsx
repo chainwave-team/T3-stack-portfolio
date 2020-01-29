@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, ReactElement } from 'react'
+import { useState, ReactElement } from 'react'
 import { ToggleAttr } from './AccordionItem'
 
 interface Child extends Partial<ReactElement> {
@@ -11,14 +11,14 @@ interface Child extends Partial<ReactElement> {
 }
 
 interface Props {
-  children: Partial<Child>[] | any
+  children: Partial<Child>[]
 }
 
 export default function Accordion({ children }: Props) {
   const initialsList: Child[] = []
   children
     .filter((el: any) => el)
-    .forEach((el: any, i: number) => {
+    .forEach((el: any) => {
       initialsList.push({
         ...el,
         props: {

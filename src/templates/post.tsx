@@ -106,7 +106,6 @@ export default function PostTemplate(props: Props) {
     data: { prismicPost }
   } = props
   const { data, first_publication_date } = prismicPost
-  console.log({ props })
   return (
     <Layout path={path}>
       <SEO title={data.title.text || ''} />

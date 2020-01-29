@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
-import React, { useRef, ReactNode, Fragment, useState } from 'react'
+import { useRef, ReactNode, Fragment } from 'react'
 import { animated, useSpring, config } from 'react-spring'
 
 export interface ToggleAttr {

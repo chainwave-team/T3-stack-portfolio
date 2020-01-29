@@ -34,7 +34,6 @@ const codeBlock = [
   'sql',
   'php'
 ]
-// console.log({ Elements })
 
 const htmlSerializer = (type, element /* , content, ...rest */) => {
   switch (type) {

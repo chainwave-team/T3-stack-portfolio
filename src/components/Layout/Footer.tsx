@@ -1,14 +1,13 @@
 /* eslint-disable import/no-unresolved */
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import BaseLink from '../Link'
 import Fade from '../Fade'
 import Row from '../Row'
 import Col from '../Col'
 import Container from '../Container'
-import Button from '../Button'
 import { PrismicLink } from '../../utils/types'
 
 type LinkProps = {

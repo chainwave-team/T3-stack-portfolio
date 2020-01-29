@@ -47,7 +47,7 @@
     "implicit-arrow-linebreak": "off",
     "comma-dangle": "off",
     "no-absolute-path": 0,
-    "no-console": "off",
+    "no-console": "warn",
     "react/jsx-indent": "off",
     // "react-hooks/rules-of-hooks": "error",
     // "react-hooks/exhaustive-deps": "warn",

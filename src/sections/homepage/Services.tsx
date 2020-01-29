@@ -82,7 +82,6 @@ export default function ServicesSection({ title, items }: Props) {
       <Fade>
         <div sx={style.bg}>
           <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
-          {console.log(services)}
           <Accordion>
             {services.map(({ label, textarea, status }, i) => (
               <AccordionItem
