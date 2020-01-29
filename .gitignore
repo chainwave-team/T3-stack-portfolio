@@ -5,11 +5,11 @@ public
 
 # Ignore data .md & assets
 data
-static
+# static
 custom_types
 
 # Ignore declarations
-*.d.ts
+# *.d.ts
 
 # Editors & OS
 .idea
