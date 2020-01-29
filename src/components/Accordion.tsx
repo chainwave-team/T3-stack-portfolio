@@ -1,75 +1,51 @@
-/** @jsx jsx */
-import { jsx, Box, Styled } from 'theme-ui'
-import { useRef } from 'react'
-import { animated, useSpring, config } from 'react-spring'
+import React, { useState, ReactNode, ReactElement } from 'react'
+import { ToggleAttr } from './AccordionItem'
 
-import Html from './Html'
-import { ServicesStatus } from '../utils/types'
-
-type Props = {
-  status: ServicesStatus
-  title?: string
-  toggle: (height: number) => void
-  open?: boolean
-  height?: number
-  content?: {
-    html?: string
+interface Child extends Partial<ReactElement> {
+  props: {
+    height?: number
+    open?: boolean
+    toggle?: (h: number) => void
+    index?: number
   }
 }
 
-export default function Accordion({
-  title,
-  status,
-  content,
-  open = false,
-  toggle,
-  height = 0
-}: Props) {
-  const ref = useRef<HTMLDivElement>(null)
+interface Props {
+  children: Partial<Child>[] | any
+}
 
-  const getHeight = (o: boolean, h: number) => {
-    const tmpHeight = Number.isNaN(h) || typeof h === 'undefined' ? 'auto' : h
-    return o ? tmpHeight : 0
+export default function Accordion({ children }: Props) {
+  const initialsList: Child[] = []
+  children
+    .filter((el: any) => el)
+    .forEach((el: any, i: number) => {
+      initialsList.push({
+        ...el,
+        props: {
+          ...el.props,
+          height: 0,
+          open: false,
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          toggle: toggleClick
+        }
+      })
+    })
+
+  const [sections, toggle] = useState(initialsList)
+
+  function toggleClick({ index, height: h }: ToggleAttr) {
+    const match = (i: number) => i === index
+    toggle((state: Child[]) =>
+      state.map(el => ({
+        ...el,
+        props: {
+          ...el.props,
+          height: match(el?.props?.index || -1) ? h : 0,
+          open: match(el?.props?.index || -1) && !el.props.open
+        }
+      }))
+    )
   }
 
-  const props = useSpring({
-    from: { height: getHeight(!open, height) },
-    to: { height: getHeight(open, height) },
-    config: config.gentle
-  })
-
-  return (
-    <Box>
-      <Styled.a
-        sx={{
-          borderBottom: '1px solid',
-          py: 3,
-          width: '100%',
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
-        onClick={() => toggle(ref.current.scrollHeight)}
-      >
-        <Styled.h4 sx={{ m: 0 }}>{title}</Styled.h4>
-        {status === 'soon' && (
-          <Styled.p sx={{ color: 'secondary', fontFamily: 'mono', m: 0 }}>
-            Prochainement !
-          </Styled.p>
-        )}
-        {status === 'new' && (
-          <Styled.p sx={{ color: 'secondary', fontFamily: 'mono', m: 0 }}>
-            New !
-          </Styled.p>
-        )}
-      </Styled.a>
-
-      <animated.div style={{ overflow: 'hidden', ...props }}>
-        <div ref={ref} sx={{ py: 2 }}>
-          {content ? <Html html={content.html} /> : null}
-        </div>
-      </animated.div>
-    </Box>
-  )
+  return sections
 }
