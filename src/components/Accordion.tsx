@@ -5,7 +5,7 @@ interface Child extends Partial<ReactElement> {
   props: {
     height?: number
     open?: boolean
-    toggle?: (h: number) => void
+    toggle?: (arg0: ToggleAttr) => void
     index?: number
   }
 }
@@ -17,8 +17,8 @@ interface Props {
 export default function Accordion({ children }: Props) {
   const initialsList: Child[] = []
   children
-    .filter((el: any) => el)
-    .forEach((el: any) => {
+    .filter((el: Child | any) => el)
+    .forEach((el: Partial<Child>) => {
       initialsList.push({
         ...el,
         props: {
@@ -31,17 +31,17 @@ export default function Accordion({ children }: Props) {
       })
     })
 
-  const [sections, toggle] = useState(initialsList)
+  const [sections, updateSections] = useState(initialsList)
 
   function toggleClick({ index, height: h }: ToggleAttr) {
     const match = (i: number) => i === index
-    toggle((state: Child[]) =>
+    updateSections((state: Child[]) =>
       state.map(el => ({
         ...el,
         props: {
           ...el.props,
-          height: match(el?.props?.index || -1) ? h : 0,
-          open: match(el?.props?.index || -1) && !el.props.open
+          height: match(el?.props?.index || 0) ? h : 0,
+          open: match(el?.props?.index || 0) && !el.props.open
         }
       }))
     )

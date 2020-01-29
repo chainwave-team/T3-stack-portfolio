@@ -86,7 +86,7 @@ export default function ServicesSection({ title, items }: Props) {
             {services.map(({ label, textarea, status }, i) => (
               <AccordionItem
                 key={uuid()}
-                index={i}
+                index={i + 1}
                 title={<Title title={label} status={status} />}
                 content={<Html html={textarea.html} style={style.content} />}
               />

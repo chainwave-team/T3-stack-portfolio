@@ -10,13 +10,27 @@ import Col from '../Col'
 import Container from '../Container'
 import { PrismicLink } from '../../utils/types'
 
+const style = {
+  footer: { bg: `rgba(0, 0, 0, 1)`, color: 'white' },
+  container: { py: [4, 5] },
+  row1: { py: 5 },
+  row2: { pt: 4 },
+  title: { fontSize: [3, 3, 3, 4] },
+  copyright: { m: 0, fontFamily: 'mono' }
+}
+
 type LinkProps = {
   link: PrismicLink
   label: string
+  first?: boolean
 }
 
-const ExternalLink = ({ link, label }: LinkProps) => (
-  <BaseLink to={link.url} target={link.target} sx={{ ml: 3, color: 'white' }}>
+const ExternalLink = ({ link, label, first = false }: LinkProps) => (
+  <BaseLink
+    to={link.url}
+    target={link.target}
+    sx={{ ml: first ? 0 : 3, color: 'white', fontFamily: 'mono' }}
+  >
     {label}
   </BaseLink>
 )
@@ -62,18 +76,20 @@ export default function Footer() {
   } = prismicOptions.data
 
   return (
-    <footer id="footer" sx={{ bg: `rgba(0, 0, 0, 1)`, color: 'white' }}>
-      <Container sx={{ py: [4, 5] }}>
+    <footer id="footer" sx={style.footer}>
+      <Container sx={style.container}>
         <Fade>
-          <Row sx={{ py: 5 }}>
+          <Row sx={style.row1}>
             <Col>
-              <Styled.h3>{footer_text}</Styled.h3>
+              <Styled.h4 sx={style.title}>{footer_text}</Styled.h4>
             </Col>
             <Col>
               {/* <Link to="/contact">
                 <Button size="large">Contact</Button>
               </Link> */}
-              <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
+              <Styled.h4 sx={{ ...style.title, color: 'primary' }}>
+                {mail}
+              </Styled.h4>
             </Col>
           </Row>
         </Fade>
@@ -81,23 +97,15 @@ export default function Footer() {
           <hr />
         </Fade>
         <Fade>
-          <Row sx={{ pt: 4, fontFamily: 'mono' }}>
+          <Row sx={style.row2}>
             <Col>
-              <Styled.p sx={{ m: 0, fontFamily: 'mono' }}>
+              <Styled.p sx={style.copyright}>
                 {`${new Date().getFullYear()} © Copyright ${site_name}, ${job}.`}
               </Styled.p>
             </Col>
             <Col>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <ExternalLink
-                link={linkedin_url}
-                label="Linkedin"
-                sx={{ ml: 0 }}
-              />
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <ExternalLink first link={linkedin_url} label="Linkedin" />
               <ExternalLink link={malt_url} label="Malt" />
-
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <ExternalLink link={github_url} label="Github" />
             </Col>
           </Row>

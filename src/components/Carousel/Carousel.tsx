@@ -14,7 +14,7 @@ type Props = {
 export default function Carousel({ settings = {}, children }: Props) {
   const defaultSettings = {
     dots: false,
-    // autoplay: true,
+    autoplay: true,
     arrows: true,
     infinite: true,
     pauseOnHover: true,

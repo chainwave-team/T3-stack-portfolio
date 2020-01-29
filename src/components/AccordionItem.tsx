@@ -1,9 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
-import { useRef, ReactNode, Fragment } from 'react'
+import { useRef, ReactNode } from 'react'
 import { animated, useSpring, config } from 'react-spring'
 
 export interface ToggleAttr {
@@ -45,11 +42,11 @@ export default function AccordionItem({
     toggle && toggle({ height: ref?.current?.scrollHeight || 0, index })
 
   return (
-    <Fragment>
-      <Box onClick={handleClick}>{title}</Box>
-      <animated.div style={{ overflow: 'hidden', ...props }}>
-        <div ref={ref}>{content}</div>
+    <Box onClick={handleClick}>
+      {title}
+      <animated.div ref={ref} style={{ overflow: 'hidden', ...props }}>
+        {content}
       </animated.div>
-    </Fragment>
+    </Box>
   )
 }

@@ -16,7 +16,8 @@ const typography = {
   root: {
     fontFamily: 'mono',
     lineHeight: 'body',
-    fontWeight: 'body'
+    fontWeight: 'body',
+    fontSize: [1, 1, 2]
   },
   p: {
     color: 'text',
@@ -30,7 +31,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mt: 2,
-    fontSize: [6, 7],
+    fontSize: [6, 6, 7],
     mb: 2
   },
   h2: {
@@ -39,7 +40,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mt: 5,
-    fontSize: [5, 6],
+    fontSize: [5, 5, 6],
     mb: 3
   },
   h3: {
@@ -48,7 +49,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mt: 4,
-    fontSize: [4, 5],
+    fontSize: [4, 4, 5],
     mb: 3
   },
   h4: {
@@ -57,7 +58,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 2,
-    fontSize: [3, 4]
+    fontSize: [3, 3, 4]
   },
   h5: {
     fontFamily: 'heading',
@@ -65,7 +66,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 2,
-    fontSize: [2, 3]
+    fontSize: [2, 2, 3]
   },
   h6: {
     fontFamily: 'heading',
@@ -73,7 +74,7 @@ const typography = {
     lineHeight: 'heading',
     m: 0,
     mb: 2,
-    fontSize: [1, 2]
+    fontSize: [1, 1, 2]
   },
   hr: {
     bg: 'muted',
