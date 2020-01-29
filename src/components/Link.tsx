@@ -1,29 +1,16 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
+import { SFC } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
-import { Children } from '../utils/types'
-
-type Props = {
+interface Props {
   to: string
-  children: Children
   onClick?: () => void
-  // pass it only to GatsbyLink
-  activeClassName?: string
-  partiallyActive?: boolean
-  // Else <a></a>
   target?: string
+  title?: string
 }
 
-const Link = ({
-  children,
-  to,
-  activeClassName,
-  partiallyActive,
-  target = '',
-  onClick,
-  ...other
-}: Props) => {
+const Link: SFC<Props> = ({ children, to, target = '', onClick, ...other }) => {
   const internal = /^\/(?!\/)/.test(to)
 
   const handleClick = () => {
@@ -33,15 +20,9 @@ const Link = ({
   }
 
   if (internal) {
+    const props = { ...other, to, onClick: handleClick }
     return (
-      <Styled.a
-        as={GatsbyLink}
-        to={to}
-        activeClassName={activeClassName || 'active'}
-        partiallyActive={partiallyActive || false}
-        onClick={handleClick}
-        {...other}
-      >
+      <Styled.a as={GatsbyLink} {...props}>
         {children}
       </Styled.a>
     )
@@ -52,4 +33,5 @@ const Link = ({
     </Styled.a>
   )
 }
+
 export default Link

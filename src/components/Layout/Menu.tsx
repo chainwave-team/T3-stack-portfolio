@@ -53,19 +53,19 @@ export default function Menu({ vertical = false, click, path }: Props) {
       {menu.map(({ name, link, target = '', anchor = false }) => {
         const props = {
           key: uuid(),
+          to: link,
+          onClick: handleClick,
           sx: {
             mx: vertical ? 0 : 2,
             py: vertical ? 3 : 0,
             color: 'white'
-          },
-          to: link,
-          onClick: handleClick,
-          as: anchor ? ScrollLink : Link
+          }
         }
 
         if (anchor) {
+          const anchorProps = { ...props, smooth: true, isDynamic: true }
           return (
-            <Styled.a {...props} as={ScrollLink} smooth isDynamic>
+            <Styled.a {...anchorProps} as={ScrollLink}>
               {name}
             </Styled.a>
           )
