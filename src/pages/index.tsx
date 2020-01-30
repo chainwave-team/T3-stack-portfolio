@@ -6,7 +6,6 @@ import loadable from '@loadable/component'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
-import SectionSlider from '../sections/homepage/Slider'
 // import LastPosts from '../sections/LastPosts'
 import {
   PrismicProject,
@@ -14,6 +13,7 @@ import {
   ServicesStatus,
   PrismicPost
 } from '../utils/types'
+import PortfolioSection from '../sections/homepage/portfolio'
 
 const ServicesSection = loadable(() => import('../sections/homepage/Services'))
 
@@ -48,10 +48,7 @@ type Props = {
   }
 }
 
-function IndexPage({
-  path,
-  data: { homepage, projects /* , posts */ }
-}: Props) {
+function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
   const {
     introduction,
     header_contact_button_label,
@@ -70,7 +67,7 @@ function IndexPage({
         title={services_introduction.text || ''}
         items={services}
       />
-      <SectionSlider nodes={projects.nodes} />
+      <PortfolioSection nodes={projects.nodes} />
       {/* <LastPosts posts={posts.edges} /> */}
     </Layout>
   )
@@ -158,6 +155,7 @@ export const pageQuery = graphql`
       nodes {
         uid
         data {
+          isfeatured
           demo_link {
             link_type
             url
@@ -168,7 +166,7 @@ export const pageQuery = graphql`
             url
             localFile {
               childImageSharp {
-                fluid(quality: 85, maxWidth: 750) {
+                fluid(quality: 85, maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }

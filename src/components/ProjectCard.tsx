@@ -32,7 +32,6 @@ const style = {
 }
 
 type Props = {
-  index: number
   title: PrismicText
   html?: PrismicText
   projectType?: PrismicText

@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 import GithubCorner from '../GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
 import Navbar from './Navbar'
-import { colors, screen } from './config'
+import { colors } from './config'
 import useHover from '../../hooks/useHover'
 
 const ScrollIconSize = 32
@@ -18,8 +18,7 @@ const move = keyframes`
 
 const style = {
   browser: {
-    m: 'auto',
-    width: screen.width,
+    width: 'auto',
     maxWidth: '100%',
     boxShadow: '0 0 7px rgba(0, 0, 0, 0.2)',
     borderRadius: '5px',
@@ -75,7 +74,7 @@ const Mockup = ({ fluid, title = '', siteUrl = '', srcUrl = '' }: Props) => {
   const [hoverRef, isHovered] = useHover()
   return (
     <div sx={style.browser}>
-      <Navbar theme="dark" url={siteUrl} screenWidth={screen.width} />
+      <Navbar theme="dark" url={siteUrl} />
       <div sx={style.screen} ref={hoverRef}>
         {srcUrl && <GithubCorner url={srcUrl} />}
         <div

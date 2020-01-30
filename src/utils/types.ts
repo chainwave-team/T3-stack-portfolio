@@ -54,6 +54,7 @@ export type PrismicRelationsOfTechTags = Array<{
 
 export type PrismicProject = {
   title: PrismicText
+  isfeatured?: 'yes' | 'no'
   demo_link?: PrismicLink
   source_link?: PrismicLink
   full_screen?: PrismicImage

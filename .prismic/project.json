@@ -7,6 +7,17 @@
         "label": "Title"
       }
     },
+    "isfeatured": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "yes",
+          "no"
+        ],
+        "default_value": "yes",
+        "label": "isFeatured"
+      }
+    },
     "project_type": {
       "type": "Link",
       "config": {

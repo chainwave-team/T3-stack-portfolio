@@ -9,7 +9,7 @@ const style = {
   height: '32px',
   display: 'block',
   my: 0,
-  mx: -4,
+  mx: [0, 0, '-32px', '-42px'],
   fill: 'primary',
   position: 'absolute',
   top: '50%',
@@ -20,7 +20,7 @@ const style = {
     fill: 'primary',
     transition: 'fill 200ms ease',
     '&:hover': {
-      fill: 'pink'
+      fill: 'secondary'
     }
   }
 }

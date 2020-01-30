@@ -18,6 +18,8 @@ export default function Carousel({ settings = {}, children }: Props) {
     arrows: true,
     infinite: true,
     pauseOnHover: true,
+    speed: 1000,
+    autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,

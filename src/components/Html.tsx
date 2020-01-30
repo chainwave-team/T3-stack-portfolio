@@ -13,14 +13,19 @@ export default function Html({ html, style }: Props) {
     ...style
   }
 
-  // fix fontFamily
+  let p = {}
   if (style?.fontFamily) {
-    CSS = {
-      ...CSS,
-      p: {
-        fontFamily: style.fontFamily
-      }
-    }
+    p = { ...p, fontFamily: style.fontFamily }
+  }
+  if (style?.fontSize) {
+    p = { ...p, fontSize: style.fontSize }
+  }
+  if (style?.color) {
+    p = { ...p, color: style.color }
+  }
+
+  if (p) {
+    CSS = { ...CSS, p }
   }
 
   if (html) {

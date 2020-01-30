@@ -8,12 +8,11 @@ import { colors } from './config'
 type Props = {
   theme: 'light' | 'dark'
   url?: string
-  screenWidth: string
 }
 
 const trimUrl = (url: string) => (url !== '' ? url.split('//')[1] : '')
 
-export default function Navbar({ theme, url = '', screenWidth }: Props) {
+export default function Navbar({ theme, url = '' }: Props) {
   return (
     <Flex
       sx={{
@@ -21,7 +20,7 @@ export default function Navbar({ theme, url = '', screenWidth }: Props) {
         height: '30px',
         p: '11px 10px',
         boxShadow: '0 0 2px rgba(0, 0, 0, 0.15)',
-        width: screenWidth
+        width: '100%'
       }}
     >
       <AppleButtons />

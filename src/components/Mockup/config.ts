@@ -25,7 +25,3 @@ export const colors: colorsType = {
     light: '#858585'
   }
 }
-
-export const screen = {
-  width: '720px'
-}
