@@ -3,13 +3,13 @@ import { jsx } from 'theme-ui'
 import { SFC } from 'react'
 import loadable from '@loadable/component'
 
-import Carousel from '../../../components/Carousel/Carousel'
+import Carousel from '../../Carousel/Carousel'
 import { Props, ProjectNode } from './types'
-import Col from '../../../components/Col'
-import ProjectCard from '../../../components/ProjectCard'
+import Col from '../../Col'
+import ProjectCard from '../../ProjectCard'
 import { getTagsFromRelation } from '../../../utils/utils'
 
-const Mockup = loadable(() => import('../../../components/Mockup/Mockup'))
+const Mockup = loadable(() => import('../../Mockup/Mockup'))
 
 const Slide: SFC<ProjectNode> = ({
   data: {

@@ -3,23 +3,24 @@ import { jsx, Box, Flex, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
 
+import { FC } from 'react'
 import Link from '../Link'
 import ContactButton from '../ContactButton'
 
-type MenuItem = {
+interface MenuItem {
   name: string
   link: string
   target?: string
   anchor?: boolean
 }
 
-type Props = {
+export interface MenuProps {
   path: string
   vertical?: boolean
   click?: () => void
 }
 
-export default function Menu({ vertical = false, click, path }: Props) {
+const Menu: FC<MenuProps> = ({ vertical = false, click, path }) => {
   const isHome = path === '/'
   const menu: MenuItem[] = [
     {
@@ -31,8 +32,8 @@ export default function Menu({ vertical = false, click, path }: Props) {
       name: 'Portfolio',
       link: isHome ? 'portfolio' : '/#portfolio',
       anchor: isHome
-    }
-    // { name: 'Blog', link: '/blog' }
+    },
+    { name: 'Blog', link: '/blog' }
   ]
 
   const handleClick = () => {
@@ -82,3 +83,5 @@ export default function Menu({ vertical = false, click, path }: Props) {
     </Flex>
   )
 }
+
+export default Menu

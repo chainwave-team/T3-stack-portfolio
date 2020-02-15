@@ -2,11 +2,11 @@
 import { jsx, Flex, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Html from '../../components/Html'
-import Container from '../../components/Container'
-import Fade from '../../components/Fade'
-import SocialIcons from '../../components/SocialIcons'
-import ContactButton from '../../components/ContactButton'
+import Html from '../Html'
+import Container from '../Container'
+import Fade from '../Fade'
+import SocialIcons from '../SocialIcons'
+import ContactButton from '../ContactButton'
 
 type Props = {
   textarea?: string

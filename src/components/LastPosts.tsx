@@ -3,13 +3,13 @@ import { jsx, Styled, Flex } from 'theme-ui'
 import { useState, FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 
-import Link from '../components/Link'
+import Link from './Link'
 import { PrismicPost } from '../utils/types'
 import { getTagsFromRelation } from '../utils/utils'
-import Container from '../components/Container'
-import Button from '../components/Button'
-import TagList from '../components/TagList'
-import Fade from '../components/Fade'
+import Container from './Container'
+import Button from './Button'
+import TagList from './TagList'
+import Fade from './Fade'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 
@@ -96,7 +96,9 @@ const LastPosts: FC<LastPostsProps> = ({
           </div>
         ))}
       </Flex>
-      <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
+      <Link to="/blog">
+        <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
+      </Link>
     </Container>
   )
 }

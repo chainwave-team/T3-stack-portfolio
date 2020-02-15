@@ -4,10 +4,10 @@ import { SFC } from 'react'
 import { useTransition, animated } from 'react-spring'
 
 import { ProjectNode, Props } from './types'
-import Html from '../../../components/Html'
-import Link from '../../../components/Link'
-import { External, Github } from '../../../components/Icons'
-import TagList from '../../../components/TagList'
+import Html from '../../Html'
+import Link from '../../Link'
+import { External, Github } from '../../Icons'
+import TagList from '../../TagList'
 import { getTagsFromRelation } from '../../../utils/utils'
 
 const style = {
