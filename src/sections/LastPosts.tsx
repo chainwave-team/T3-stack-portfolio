@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, Flex } from 'theme-ui'
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 import Link from '../components/Link'
@@ -11,20 +11,18 @@ import Button from '../components/Button'
 import TagList from '../components/TagList'
 import Fade from '../components/Fade'
 
-type Post = { node: PrismicPost }
-
 const settings = { gutterSize: 3, cardHeight: 250 }
 
-function PostCard({ data, ...props }: PrismicPost) {
-  const { uid, first_publication_date, last_publication_date } = props
-  const { title, published_date: customDate, relations } = data
+const PostCard: FC<PrismicPost> = ({ data, ...props }) => {
+  const { uid, first_publication_date } = props
+  const { title, published_date, relations } = data
   const [hover, setHover] = useState(false)
   const hoverState = useSpring({
     transform: hover ? 'scale(1.05)' : 'scale(1)',
     borderWidth: hover ? 1 : 0,
     borderStyle: hover ? `solid` : `initial`
   })
-  const date = customDate || last_publication_date || first_publication_date
+  const date = published_date || first_publication_date
 
   return (
     <Fade>
@@ -56,20 +54,28 @@ function PostCard({ data, ...props }: PrismicPost) {
             </Styled.p>
             <Styled.h4 sx={{}}>{title.text}</Styled.h4>
           </div>
-          <TagList tags={getTagsFromRelation(relations)} />
+          {getTagsFromRelation(relations) && (
+            <TagList tags={getTagsFromRelation(relations)} />
+          )}
         </animated.div>
       </Link>
     </Fade>
   )
 }
 
-type Props = {
+type Post = { node: PrismicPost }
+
+export interface LastPostsProps {
   posts: Post[]
   title?: string
   button?: string
 }
 
-export default function LastPosts({ posts, title, button }: Props) {
+const LastPosts: FC<LastPostsProps> = ({
+  posts,
+  title = 'Mes derniers articles',
+  button = 'Voir le blog'
+}) => {
   if (!posts || posts.length < 1) return null
   return (
     <Container section id="blog">
@@ -95,7 +101,4 @@ export default function LastPosts({ posts, title, button }: Props) {
   )
 }
 
-LastPosts.defaultProps = {
-  title: 'Mes derniers articles',
-  button: 'Voir le blog'
-}
+export default LastPosts

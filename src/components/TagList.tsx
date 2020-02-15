@@ -1,36 +1,39 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
+import { FC } from 'react'
 
 import { PrismicTechTag } from '../utils/types'
 
-const style = {
-  root: {
-    m: 0
-  },
-  tag: {
-    fontFamily: 'mono',
-    pr: 3,
-    display: 'inline-block'
+export interface TagListProps {
+  tags?: PrismicTechTag[]
+}
+
+const TagList: FC<TagListProps> = ({ tags }) => {
+  if (!tags) {
+    return null
   }
-}
 
-type Props = {
-  tags: PrismicTechTag[]
-}
-
-export default function TagList({ tags }: Props) {
   return (
-    <Styled.p sx={style.root}>
-      {tags.map(tag => (
-        <span
-          title={tag.description ? tag.description.text : ''}
-          key={uuid()}
-          sx={style.tag}
-        >
-          {tag.title.text}
-        </span>
-      ))}
+    <Styled.p sx={{ m: 0 }}>
+      {tags.map(
+        tag =>
+          tag && (
+            <span
+              title={tag?.description ? tag.description.text : ''}
+              key={uuid()}
+              sx={{
+                fontFamily: 'mono',
+                pr: 3,
+                display: 'inline-block'
+              }}
+            >
+              {tag.title.text}
+            </span>
+          )
+      )}
     </Styled.p>
   )
 }
+
+export default TagList

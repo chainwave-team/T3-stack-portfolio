@@ -18,3 +18,146 @@ export const siteMetaData = graphql`
     }
   }
 `
+
+export const PrismicPost = graphql`
+  fragment PrismicPost on PrismicPost {
+    uid
+    first_publication_date(formatString: "DD/MM/YYYY")
+    data {
+      published_date(formatString: "DD/MM/YYYY")
+      title {
+        html
+        text
+      }
+
+      thumbnail {
+        localFile {
+          childImageSharp {
+            fixed {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+
+      canonical {
+        document {
+          data {
+            title {
+              text
+            }
+          }
+        }
+      }
+
+      relations {
+        tech_tags {
+          document {
+            data {
+              title {
+                html
+                text
+              }
+              description {
+                html
+                text
+              }
+            }
+          }
+        }
+      }
+
+      body {
+        ...PrismicPostBodyImageWithCaption
+        ...PrismicPostBodyQuote
+        ...PrismicPostBodyText
+        ...PrismicPostBodyCode
+      }
+    }
+  }
+`
+
+// Post slice Text
+export const PrismicPostBodyText = graphql`
+  fragment PrismicPostBodyText on PrismicPostBodyText {
+    ... on PrismicPostBodyText {
+      id
+      slice_type
+      primary {
+        text {
+          html
+        }
+      }
+    }
+  }
+`
+
+// Post slice Quote
+export const PrismicPostBodyQuote = graphql`
+  fragment PrismicPostBodyQuote on PrismicPostBodyQuote {
+    ... on PrismicPostBodyQuote {
+      id
+      slice_type
+      primary {
+        quote {
+          html
+        }
+        source_name
+        source_link {
+          link_type
+          target
+          url
+        }
+      }
+    }
+  }
+`
+
+// Post slice Code
+export const PrismicPostBodyCode = graphql`
+  fragment PrismicPostBodyCode on PrismicPostBodyCode {
+    ... on PrismicPostBodyCode {
+      id
+      slice_type
+      primary {
+        code {
+          html
+          text
+          raw {
+            label
+          }
+        }
+      }
+    }
+  }
+`
+
+// Post slice Image with Caption
+export const PrismicPostBodyImageWithCaption = graphql`
+  fragment PrismicPostBodyImageWithCaption on PrismicPostBodyImageWithCaption {
+    ... on PrismicPostBodyImageWithCaption {
+      id
+      slice_type
+      slice_label
+      prismicId
+      primary {
+        image {
+          alt
+          localFile {
+            childImageSharp {
+              fluid(
+                jpegQuality: 100
+                pngQuality: 100
+                quality: 100
+                maxWidth: 1920
+              ) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        caption
+      }
+    }
+  }
+`

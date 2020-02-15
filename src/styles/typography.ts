@@ -26,6 +26,7 @@ const typography = {
     lineHeight: 'body'
   },
   h1: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
@@ -35,6 +36,7 @@ const typography = {
     mb: 2
   },
   h2: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
@@ -44,6 +46,7 @@ const typography = {
     mb: 3
   },
   h3: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
@@ -53,6 +56,7 @@ const typography = {
     mb: 3
   },
   h4: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
@@ -61,6 +65,7 @@ const typography = {
     fontSize: [3, 3, 4]
   },
   h5: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
@@ -69,6 +74,7 @@ const typography = {
     fontSize: [2, 2, 3]
   },
   h6: {
+    color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',

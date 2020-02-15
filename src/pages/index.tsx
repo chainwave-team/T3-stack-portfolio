@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { FC } from 'react'
 import { graphql } from 'gatsby'
 import loadable from '@loadable/component'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import SectionHeader from '../sections/homepage/Header'
-// import LastPosts from '../sections/LastPosts'
+import LastPosts from '../sections/LastPosts'
 import {
   PrismicProject,
   PrismicText,
@@ -17,7 +18,7 @@ import PortfolioSection from '../sections/homepage/portfolio'
 
 const ServicesSection = loadable(() => import('../sections/homepage/Services'))
 
-type Props = {
+export interface IndexPageProps {
   path: string
   data: {
     homepage: {
@@ -48,7 +49,10 @@ type Props = {
   }
 }
 
-function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
+const IndexPage: FC<IndexPageProps> = ({
+  path,
+  data: { homepage, projects, posts }
+}) => {
   const {
     introduction,
     header_contact_button_label,
@@ -68,7 +72,7 @@ function IndexPage({ path, data: { homepage, projects, posts } }: Props) {
         items={services}
       />
       <PortfolioSection nodes={projects.nodes} />
-      {/* <LastPosts posts={posts.edges} /> */}
+      <LastPosts posts={posts.edges} />
     </Layout>
   )
 }
@@ -102,52 +106,13 @@ export const pageQuery = graphql`
     posts: allPrismicPost(
       limit: 3
       sort: { fields: first_publication_date, order: DESC }
+      filter: {
+        uid: { ne: "bonjour-cher-visiteur-bienvenue-sur-mon-article-demo" }
+      }
     ) {
       edges {
         node {
-          uid
-          data {
-            title {
-              text
-            }
-            thumbnail {
-              localFile {
-                childImageSharp {
-                  fixed {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
-            canonical {
-              document {
-                data {
-                  title {
-                    text
-                  }
-                }
-              }
-            }
-            relations {
-              tech_tags {
-                document {
-                  data {
-                    title {
-                      html
-                      text
-                    }
-                    description {
-                      html
-                      text
-                    }
-                  }
-                }
-              }
-            }
-            published_date(formatString: "DD-MM-YYYY")
-          }
-          first_publication_date(formatString: "DD-MM-YYYY")
-          last_publication_date(formatString: "DD-MM-YYYY")
+          ...PrismicPost
         }
       }
     }

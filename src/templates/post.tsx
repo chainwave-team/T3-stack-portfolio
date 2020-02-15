@@ -2,91 +2,14 @@
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 
+import { FC } from 'react'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
 import Hero from '../components/Hero'
 import { PrismicText, Slice } from '../utils/types'
 import PostSlices from '../components/PostSlices'
 
-export const pageQuery = graphql`
-  query PostBySlug($uid: String!) {
-    prismicPost(uid: { eq: $uid }) {
-      uid
-      first_publication_date(formatString: "DD-MM-YYYY")
-      data {
-        title {
-          text
-        }
-        body {
-          __typename
-          ... on PrismicPostBodyImageWithCaption {
-            id
-            slice_type
-            slice_label
-            prismicId
-            primary {
-              image {
-                alt
-                localFile {
-                  childImageSharp {
-                    fluid(
-                      jpegQuality: 100
-                      pngQuality: 100
-                      quality: 100
-                      maxWidth: 1920
-                    ) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-              caption
-            }
-          }
-          ... on PrismicPostBodyQuote {
-            id
-            slice_type
-            primary {
-              quote {
-                html
-              }
-              source_name
-              source_link {
-                link_type
-                target
-                url
-              }
-            }
-          }
-          ... on PrismicPostBodyText {
-            id
-            slice_type
-            primary {
-              text {
-                html
-              }
-            }
-          }
-          ... on PrismicPostBodyCode {
-            id
-            slice_type
-            primary {
-              code {
-                html
-                text
-                raw {
-                  label
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-type Props = {
+export interface PostTemplateProps {
   path: string
   data: {
     prismicPost: {
@@ -99,7 +22,7 @@ type Props = {
   }
 }
 
-export default function PostTemplate(props: Props) {
+const PostTemplate: FC<PostTemplateProps> = props => {
   const {
     path,
     data: { prismicPost }
@@ -115,3 +38,13 @@ export default function PostTemplate(props: Props) {
     </Layout>
   )
 }
+
+export default PostTemplate
+
+export const pageQuery = graphql`
+  query PostBySlug($uid: String!) {
+    prismicPost(uid: { eq: $uid }) {
+      ...PrismicPost
+    }
+  }
+`

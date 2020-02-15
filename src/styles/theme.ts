@@ -6,15 +6,19 @@ import colors from './colors'
 
 export { colors }
 
-const linkStyle = {
-  color: 'primary',
-  textDecoration: 'none',
+export const hoverStyle = {
   cursor: 'pointer',
   transition: 'color 200ms ease',
-  ':hover, :focus': {
+  '&:hover, &:focus': {
     textDecoration: 'none',
     color: 'secondary'
   }
+}
+
+const linkStyle = {
+  color: 'primary',
+  textDecoration: 'none',
+  ...hoverStyle
 }
 
 export const breakpoints = ['640px', '768px', '1024px', '1280px']
