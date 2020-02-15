@@ -22,12 +22,12 @@ export const wrapper = {
   bg: 'rgba(0, 0, 0, 0.4)',
   borderRadius: '0.5rem',
   my: 5,
-  mx: [0, -4]
+  mx: [0, 0, 0, -4]
 }
 
 export const pre = {
   py: 5,
-  px: [3, 4],
+  px: [3, 3, 4],
   overflowX: 'auto',
   maxWidth: '100%'
 }

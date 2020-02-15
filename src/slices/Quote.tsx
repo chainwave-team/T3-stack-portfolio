@@ -49,7 +49,7 @@ export default function Quote({ slice }: QuoteSliceProps) {
           bg: 'blue',
           my: 5,
           py: 3,
-          mx: [0, -4],
+          mx: [0, 0, 0, -4],
           px: 4
         }}
       >

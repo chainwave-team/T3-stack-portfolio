@@ -70,7 +70,6 @@ export const pageQuery = graphql`
           ... on PrismicPostBodyCode {
             id
             slice_type
-            slice_label
             primary {
               code {
                 html
