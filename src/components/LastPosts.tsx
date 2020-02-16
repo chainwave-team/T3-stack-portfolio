@@ -5,7 +5,6 @@ import { animated, useSpring } from 'react-spring'
 
 import Link from './Link'
 import { PrismicPost } from '../utils/types'
-import { getTagsFromRelation } from '../utils/utils'
 import Container from './Container'
 import Button from './Button'
 import TagList from './TagList'
@@ -54,19 +53,15 @@ const PostCard: FC<PrismicPost> = ({ data, ...props }) => {
             </Styled.p>
             <Styled.h4 sx={{}}>{title.text}</Styled.h4>
           </div>
-          {getTagsFromRelation(relations) && (
-            <TagList tags={getTagsFromRelation(relations)} />
-          )}
+          {relations && <TagList relations={relations} />}
         </animated.div>
       </Link>
     </Fade>
   )
 }
 
-type Post = { node: PrismicPost }
-
 export interface LastPostsProps {
-  posts: Post[]
+  posts: Array<{ node: PrismicPost }>
   title?: string
   button?: string
 }
