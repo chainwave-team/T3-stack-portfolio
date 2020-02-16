@@ -41,7 +41,10 @@ const PostTemplate: FC<PostTemplateProps> = props => {
   return (
     <Layout path={path}>
       <SEO title={data.title.text || ''} />
-      <Hero title={data.title.text || ''} date={first_publication_date} />
+      <Hero
+        title={data.title.text || ''}
+        date={data.published_date || first_publication_date}
+      />
       <div sx={{ my: 4 }}>
         {data?.body ? <PostSlices slices={data.body} /> : null}
       </div>
