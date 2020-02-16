@@ -42,11 +42,11 @@ const PostTemplate: FC<PostTemplateProps> = props => {
     <Layout path={path}>
       <SEO title={data.title.text || ''} />
       <Hero title={data.title.text || ''} date={first_publication_date} />
-      <div sx={{ mb: 6 }}>
+      <div sx={{ my: 4 }}>
         {data?.body ? <PostSlices slices={data.body} /> : null}
       </div>
       <LastPosts
-        title="Autres articles"
+        title="Plus d'articles"
         button="Tous les articles"
         posts={relatedPosts.slice(0, 3)}
       />

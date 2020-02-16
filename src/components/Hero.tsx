@@ -16,7 +16,7 @@ const Hero: FC<HeroProps> = ({ title, date }) => {
       size="blog"
       sx={{
         pt: [6, 6, 7],
-        pb: [4, 5],
+        pb: 4,
         display: 'flex',
         alignItems: 'center'
       }}
