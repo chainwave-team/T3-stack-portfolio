@@ -36,6 +36,7 @@ const colors = {
   heading: palette.white,
   primary: palette.cyan,
   secondary: dracula.pink
+  // muted:
 }
 
 export default colors

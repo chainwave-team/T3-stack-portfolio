@@ -16,7 +16,7 @@ const style = {
     alignItems: 'center'
   },
   link: {
-    px: 2,
+    mx: 2,
     width: `${iconSize}px`,
     height: `${iconSize}px`,
     '& > svg': { width: '100%' },

@@ -61,7 +61,7 @@ const Title: SFC<{ title: string; status: ServicesStatus }> = ({
   status
 }) => (
   <Styled.a sx={style.titleLink}>
-    <Styled.h4 sx={style.title}>{title}</Styled.h4>
+    <Styled.h3 sx={style.title}>{title}</Styled.h3>
     {status === 'soon' && (
       <Styled.p sx={style.status}>Prochainement !</Styled.p>
     )}
@@ -81,7 +81,9 @@ export default function ServicesSection({ title, items }: Props) {
     <Container section id="skills" sx={style.container}>
       <Fade>
         <div sx={style.bg}>
-          <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
+          <Styled.h2 sx={{ lineHeight: 1, pb: 4, fontSize: 5 }}>
+            {title}
+          </Styled.h2>
           <Accordion>
             {services.map(({ label, textarea, status }, i) => (
               <AccordionItem

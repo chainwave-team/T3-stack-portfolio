@@ -14,14 +14,13 @@ export const fontFaces = css`
 
 const typography = {
   root: {
-    fontFamily: 'mono',
+    fontFamily: 'body',
     lineHeight: 'body',
-    fontWeight: 'body',
-    fontSize: [1, 1, 2]
+    fontWeight: 'body'
   },
   p: {
     color: 'text',
-    fontFamily: 'mono',
+    fontFamily: 'body',
     fontWeight: 'body',
     lineHeight: 'body'
   },
@@ -30,57 +29,42 @@ const typography = {
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mt: 2,
-    fontSize: [6, 6, 7],
-    mb: 2
+    fontSize: 5
   },
   h2: {
     color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mt: 5,
-    fontSize: [5, 5, 6],
-    mb: 3
+    fontSize: 4
   },
   h3: {
     color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mt: 4,
-    fontSize: [4, 4, 5],
-    mb: 3
+    fontSize: 3
   },
   h4: {
     color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mb: 2,
-    fontSize: [3, 3, 4]
+    fontSize: 2
   },
   h5: {
     color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mb: 2,
-    fontSize: [2, 2, 3]
+    fontSize: 1
   },
   h6: {
     color: 'heading',
     fontFamily: 'heading',
     fontWeight: 'heading',
     lineHeight: 'heading',
-    m: 0,
-    mb: 2,
-    fontSize: [1, 1, 2]
+    fontSize: 0
   },
   hr: {
     bg: 'muted',

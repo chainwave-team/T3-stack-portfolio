@@ -1,12 +1,11 @@
-/** @jsx jsx */
-import { ThemeProvider, Styled, jsx } from 'theme-ui'
+import React, { FC } from 'react'
+import { ThemeProvider, Styled } from 'theme-ui'
 import { Global } from '@emotion/core'
 
 import 'normalize.css'
 
 import Header from './Header'
 import Footer from './Footer'
-import { Children } from '../../utils/types'
 import { tachyonsDebug, scrollBar } from '../../styles/css'
 import theme from '../../styles/theme'
 import { fontFaces } from '../../styles/typography'
@@ -15,25 +14,28 @@ import { fontFaces } from '../../styles/typography'
 const debugCSS = false
 const isDev: boolean = debugCSS && process.env.NODE_ENV === 'development'
 
-interface LayoutProps {
+export interface LayoutProps {
   path: string
-  children: Children
 }
 
-export default function Layout({ children, path }: LayoutProps) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Styled.root>
-        <Global styles={{ ...scrollBar, ...fontFaces }} />
-        {isDev && <Global styles={tachyonsDebug} />}
+const Layout: FC<LayoutProps> = ({ children, path }) => (
+  <ThemeProvider theme={theme}>
+    <Styled.root>
+      <Global styles={fontFaces} />
+      <Global styles={scrollBar} />
+      {isDev && <Global styles={tachyonsDebug} />}
 
+      <>
         <Header path={path} />
-        <main id="main" sx={{ flex: 1 }}>
-          <Styled.code>Code</Styled.code>
+
+        <main id="main" style={{ flex: 1 }}>
           {children}
         </main>
+
         <Footer />
-      </Styled.root>
-    </ThemeProvider>
-  )
-}
+      </>
+    </Styled.root>
+  </ThemeProvider>
+)
+
+export default Layout

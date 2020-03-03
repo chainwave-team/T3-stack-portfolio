@@ -41,11 +41,8 @@ export default function SectionHeader({ textarea, buttonLabel = '' }: Props) {
       <Container size="blog">
         <Fade>
           <div>
-            <Styled.h1 sx={{ my: 4 }}>{job}</Styled.h1>
-            <Html
-              html={textarea}
-              style={{ fontSize: [2, 3], fontFamily: 'mono' }}
-            />
+            <Styled.h1 sx={{ fontSize: 6 }}>{job}</Styled.h1>
+            <Html html={textarea} style={{ fontSize: 2, fontFamily: 'mono' }} />
             <Flex sx={{ py: 3 }}>
               <ContactButton title={buttonLabel || ''} />
               <div sx={{ px: 3 }}>
