@@ -1,17 +1,18 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { FC } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 
 import { Children } from '../../utils/types'
 import { BackArrow, NextArrow } from './SlickArrows'
 
-type Props = {
+export interface CarouselProps {
   settings?: object
   children: Children
 }
 
-export default function Carousel({ settings = {}, children }: Props) {
+const Carousel: FC<CarouselProps> = ({ settings = {}, children }) => {
   const defaultSettings = {
     dots: false,
     autoplay: true,
@@ -30,3 +31,5 @@ export default function Carousel({ settings = {}, children }: Props) {
 
   return <Slider {...newSettings}>{children}</Slider>
 }
+
+export default Carousel

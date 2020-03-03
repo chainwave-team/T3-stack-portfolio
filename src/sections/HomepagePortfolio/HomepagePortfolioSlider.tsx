@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { FC } from 'react'
 import loadable from '@loadable/component'
 
-import Carousel from '../../components/Carousel/Carousel'
+import Carousel from '../../components/Carousel'
 import { ProjectProps, ProjectNode } from './types'
 import Col from '../../components/tmp/Col'
 import ProjectCard from '../../components/tmp/ProjectCard'

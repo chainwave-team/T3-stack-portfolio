@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
+import { FC } from 'react'
 
 import Next from '../../assets/svg/next.svg'
 import Back from '../../assets/svg/back.svg'
@@ -25,19 +26,17 @@ const style = {
   }
 }
 
-type Props = {
+interface ArrowProps {
   onClick?: () => void
 }
 
-// eslint-disable-next-line
-export const NextArrow = ({ onClick, ...props }: Props) => (
+export const NextArrow: FC<ArrowProps> = ({ onClick, ...props }) => (
   <Box {...props} sx={{ ...style, right: 0 }} onClick={onClick}>
     <Next />
   </Box>
 )
 
-// eslint-disable-next-line
-export const BackArrow = ({ onClick, ...props }: Props) => (
+export const BackArrow: FC<ArrowProps> = ({ onClick, ...props }) => (
   <Box {...props} sx={{ ...style, left: 0 }} onClick={onClick}>
     <Back />
   </Box>
