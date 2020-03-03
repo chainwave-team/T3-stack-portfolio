@@ -31,7 +31,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "react"
+    "react",
+    "react-hooks"
   ],
   "env": {
     "browser": true,
@@ -49,8 +50,8 @@
     "no-absolute-path": 0,
     "no-console": "warn",
     "react/jsx-indent": "off",
-    // "react-hooks/rules-of-hooks": "error",
-    // "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
       1,
       {

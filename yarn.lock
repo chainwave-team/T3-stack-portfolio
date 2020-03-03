@@ -2338,6 +2338,11 @@ babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.8.0:
     cosmiconfig "^6.0.0"
     resolve "^1.12.0"
 
+babel-plugin-prismjs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-prismjs/-/babel-plugin-prismjs-2.0.1.tgz#b56095f423926662259de8f5ee50a7afbcf0fd92"
+  integrity sha512-GqQGa3xX3Z2ft97oDbGvEFoxD8nKqb3ZVszrOc5H7icnEUA56BIjVYm86hfZZA82uuHLwTIfCXbEKzKG1BzKzg==
+
 babel-plugin-remove-graphql-queries@^2.7.19:
   version "2.7.19"
   resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.19.tgz#063b369cbf0123cbcebeffb75eab465d8f0b16c8"
@@ -10284,10 +10289,10 @@ prismic-richtext@^0.4.2:
     ramda "^0.25.0"
     uuid "^3.1.0"
 
-prismjs@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
-  integrity sha512-PrEDJAFdUGbOP6xK/UsfkC5ghJsPJviKgnQOoxaDbBjwc8op68Quupwt1DeAFoG8GImPhiKXAvvsH7wDSLsu1Q==
+prismjs@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.19.0.tgz#713afbd45c3baca4b321569f2df39e17e729d4dc"
+  integrity sha512-IVFtbW9mCWm9eOIaEkNyo2Vl4NnEifis2GQ7/MLRG5TQe6t+4Sj9J5QWI9i3v+SS43uZBlCAOn+zYTVYQcPXJw==
   optionalDependencies:
     clipboard "^2.0.0"
 

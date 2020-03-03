@@ -1,4 +1,13 @@
 {
     "presets": ["@emotion/babel-preset-css-prop"],
-    "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]
+    "plugins": [
+      "@babel/plugin-proposal-class-properties", 
+      "@babel/plugin-syntax-dynamic-import",
+      ["prismjs", {
+        "languages": ["javascript", "css", "html", "php"],
+        "plugins": ["line-numbers", "show-language"],
+        // "theme": "dracula",
+        "css": true
+      }]
+    ]
   }

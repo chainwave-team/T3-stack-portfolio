@@ -5,13 +5,14 @@ import Prism from 'prismjs'
 import { Global } from '@emotion/core'
 import { useCopyToClipboard } from 'react-use'
 
-import Html from '../tmp/Html'
 import Button from '../tmp/Button'
 
 import dracula from './dracula-prismjs'
 import { ProgrammingLangs, cssByLang, getPrettyName } from './utils'
 import { toolbar, pre, wrapper } from './style'
 
+// TODO : Async load using @loadable
+// TODO : Review language list with the doc
 import 'prismjs/components/prism-markup-templating' // Must be first
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-jsx'
@@ -27,6 +28,7 @@ import 'prismjs/components/prism-graphql'
 import 'prismjs/components/prism-sql'
 import 'prismjs/components/prism-php'
 
+// TODO : Check plugin list, new cool ?
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 
@@ -34,24 +36,27 @@ type Props = {
   code: {
     text: string
     html: string
-    raw: {
+    raw: Array<{
       label?: ProgrammingLangs
-    }[]
+    }>
   }
 }
+
+// TODO : Clean a max, lib npm, css, plugin, feature, jsx, all
 
 export default function PrismCode({ code }: Props) {
   const [state, copyToClipboard] = useCopyToClipboard()
   const [isHover, setHover] = React.useState(false)
-  const language = code.raw[0].label ? code.raw[0].label : 'markup'
+  const language = code?.raw[0]?.label || 'markup'
 
   const handleClick = () => {
     copyToClipboard(code.text)
   }
 
+  // TODO : impl. onUnMount
   React.useEffect(() => {
     Prism.highlightAll()
-  })
+  }, [])
 
   return (
     <div
@@ -74,7 +79,7 @@ export default function PrismCode({ code }: Props) {
             }
           }}
         >
-          {state.value ? <>Copied!</> : <>Copy</>}
+          {state.value ? <>Copié!</> : <>Copier</>}
         </Button>
 
         {language !== 'markup' ? (
@@ -83,9 +88,7 @@ export default function PrismCode({ code }: Props) {
       </div>
 
       <pre className="line-numbers" sx={pre}>
-        <code className={`language-${language}`}>
-          <Html html={code.html} />
-        </code>
+        <code className={`language-${language}`}>{code.text}</code>
       </pre>
     </div>
   )
