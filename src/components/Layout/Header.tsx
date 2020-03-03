@@ -10,8 +10,8 @@ import { Link } from 'gatsby'
 import Menu from './Menu'
 import CloseIcon from '../../assets/svg/close.svg'
 import MenuIcon from '../../assets/svg/menu.svg'
-import Container from '../Container'
-import Button from '../Button'
+import Container from '../tmp/Container'
+import Button from '../tmp/Button'
 
 const iconStyle = {
   fill: 'primary',

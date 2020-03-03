@@ -4,7 +4,7 @@ import { FC } from 'react'
 import Img, { FixedObject, GatsbyImageProps } from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { PrismicImage } from '../utils/types'
+import { PrismicImage } from '../../utils/types'
 
 interface AvatarProps extends GatsbyImageProps {
   size?: number

@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import Container from '../components/Container'
+import Container from '../components/tmp/Container'
 import { ProgrammingLangs } from '../components/PrismCode/utils'
 import PrismCode from '../components/PrismCode/PrismCode'
-import Fade from '../components/Fade'
+import Fade from '../components/tmp/Fade'
 
 export type TextSliceProps = {
   slice: {

@@ -5,8 +5,8 @@ import Prism from 'prismjs'
 import { Global } from '@emotion/core'
 import { useCopyToClipboard } from 'react-use'
 
-import Html from '../Html'
-import Button from '../Button'
+import Html from '../tmp/Html'
+import Button from '../tmp/Button'
 
 import dracula from './dracula-prismjs'
 import { ProgrammingLangs, cssByLang, getPrettyName } from './utils'

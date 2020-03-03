@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { keyframes, css } from '@emotion/core'
 import Img from 'gatsby-image'
 
-import GithubCorner from '../GithubCorner'
+import GithubCorner from '../tmp/GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
 import Navbar from './Navbar'
 import { colors } from './config'

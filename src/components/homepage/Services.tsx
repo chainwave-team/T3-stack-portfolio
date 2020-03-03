@@ -3,11 +3,11 @@ import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { SFC } from 'react'
 
-import Fade from '../Fade'
-import AccordionItem from '../AccordionItem'
-import Accordion from '../Accordion'
-import Container from '../Container'
-import Html from '../Html'
+import Fade from '../tmp/Fade'
+import AccordionItem from '../tmp/AccordionItem'
+import Accordion from '../tmp/Accordion'
+import Container from '../tmp/Container'
+import Html from '../tmp/Html'
 import { ServicesStatus, PrismicText } from '../../utils/types'
 
 const style = {

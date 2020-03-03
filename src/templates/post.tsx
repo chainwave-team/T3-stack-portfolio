@@ -5,10 +5,10 @@ import { FC } from 'react'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
-import Hero from '../components/Hero'
+import Hero from '../components/tmp/Hero'
 import { PrismicPost } from '../utils/types'
-import PostSlices from '../components/PostSlices'
-import LastPosts from '../components/LastPosts'
+import PostSlices from '../components/tmp/PostSlices'
+import LastPosts from '../components/tmp/LastPosts'
 
 export interface PostTemplateProps {
   path: string

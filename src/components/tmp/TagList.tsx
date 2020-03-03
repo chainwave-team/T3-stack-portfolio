@@ -3,8 +3,8 @@ import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { FC } from 'react'
 
-import { PrismicTechTag, PrismicRelationsOfTechTags } from '../utils/types'
-import { getTagsFromRelation } from '../utils/utils'
+import { PrismicTechTag, PrismicRelationsOfTechTags } from '../../utils/types'
+import { getTagsFromRelation } from '../../utils/utils'
 
 // This component works with "tags" OR with "relations (of tags)"
 export interface TagListProps {

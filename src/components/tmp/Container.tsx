@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Children } from '../utils/types'
+import { Children } from '../../utils/types'
 
 type Props = {
   children: Children

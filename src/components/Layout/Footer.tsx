@@ -3,11 +3,11 @@
 import { jsx, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import BaseLink from '../Link'
-import Fade from '../Fade'
-import Row from '../Row'
-import Col from '../Col'
-import Container from '../Container'
+import BaseLink from '../tmp/Link'
+import Fade from '../tmp/Fade'
+import Row from '../tmp/Row'
+import Col from '../tmp/Col'
+import Container from '../tmp/Container'
 import { PrismicLink } from '../../utils/types'
 
 const style = {

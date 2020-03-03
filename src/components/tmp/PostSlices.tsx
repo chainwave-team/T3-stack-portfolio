@@ -2,8 +2,8 @@ import React, { Fragment } from 'react'
 import uuid from 'uuid'
 import loadable from '@loadable/component'
 
-import { snakeToPascalCase } from '../utils/utils'
-import { Slice } from '../utils/types'
+import { snakeToPascalCase } from '../../utils/utils'
+import { Slice } from '../../utils/types'
 
 interface AsyncSliceProps {
   slice: Slice
@@ -13,7 +13,7 @@ interface PostSlicesProps {
 }
 
 const AsyncSlice = loadable(({ slice }: AsyncSliceProps) =>
-  import(`../slices/${snakeToPascalCase(slice.slice_type)}`)
+  import(`../../slices/${snakeToPascalCase(slice.slice_type)}`)
 )
 
 export default function PostSlices({ slices }: PostSlicesProps) {

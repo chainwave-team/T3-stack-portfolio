@@ -5,8 +5,8 @@ import loadable from '@loadable/component'
 
 import Carousel from '../../Carousel/Carousel'
 import { Props, ProjectNode } from './types'
-import Col from '../../Col'
-import ProjectCard from '../../ProjectCard'
+import Col from '../../tmp/Col'
+import ProjectCard from '../../tmp/ProjectCard'
 import { getTagsFromRelation } from '../../../utils/utils'
 
 const Mockup = loadable(() => import('../../Mockup/Mockup'))

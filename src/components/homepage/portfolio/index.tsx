@@ -3,9 +3,9 @@ import { jsx } from 'theme-ui'
 import loadable from '@loadable/component'
 import { useState } from 'react'
 
-import Container from '../../Container'
-import Fade from '../../Fade'
-import Button from '../../Button'
+import Container from '../../tmp/Container'
+import Fade from '../../tmp/Fade'
+import Button from '../../tmp/Button'
 import { Props, ProjectState } from './types'
 import ProjectSlider from './ProjectSlider'
 

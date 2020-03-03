@@ -2,7 +2,7 @@
 import { jsx, Flex } from 'theme-ui'
 
 import AppleButtons from './AppleButtons'
-import Link from '../Link'
+import Link from '../tmp/Link'
 import { colors } from './config'
 
 type Props = {

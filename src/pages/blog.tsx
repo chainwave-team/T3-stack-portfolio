@@ -5,9 +5,9 @@ import { FC } from 'react'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
-import Container from '../components/Container'
+import Container from '../components/tmp/Container'
 import { PrismicPost } from '../utils/types'
-import Link from '../components/Link'
+import Link from '../components/tmp/Link'
 import { hoverStyle } from '../styles/theme'
 
 export interface BlogPageProps {

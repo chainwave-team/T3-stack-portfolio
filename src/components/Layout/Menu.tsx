@@ -4,8 +4,8 @@ import uuid from 'uuid'
 import { Link as ScrollLink } from 'react-scroll'
 
 import { FC } from 'react'
-import Link from '../Link'
-import ContactButton from '../ContactButton'
+import Link from '../tmp/Link'
+import ContactButton from '../tmp/ContactButton'
 
 interface MenuItem {
   name: string

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from 'theme-ui'
 
-import { PrismicText, PrismicTechTag } from '../utils/types'
+import { PrismicText, PrismicTechTag } from '../../utils/types'
 import Html from './Html'
 import TagList from './TagList'
 

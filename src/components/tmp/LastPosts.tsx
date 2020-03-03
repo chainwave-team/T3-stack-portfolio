@@ -4,7 +4,7 @@ import { useState, FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 import Link from './Link'
-import { PrismicPost } from '../utils/types'
+import { PrismicPost } from '../../utils/types'
 import Container from './Container'
 import Button from './Button'
 import TagList from './TagList'

@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import Html from '../components/Html'
-import Container from '../components/Container'
+import Html from '../components/tmp/Html'
+import Container from '../components/tmp/Container'
 import { PrismicLink } from '../utils/types'
-import Link from '../components/Link'
+import Link from '../components/tmp/Link'
 
 export type QuoteSliceProps = {
   slice: {
