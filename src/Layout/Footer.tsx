@@ -2,13 +2,14 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
+import { FC } from 'react'
 
-import BaseLink from '../tmp/Link'
-import Fade from '../tmp/Fade'
-import Row from '../tmp/Row'
-import Col from '../tmp/Col'
-import Container from '../tmp/Container'
-import { PrismicLink } from '../../utils/types'
+import BaseLink from '../components/tmp/Link'
+import Fade from '../components/tmp/Fade'
+import Row from '../components/tmp/Row'
+import Col from '../components/tmp/Col'
+import Container from '../components/tmp/Container'
+import { PrismicLink } from '../utils/types'
 
 const style = {
   footer: { bg: `rgba(0, 0, 0, 1)`, color: 'white' },
@@ -19,13 +20,17 @@ const style = {
   copyright: { m: 0, fontFamily: 'mono' }
 }
 
-type LinkProps = {
+interface ExternalLinkProps {
   link: PrismicLink
   label: string
   first?: boolean
 }
 
-const ExternalLink = ({ link, label, first = false }: LinkProps) => (
+const ExternalLink: FC<ExternalLinkProps> = ({
+  link,
+  label,
+  first = false
+}) => (
   <BaseLink
     to={link.url}
     target={link.target}
@@ -35,7 +40,7 @@ const ExternalLink = ({ link, label, first = false }: LinkProps) => (
   </BaseLink>
 )
 
-export default function Footer() {
+const Footer: FC = () => {
   const { prismicOptions } = useStaticQuery(
     graphql`
       query Footer {
@@ -114,3 +119,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

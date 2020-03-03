@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex, Box } from 'theme-ui'
-import { useState, useRef } from 'react'
+import { useState, useRef, FC } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
 import { useTransition, animated } from 'react-spring'
@@ -8,10 +8,10 @@ import { useClickAway } from 'react-use'
 import { Link } from 'gatsby'
 
 import Menu from './Menu'
-import CloseIcon from '../../assets/svg/close.svg'
-import MenuIcon from '../../assets/svg/menu.svg'
-import Container from '../tmp/Container'
-import Button from '../tmp/Button'
+import CloseIcon from '../assets/svg/close.svg'
+import MenuIcon from '../assets/svg/menu.svg'
+import Container from '../components/tmp/Container'
+import Button from '../components/tmp/Button'
 
 const iconStyle = {
   fill: 'primary',
@@ -20,13 +20,13 @@ const iconStyle = {
 
 const Anim = animated.div
 
-type LogoProps = {
+interface LogoProps {
   path: string
   onClick: () => void
   siteTitle?: string
 }
 
-function Logo({ path, onClick, siteTitle = 'J' }: LogoProps) {
+const Logo: FC<LogoProps> = ({ path, onClick, siteTitle = 'J' }) => {
   if (path === '/') {
     return (
       <ScrollLink smooth isDynamic to="main" onClick={onClick}>
@@ -41,11 +41,11 @@ function Logo({ path, onClick, siteTitle = 'J' }: LogoProps) {
   )
 }
 
-type Props = {
+export interface HeaderProps {
   path: string
 }
 
-export default function Header({ path }: Props) {
+const Header: FC<HeaderProps> = ({ path }) => {
   const node = useRef<HTMLDivElement>(null)
 
   const [open, setOpen] = useState(false)
@@ -149,3 +149,5 @@ export default function Header({ path }: Props) {
     </header>
   )
 }
+
+export default Header

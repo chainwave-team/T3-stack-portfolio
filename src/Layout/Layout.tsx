@@ -6,9 +6,9 @@ import 'normalize.css'
 
 import Header from './Header'
 import Footer from './Footer'
-import { tachyonsDebug, scrollBar } from '../../styles/css'
-import theme from '../../styles/theme'
-import { fontFaces } from '../../styles/typography'
+import { tachyonsDebug, scrollBar } from '../styles/css'
+import theme from '../styles/theme'
+import { fontFaces } from '../styles/typography'
 
 // Styles (scrollbar & conditional debug CSS)
 const debugCSS = false

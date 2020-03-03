@@ -4,8 +4,8 @@ import { FC } from 'react'
 import { graphql } from 'gatsby'
 import loadable from '@loadable/component'
 
-import Layout from '../components/Layout/Layout'
-import SEO from '../components/Layout/SEO'
+import Layout from '../Layout/Layout'
+import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/HomepageHero'
 import LastPosts from '../components/tmp/LastPosts'
 import {

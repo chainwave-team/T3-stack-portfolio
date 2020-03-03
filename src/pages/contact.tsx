@@ -2,8 +2,8 @@
 import React from 'react'
 import { Styled } from 'theme-ui'
 
-import Layout from '../components/Layout/Layout'
-import SEO from '../components/Layout/SEO'
+import Layout from '../Layout/Layout'
+import SEO from '../Layout/SEO'
 import Container from '../components/tmp/Container'
 
 type Props = {
