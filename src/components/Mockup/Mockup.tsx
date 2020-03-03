@@ -2,11 +2,12 @@
 import { jsx } from 'theme-ui'
 import { keyframes, css } from '@emotion/core'
 import Img from 'gatsby-image'
+import { FC, RefObject } from 'react'
 
 import GithubCorner from '../tmp/GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
-import Navbar from './Navbar'
-import { colors } from './config'
+import MockupNavbar from './MockupNavbar'
+import { colors } from './MockupColors'
 import useHover from '../../hooks/useHover'
 
 const ScrollIconSize = 32
@@ -63,19 +64,24 @@ const style = {
   }
 }
 
-type Props = {
+export interface MockupProps {
   fluid: any
   title: string
   siteUrl?: string
   srcUrl?: string
 }
 
-const Mockup = ({ fluid, title = '', siteUrl = '', srcUrl = '' }: Props) => {
+const Mockup: FC<MockupProps> = ({
+  fluid,
+  title = '',
+  siteUrl = '',
+  srcUrl = ''
+}) => {
   const [hoverRef, isHovered] = useHover()
   return (
     <div sx={style.browser}>
-      <Navbar theme="dark" url={siteUrl} />
-      <div sx={style.screen} ref={hoverRef}>
+      <MockupNavbar theme="dark" url={siteUrl} />
+      <div sx={style.screen} ref={hoverRef as RefObject<HTMLDivElement>}>
         {srcUrl && <GithubCorner url={srcUrl} />}
         <div
           sx={{ ...style.scrollIcon, opacity: isHovered ? 0 : 1 }}

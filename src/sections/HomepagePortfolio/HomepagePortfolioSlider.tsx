@@ -9,7 +9,7 @@ import Col from '../../components/tmp/Col'
 import ProjectCard from '../../components/tmp/ProjectCard'
 import { getTagsFromRelation } from '../../utils/utils'
 
-const Mockup = loadable(() => import('../../components/Mockup/Mockup'))
+const Mockup = loadable(() => import('../../components/Mockup'))
 
 const Slide: FC<ProjectNode> = ({
   data: {

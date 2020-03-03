@@ -11,7 +11,7 @@ export default function useHover() {
   useEffect(
     // eslint-disable-next-line consistent-return
     () => {
-      const node = ref.current
+      const node = ref?.current
       if (node) {
         node.addEventListener('mouseover', handleMouseOver)
         node.addEventListener('mouseout', handleMouseOut)
