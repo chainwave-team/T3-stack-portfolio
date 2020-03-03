@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { SFC } from 'react'
+import { FC } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-import { ProjectNode, Props } from './types'
-import Html from '../../tmp/Html'
-import Link from '../../tmp/Link'
-import { External, Github } from '../../tmp/Icons'
-import TagList from '../../tmp/TagList'
-import { getTagsFromRelation } from '../../../utils/utils'
+import { ProjectNode, ProjectProps } from './types'
+import Html from '../../components/tmp/Html'
+import Link from '../../components/tmp/Link'
+import { External, Github } from '../../components/tmp/Icons'
+import TagList from '../../components/tmp/TagList'
+import { getTagsFromRelation } from '../../utils/utils'
 
 const style = {
   root: {
@@ -53,7 +53,7 @@ const style = {
   }
 }
 
-const Project: SFC<ProjectNode> = ({
+const Project: FC<ProjectNode> = ({
   data: { title, html, demo_link, source_link, relations }
 }) => {
   const tags = getTagsFromRelation(relations)
@@ -90,7 +90,7 @@ const Project: SFC<ProjectNode> = ({
   )
 }
 
-const OthersProjects: SFC<Props> = ({ nodes }) => {
+const HomepagePortfolioOthers: FC<ProjectProps> = ({ nodes }) => {
   const transitions = useTransition(nodes, item => item.uid, {
     unique: true,
     trail: 1200 / nodes.length,
@@ -110,4 +110,4 @@ const OthersProjects: SFC<Props> = ({ nodes }) => {
   )
 }
 
-export default OthersProjects
+export default HomepagePortfolioOthers

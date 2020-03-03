@@ -1,4 +1,4 @@
-import { PrismicProject } from '../../../utils/types'
+import { PrismicProject } from '../../utils/types'
 
 export interface ProjectNode {
   data: PrismicProject
@@ -10,6 +10,6 @@ export interface ProjectState {
   others: ProjectNode[]
 }
 
-export interface Props {
+export interface ProjectProps {
   nodes: ProjectNode[]
 }

@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
-import { SFC } from 'react'
+import { FC } from 'react'
 
-import Fade from '../tmp/Fade'
-import AccordionItem from '../tmp/AccordionItem'
-import Accordion from '../tmp/Accordion'
-import Container from '../tmp/Container'
-import Html from '../tmp/Html'
-import { ServicesStatus, PrismicText } from '../../utils/types'
+import Fade from '../components/tmp/Fade'
+import AccordionItem from '../components/tmp/AccordionItem'
+import Accordion from '../components/tmp/Accordion'
+import Container from '../components/tmp/Container'
+import Html from '../components/tmp/Html'
+import { ServicesStatus, PrismicText } from '../utils/types'
 
 const style = {
   container: {
@@ -45,21 +45,23 @@ const style = {
   }
 }
 
-type Service = {
+export interface Service {
   status: ServicesStatus
   service_title: string
   service_textarea: PrismicText
 }
 
-type Props = {
+export interface HomepageServicesProps {
   title: string
   items: Array<Service>
 }
 
-const Title: SFC<{ title: string; status: ServicesStatus }> = ({
-  title,
-  status
-}) => (
+export interface TitleProps {
+  title: string
+  status: ServicesStatus
+}
+
+const Title: FC<TitleProps> = ({ title, status }) => (
   <Styled.a sx={style.titleLink}>
     <Styled.h3 sx={style.title}>{title}</Styled.h3>
     {status === 'soon' && (
@@ -69,7 +71,7 @@ const Title: SFC<{ title: string; status: ServicesStatus }> = ({
   </Styled.a>
 )
 
-export default function ServicesSection({ title, items }: Props) {
+const HomepageServices: FC<HomepageServicesProps> = ({ title, items }) => {
   const services = items
     .filter(item => item.status !== 'hide')
     .map(item => ({
@@ -99,3 +101,5 @@ export default function ServicesSection({ title, items }: Props) {
     </Container>
   )
 }
+
+export default HomepageServices

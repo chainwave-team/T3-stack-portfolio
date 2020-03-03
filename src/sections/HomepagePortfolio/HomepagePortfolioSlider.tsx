@@ -1,17 +1,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { SFC } from 'react'
+import { FC } from 'react'
 import loadable from '@loadable/component'
 
-import Carousel from '../../Carousel/Carousel'
-import { Props, ProjectNode } from './types'
-import Col from '../../tmp/Col'
-import ProjectCard from '../../tmp/ProjectCard'
-import { getTagsFromRelation } from '../../../utils/utils'
+import Carousel from '../../components/Carousel/Carousel'
+import { ProjectProps, ProjectNode } from './types'
+import Col from '../../components/tmp/Col'
+import ProjectCard from '../../components/tmp/ProjectCard'
+import { getTagsFromRelation } from '../../utils/utils'
 
-const Mockup = loadable(() => import('../../Mockup/Mockup'))
+const Mockup = loadable(() => import('../../components/Mockup/Mockup'))
 
-const Slide: SFC<ProjectNode> = ({
+const Slide: FC<ProjectNode> = ({
   data: {
     demo_link,
     source_link,
@@ -44,7 +44,7 @@ const Slide: SFC<ProjectNode> = ({
   </article>
 )
 
-const ProjectSlider: SFC<Props> = ({ nodes }) => {
+const HomepagePortfolioSlider: FC<ProjectProps> = ({ nodes }) => {
   return (
     <Carousel>
       {nodes.map(props => (
@@ -54,4 +54,4 @@ const ProjectSlider: SFC<Props> = ({ nodes }) => {
   )
 }
 
-export default ProjectSlider
+export default HomepagePortfolioSlider

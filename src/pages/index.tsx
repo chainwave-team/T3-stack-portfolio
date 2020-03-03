@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/Layout/SEO'
-import SectionHeader from '../components/homepage/Header'
+import HomepageHero from '../sections/HomepageHero'
 import LastPosts from '../components/tmp/LastPosts'
 import {
   PrismicProject,
@@ -14,11 +14,9 @@ import {
   ServicesStatus,
   PrismicPost
 } from '../utils/types'
-import PortfolioSection from '../components/homepage/portfolio'
+import HomepagePortfolio from '../sections/HomepagePortfolio'
 
-const ServicesSection = loadable(() =>
-  import('../components/homepage/Services')
-)
+const HomepageServices = loadable(() => import('../sections/HomepageServices'))
 
 export interface IndexPageProps {
   path: string
@@ -65,15 +63,15 @@ const IndexPage: FC<IndexPageProps> = ({
   return (
     <Layout path={path}>
       <SEO title="Portfolio" />
-      <SectionHeader
+      <HomepageHero
         textarea={introduction.html}
         buttonLabel={header_contact_button_label}
       />
-      <ServicesSection
+      <HomepageServices
         title={services_introduction.text || ''}
         items={services}
       />
-      <PortfolioSection nodes={projects.nodes} />
+      <HomepagePortfolio nodes={projects.nodes} />
       <LastPosts posts={posts.edges} />
     </Layout>
   )
