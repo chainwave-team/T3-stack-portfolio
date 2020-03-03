@@ -2,21 +2,13 @@
 import { jsx } from 'theme-ui'
 
 import Container from '../components/tmp/Container'
-import { ProgrammingLangs } from '../components/PrismCode/utils'
-import PrismCode from '../components/PrismCode/PrismCode'
+import { PrismCodeProps } from '../components/PrismCode/utils'
+import PrismCode from '../components/PrismCode'
 import Fade from '../components/tmp/Fade'
 
 export type TextSliceProps = {
   slice: {
-    primary: {
-      code?: {
-        html: string
-        text: string
-        raw: {
-          label?: ProgrammingLangs
-        }[]
-      }
-    }
+    primary: PrismCodeProps
   }
 }
 

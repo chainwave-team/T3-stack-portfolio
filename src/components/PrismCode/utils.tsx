@@ -15,6 +15,16 @@ export type ProgrammingLangs =
   | 'php'
   | 'markup'
 
+export interface PrismCodeProps {
+  code: {
+    text: string
+    html: string
+    raw: Array<{
+      label?: ProgrammingLangs
+    }>
+  }
+}
+
 export const cssByLang = (lang: ProgrammingLangs) => {
   const black = { color: 'black', textShadow: 'none' }
   const white = { color: 'white' }

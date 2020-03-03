@@ -4,10 +4,25 @@
       "@babel/plugin-proposal-class-properties", 
       "@babel/plugin-syntax-dynamic-import",
       ["prismjs", {
-        "languages": ["javascript", "css", "html", "php"],
-        "plugins": ["line-numbers", "show-language"],
-        // "theme": "dracula",
-        "css": true
+        "languages": [
+          "javascript", 
+          "css", 
+          "html", 
+          "php", 
+          "jsx", 
+          "typescript", 
+          "sql", 
+          "markup", 
+          "scss", 
+          "tsx", 
+          "bash",
+          "json",
+          "markdown",
+          "graphql",
+          "yaml"
+        ],
+        "plugins": ["line-numbers"],
+        "css": false
       }]
     ]
   }

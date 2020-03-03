@@ -2,7 +2,14 @@ import { css } from '@emotion/core'
 
 import { colors } from './theme'
 
-const scrollBar = css`
+export const globalStyle = css`
+  a,
+  button:focus {
+    outline: none;
+  }
+`
+
+export const scrollBar = css`
   *,
   *:before,
   *:after {
@@ -32,7 +39,7 @@ const scrollBar = css`
   }
 `
 
-const tachyonsDebug = css`
+export const tachyonsDebug = css`
   /*
   DEBUG (PESTICIDE)
   Docs: http://tachyons.io/docs/debug/
@@ -344,5 +351,3 @@ const tachyonsDebug = css`
     outline: 1px solid #db175b !important;
   }
 `
-
-export { scrollBar, tachyonsDebug }

@@ -6,7 +6,7 @@ import 'normalize.css'
 
 import Header from './Header'
 import Footer from './Footer'
-import { tachyonsDebug, scrollBar } from '../styles/css'
+import { tachyonsDebug, scrollBar, globalStyle } from '../styles/css'
 import theme from '../styles/theme'
 import { fontFaces } from '../styles/typography'
 
@@ -21,6 +21,7 @@ export interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children, path }) => (
   <ThemeProvider theme={theme}>
     <Styled.root>
+      <Global styles={globalStyle} />
       <Global styles={fontFaces} />
       <Global styles={scrollBar} />
       {isDev && <Global styles={tachyonsDebug} />}

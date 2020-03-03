@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import * as React from 'react'
+import { useRef, useState, useEffect, FC } from 'react'
 import { jsx } from 'theme-ui'
 import Prism from 'prismjs'
 import { Global } from '@emotion/core'
@@ -7,56 +7,25 @@ import { useCopyToClipboard } from 'react-use'
 
 import Button from '../tmp/Button'
 
-import dracula from './dracula-prismjs'
-import { ProgrammingLangs, cssByLang, getPrettyName } from './utils'
-import { toolbar, pre, wrapper } from './style'
+import { PrismCodeProps, cssByLang, getPrettyName } from './utils'
+import { toolbar, pre, wrapper, dracula } from './style'
 
-// TODO : Async load using @loadable
-// TODO : Review language list with the doc
-import 'prismjs/components/prism-markup-templating' // Must be first
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-tsx'
-import 'prismjs/components/prism-bash'
-import 'prismjs/components/prism-yaml'
-import 'prismjs/components/prism-json'
-import 'prismjs/components/prism-css'
-import 'prismjs/components/prism-scss'
-import 'prismjs/components/prism-markdown'
-import 'prismjs/components/prism-graphql'
-import 'prismjs/components/prism-sql'
-import 'prismjs/components/prism-php'
-
-// TODO : Check plugin list, new cool ?
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers'
-
-type Props = {
-  code: {
-    text: string
-    html: string
-    raw: Array<{
-      label?: ProgrammingLangs
-    }>
-  }
-}
-
-// TODO : Clean a max, lib npm, css, plugin, feature, jsx, all
-
-export default function PrismCode({ code }: Props) {
+const PrismCode: FC<PrismCodeProps> = ({ code }) => {
   const [state, copyToClipboard] = useCopyToClipboard()
-  const [isHover, setHover] = React.useState(false)
+  const [isHover, setHover] = useState(false)
+  const codeRef = useRef<HTMLPreElement>(null)
+
   const language = code?.raw[0]?.label || 'markup'
 
   const handleClick = () => {
     copyToClipboard(code.text)
   }
 
-  // TODO : impl. onUnMount
-  React.useEffect(() => {
-    Prism.highlightAll()
-  }, [])
+  useEffect(() => {
+    if (codeRef?.current) {
+      Prism.highlightElement(codeRef.current)
+    }
+  }, [codeRef])
 
   return (
     <div
@@ -79,7 +48,7 @@ export default function PrismCode({ code }: Props) {
             }
           }}
         >
-          {state.value ? <>Copié!</> : <>Copier</>}
+          {state.value ? <span>Copié!</span> : <span>Copier</span>}
         </Button>
 
         {language !== 'markup' ? (
@@ -88,8 +57,12 @@ export default function PrismCode({ code }: Props) {
       </div>
 
       <pre className="line-numbers" sx={pre}>
-        <code className={`language-${language}`}>{code.text}</code>
+        <code ref={codeRef} className={`language-${language}`}>
+          {code.text.trim()}
+        </code>
       </pre>
     </div>
   )
 }
+
+export default PrismCode
