@@ -3,19 +3,40 @@ import { css } from '@emotion/core'
 import { colors } from './theme'
 
 export const globalStyle = css`
-  a,
-  button:focus {
-    outline: none;
-  }
-`
-
-export const scrollBar = css`
   *,
   *:before,
   *:after {
     box-sizing: border-box;
+    font-size: inherit;
+    font-display: block;
   }
 
+  body {
+    margin: 0;
+    height: 100%;
+  }
+
+  a:focus,
+  button:focus {
+    outline: none;
+  }
+
+  button,
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  article {
+    word-break: break-word;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+`
+
+export const scrollBar = css`
   /* Custom ScrollBar */
   ::-webkit-scrollbar {
     width: 8px;

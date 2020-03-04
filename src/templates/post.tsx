@@ -5,10 +5,11 @@ import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
-import Hero from '../components/tmp/Hero'
+import PostHero from '../sections/Post/PostHero'
 import { PrismicPost } from '../utils/types'
-import PostSlices from '../components/PostSlices'
+import PostSlices from '../sections/Post/PostSlices'
 import LastPosts from '../components/tmp/LastPosts'
+import PostThumbnail from '../sections/Post/PostThumbnail'
 
 export interface PostTemplateProps {
   path: string
@@ -41,10 +42,12 @@ const PostTemplate: FC<PostTemplateProps> = props => {
   return (
     <Layout path={path}>
       <SEO title={data.title.text || ''} />
-      <Hero
+      <PostHero
+        path={path}
         title={data.title.text || ''}
         date={data.published_date || first_publication_date}
       />
+      <PostThumbnail thumbnail={data?.thumbnail} />
       <div sx={{ my: 4 }}>
         {data?.body ? <PostSlices slices={data.body} /> : null}
       </div>

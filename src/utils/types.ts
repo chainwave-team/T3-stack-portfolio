@@ -28,8 +28,8 @@ export interface PrismicImage {
   url?: string
   localFile?: {
     childImageSharp: {
-      fluid: FluidObject
-      fixed: FixedObject
+      fluid?: FluidObject
+      fixed?: FixedObject
     }
   }
 }

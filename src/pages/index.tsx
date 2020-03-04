@@ -64,7 +64,7 @@ const IndexPage: FC<IndexPageProps> = ({
     <Layout path={path}>
       <SEO title="Portfolio" />
       <HomepageHero
-        textarea={introduction.html}
+        textarea={introduction.text}
         buttonLabel={header_contact_button_label}
       />
       <HomepageServices
@@ -85,19 +85,23 @@ export const pageQuery = graphql`
       type
       data {
         introduction {
+          text
           html
         }
         title {
           text
+          html
         }
         header_contact_button_label
         services_introduction {
           text
+          html
         }
         services {
           status
           service_title
           service_textarea {
+            text
             html
           }
         }

@@ -49,7 +49,7 @@ const PostCard: FC<PrismicPost> = ({ data, ...props }) => {
           onMouseLeave={() => setHover(false)}
         >
           <div>
-            <Styled.p sx={{ color: 'grey.light', mt: 0, fontSize: 1 }}>
+            <Styled.p sx={{ color: 'muted', mt: 0, fontSize: 1 }}>
               {date}
             </Styled.p>
             <Styled.h4 sx={{}}>{title.text}</Styled.h4>

@@ -16,8 +16,7 @@ const style = {
   container: { py: [4, 5] },
   row1: { py: 5 },
   row2: { pt: 4 },
-  title: { fontSize: [3, 3, 3, 4] },
-  copyright: { m: 0, fontFamily: 'mono' }
+  copyright: { m: 0, fontFamily: 'mono', color: 'muted' }
 }
 
 interface ExternalLinkProps {
@@ -34,7 +33,7 @@ const ExternalLink: FC<ExternalLinkProps> = ({
   <BaseLink
     to={link.url}
     target={link.target}
-    sx={{ ml: first ? 0 : 3, color: 'white', fontFamily: 'mono' }}
+    sx={{ ml: first ? 0 : 3, color: 'muted', fontFamily: 'mono' }}
   >
     {label}
   </BaseLink>
@@ -86,15 +85,13 @@ const Footer: FC = () => {
         <Fade>
           <Row sx={style.row1}>
             <Col>
-              <Styled.h4 sx={style.title}>{footer_text}</Styled.h4>
+              <Styled.h3>{footer_text}</Styled.h3>
             </Col>
             <Col>
               {/* <Link to="/contact">
                 <Button setSize="large">Contact</Button>
               </Link> */}
-              <Styled.h4 sx={{ ...style.title, color: 'primary' }}>
-                {mail}
-              </Styled.h4>
+              <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
             </Col>
           </Row>
         </Fade>

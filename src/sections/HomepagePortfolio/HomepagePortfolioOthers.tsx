@@ -44,7 +44,7 @@ const style = {
     '&:hover path': { fill: 'secondary' }
   },
   html: {
-    color: 'grey.light',
+    color: 'muted',
     fontSize: 1,
     mb: 2
   },

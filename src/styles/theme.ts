@@ -32,7 +32,7 @@ const theme: Readonly<MyTheme> = {
     heading: `"avenir next", avenir, sans-serif`,
     mono: `"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontSizes: [14, 16, 20, 24, 36, 48, 64, 80, 96],
   fontWeights: {
     thin: 200,
     normal: 400,
@@ -49,7 +49,8 @@ const theme: Readonly<MyTheme> = {
     '0',
     '0px 0px 4px 2px rgba( 0, 0, 0, 0.2 )',
     '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
-    '4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )'
+    '4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )',
+    'rgba(0, 0, 0, 0.2) 0px 30px 60px -10px, rgba(0, 0, 0, 0.22) 0px 18px 36px -18px'
   ],
   breakpoints,
   sizes: {
@@ -99,7 +100,7 @@ const theme: Readonly<MyTheme> = {
     code: {
       fontFamily: 'mono',
       '&.inline-code': {
-        fontSize: 'text',
+        fontSize: 'body',
         fontFamily: 'code',
         lineHeight: 'body',
         fontWeight: 'body',

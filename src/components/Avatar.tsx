@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import { PrismicImage } from '../utils/types'
 
-export interface HeroQuery {
+export interface AvatarQuery {
   prismicOptions: {
     data: {
       avatar?: PrismicImage
@@ -15,7 +15,7 @@ export interface HeroQuery {
 }
 
 const Avatar: FC<GatsbyImageProps> = props => {
-  const { prismicOptions }: HeroQuery = useStaticQuery(
+  const { prismicOptions }: AvatarQuery = useStaticQuery(
     graphql`
       query {
         prismicOptions {
@@ -43,7 +43,7 @@ export const PrismicOptionsAvatar = graphql`
       avatar {
         localFile {
           childImageSharp {
-            fixed(width: 25, height: 25) {
+            fixed(width: 48, height: 48) {
               ...GatsbyImageSharpFixed
             }
           }

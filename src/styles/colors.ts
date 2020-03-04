@@ -26,17 +26,12 @@ const colors = {
   black: palette.black,
   white: dracula.foreground,
   blue: palette.blue,
-  grey: {
-    light: `rgba(255, 255, 255, 0.8)`,
-    medium: `rgba(255, 255, 255, 0.5)`,
-    dark: `rgba(255, 255, 255, 0.2)`
-  },
   text: `rgba(255, 255, 255, 0.9)`,
   background: palette.darkBlue,
   heading: palette.white,
   primary: palette.cyan,
-  secondary: dracula.pink
-  // muted:
+  secondary: dracula.pink,
+  muted: `rgba(255, 255, 255, 0.65)`
 }
 
 export default colors

@@ -33,8 +33,16 @@ export const PrismicPost = graphql`
       thumbnail {
         localFile {
           childImageSharp {
-            fixed {
+            fixed(width: 1180) {
               ...GatsbyImageSharpFixed
+            }
+            fluid(
+              maxWidth: 1180
+              jpegQuality: 100
+              pngQuality: 100
+              quality: 100
+            ) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

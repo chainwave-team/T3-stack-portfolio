@@ -3,7 +3,6 @@ import { jsx, Flex, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
-import Html from '../components/tmp/Html'
 import Container from '../components/Container'
 import Fade from '../components/Fade'
 import SocialIcons from '../components/SocialIcons'
@@ -45,8 +44,9 @@ const HomepageHero: FC<HomepageHeroProps> = ({
       <Container size="blog">
         <Fade>
           <div>
-            <Styled.h1 sx={{ fontSize: 6 }}>{job}</Styled.h1>
-            <Html html={textarea} style={{ fontSize: 2, fontFamily: 'mono' }} />
+            <Styled.h1>{job}</Styled.h1>
+            <Styled.h3 sx={{ color: 'muted' }}>{textarea}</Styled.h3>
+
             <Flex sx={{ py: 3 }}>
               <ContactButton title={buttonLabel || ''} />
               <div sx={{ px: 3 }}>
