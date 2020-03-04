@@ -1,4 +1,5 @@
 import { ReactChild, ReactFragment, ReactPortal } from 'react'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
 export type Children =
   | ReactChild
@@ -27,8 +28,8 @@ export type PrismicImage = {
   url?: string
   localFile?: {
     childImageSharp: {
-      fluid: object
-      fixed: object
+      fluid: FluidObject
+      fixed: FixedObject
     }
   }
 }

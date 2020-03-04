@@ -4,7 +4,7 @@ import loadable from '@loadable/component'
 import { useState, FC } from 'react'
 
 import Container from '../../components/tmp/Container'
-import Fade from '../../components/tmp/Fade'
+import Fade from '../../components/Fade'
 import Button from '../../components/tmp/Button'
 import { ProjectState, ProjectProps } from './types'
 import HomepagePortfolioSlider from './HomepagePortfolioSlider'

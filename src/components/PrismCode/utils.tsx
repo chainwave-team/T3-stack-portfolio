@@ -1,5 +1,11 @@
+/** @jsx jsx */
+import { FC } from 'react'
+import { jsx } from 'theme-ui'
+
+import Button from '../tmp/Button'
+
 /* eslint-disable import/prefer-default-export */
-export type ProgrammingLangs =
+export type ProgrammingLang =
   | 'javascript'
   | 'jsx'
   | 'typescript'
@@ -15,17 +21,7 @@ export type ProgrammingLangs =
   | 'php'
   | 'markup'
 
-export interface PrismCodeProps {
-  code: {
-    text: string
-    html: string
-    raw: Array<{
-      label?: ProgrammingLangs
-    }>
-  }
-}
-
-export const cssByLang = (lang: ProgrammingLangs) => {
+export const cssByLang = (lang: ProgrammingLang) => {
   const black = { color: 'black', textShadow: 'none' }
   const white = { color: 'white' }
   switch (lang) {
@@ -48,7 +44,7 @@ export const cssByLang = (lang: ProgrammingLangs) => {
   }
 }
 
-export const getPrettyName = (lang: ProgrammingLangs) => {
+export const getPrettyName = (lang: ProgrammingLang) => {
   switch (lang) {
     case 'typescript':
       return 'TS'
@@ -66,3 +62,31 @@ export const getPrettyName = (lang: ProgrammingLangs) => {
       return lang
   }
 }
+
+interface ButtonCopyProps {
+  isHover: boolean
+  value?: string
+  onClick: () => void
+}
+
+export const ButtonCopy: FC<ButtonCopyProps> = ({
+  isHover,
+  value,
+  onClick
+}) => (
+  <Button
+    size="small"
+    onClick={onClick}
+    sx={{
+      border: 'none',
+      opacity: isHover ? 1 : 0,
+      transition: 'opacity 200ms',
+      zIndex: 25,
+      ':hover': {
+        opacity: 1
+      }
+    }}
+  >
+    {value ? <span>Copié!</span> : <span>Copier</span>}
+  </Button>
+)

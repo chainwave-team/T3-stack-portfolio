@@ -1,12 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 import { useSpring, animated, config } from 'react-spring'
 
-import { Children } from '../../utils/types'
-
-export default function Fade({ children }: { children: Children }) {
+const Fade: FC = ({ children }) => {
   const [isVisible, setVisible] = useState(false)
   const css = useSpring({
     to: {
@@ -27,3 +25,5 @@ export default function Fade({ children }: { children: Children }) {
     </VisibilitySensor>
   )
 }
+
+export default Fade

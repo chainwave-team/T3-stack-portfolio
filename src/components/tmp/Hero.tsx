@@ -3,7 +3,7 @@ import { jsx, Styled, Box, Flex } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from './Container'
-import Avatar from './Avatar'
+import Avatar from '../Avatar'
 
 export interface HeroProps {
   title: string
@@ -27,6 +27,7 @@ const Hero: FC<HeroProps> = ({ title, date }) => {
         </Styled.h1>
 
         <Flex sx={{ alignItems: 'center' }}>
+          {/* // TODO make AvatarCard Comp  */}
           <Avatar />
           <Styled.p sx={{ pl: 3, color: 'grey.light' }}>
             <b>Julien Caron</b>

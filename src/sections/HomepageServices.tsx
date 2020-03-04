@@ -3,7 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { FC } from 'react'
 
-import Fade from '../components/tmp/Fade'
+import Fade from '../components/Fade'
 import AccordionItem from '../components/tmp/AccordionItem'
 import Accordion from '../components/tmp/Accordion'
 import Container from '../components/tmp/Container'

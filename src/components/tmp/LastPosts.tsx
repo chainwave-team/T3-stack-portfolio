@@ -8,7 +8,7 @@ import { PrismicPost } from '../../utils/types'
 import Container from './Container'
 import Button from './Button'
 import TagList from './TagList'
-import Fade from './Fade'
+import Fade from '../Fade'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 

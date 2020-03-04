@@ -1,14 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { FC } from 'react'
-import Img, { FixedObject, GatsbyImageProps } from 'gatsby-image'
+import Img, { GatsbyImageProps } from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { PrismicImage } from '../../utils/types'
-
-interface AvatarProps extends GatsbyImageProps {
-  size?: number
-}
+import { PrismicImage } from '../utils/types'
 
 export interface HeroQuery {
   prismicOptions: {
@@ -35,11 +31,7 @@ const Avatar: FC<GatsbyImageProps> = props => {
   }
 
   return (
-    <Img
-      fixed={fixed as FixedObject}
-      {...props}
-      sx={{ borderRadius: '50%', boxShadow: 2 }}
-    />
+    <Img fixed={fixed} {...props} sx={{ borderRadius: '50%', boxShadow: 2 }} />
   )
 }
 

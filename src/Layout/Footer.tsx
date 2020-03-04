@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
 import BaseLink from '../components/tmp/Link'
-import Fade from '../components/tmp/Fade'
+import Fade from '../components/Fade'
 import Row from '../components/tmp/Row'
 import Col from '../components/tmp/Col'
 import Container from '../components/tmp/Container'
