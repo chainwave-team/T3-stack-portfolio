@@ -22,7 +22,7 @@ export interface IconComponentProps {
 }
 
 export interface SocialShareLinksProps {
-  currentUrl: string
+  currentUrl?: string
   iconProps?: IconComponentProps
   hasColors?: boolean
 }
@@ -32,6 +32,12 @@ const SocialShareLinks: FC<SocialShareLinksProps> = ({
   iconProps: iconBaseProps,
   hasColors
 }) => {
+  const url = currentUrl || window.location.href
+
+  if (!url) {
+    return null
+  }
+
   const defaultIconProps: IconComponentProps = {
     size: 32
   }
@@ -41,7 +47,7 @@ const SocialShareLinks: FC<SocialShareLinksProps> = ({
   }
 
   const buttonProps = {
-    url: currentUrl,
+    url,
     sx: {
       display: 'inline-flex'
     }

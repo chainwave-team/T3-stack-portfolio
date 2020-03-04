@@ -43,7 +43,6 @@ const PostTemplate: FC<PostTemplateProps> = props => {
     <Layout path={path}>
       <SEO title={data.title.text || ''} />
       <PostHero
-        path={path}
         title={data.title.text || ''}
         date={data.published_date || first_publication_date}
       />

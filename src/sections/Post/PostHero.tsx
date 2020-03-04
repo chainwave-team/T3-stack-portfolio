@@ -9,11 +9,10 @@ import SocialShareLinks from '../../components/SocialShareLinks'
 export interface PostHeroProps {
   title: string
   date: string
-  path: string
   readTime?: number
 }
 
-const PostHero: FC<PostHeroProps> = ({ title, date, path, readTime }) => (
+const PostHero: FC<PostHeroProps> = ({ title, date, readTime }) => (
   <Container
     size="blog"
     sx={{
@@ -44,7 +43,7 @@ const PostHero: FC<PostHeroProps> = ({ title, date, path, readTime }) => (
           </Box>
         </Flex>
 
-        <SocialShareLinks currentUrl={path} />
+        <SocialShareLinks />
       </Flex>
     </Box>
   </Container>
