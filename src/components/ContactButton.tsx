@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { FC } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 
 // import Link from './Link'
-import Button from './Button'
+import Button from './tmp/Button'
 
 /*
  * This component link to footer as anchor.
@@ -14,18 +15,18 @@ import Button from './Button'
     </Link>
  */
 
-interface Props {
+export interface ContactButtonProps {
   title?: string
   onClick?: () => void
 }
 
-export default function ContactButton({
+const ContactButton: FC<ContactButtonProps> = ({
   title = 'Contactez moi',
   onClick
-}: Props) {
-  return (
-    <ScrollLink to="footer" smooth isDynamic onClick={onClick}>
-      <Button>{title}</Button>
-    </ScrollLink>
-  )
-}
+}) => (
+  <ScrollLink to="footer" smooth isDynamic onClick={onClick}>
+    <Button>{title}</Button>
+  </ScrollLink>
+)
+
+export default ContactButton

@@ -1,10 +1,10 @@
-import React, { SFC } from 'react'
+import React, { FC } from 'react'
 
-interface Props {
+interface IconProps {
   size?: number
 }
 
-export const Github: SFC<Props> = ({ size = 24 }) => (
+export const Github: FC<IconProps> = ({ size = 24 }) => (
   <svg
     strokeWidth="0"
     viewBox="0 0 496 512"
@@ -16,7 +16,7 @@ export const Github: SFC<Props> = ({ size = 24 }) => (
   </svg>
 )
 
-export const Linkedin: SFC<Props> = ({ size = 24 }) => (
+export const Linkedin: FC<IconProps> = ({ size = 24 }) => (
   <svg
     strokeWidth="0"
     viewBox="0 0 448 512"
@@ -28,7 +28,7 @@ export const Linkedin: SFC<Props> = ({ size = 24 }) => (
   </svg>
 )
 
-export const Malt: SFC<Props> = ({ size = 24 }) => (
+export const Malt: FC<IconProps> = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height={size}
@@ -45,7 +45,7 @@ export const Malt: SFC<Props> = ({ size = 24 }) => (
   </svg>
 )
 
-export const External: SFC<Props> = ({ size = 24 }) => (
+export const External: FC<IconProps> = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height={size}

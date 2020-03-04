@@ -85,7 +85,8 @@ export type PrismicPost = {
       }
     }>
     published_date?: string
-    relations: PrismicRelationsOfTechTags
+    relations?: PrismicRelationsOfTechTags
+    body?: Slice[] // Slices
   }
 }
 

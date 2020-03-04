@@ -5,8 +5,8 @@ import { useTransition, animated } from 'react-spring'
 
 import { ProjectNode, ProjectProps } from './types'
 import Html from '../../components/tmp/Html'
-import Link from '../../components/tmp/Link'
-import { External, Github } from '../../components/tmp/Icons'
+import Link from '../../components/Link'
+import { External, Github } from '../../components/Icons'
 import TagList from '../../components/tmp/TagList'
 import { getTagsFromRelation } from '../../utils/utils'
 

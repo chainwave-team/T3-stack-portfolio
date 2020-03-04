@@ -1,16 +1,22 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import { SFC } from 'react'
+import { FC } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
-interface Props {
+export interface LinkProps {
   to: string
   onClick?: () => void
   target?: string
   title?: string
 }
 
-const Link: SFC<Props> = ({ children, to, target = '', onClick, ...other }) => {
+const Link: FC<LinkProps> = ({
+  children,
+  to,
+  target = '',
+  onClick,
+  ...other
+}) => {
   const internal = /^\/(?!\/)/.test(to)
 
   const handleClick = () => {

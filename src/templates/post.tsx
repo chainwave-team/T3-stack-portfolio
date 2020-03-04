@@ -7,7 +7,7 @@ import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import Hero from '../components/tmp/Hero'
 import { PrismicPost } from '../utils/types'
-import PostSlices from '../components/tmp/PostSlices'
+import PostSlices from '../components/PostSlices'
 import LastPosts from '../components/tmp/LastPosts'
 
 export interface PostTemplateProps {

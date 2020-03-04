@@ -6,8 +6,8 @@ import { FC } from 'react'
 import Html from '../components/tmp/Html'
 import Container from '../components/tmp/Container'
 import Fade from '../components/Fade'
-import SocialIcons from '../components/tmp/SocialIcons'
-import ContactButton from '../components/tmp/ContactButton'
+import SocialIcons from '../components/SocialIcons'
+import ContactButton from '../components/ContactButton'
 
 export interface HomepageHeroProps {
   textarea?: string

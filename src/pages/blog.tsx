@@ -7,7 +7,7 @@ import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import Container from '../components/tmp/Container'
 import { PrismicPost } from '../utils/types'
-import Link from '../components/tmp/Link'
+import Link from '../components/Link'
 import { hoverStyle } from '../styles/theme'
 
 export interface BlogPageProps {

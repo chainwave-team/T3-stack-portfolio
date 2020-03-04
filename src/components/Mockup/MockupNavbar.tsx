@@ -3,7 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { FC } from 'react'
 
 import AppleButtons from '../AppleButtons'
-import Link from '../tmp/Link'
+import Link from '../Link'
 import { colors } from './MockupColors'
 
 type TrimUrlFunc = (url: string) => string
