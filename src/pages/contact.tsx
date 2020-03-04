@@ -4,7 +4,7 @@ import { Styled } from 'theme-ui'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
-import Container from '../components/tmp/Container'
+import Container from '../components/Container'
 
 type Props = {
   path: string

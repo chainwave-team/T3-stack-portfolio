@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { FC } from 'react'
 
-const Row = (props: any) => {
+const Row: FC = props => {
   return (
     <div
       {...props}

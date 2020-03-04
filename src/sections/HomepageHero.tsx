@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
 import Html from '../components/tmp/Html'
-import Container from '../components/tmp/Container'
+import Container from '../components/Container'
 import Fade from '../components/Fade'
 import SocialIcons from '../components/SocialIcons'
 import ContactButton from '../components/ContactButton'

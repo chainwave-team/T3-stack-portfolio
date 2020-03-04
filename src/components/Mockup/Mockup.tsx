@@ -4,7 +4,7 @@ import { keyframes, css } from '@emotion/core'
 import Img from 'gatsby-image'
 import { FC, RefObject } from 'react'
 
-import GithubCorner from '../tmp/GithubCorner'
+import GithubCorner from '../GithubCorner'
 import ScrollSVG from '../../assets/svg/arrows-v-alt.svg'
 import MockupNavbar from './MockupNavbar'
 import { colors } from './MockupColors'

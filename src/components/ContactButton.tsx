@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 
 // import Link from './Link'
-import Button from './tmp/Button'
+import Button from './Button'
 
 /*
  * This component link to footer as anchor.

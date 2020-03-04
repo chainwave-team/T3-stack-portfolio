@@ -1,16 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Children } from '../../utils/types'
+import { HTMLProps, FC } from 'react'
 
-type Props = {
-  children: Children
+export interface ButtonProps extends Partial<HTMLProps<HTMLButtonElement>> {
   variant?: 'primary' | 'secondary'
-  size?: 'small' | 'medium' | 'large'
-  onClick?: () => void
+  setSize?: 'small' | 'medium' | 'large'
 }
 
-export default function Button(props: Props) {
-  const { children, variant, size, onClick } = props
+const Button: FC<ButtonProps> = ({ variant, setSize, ...props }) => {
   const padding = {
     small: {
       px: 2,
@@ -27,6 +24,7 @@ export default function Button(props: Props) {
     }
   }
 
+  // TODO : Share link style with link ?
   return (
     <button
       {...props}
@@ -45,11 +43,10 @@ export default function Button(props: Props) {
         m: 0,
         border: '2px solid',
         borderRadius: 0,
-        ...padding[size || 'medium']
+        ...padding[setSize || 'medium']
       }}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    />
   )
 }
+
+export default Button

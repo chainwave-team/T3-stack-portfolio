@@ -6,7 +6,7 @@ import { FC } from 'react'
 import Fade from '../components/Fade'
 import AccordionItem from '../components/tmp/AccordionItem'
 import Accordion from '../components/tmp/Accordion'
-import Container from '../components/tmp/Container'
+import Container from '../components/Container'
 import Html from '../components/tmp/Html'
 import { ServicesStatus, PrismicText } from '../utils/types'
 

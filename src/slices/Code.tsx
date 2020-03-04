@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-import Container from '../components/tmp/Container'
+import Container from '../components/Container'
 import { ProgrammingLang } from '../components/PrismCode/utils'
 import PrismCode from '../components/PrismCode'
 import Fade from '../components/Fade'

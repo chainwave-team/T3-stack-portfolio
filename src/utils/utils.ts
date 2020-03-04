@@ -1,7 +1,9 @@
 import { PrismicRelationsOfTechTags as RelationsOfTG } from './types'
 
 export function getTagsFromRelation(relations: RelationsOfTG) {
-  return relations.map(({ tech_tags }) => tech_tags?.document[0].data || null)
+  return relations
+    .map(({ tech_tags }) => tech_tags?.document[0].data || null)
+    .filter(techTag => !!techTag)
 }
 
 export const capitalize = (word: string): string => {

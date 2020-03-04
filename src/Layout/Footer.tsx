@@ -6,9 +6,9 @@ import { FC } from 'react'
 
 import BaseLink from '../components/Link'
 import Fade from '../components/Fade'
-import Row from '../components/tmp/Row'
-import Col from '../components/tmp/Col'
-import Container from '../components/tmp/Container'
+import Row from '../components/Row'
+import Col from '../components/Col'
+import Container from '../components/Container'
 import { PrismicLink } from '../utils/types'
 
 const style = {
@@ -90,7 +90,7 @@ const Footer: FC = () => {
             </Col>
             <Col>
               {/* <Link to="/contact">
-                <Button size="large">Contact</Button>
+                <Button setSize="large">Contact</Button>
               </Link> */}
               <Styled.h4 sx={{ ...style.title, color: 'primary' }}>
                 {mail}

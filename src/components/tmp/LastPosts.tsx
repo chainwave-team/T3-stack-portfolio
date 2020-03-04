@@ -5,10 +5,11 @@ import { animated, useSpring } from 'react-spring'
 
 import Link from '../Link'
 import { PrismicPost } from '../../utils/types'
-import Container from './Container'
-import Button from './Button'
-import TagList from './TagList'
+import Container from '../Container'
+import Button from '../Button'
+import TagList from '../TagList'
 import Fade from '../Fade'
+import { getTagsFromRelation } from '../../utils/utils'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 
@@ -53,7 +54,7 @@ const PostCard: FC<PrismicPost> = ({ data, ...props }) => {
             </Styled.p>
             <Styled.h4 sx={{}}>{title.text}</Styled.h4>
           </div>
-          {relations && <TagList relations={relations} />}
+          {relations && <TagList tags={getTagsFromRelation(relations)} />}
         </animated.div>
       </Link>
     </Fade>

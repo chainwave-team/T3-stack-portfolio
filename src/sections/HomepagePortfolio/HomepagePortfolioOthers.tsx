@@ -7,7 +7,7 @@ import { ProjectNode, ProjectProps } from './types'
 import Html from '../../components/tmp/Html'
 import Link from '../../components/Link'
 import { External, Github } from '../../components/Icons'
-import TagList from '../../components/tmp/TagList'
+import TagList from '../../components/TagList'
 import { getTagsFromRelation } from '../../utils/utils'
 
 const style = {
@@ -85,6 +85,7 @@ const Project: FC<ProjectNode> = ({
         </div>
         {html?.html && <Html style={style.html} html={html.html} />}
       </div>
+      {console.log({ tags })}
       <div sx={style.tags}>{tags && <TagList tags={tags} />}</div>
     </div>
   )

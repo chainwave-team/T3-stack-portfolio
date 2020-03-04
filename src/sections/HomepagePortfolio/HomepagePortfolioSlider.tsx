@@ -5,7 +5,7 @@ import loadable from '@loadable/component'
 
 import Carousel from '../../components/Carousel'
 import { ProjectProps, ProjectNode } from './types'
-import Col from '../../components/tmp/Col'
+import Col from '../../components/Col'
 import ProjectCard from '../../components/tmp/ProjectCard'
 import { getTagsFromRelation } from '../../utils/utils'
 

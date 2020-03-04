@@ -12,18 +12,18 @@ export type Children =
 
 export type ContainerSize = 'blog' | 'container' | 'full'
 
-export type PrismicLink = {
+export interface PrismicLink {
   link_type: string
   url: string
   target?: string
 }
 
-export type PrismicText = {
+export interface PrismicText {
   text?: string
   html?: string
 }
 
-export type PrismicImage = {
+export interface PrismicImage {
   alt?: string
   url?: string
   localFile?: {
@@ -34,12 +34,12 @@ export type PrismicImage = {
   }
 }
 
-export type PrismicTechTag = {
+export interface PrismicTechTag {
   title: PrismicText
   description?: PrismicText
 }
 
-export type PrismicTechType = {
+export interface PrismicTechType {
   title: PrismicText
 }
 
@@ -53,7 +53,7 @@ export type PrismicRelationsOfTechTags = Array<{
   }
 }>
 
-export type PrismicProject = {
+export interface PrismicProject {
   title: PrismicText
   isfeatured?: 'yes' | 'no'
   demo_link?: PrismicLink
@@ -66,13 +66,13 @@ export type PrismicProject = {
   relations: PrismicRelationsOfTechTags
 }
 
-export type Slice = {
+export interface Slice {
   slice_type: 'text' | 'quote' | 'code' | 'image_with_caption'
   slice_label?: ContainerSize
   primary: any
 }
 
-export type PrismicPost = {
+export interface PrismicPost {
   uid: string
   last_publication_date: string
   first_publication_date: string

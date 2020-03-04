@@ -3,7 +3,7 @@ import { jsx, Flex, Styled } from 'theme-ui'
 
 import { PrismicText, PrismicTechTag } from '../../utils/types'
 import Html from './Html'
-import TagList from './TagList'
+import TagList from '../TagList'
 
 const style = {
   root: {
@@ -47,6 +47,7 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       <Styled.h2 sx={style.title}>{title && title.text}</Styled.h2>
       <div sx={style.html}>{html && <Html html={html.html} />}</div>
       <div sx={style.tags}>{tags && <TagList tags={tags} />}</div>
+      {/* {console.log({ tags })} */}
     </Flex>
   )
 }

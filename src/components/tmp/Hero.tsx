@@ -2,7 +2,7 @@
 import { jsx, Styled, Box, Flex } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from './Container'
+import Container from '../Container'
 import Avatar from '../Avatar'
 
 export interface HeroProps {
