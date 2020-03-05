@@ -10,6 +10,7 @@ import { PrismicPost } from '../utils/types'
 import PostSlices from '../sections/Post/PostSlices'
 import LastPosts from '../components/LastPosts'
 import PostThumbnail from '../sections/Post/PostThumbnail'
+import Comments from '../components/Comments'
 
 export interface PostTemplateProps {
   path: string
@@ -39,11 +40,15 @@ const PostTemplate: FC<PostTemplateProps> = props => {
     return true
   })
 
+  if (!data?.title?.text) {
+    return null
+  }
+
   return (
     <Layout path={path}>
-      <SEO title={data.title.text || ''} />
+      <SEO title={data.title.text} />
       <PostHero
-        title={data.title.text || ''}
+        title={data.title.text}
         date={data.published_date || first_publication_date}
       />
       <PostThumbnail thumbnail={data?.thumbnail} />
@@ -55,6 +60,7 @@ const PostTemplate: FC<PostTemplateProps> = props => {
         button="Tous les articles"
         posts={relatedPosts.slice(0, 3)}
       />
+      <Comments title={data.title.text} uid={uid} />
     </Layout>
   )
 }

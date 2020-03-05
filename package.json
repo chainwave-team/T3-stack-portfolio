@@ -50,6 +50,7 @@
     "normalize.css": "^8.0.1",
     "prismjs": "^1.19.0",
     "react": "^16.8.6",
+    "react-disqus-comments": "^1.4.0",
     "react-dom": "^16.8.6",
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
