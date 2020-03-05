@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from 'theme-ui'
 
-import { PrismicText, PrismicTechTag } from '../../utils/types'
+import { FC } from 'react'
+import { PrismicText, PrismicTechTag } from '../utils/types'
 import Html from './Html'
-import TagList from '../TagList'
+import TagList from './TagList'
 
 const style = {
   root: {
@@ -31,14 +32,19 @@ const style = {
   }
 }
 
-type Props = {
+export interface ProjectCardProps {
   title: PrismicText
   html?: PrismicText
   projectType?: PrismicText
   tags?: PrismicTechTag[]
 }
 
-export default function ProjectCard({ title, projectType, tags, html }: Props) {
+const ProjectCard: FC<ProjectCardProps> = ({
+  title,
+  projectType,
+  tags,
+  html
+}) => {
   return (
     <Flex sx={style.root}>
       <Styled.p sx={style.category}>
@@ -47,7 +53,8 @@ export default function ProjectCard({ title, projectType, tags, html }: Props) {
       <Styled.h2 sx={style.title}>{title && title.text}</Styled.h2>
       <div sx={style.html}>{html && <Html html={html.html} />}</div>
       <div sx={style.tags}>{tags && <TagList tags={tags} />}</div>
-      {/* {console.log({ tags })} */}
     </Flex>
   )
 }
+
+export default ProjectCard

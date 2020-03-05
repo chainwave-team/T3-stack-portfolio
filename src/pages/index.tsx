@@ -7,7 +7,7 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/HomepageHero'
-import LastPosts from '../components/tmp/LastPosts'
+import LastPosts from '../components/LastPosts'
 import {
   PrismicProject,
   PrismicText,

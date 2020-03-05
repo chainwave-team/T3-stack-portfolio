@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { useTransition, animated } from 'react-spring'
 
 import { ProjectNode, ProjectProps } from './types'
-import Html from '../../components/tmp/Html'
+import Html from '../../components/Html'
 import Link from '../../components/Link'
 import { External, Github } from '../../components/Icons'
 import TagList from '../../components/TagList'
@@ -44,9 +44,11 @@ const style = {
     '&:hover path': { fill: 'secondary' }
   },
   html: {
-    color: 'muted',
-    fontSize: 1,
-    mb: 2
+    '& p': {
+      color: 'muted',
+      fontSize: 1,
+      mb: 2
+    }
   },
   tags: {
     fontSize: 1
@@ -85,7 +87,6 @@ const Project: FC<ProjectNode> = ({
         </div>
         {html?.html && <Html style={style.html} html={html.html} />}
       </div>
-      {console.log({ tags })}
       <div sx={style.tags}>{tags && <TagList tags={tags} />}</div>
     </div>
   )

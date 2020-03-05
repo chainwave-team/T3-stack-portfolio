@@ -7,7 +7,7 @@ import Fade from '../components/Fade'
 import AccordionItem from '../components/tmp/AccordionItem'
 import Accordion from '../components/tmp/Accordion'
 import Container from '../components/Container'
-import Html from '../components/tmp/Html'
+import Html from '../components/Html'
 import { ServicesStatus, PrismicText } from '../utils/types'
 
 const style = {
@@ -39,9 +39,6 @@ const style = {
     color: 'secondary',
     fontFamily: 'mono',
     m: 0
-  },
-  content: {
-    py: 2
   }
 }
 
@@ -83,16 +80,14 @@ const HomepageServices: FC<HomepageServicesProps> = ({ title, items }) => {
     <Container section id="skills" sx={style.container}>
       <Fade>
         <div sx={style.bg}>
-          <Styled.h2 sx={{ lineHeight: 1, pb: 4, fontSize: 5 }}>
-            {title}
-          </Styled.h2>
+          <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>
           <Accordion>
             {services.map(({ label, textarea, status }, i) => (
               <AccordionItem
                 key={uuid()}
                 index={i + 1}
                 title={<Title title={label} status={status} />}
-                content={<Html html={textarea.html} style={style.content} />}
+                content={<Html html={textarea.html} style={{ py: 2 }} />}
               />
             ))}
           </Accordion>

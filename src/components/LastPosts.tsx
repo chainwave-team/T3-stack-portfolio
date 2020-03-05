@@ -3,13 +3,13 @@ import { jsx, Styled, Flex } from 'theme-ui'
 import { useState, FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 
-import Link from '../Link'
-import { PrismicPost } from '../../utils/types'
-import Container from '../Container'
-import Button from '../Button'
-import TagList from '../TagList'
-import Fade from '../Fade'
-import { getTagsFromRelation } from '../../utils/utils'
+import Link from './Link'
+import { PrismicPost } from '../utils/types'
+import Container from './Container'
+import Button from './Button'
+import TagList from './TagList'
+import Fade from './Fade'
+import { getTagsFromRelation } from '../utils/utils'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 

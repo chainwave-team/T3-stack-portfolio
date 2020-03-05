@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import Html from '../components/tmp/Html'
+import Html from '../components/Html'
 import Container from '../components/Container'
 import { PrismicLink } from '../utils/types'
 import Link from '../components/Link'

@@ -8,7 +8,7 @@ import SEO from '../Layout/SEO'
 import PostHero from '../sections/Post/PostHero'
 import { PrismicPost } from '../utils/types'
 import PostSlices from '../sections/Post/PostSlices'
-import LastPosts from '../components/tmp/LastPosts'
+import LastPosts from '../components/LastPosts'
 import PostThumbnail from '../sections/Post/PostThumbnail'
 
 export interface PostTemplateProps {

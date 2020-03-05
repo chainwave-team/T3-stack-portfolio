@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Html from '../components/tmp/Html'
+import Html from '../components/Html'
 import Container from '../components/Container'
 
 export type TextSliceProps = {
