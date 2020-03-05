@@ -52,9 +52,7 @@ const PostTemplate: FC<PostTemplateProps> = props => {
         date={data.published_date || first_publication_date}
       />
       <PostThumbnail thumbnail={data?.thumbnail} />
-      <div sx={{ my: 4 }}>
-        {data?.body ? <PostSlices slices={data.body} /> : null}
-      </div>
+      <PostSlices slices={data.body} />
       <LastPosts
         title="Plus d'articles"
         button="Tous les articles"

@@ -1,4 +1,6 @@
-import React, { Fragment, FC } from 'react'
+/** @jsx jsx */
+import { FC } from 'react'
+import { jsx } from 'theme-ui'
 import uuid from 'uuid'
 import loadable from '@loadable/component'
 
@@ -22,26 +24,11 @@ const PostSlices: FC<PostSlicesProps> = ({ slices }) => {
   }
 
   return (
-    <>
-      {slices.map(slice => {
-        const res = (() => {
-          switch (slice.slice_type) {
-            case 'text':
-            case 'quote':
-            case 'code':
-            case 'image_with_caption':
-              return (
-                <Fragment key={uuid()}>
-                  <AsyncSlice slice={slice} />
-                </Fragment>
-              )
-            default:
-              return null
-          }
-        })()
-        return res
-      })}
-    </>
+    <div sx={{ my: 4 }}>
+      {slices.map(slice => (
+        <AsyncSlice key={uuid()} slice={slice} />
+      ))}
+    </div>
   )
 }
 
