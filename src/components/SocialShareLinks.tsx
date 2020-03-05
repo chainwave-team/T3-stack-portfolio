@@ -32,7 +32,10 @@ const SocialShareLinks: FC<SocialShareLinksProps> = ({
   iconProps: iconBaseProps,
   hasColors
 }) => {
-  const url = currentUrl || window.location.href
+  let url = currentUrl || ''
+  if (typeof window !== 'undefined') {
+    url = window?.location?.href
+  }
 
   if (!url) {
     return null
