@@ -119,16 +119,32 @@ interface PrismicPostQuery {
 
 export interface Template {
   location: Location
-  pageContext: {
-    uid: string
-  }
+  pageContext: PrismicPost
+}
+
+export interface ForTemplatePostTag extends PrismicTechTag {
+  count: number
+  posts: string[]
 }
 
 export interface TemplatePost extends Template {
-  data: {
-    prismicPost: PrismicPost
-    allPosts: PrismicPostQuery
-    allTags: PrismicTechTagQuery
+  pageContext: {
+    currentPost: PrismicPost
+    allPosts: Array<{
+      node: PrismicPost
+    }>
+    postTags: Array<{
+      node: ForTemplatePostTag
+    }>
+  }
+}
+
+export interface TemplatePostTag extends Template {
+  pageContext: {
+    currentTag: ForTemplatePostTag
+    posts: Array<{
+      node: PrismicPost
+    }>
   }
 }
 

@@ -65,12 +65,14 @@ export function getPostsTags(
 // Todo : Develop more ;)
 export function getRelatedPosts(
   currentPost: PrismicPost,
-  posts: PrismicPostQuery
+  posts: Array<{
+    node: PrismicPost
+  }>
 ) {
   const excludes = [
     currentPost.uid,
     'bonjour-cher-visiteur-bienvenue-sur-mon-article-demo'
   ]
 
-  return posts.edges.filter(({ node }) => !excludes.includes(node.uid))
+  return posts.filter(({ node }) => !excludes.includes(node.uid))
 }

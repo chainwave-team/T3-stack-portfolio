@@ -3,15 +3,17 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from '../../components/Container'
-import { PrismicTechTagQuery } from '../../types.d'
+import { ForTemplatePostTag } from '../../types.d'
 import Link from '../../components/Link'
 
 export interface PostTagCloudProps {
-  tags: PrismicTechTagQuery
+  tags: Array<{
+    node: ForTemplatePostTag
+  }>
 }
 
 const PostTagCloud: FC<PostTagCloudProps> = ({ tags }) => {
-  const hasTags = tags?.edges && tags?.edges.length > 0
+  const hasTags = tags && tags.length > 0
 
   if (!hasTags) {
     return null
@@ -31,7 +33,7 @@ const PostTagCloud: FC<PostTagCloudProps> = ({ tags }) => {
             justifyContent: 'center'
           }}
         >
-          {tags.edges.map(({ node }) => {
+          {tags.map(({ node }) => {
             const title = node?.data?.title?.text
             if (!title) {
               return null
@@ -48,7 +50,12 @@ const PostTagCloud: FC<PostTagCloudProps> = ({ tags }) => {
                 }}
               >
                 <span sx={{ px: 3 }}>•</span>
-                <Link to={`/tags/${node.uid}`}>{title}</Link>
+                <Link to={`/blog/tags/${node.uid}`}>
+                  {title}
+                  <span sx={{ color: 'text', fontSize: 0 }}>
+                    {` (${node.count})`}
+                  </span>
+                </Link>
               </div>
             )
           })}

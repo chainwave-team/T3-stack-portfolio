@@ -5,10 +5,11 @@ import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
-import Container from '../components/Container'
-import { PrismicPost } from '../utils/types'
+import { PrismicPost } from '../types.d'
 import Link from '../components/Link'
 import { hoverStyle } from '../styles/theme'
+import BlogHero from '../sections/Blog/BlogHero'
+import BlogList from '../sections/Blog/BlogList'
 
 export interface BlogPageProps {
   path: string
@@ -28,7 +29,7 @@ export const PostCard: FC<PrismicPost> = ({
 }) => (
   <Box sx={{ pb: 2 }}>
     <Link to={uid}>
-      <Styled.h3 sx={hoverStyle}>{title.text}</Styled.h3>
+      <Styled.h3 sx={hoverStyle}>{title?.text || ''}</Styled.h3>
       <Styled.p>{published_date || first_publication_date}</Styled.p>
     </Link>
   </Box>
@@ -37,12 +38,8 @@ export const PostCard: FC<PrismicPost> = ({
 const BlogPage: FC<BlogPageProps> = ({ path, data }) => (
   <Layout path={path}>
     <SEO title="Portfolio" />
-    <Container section size="blog">
-      <Styled.h1 sx={{ py: 5 }}>Blog</Styled.h1>
-      {data.blog.edges.map(({ node }) => (
-        <PostCard key={node.uid} {...node} />
-      ))}
-    </Container>
+    <BlogHero />
+    <BlogList posts={data.blog.edges} />
   </Layout>
 )
 

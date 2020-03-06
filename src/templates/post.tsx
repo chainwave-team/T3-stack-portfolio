@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { graphql } from 'gatsby'
 import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
@@ -12,58 +11,36 @@ import PostThumbnail from '../sections/Post/PostThumbnail'
 import Comments from '../components/Comments'
 import PostTagCloud from '../sections/Post/PostTagCloud'
 import { TemplatePost } from '../types.d'
-import { getRelatedPosts, getPostsTags } from '../utils/utils'
+import { getRelatedPosts } from '../utils/utils'
 
-const PostTemplate: FC<TemplatePost> = ({ location, data }) => {
-  const { prismicPost, allPosts, allTags } = data
-  const relatedPosts = getRelatedPosts(prismicPost, allPosts)
-  const techTags = getPostsTags(allPosts, allTags)
-  const { uid, data: postData, first_publication_date } = prismicPost
+const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
+  const { allPosts, postTags, currentPost } = pageContext
+  const relatedPosts = getRelatedPosts(currentPost, allPosts)
+  const { uid, data, first_publication_date } = currentPost
+  const { pathname } = location
 
-  if (!postData?.title?.text) {
+  if (!data?.title?.text) {
     return null
   }
 
   return (
-    <Layout path={location.pathname}>
-      <SEO title={postData.title.text} />
+    <Layout path={pathname}>
+      <SEO title={data.title.text} />
       <PostHero
-        title={postData.title.text}
-        date={postData.published_date || first_publication_date}
+        title={data.title.text}
+        date={data.published_date || first_publication_date}
       />
-      <PostThumbnail thumbnail={postData?.thumbnail} />
-      <PostSlices slices={postData?.body} />
+      <PostThumbnail thumbnail={data?.thumbnail} />
+      <PostSlices slices={data?.body} />
       <LastPosts
         title="Plus d'articles"
         button="Tous les articles"
         posts={relatedPosts?.slice(0, 3)}
       />
-      <Comments title={postData.title.text} uid={uid} />
-      <PostTagCloud tags={techTags} />
+      <Comments title={data.title.text} uid={uid} />
+      <PostTagCloud tags={postTags} />
     </Layout>
   )
 }
 
 export default PostTemplate
-
-export const pageQuery = graphql`
-  query PostBySlug($uid: String!) {
-    prismicPost(uid: { eq: $uid }) {
-      ...PrismicPost
-    }
-    allPosts: allPrismicPost {
-      edges {
-        node {
-          ...PrismicPost
-        }
-      }
-    }
-    allTags: allPrismicTechTags {
-      edges {
-        node {
-          ...PrismicTechTag
-        }
-      }
-    }
-  }
-`
