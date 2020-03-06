@@ -6,59 +6,40 @@ import { FC } from 'react'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import PostHero from '../sections/Post/PostHero'
-import { PrismicPost } from '../utils/types'
 import PostSlices from '../sections/Post/PostSlices'
 import LastPosts from '../components/LastPosts'
 import PostThumbnail from '../sections/Post/PostThumbnail'
 import Comments from '../components/Comments'
+import PostTagCloud from '../sections/Post/PostTagCloud'
+import { TemplatePost } from '../types.d'
+import { getRelatedPosts, getPostsTags } from '../utils/utils'
 
-export interface PostTemplateProps {
-  path: string
-  data: {
-    prismicPost: PrismicPost
-    similarPosts: {
-      edges: Array<{
-        node: PrismicPost
-      }>
-    }
-  }
-}
+const PostTemplate: FC<TemplatePost> = ({ location, data }) => {
+  const { prismicPost, allPosts, allTags } = data
+  const relatedPosts = getRelatedPosts(prismicPost, allPosts)
+  const techTags = getPostsTags(allPosts, allTags)
+  const { uid, data: postData, first_publication_date } = prismicPost
 
-const PostTemplate: FC<PostTemplateProps> = props => {
-  const {
-    path,
-    data: { prismicPost, similarPosts }
-  } = props
-  const { uid, data, first_publication_date } = prismicPost
-  const excludes = ['bonjour-cher-visiteur-bienvenue-sur-mon-article-demo', uid]
-  const relatedPosts = similarPosts.edges.filter(({ node }) => {
-    // Here "related posts algorithm"
-    if (excludes.includes(node.uid)) {
-      return false
-    }
-    // ... rest of algorithm
-    return true
-  })
-
-  if (!data?.title?.text) {
+  if (!postData?.title?.text) {
     return null
   }
 
   return (
-    <Layout path={path}>
-      <SEO title={data.title.text} />
+    <Layout path={location.pathname}>
+      <SEO title={postData.title.text} />
       <PostHero
-        title={data.title.text}
-        date={data.published_date || first_publication_date}
+        title={postData.title.text}
+        date={postData.published_date || first_publication_date}
       />
-      <PostThumbnail thumbnail={data?.thumbnail} />
-      <PostSlices slices={data.body} />
+      <PostThumbnail thumbnail={postData?.thumbnail} />
+      <PostSlices slices={postData?.body} />
       <LastPosts
         title="Plus d'articles"
         button="Tous les articles"
-        posts={relatedPosts.slice(0, 3)}
+        posts={relatedPosts?.slice(0, 3)}
       />
-      <Comments title={data.title.text} uid={uid} />
+      <Comments title={postData.title.text} uid={uid} />
+      <PostTagCloud tags={techTags} />
     </Layout>
   )
 }
@@ -70,10 +51,17 @@ export const pageQuery = graphql`
     prismicPost(uid: { eq: $uid }) {
       ...PrismicPost
     }
-    similarPosts: allPrismicPost {
+    allPosts: allPrismicPost {
       edges {
         node {
           ...PrismicPost
+        }
+      }
+    }
+    allTags: allPrismicTechTags {
+      edges {
+        node {
+          ...PrismicTechTag
         }
       }
     }

@@ -9,14 +9,29 @@ import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/HomepageHero'
 import LastPosts from '../components/LastPosts'
 import {
-  PrismicProject,
   PrismicText,
   ServicesStatus,
-  PrismicPost
-} from '../utils/types'
+  PrismicPost,
+  PrismicImage,
+  PrismicLink,
+  PrismicTechTagRelation
+} from '../types.d'
 import HomepagePortfolio from '../sections/HomepagePortfolio'
 
 const HomepageServices = loadable(() => import('../sections/HomepageServices'))
+
+export interface PrismicProject {
+  title: PrismicText
+  isfeatured?: 'yes' | 'no'
+  demo_link?: PrismicLink
+  source_link?: PrismicLink
+  full_screen?: PrismicImage
+  html?: PrismicText
+  project_type?: {
+    document: Array<{ data: { title: PrismicText } }>
+  }
+  relations?: PrismicTechTagRelation
+}
 
 export interface IndexPageProps {
   path: string

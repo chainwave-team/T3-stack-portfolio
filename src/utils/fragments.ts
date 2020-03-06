@@ -19,6 +19,22 @@ export const siteMetaData = graphql`
   }
 `
 
+export const PrismicTechTag = graphql`
+  fragment PrismicTechTag on PrismicTechTags {
+    uid
+    data {
+      title {
+        text
+        html
+      }
+      description {
+        text
+        html
+      }
+    }
+  }
+`
+
 export const PrismicPost = graphql`
   fragment PrismicPost on PrismicPost {
     uid
@@ -61,6 +77,7 @@ export const PrismicPost = graphql`
       relations {
         tech_tags {
           document {
+            uid
             data {
               title {
                 html
@@ -93,6 +110,7 @@ export const PrismicPostBodyText = graphql`
       slice_type
       primary {
         text {
+          text
           html
         }
       }
@@ -108,6 +126,7 @@ export const PrismicPostBodyQuote = graphql`
       slice_type
       primary {
         quote {
+          text
           html
         }
         source_name

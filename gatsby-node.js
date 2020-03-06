@@ -8,7 +8,7 @@ const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const pages = await graphql(`
+  const posts = await graphql(`
     {
       allPrismicPost(filter: { lang: { eq: "fr-fr" } }) {
         edges {
@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const template = path.resolve('src/templates/post.tsx')
-  pages.data.allPrismicPost.edges.forEach(edge => {
+  posts.data.allPrismicPost.edges.forEach(edge => {
     // Have a graphQL error if has a empty field
     // To fix it, we have a dummy post with all fields
     // Here we dont' create page for this.

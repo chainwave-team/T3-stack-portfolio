@@ -4,7 +4,7 @@ import { useState, FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 import Link from './Link'
-import { PrismicPost } from '../utils/types'
+import { PrismicPost } from '../types.d'
 import Container from './Container'
 import Button from './Button'
 import TagList from './TagList'
@@ -52,7 +52,7 @@ const PostCard: FC<PrismicPost> = ({ data, ...props }) => {
             <Styled.p sx={{ color: 'muted', mt: 0, fontSize: 1 }}>
               {date}
             </Styled.p>
-            <Styled.h4 sx={{}}>{title.text}</Styled.h4>
+            <Styled.h4>{title?.text || ''}</Styled.h4>
           </div>
           {relations && <TagList tags={getTagsFromRelation(relations)} />}
         </animated.div>
