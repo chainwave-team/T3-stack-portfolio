@@ -39,7 +39,7 @@ const ExternalLink: FC<ExternalLinkProps> = ({
   </BaseLink>
 )
 
-const Footer: FC = () => {
+const Footer: FC<{ path: string }> = ({ path }) => {
   const { prismicOptions } = useStaticQuery(
     graphql`
       query Footer {
@@ -82,19 +82,21 @@ const Footer: FC = () => {
   return (
     <footer id="footer" sx={style.footer}>
       <Container sx={style.container}>
-        <Fade>
-          <Row sx={style.row1}>
-            <Col>
-              <Styled.h3>{footer_text}</Styled.h3>
-            </Col>
-            <Col>
-              {/* <Link to="/contact">
+        {path === '/' && (
+          <Fade>
+            <Row sx={style.row1}>
+              <Col>
+                <Styled.h3>{footer_text}</Styled.h3>
+              </Col>
+              <Col>
+                {/* <Link to="/contact">
                 <Button setSize="large">Contact</Button>
               </Link> */}
-              <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
-            </Col>
-          </Row>
-        </Fade>
+                <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
+              </Col>
+            </Row>
+          </Fade>
+        )}
         <Fade>
           <hr />
         </Fade>

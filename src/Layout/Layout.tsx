@@ -33,7 +33,7 @@ const Layout: FC<LayoutProps> = ({ children, path }) => (
           {children}
         </main>
 
-        <Footer />
+        <Footer path={path} />
       </>
     </Styled.root>
   </ThemeProvider>

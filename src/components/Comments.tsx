@@ -28,7 +28,7 @@ const Comments: FC<CommentsProps> = ({ uid, title }) => {
   return (
     <Fragment>
       {!!url && (
-        <Container sx={{ py: 5, mb: 5 }} size="blog">
+        <Container sx={{ py: 5, mb: 5, maxWidth: 1080 }} size="container">
           <Styled.h2 sx={{ textAlign: 'center', mb: 4 }}>
             Qu&apos;en avez-vous pensé ?
           </Styled.h2>
