@@ -3,12 +3,12 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-import Html from '../../components/Html'
-import Link from '../../components/Link'
-import { External, Github } from '../../components/Icons'
-import TagList from '../../components/TagList'
-import { getTagsFromRelation } from '../../utils'
-import { PrismicProject, ProjectList } from '../../types'
+import Html from '../../../components/Html'
+import Link from '../../../components/Link'
+import { External, Github } from '../../../components/Icons'
+import TagList from '../../../components/TagList'
+import { getTagsFromRelation } from '../../../utils'
+import { PrismicProject, ProjectList } from '../../../types'
 
 const style = {
   root: {
@@ -92,13 +92,11 @@ const Project: FC<PrismicProject> = ({
   )
 }
 
-export interface HomepagePortfolioOthersProps {
+export interface HomePortfolioOthersProps {
   projects: ProjectList
 }
 
-const HomepagePortfolioOthers: FC<HomepagePortfolioOthersProps> = ({
-  projects
-}) => {
+const HomePortfolioOthers: FC<HomePortfolioOthersProps> = ({ projects }) => {
   const transitions = useTransition(projects, item => item.node.uid, {
     unique: true,
     trail: 1200 / projects.length,
@@ -118,4 +116,4 @@ const HomepagePortfolioOthers: FC<HomepagePortfolioOthersProps> = ({
   )
 }
 
-export default HomepagePortfolioOthers
+export default HomePortfolioOthers

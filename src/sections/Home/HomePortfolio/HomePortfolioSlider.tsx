@@ -3,13 +3,13 @@ import { jsx } from 'theme-ui'
 import { FC } from 'react'
 import loadable from '@loadable/component'
 
-import Carousel from '../../components/Carousel'
-import Col from '../../components/Col'
-import ProjectCard from '../../components/ProjectCard'
-import { getTagsFromRelation } from '../../utils'
-import { PrismicProject, ProjectList } from '../../types'
+import Carousel from '../../../components/Carousel'
+import Col from '../../../components/Col'
+import ProjectCard from '../../../components/ProjectCard'
+import { getTagsFromRelation } from '../../../utils'
+import { PrismicProject, ProjectList } from '../../../types'
 
-const Mockup = loadable(() => import('../../components/Mockup'))
+const Mockup = loadable(() => import('../../../components/Mockup'))
 
 const Slide: FC<PrismicProject> = ({
   data: {
@@ -44,13 +44,11 @@ const Slide: FC<PrismicProject> = ({
   </article>
 )
 
-export interface HomepagePortfolioSliderProps {
+export interface HomePortfolioSliderProps {
   projects: ProjectList
 }
 
-const HomepagePortfolioSlider: FC<HomepagePortfolioSliderProps> = ({
-  projects
-}) => {
+const HomePortfolioSlider: FC<HomePortfolioSliderProps> = ({ projects }) => {
   return (
     <Carousel>
       {projects.map(({ node }) => (
@@ -60,4 +58,4 @@ const HomepagePortfolioSlider: FC<HomepagePortfolioSliderProps> = ({
   )
 }
 
-export default HomepagePortfolioSlider
+export default HomePortfolioSlider

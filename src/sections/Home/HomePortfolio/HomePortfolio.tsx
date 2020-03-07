@@ -3,17 +3,15 @@ import { jsx } from 'theme-ui'
 import loadable from '@loadable/component'
 import { useState, FC } from 'react'
 
-import Container from '../../components/Container'
-import Fade from '../../components/Fade'
-import Button from '../../components/Button'
-import HomepagePortfolioSlider from './HomepagePortfolioSlider'
-import { ProjectList } from '../../types'
+import Container from '../../../components/Container'
+import Fade from '../../../components/Fade'
+import Button from '../../../components/Button'
+import HomePortfolioSlider from './HomePortfolioSlider'
+import { ProjectList } from '../../../types'
 
-const HomepagePortfolioOthers = loadable(() =>
-  import('./HomepagePortfolioOthers')
-)
+const HomePortfolioOthers = loadable(() => import('./HomePortfolioOthers'))
 
-export interface HomepagePortfolioProps {
+export interface HomePortfolioProps {
   projects: ProjectList
 }
 
@@ -22,7 +20,7 @@ export interface ProjectState {
   others: ProjectList | []
 }
 
-const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ projects }) => {
+const HomePortfolio: FC<HomePortfolioProps> = ({ projects }) => {
   const [displayAll, setDisplayAll] = useState(false)
 
   // Filter featured projects VS others into two arrays
@@ -38,9 +36,9 @@ const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ projects }) => {
   return (
     <Container id="portfolio" section>
       <Fade>
-        <HomepagePortfolioSlider projects={featured} />
+        <HomePortfolioSlider projects={featured} />
 
-        {displayAll && <HomepagePortfolioOthers projects={others} />}
+        {displayAll && <HomePortfolioOthers projects={others} />}
 
         {displayAll || (
           <Button
@@ -55,4 +53,4 @@ const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ projects }) => {
   )
 }
 
-export default HomepagePortfolio
+export default HomePortfolio

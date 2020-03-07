@@ -5,12 +5,12 @@ import loadable from '@loadable/component'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
-import HomepageHero from '../sections/HomepageHero'
+import HomepageHero from '../sections/Home/HomeHero'
 import LastPosts from '../components/LastPosts'
 import { TemplateHome } from '../types'
-import HomepagePortfolio from '../sections/HomepagePortfolio'
+import HomePortfolio from '../sections/Home/HomePortfolio'
 
-const HomepageServices = loadable(() => import('../sections/HomepageServices'))
+const HomeServices = loadable(() => import('../sections/Home/HomeServices'))
 
 const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
   const { posts, projects, homepage } = pageContext
@@ -28,11 +28,8 @@ const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
         textarea={introduction.text}
         buttonLabel={header_contact_button_label}
       />
-      <HomepageServices
-        title={services_introduction.text || ''}
-        items={services}
-      />
-      <HomepagePortfolio projects={projects} />
+      <HomeServices title={services_introduction.text || ''} items={services} />
+      <HomePortfolio projects={projects} />
       <LastPosts posts={posts.slice(0, 3)} />
     </Layout>
   )

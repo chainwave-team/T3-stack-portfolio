@@ -3,12 +3,12 @@ import { jsx, Styled } from 'theme-ui'
 import uuid from 'uuid'
 import { FC } from 'react'
 
-import Fade from '../components/Fade'
-import AccordionItem from '../components/tmp/AccordionItem'
-import Accordion from '../components/tmp/Accordion'
-import Container from '../components/Container'
-import Html from '../components/Html'
-import { ServicesStatus, PrismicText } from '../types'
+import Fade from '../../components/Fade'
+import AccordionItem from '../../components/tmp/AccordionItem'
+import Accordion from '../../components/tmp/Accordion'
+import Container from '../../components/Container'
+import Html from '../../components/Html'
+import { ServicesStatus, PrismicText } from '../../types'
 
 const style = {
   container: {
@@ -48,7 +48,7 @@ export interface Service {
   service_textarea: PrismicText
 }
 
-export interface HomepageServicesProps {
+export interface HomeServicesProps {
   title: string
   items: Array<Service>
 }
@@ -68,7 +68,7 @@ const Title: FC<TitleProps> = ({ title, status }) => (
   </Styled.a>
 )
 
-const HomepageServices: FC<HomepageServicesProps> = ({ title, items }) => {
+const HomeServices: FC<HomeServicesProps> = ({ title, items }) => {
   const services = items
     .filter(item => item.status !== 'hide')
     .map(item => ({
@@ -97,4 +97,4 @@ const HomepageServices: FC<HomepageServicesProps> = ({ title, items }) => {
   )
 }
 
-export default HomepageServices
+export default HomeServices

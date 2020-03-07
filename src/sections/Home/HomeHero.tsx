@@ -3,20 +3,17 @@ import { jsx, Flex, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
-import Container from '../components/Container'
-import Fade from '../components/Fade'
-import SocialIcons from '../components/SocialIcons'
-import ContactButton from '../components/ContactButton'
+import Container from '../../components/Container'
+import Fade from '../../components/Fade'
+import SocialIcons from '../../components/SocialIcons'
+import ContactButton from '../../components/ContactButton'
 
-export interface HomepageHeroProps {
+export interface HomeHeroProps {
   textarea?: string
   buttonLabel?: string
 }
 
-const HomepageHero: FC<HomepageHeroProps> = ({
-  textarea,
-  buttonLabel = ''
-}) => {
+const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
   const { prismicOptions } = useStaticQuery(
     graphql`
       query HomepageHeader {
@@ -60,4 +57,4 @@ const HomepageHero: FC<HomepageHeroProps> = ({
   )
 }
 
-export default HomepageHero
+export default HomeHero
