@@ -11,7 +11,7 @@ export interface BlogHeroProps {
 
 const BlogHero: FC<BlogHeroProps> = ({
   title = 'Blog',
-  subTitle = 'Découvrez mes derniers articles'
+  subTitle = 'Découvrez les derniers articles'
 }) => {
   return (
     <Container size="blog" sx={{ pt: 6, pb: 4, mt: `80px` }}>

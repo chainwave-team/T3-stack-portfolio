@@ -25,6 +25,7 @@ export const globalStyle = css`
   a {
     text-decoration: none;
     cursor: pointer;
+    transition: color 200ms ease;
   }
 
   article {
