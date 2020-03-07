@@ -96,7 +96,7 @@ export interface PrismicPost {
   last_publication_date: string
   first_publication_date: string
   data: {
-    title?: PrismicText
+    title: PrismicText
     thumbnail?: PrismicImage
     canonical?: Array<{
       data: {
@@ -109,8 +109,41 @@ export interface PrismicPost {
   }
 }
 
-interface PrismicPostQuery {
+export interface PrismicPostQuery {
   edges: Array<{ node: PrismicPost }>
+}
+
+export interface PrismicProject {
+  uid: string
+  data: {
+    title: PrismicText
+    isfeatured?: 'yes' | 'no'
+    demo_link?: PrismicLink
+    source_link?: PrismicLink
+    full_screen?: PrismicImage
+    html?: PrismicText
+    project_type?: {
+      document: Array<{ data: { title: PrismicText } }>
+    }
+    relations?: PrismicTechTagRelation[]
+  }
+}
+
+export type ProjectList = Array<{ node: PrismicProject }>
+
+export interface Homepage {
+  type: string
+  data: {
+    header_contact_button_label: string
+    title: PrismicText
+    introduction: PrismicText
+    services_introduction: PrismicText
+    services: Array<{
+      status: ServicesStatus
+      service_title: string
+      service_textarea: PrismicText
+    }>
+  }
 }
 
 // Pages & Templates types
@@ -145,6 +178,30 @@ export interface TemplatePostTag extends Template {
     posts: Array<{
       node: PrismicPost
     }>
+    postTags: Array<{
+      node: ForTemplatePostTag
+    }>
+  }
+}
+
+export interface TemplateBlog extends Template {
+  pageContext: {
+    posts: Array<{
+      node: PrismicPost
+    }>
+    postTags: Array<{
+      node: ForTemplatePostTag
+    }>
+  }
+}
+
+export interface TemplateHome extends Template {
+  pageContext: {
+    posts: Array<{
+      node: PrismicPost
+    }>
+    projects: ProjectList
+    homepage: Homepage
   }
 }
 

@@ -7,34 +7,27 @@ const { getPostTags } = utils
 
 const templates = {
   post: path.resolve('src/templates/post.tsx'),
-  postTag: path.resolve('src/templates/postTag.tsx')
+  postTag: path.resolve('src/templates/postTag.tsx'),
+  blog: path.resolve('src/templates/blog.tsx'),
+  home: path.resolve('src/templates/home.tsx')
 }
 
 module.exports = async ({ actions, graphql }) => {
   const { createPage } = actions
 
+  const postsTmp = await graphql(query.posts)
+  const postTagsTmp = await graphql(query.postTags)
+  const projectsTmp = await graphql(query.projects)
+  const homepageTmp = await graphql(query.homepage)
+
   const data = {
-    posts: [],
-    tags: [],
-    postTags: []
+    posts: postsTmp.data.posts.edges.map(el => el),
+    tags: postTagsTmp.data.tags.edges.map(el => el),
+    postTags: [],
+    projects: projectsTmp.data.projects.edges.map(el => el),
+    homepage: homepageTmp.data.homepage
   }
 
-  // Have a graphQL error if has a empty field
-  // To fix it, we have a dummy post with all fields
-  // Here we dont' create page for this.
-  const hiddenPostSlugs = [
-    'bonjour-cher-visiteur-bienvenue-sur-mon-article-demo'
-  ]
-  const postsTmp = await graphql(query.posts)
-  data.posts = postsTmp.data.posts.edges
-    .map(el => el)
-    .filter(({ node }) => !hiddenPostSlugs.includes(node.uid))
-
-  // Get tech tags
-  const postTagsTmp = await graphql(query.postTags)
-  data.tags = postTagsTmp.data.tags.edges.map(el => el)
-
-  // Get tags linked to posts
   data.postTags = getPostTags(data.posts)
 
   // Create Blog posts
@@ -57,10 +50,32 @@ module.exports = async ({ actions, graphql }) => {
       component: templates.postTag,
       context: {
         currentTag: edge.node,
+        postTags: data.postTags,
         posts: data.posts.filter(({ node }) =>
           edge.node.posts.includes(node.uid)
         )
       }
     })
+  })
+
+  // Create the blog page
+  createPage({
+    path: `/blog`,
+    component: templates.blog,
+    context: {
+      postTags: data.postTags,
+      posts: data.posts
+    }
+  })
+
+  // Create the home page
+  createPage({
+    path: `/`,
+    component: templates.home,
+    context: {
+      posts: data.posts,
+      projects: data.projects,
+      homepage: data.homepage
+    }
   })
 }

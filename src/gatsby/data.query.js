@@ -1,11 +1,24 @@
+const dateFormat = `DD/MM/YYYY`
+
 const GatsbyFluid_withWebp = `
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+`
+
+const PrismicLink = `
+    link_type
+    url
+    target
+`
+
+const PrismicText = `
+    text
+    html
 `
 
 const PostBodyText = `
@@ -14,118 +27,81 @@ const PostBodyText = `
         slice_type
         primary {
             text {
-                text
-                html
+                ${PrismicText}
             }
         }
     }
 `
 
 const PostBodyQuote = `
-... on PrismicPostBodyQuote {
-      id
-      slice_type
-      primary {
-        quote {
-          text
-          html
+    ... on PrismicPostBodyQuote {
+        id
+        slice_type
+        primary {
+            quote {
+                ${PrismicText}
+            }
+            source_name
+            source_link {
+                ${PrismicLink}
+            }
         }
-        source_name
-        source_link {
-          link_type
-          target
-          url
-        }
-      }
     }
 `
 
 const PostBodyCode = `
-... on PrismicPostBodyCode {
-    id
-    slice_type
-    primary {
-        code {
-            html
-            text
-            raw {
-            label
-            }
-        }
-    }
-}
-`
-
-const PostBodyImageWithCaption = `
-... on PrismicPostBodyImageWithCaption {
-      id
-      slice_type
-      slice_label
-      prismicId
-      primary {
-        image {
-          alt
-          localFile {
-            childImageSharp {
-              fluid(
-                jpegQuality: 100
-                pngQuality: 100
-                quality: 100
-                maxWidth: 1920
-              ) {
-                ${GatsbyFluid_withWebp}
-              }
-            }
-          }
-        }
-        caption
-      }
-    }
-`
-
-const PostThumbnail = `
-    thumbnail {
-        localFile {
-        childImageSharp {
-            fluid(
-            maxWidth: 1180
-            jpegQuality: 100
-            pngQuality: 100
-            quality: 100
-            ) {
-            ${GatsbyFluid_withWebp}
-            }
-        }
-        }
-    }
-`
-
-const PostRelations = `
-    relations {
-        tech_tags {
-            document {
-                uid
-                data {
-                    title {
-                        html
-                        text
-                    }
-                    description {
-                        html
-                        text
-                    }
+    ... on PrismicPostBodyCode {
+        id
+        slice_type
+        primary {
+            code {
+                ${PrismicText}
+                raw {
+                    label
                 }
             }
         }
     }
 `
 
-const PostCanonical = `
-    canonical {
-        document {
-            data {
-                title {
-                    text
+const PostBodyImageWithCaption = `
+    ... on PrismicPostBodyImageWithCaption {
+        id
+        slice_type
+        slice_label
+        prismicId
+        primary {
+            image {
+                alt
+                localFile {
+                    childImageSharp {
+                        fluid(
+                            jpegQuality: 100
+                            pngQuality: 100
+                            quality: 100
+                            maxWidth: 1920
+                        ) {
+                            ${GatsbyFluid_withWebp}
+                        }
+                    }
+                }
+            }
+            caption
+        }
+    }
+`
+
+const PostThumbnail = `
+    thumbnail {
+        localFile {
+            childImageSharp {
+                fluid(
+                    maxWidth: 1180
+                    jpegQuality: 100
+                    pngQuality: 100
+                    quality: 100
+                ) {
+                    ${GatsbyFluid_withWebp}
                 }
             }
         }
@@ -136,29 +112,120 @@ const TechTag = `
     uid
     data {
         title {
-            text
-            html
+            ${PrismicText}
         }
         description {
-            text
-            html
+            ${PrismicText}
+        }
+    }
+`
+
+const TechTagRelations = `
+    relations {
+        tech_tags {
+            document {
+                ${TechTag}
+            }
+        }
+    }
+`
+
+const PostCanonical = `
+    canonical {
+        document {
+            data {
+                title {
+                    ${PrismicText}
+                }
+            }
+        }
+    }
+`
+
+const Homepage = `
+    type
+    data {
+        introduction {
+            ${PrismicText}
+        }
+        title {
+            ${PrismicText}
+        }
+        header_contact_button_label
+        services_introduction {
+            ${PrismicText}
+        }
+        services {
+            status
+            service_title
+            service_textarea {
+                ${PrismicText}
+            }
+        }
+    }
+
+`
+
+const Project = `
+    uid
+    data {
+        isfeatured
+        demo_link {
+            ${PrismicLink}
+        }
+        full_screen {
+            alt
+            url
+            localFile {
+                childImageSharp {
+                    fluid(quality: 85, maxWidth: 800) {
+                        ${GatsbyFluid_withWebp}
+                    }
+                }
+            }
+        }
+        html {
+            ${PrismicText}
+        }
+        project_type {
+            document {
+                data {
+                    title {
+                        ${PrismicText}
+                    }
+                }
+            }
+        }
+        
+        ${TechTagRelations}
+
+        source_link {
+            ${PrismicLink}
+        }
+        title {
+            ${PrismicText}
+        }
+        video {
+            ${PrismicLink}
+            name
+            kind
+            size
         }
     }
 `
 
 const Post = `
     uid
-    first_publication_date(formatString: "DD/MM/YYYY")
+    first_publication_date(formatString: "${dateFormat}")
     data {
-        published_date(formatString: "DD/MM/YYYY")
+        published_date(formatString: "${dateFormat}")
         title {
-            html
-            text
+            ${PrismicText}
         }
 
         ${PostThumbnail}
         ${PostCanonical}
-        ${PostRelations}
+        ${TechTagRelations}
 
         body {
             ${PostBodyImageWithCaption}
@@ -180,12 +247,32 @@ module.exports = {
         }
     }`,
   posts: `{
-        posts: allPrismicPost(filter: { lang: { eq: "fr-fr" } }) {
+        posts: allPrismicPost(
+            filter: { 
+                lang: { eq: "fr-fr" },
+                uid: {ne: "bonjour-cher-visiteur-bienvenue-sur-mon-article-demo"}
+            }
+            sort: { fields: first_publication_date, order: DESC }
+        ) {
             edges {
                 node {
                     ${Post}
                 }
             }
+        }
+    }`,
+  projects: `{
+        projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
+            edges {
+                node {
+                    ${Project}
+                }
+            }
+        }
+    }`,
+  homepage: `{
+        homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
+            ${Homepage}
         }
     }`
 }

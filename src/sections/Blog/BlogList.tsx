@@ -6,6 +6,7 @@ import Container from '../../components/Container'
 import { PrismicPost } from '../../types.d'
 import Link from '../../components/Link'
 import { hoverStyle } from '../../styles/theme'
+import Fade from '../../components/Fade'
 
 export interface BlogListProps {
   posts?: Array<{
@@ -18,14 +19,16 @@ export const PostCard: FC<PrismicPost> = ({
   first_publication_date,
   data: { title, published_date }
 }) => (
-  <div sx={{ pb: 2 }}>
-    <Link to={`/${uid}`}>
-      <Styled.h3 sx={hoverStyle}>{title?.text || ''}</Styled.h3>
-      <Styled.p sx={{ color: 'muted' }}>
-        {published_date || first_publication_date}
-      </Styled.p>
-    </Link>
-  </div>
+  <Fade>
+    <div sx={{ pb: 2 }}>
+      <Link to={`/${uid}`}>
+        <Styled.h3 sx={hoverStyle}>{title?.text || ''}</Styled.h3>
+        <Styled.p sx={{ color: 'muted' }}>
+          {published_date || first_publication_date}
+        </Styled.p>
+      </Link>
+    </div>
+  </Fade>
 )
 
 const BlogList: FC<BlogListProps> = ({ posts = [] }) => {

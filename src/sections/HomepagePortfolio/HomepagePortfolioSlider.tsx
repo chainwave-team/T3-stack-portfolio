@@ -4,14 +4,14 @@ import { FC } from 'react'
 import loadable from '@loadable/component'
 
 import Carousel from '../../components/Carousel'
-import { ProjectProps, ProjectNode } from './types'
 import Col from '../../components/Col'
 import ProjectCard from '../../components/ProjectCard'
 import { getTagsFromRelation } from '../../utils/utils'
+import { PrismicProject, ProjectList } from '../../types.d'
 
 const Mockup = loadable(() => import('../../components/Mockup'))
 
-const Slide: FC<ProjectNode> = ({
+const Slide: FC<PrismicProject> = ({
   data: {
     demo_link,
     source_link,
@@ -44,11 +44,17 @@ const Slide: FC<ProjectNode> = ({
   </article>
 )
 
-const HomepagePortfolioSlider: FC<ProjectProps> = ({ nodes }) => {
+export interface HomepagePortfolioSliderProps {
+  projects: ProjectList
+}
+
+const HomepagePortfolioSlider: FC<HomepagePortfolioSliderProps> = ({
+  projects
+}) => {
   return (
     <Carousel>
-      {nodes.map(props => (
-        <Slide key={props.uid} {...props} />
+      {projects.map(({ node }) => (
+        <Slide key={node.uid} {...node} />
       ))}
     </Carousel>
   )

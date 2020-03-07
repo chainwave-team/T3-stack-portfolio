@@ -6,23 +6,30 @@ import { useState, FC } from 'react'
 import Container from '../../components/Container'
 import Fade from '../../components/Fade'
 import Button from '../../components/Button'
-import { ProjectState, ProjectProps } from './types'
 import HomepagePortfolioSlider from './HomepagePortfolioSlider'
+import { ProjectList } from '../../types.d'
 
 const HomepagePortfolioOthers = loadable(() =>
   import('./HomepagePortfolioOthers')
 )
 
-export type HomepagePortfolioProps = ProjectProps
+export interface HomepagePortfolioProps {
+  projects: ProjectList
+}
 
-const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ nodes }) => {
+export interface ProjectState {
+  featured: ProjectList | []
+  others: ProjectList | []
+}
+
+const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ projects }) => {
   const [displayAll, setDisplayAll] = useState(false)
 
   // Filter featured projects VS others into two arrays
   const initialState: ProjectState = { featured: [], others: [] }
-  const { featured, others } = nodes.reduce(
+  const { featured, others } = projects.reduce(
     (prev, curr) =>
-      curr.data?.isfeatured === 'yes'
+      curr.node.data?.isfeatured === 'yes'
         ? { ...prev, featured: [...prev.featured, curr] }
         : { ...prev, others: [...prev.others, curr] },
     initialState
@@ -31,9 +38,9 @@ const HomepagePortfolio: FC<HomepagePortfolioProps> = ({ nodes }) => {
   return (
     <Container id="portfolio" section>
       <Fade>
-        <HomepagePortfolioSlider nodes={featured} />
+        <HomepagePortfolioSlider projects={featured} />
 
-        {displayAll && <HomepagePortfolioOthers nodes={others} />}
+        {displayAll && <HomepagePortfolioOthers projects={others} />}
 
         {displayAll || (
           <Button

@@ -3,12 +3,12 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-import { ProjectNode, ProjectProps } from './types'
 import Html from '../../components/Html'
 import Link from '../../components/Link'
 import { External, Github } from '../../components/Icons'
 import TagList from '../../components/TagList'
 import { getTagsFromRelation } from '../../utils/utils'
+import { PrismicProject, ProjectList } from '../../types.d'
 
 const style = {
   root: {
@@ -55,10 +55,10 @@ const style = {
   }
 }
 
-const Project: FC<ProjectNode> = ({
-  data: { title, html, demo_link, source_link, relations }
+const Project: FC<PrismicProject> = ({
+  data: { title, html, demo_link, source_link, ...rest }
 }) => {
-  const tags = getTagsFromRelation(relations)
+  const tags = rest?.relations ? getTagsFromRelation(rest.relations) : null
   return (
     <div sx={style.item}>
       <div>
@@ -92,10 +92,16 @@ const Project: FC<ProjectNode> = ({
   )
 }
 
-const HomepagePortfolioOthers: FC<ProjectProps> = ({ nodes }) => {
-  const transitions = useTransition(nodes, item => item.uid, {
+export interface HomepagePortfolioOthersProps {
+  projects: ProjectList
+}
+
+const HomepagePortfolioOthers: FC<HomepagePortfolioOthersProps> = ({
+  projects
+}) => {
+  const transitions = useTransition(projects, item => item.uid, {
     unique: true,
-    trail: 1200 / nodes.length,
+    trail: 1200 / projects.length,
     from: { opacity: 0, transform: 'scale(0)' },
     enter: { opacity: 1, transform: 'scale(1)' },
     leave: { opacity: 0, transform: 'scale(0)' }

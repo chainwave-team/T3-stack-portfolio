@@ -7,9 +7,10 @@ import { TemplatePostTag } from '../types.d'
 import SEO from '../Layout/SEO'
 import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
+import PostTagCloud from '../sections/Post/PostTagCloud'
 
 const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
-  const { currentTag, posts } = pageContext
+  const { currentTag, posts, postTags } = pageContext
   const { pathname } = location
   const title = currentTag?.data.title?.text
   if (!title) {
@@ -24,6 +25,7 @@ const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
         subTitle={`Tous les articles parlant de : ${title}`}
       />
       <BlogList posts={posts} />
+      <PostTagCloud tags={postTags} />
     </Layout>
   )
 }
