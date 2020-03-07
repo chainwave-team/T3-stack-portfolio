@@ -20,10 +20,10 @@ const PostHero: FC<PostHeroProps> = ({ title, date, readTime }) => (
       py: 5
     }}
   >
-    <Box sx={{ maxWidth: 560, mx: 'auto' }}>
-      <Styled.h2 as="h1" sx={{ my: 4 }}>
+    <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+      <Styled.h1 as="h1" sx={{ my: 4 }}>
         {title}
-      </Styled.h2>
+      </Styled.h1>
 
       <Flex
         sx={{

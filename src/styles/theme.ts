@@ -28,8 +28,8 @@ export type MyTheme = Theme
 const theme: Readonly<MyTheme> = {
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: `'SF Pro Display','-apple-system','BlinkMacSystemFont','San Francisco','Helvetica Neue','Helvetica','Ubuntu','Roboto','Noto','Segoe UI','Arial',sans-serif`,
-    heading: `"avenir next", avenir, sans-serif`,
+    body: `'Fira Sans Regular','SF Pro Display','-apple-system','BlinkMacSystemFont','San Francisco','Helvetica Neue','Helvetica','Ubuntu','Roboto','Noto','Segoe UI','Arial',sans-serif`,
+    heading: `"Fira Sans Bold","avenir next", avenir, sans-serif`,
     mono: `"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`
   },
   fontSizes: [14, 16, 20, 24, 36, 48, 64, 80, 96],
