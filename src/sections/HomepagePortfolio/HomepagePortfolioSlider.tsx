@@ -6,8 +6,8 @@ import loadable from '@loadable/component'
 import Carousel from '../../components/Carousel'
 import Col from '../../components/Col'
 import ProjectCard from '../../components/ProjectCard'
-import { getTagsFromRelation } from '../../utils/utils'
-import { PrismicProject, ProjectList } from '../../types.d'
+import { getTagsFromRelation } from '../../utils'
+import { PrismicProject, ProjectList } from '../../types'
 
 const Mockup = loadable(() => import('../../components/Mockup'))
 

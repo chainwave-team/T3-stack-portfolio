@@ -4,12 +4,10 @@ import { FC } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 
-import { Children } from '../../utils/types'
 import { BackArrow, NextArrow } from './SlickArrows'
 
 export interface CarouselProps {
   settings?: object
-  children: Children
 }
 
 const Carousel: FC<CarouselProps> = ({ settings = {}, children }) => {

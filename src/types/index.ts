@@ -204,14 +204,3 @@ export interface TemplateHome extends Template {
     homepage: Homepage
   }
 }
-
-// Modules declaration
-declare module '*.svg' {
-  const content: string
-  export default content
-}
-
-declare module '*.otf' {
-  const content: string
-  export default content
-}

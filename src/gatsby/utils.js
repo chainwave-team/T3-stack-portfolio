@@ -10,8 +10,6 @@ module.exports.getPostTags = allPosts => {
       relations.forEach(({ tech_tags }) => {
         if (tech_tags && tech_tags.document) {
           const el = tech_tags.document[0]
-          // console.log(`Loop ${i}: el:`, { el, post })
-
           if (el) {
             tagsAndPost.push({
               tag: el.uid,

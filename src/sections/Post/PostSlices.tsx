@@ -4,8 +4,8 @@ import { jsx } from 'theme-ui'
 import uuid from 'uuid'
 import loadable from '@loadable/component'
 
-import { snakeToPascalCase } from '../../utils/utils'
-import { Slice } from '../../utils/types'
+import { snakeToPascalCase } from '../../utils'
+import { Slice } from '../../types'
 
 interface AsyncSliceProps {
   slice: Slice

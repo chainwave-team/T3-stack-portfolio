@@ -1,17 +1,16 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import uuid from 'uuid'
 import { FC } from 'react'
 
-import { PrismicTechTag } from '../utils/types'
+import { PrismicTechTag } from '../types'
 
-const Tag: FC<PrismicTechTag> = ({ title, description }) => {
-  if (!title?.text) {
+const Tag: FC<PrismicTechTag> = ({ data }) => {
+  if (!data?.title?.text) {
     return null
   }
   return (
     <span
-      title={description?.text || ''}
+      title={data?.description?.text || ''}
       sx={{
         fontFamily: 'mono',
         pr: 3,
@@ -19,20 +18,18 @@ const Tag: FC<PrismicTechTag> = ({ title, description }) => {
         cursor: 'help'
       }}
     >
-      {title.text}
+      {data.title.text}
     </span>
   )
 }
 
 export interface TagListProps {
-  tags: PrismicTechTag[]
+  tags?: PrismicTechTag[]
 }
 
 export const TagList: FC<TagListProps> = ({ tags }) => (
   <Styled.p>
-    {tags.map(tag => (
-      <Tag key={uuid()} {...tag} />
-    ))}
+    {tags && tags.length > 0 && tags.map(tag => <Tag key={tag.uid} {...tag} />)}
   </Styled.p>
 )
 

@@ -7,7 +7,7 @@ import Container from '../../components/Container'
 import Fade from '../../components/Fade'
 import Button from '../../components/Button'
 import HomepagePortfolioSlider from './HomepagePortfolioSlider'
-import { ProjectList } from '../../types.d'
+import { ProjectList } from '../../types'
 
 const HomepagePortfolioOthers = loadable(() =>
   import('./HomepagePortfolioOthers')

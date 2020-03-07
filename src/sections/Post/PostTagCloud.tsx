@@ -3,7 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from '../../components/Container'
-import { ForTemplatePostTag } from '../../types.d'
+import { ForTemplatePostTag } from '../../types'
 import Link from '../../components/Link'
 
 export interface PostTagCloudProps {

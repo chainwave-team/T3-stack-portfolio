@@ -9,7 +9,7 @@ import Fade from '../components/Fade'
 import Row from '../components/Row'
 import Col from '../components/Col'
 import Container from '../components/Container'
-import { PrismicLink } from '../utils/types'
+import { PrismicLink } from '../types'
 
 const style = {
   footer: { bg: `rgba(0, 0, 0, 1)`, color: 'white' },

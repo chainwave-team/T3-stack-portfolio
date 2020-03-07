@@ -1,11 +1,11 @@
-import { PrismicPost, PrismicTechTagRelation } from '../types.d'
+import { PrismicPost, PrismicTechTagRelation } from '../types'
 
 export function getTagsFromRelation(relations?: PrismicTechTagRelation[]) {
   if (!relations) {
     return undefined
   }
   return relations
-    .map(({ tech_tags }) => tech_tags?.document[0].data || null)
+    .map(({ tech_tags }) => tech_tags?.document[0] || null)
     .filter(techTag => !!techTag)
 }
 
@@ -26,6 +26,7 @@ export function getRandomItem(array: any[]): any {
 
 // "Algorithm" of "Related Posts"
 // Todo : Develop more ;)
+// ? Can be placed in node part
 export function getRelatedPosts(
   currentPost: PrismicPost,
   posts: Array<{

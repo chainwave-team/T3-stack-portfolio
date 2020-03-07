@@ -2,7 +2,7 @@
 import { jsx, Flex, Styled } from 'theme-ui'
 
 import { FC } from 'react'
-import { PrismicText, PrismicTechTag } from '../utils/types'
+import { PrismicText, PrismicTechTag } from '../types'
 import Html from './Html'
 import TagList from './TagList'
 

@@ -8,7 +8,7 @@ import AccordionItem from '../components/tmp/AccordionItem'
 import Accordion from '../components/tmp/Accordion'
 import Container from '../components/Container'
 import Html from '../components/Html'
-import { ServicesStatus, PrismicText } from '../utils/types'
+import { ServicesStatus, PrismicText } from '../types'
 
 const style = {
   container: {

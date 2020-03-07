@@ -7,8 +7,8 @@ import Html from '../../components/Html'
 import Link from '../../components/Link'
 import { External, Github } from '../../components/Icons'
 import TagList from '../../components/TagList'
-import { getTagsFromRelation } from '../../utils/utils'
-import { PrismicProject, ProjectList } from '../../types.d'
+import { getTagsFromRelation } from '../../utils'
+import { PrismicProject, ProjectList } from '../../types'
 
 const style = {
   root: {
@@ -99,7 +99,7 @@ export interface HomepagePortfolioOthersProps {
 const HomepagePortfolioOthers: FC<HomepagePortfolioOthersProps> = ({
   projects
 }) => {
-  const transitions = useTransition(projects, item => item.uid, {
+  const transitions = useTransition(projects, item => item.node.uid, {
     unique: true,
     trail: 1200 / projects.length,
     from: { opacity: 0, transform: 'scale(0)' },
@@ -111,7 +111,7 @@ const HomepagePortfolioOthers: FC<HomepagePortfolioOthersProps> = ({
     <div sx={style.root}>
       {transitions.map(({ item, key, props }) => (
         <animated.div key={key} style={props} sx={style.col}>
-          <Project {...item} />
+          <Project {...item.node} />
         </animated.div>
       ))}
     </div>

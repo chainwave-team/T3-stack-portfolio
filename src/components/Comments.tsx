@@ -30,7 +30,7 @@ const Comments: FC<CommentsProps> = ({ uid, title }) => {
       {!!url && (
         <Container sx={{ py: 5, mb: 5 }} size="blog">
           <Styled.h2 sx={{ textAlign: 'center', mb: 4 }}>
-            Qu'en avez-vous pensé ?
+            Qu&apos;en avez-vous pensé ?
           </Styled.h2>
 
           {visible ? (

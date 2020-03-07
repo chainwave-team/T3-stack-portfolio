@@ -3,7 +3,7 @@ import { jsx, Styled } from 'theme-ui'
 import Img from 'gatsby-image'
 import Container from '../components/Container'
 import Fade from '../components/Fade'
-import { ContainerSize } from '../utils/types'
+import { ContainerSize } from '../types'
 
 export type ImageCaptionSliceProps = {
   slice: {

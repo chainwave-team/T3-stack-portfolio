@@ -8,7 +8,7 @@
  * @link: https://prismic.io/docs/reactjs/beyond-the-api/html-serializer
  */
 
-const htmlSerializer = (type, element, content, children, key) => {
+const htmlSerializer = (type /* , element, content, children, key */) => {
   switch (type) {
     // case Elements.preformatted: {
     //   const props = { render: children }

@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import Html from '../components/Html'
 import Container from '../components/Container'
-import { PrismicLink } from '../utils/types'
+import { PrismicLink } from '../types'
 import Link from '../components/Link'
 
 export type QuoteSliceProps = {

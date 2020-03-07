@@ -10,8 +10,8 @@ import LastPosts from '../components/LastPosts'
 import PostThumbnail from '../sections/Post/PostThumbnail'
 import Comments from '../components/Comments'
 import PostTagCloud from '../sections/Post/PostTagCloud'
-import { TemplatePost } from '../types.d'
-import { getRelatedPosts } from '../utils/utils'
+import { TemplatePost } from '../types'
+import { getRelatedPosts } from '../utils'
 
 const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
   const { allPosts, postTags, currentPost } = pageContext

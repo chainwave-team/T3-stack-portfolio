@@ -4,7 +4,7 @@ import { FC } from 'react'
 import Img from 'gatsby-image'
 
 import Container from '../../components/Container'
-import { PrismicImage } from '../../utils/types'
+import { PrismicImage } from '../../types'
 
 export interface PostThumbnailProps {
   thumbnail?: PrismicImage
