@@ -8,7 +8,7 @@ import SEO from '../Layout/SEO'
 import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
 import PostTagCloud from '../sections/Post/PostTagCloud'
-import useLocalStorage from '../hooks/usePersist'
+import useLocalStorage from '../hooks/useLocalStorage'
 import BlogFilterBar from '../sections/Blog/BlogFilterBar'
 
 const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
