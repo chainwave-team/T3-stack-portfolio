@@ -24,11 +24,13 @@ const Tag: FC<PrismicTechTag> = ({ data }) => {
 }
 
 export interface TagListProps {
+  before?: any
   tags?: PrismicTechTag[]
 }
 
-export const TagList: FC<TagListProps> = ({ tags }) => (
+export const TagList: FC<TagListProps> = ({ tags, before = '' }) => (
   <Styled.p>
+    {!!before && before}
     {tags && tags.length > 0 && tags.map(tag => <Tag key={tag.uid} {...tag} />)}
   </Styled.p>
 )

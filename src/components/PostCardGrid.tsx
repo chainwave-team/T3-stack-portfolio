@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
-import { FC, useState } from 'react'
+import { jsx, Styled, Flex, Box } from 'theme-ui'
+import { FC, RefObject } from 'react'
 import { animated, useSpring } from 'react-spring'
+import { navigate } from 'gatsby'
 
 import { PrismicPost } from '../types'
 import Fade from './Fade'
-import Link from './Link'
 import TagList from './TagList'
 import { getTagsFromRelation } from '../utils'
+import useHover from '../hooks/useHover'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 
@@ -16,22 +17,29 @@ export const PostCard: FC<PrismicPost> = ({
   first_publication_date,
   data: { title, published_date, relations }
 }) => {
-  const [hover, setHover] = useState(false)
+  const [hoverRef, isHovered] = useHover()
   const hoverState = useSpring({
-    transform: hover ? 'scale(1.05)' : 'scale(1)',
-    borderWidth: hover ? 1 : 0,
-    borderStyle: hover ? `solid` : `initial`
+    overflow: 'hidden',
+    transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+    borderWidth: isHovered ? 1 : 0,
+    borderStyle: isHovered ? `solid` : `initial`
   })
   const date = published_date || first_publication_date
 
+  const handleClick = () => {
+    navigate(`/${uid}`)
+  }
+
   return (
     <Fade>
-      <Link to={`/${uid}`}>
+      <Box
+        as="article"
+        sx={{ cursor: 'pointer' }}
+        ref={hoverRef as RefObject<any>}
+        onClick={handleClick}
+      >
         <animated.div
-          style={{
-            overflow: 'hidden',
-            ...hoverState
-          }}
+          style={hoverState}
           sx={{
             boxShadow: 2,
             display: 'flex',
@@ -40,13 +48,11 @@ export const PostCard: FC<PrismicPost> = ({
             m: settings.gutterSize,
             py: [4],
             px: [3],
-            bg: hover ? 'transparent' : 'blue',
+            bg: isHovered ? 'transparent' : 'blue',
             minHeight: settings.cardHeight,
             cursor: 'pointer',
             color: 'white'
           }}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
         >
           <div>
             <Styled.p sx={{ color: 'muted', mt: 0, fontSize: 1 }}>
@@ -56,7 +62,7 @@ export const PostCard: FC<PrismicPost> = ({
           </div>
           {relations && <TagList tags={getTagsFromRelation(relations)} />}
         </animated.div>
-      </Link>
+      </Box>
     </Fade>
   )
 }
