@@ -30,7 +30,7 @@ const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
       />
       <HomeServices title={services_introduction.text || ''} items={services} />
       <HomePortfolio projects={projects} />
-      <LastPosts posts={posts.slice(0, 3)} />
+      <LastPosts posts={posts} />
     </Layout>
   )
 }

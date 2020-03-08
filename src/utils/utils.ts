@@ -33,10 +33,7 @@ export function getRelatedPosts(
     node: PrismicPost
   }>
 ) {
-  const excludes = [
-    currentPost.uid,
-    'bonjour-cher-visiteur-bienvenue-sur-mon-article-demo'
-  ]
+  const excludes = [currentPost.uid]
 
   return posts.filter(({ node }) => !excludes.includes(node.uid))
 }

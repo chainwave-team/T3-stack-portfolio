@@ -35,7 +35,7 @@ const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
       <LastPosts
         title="Plus d'articles"
         button="Tous les articles"
-        posts={relatedPosts?.slice(0, 3)}
+        posts={relatedPosts}
       />
       <Comments title={data.title.text} uid={uid} />
       <PostTagCloud tags={postTags} />

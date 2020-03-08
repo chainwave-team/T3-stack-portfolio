@@ -7,11 +7,15 @@ import { useState, useEffect } from 'react'
  */
 
 export default function useGridMode(defaultIsGrid = true) {
-  const initialValue = localStorage.getItem('gridMode')
-  const initialMode =
-    typeof initialValue !== 'undefined'
-      ? initialValue === 'grid'
-      : defaultIsGrid
+  let initialMode = defaultIsGrid
+
+  const isClient = typeof localStorage !== 'undefined'
+  if (isClient) {
+    const initialValue = localStorage.getItem('gridMode')
+    if (initialValue) {
+      initialMode = initialValue === 'grid'
+    }
+  }
 
   const [gridMode, setMode] = useState<boolean>(initialMode)
 
@@ -30,10 +34,10 @@ export default function useGridMode(defaultIsGrid = true) {
   // Persist: save onChange
   useEffect(() => {
     const mode = gridMode ? 'grid' : 'list'
-    if (localStorage.getItem('gridMode') !== mode) {
+    if (isClient && localStorage.getItem('gridMode') !== mode) {
       localStorage.setItem('gridMode', mode)
     }
-  }, [gridMode])
+  }, [gridMode, isClient])
 
   return { gridMode, toggleMode, setGridMode, setLisMode, setMode }
 }
