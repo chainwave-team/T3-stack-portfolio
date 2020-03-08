@@ -1,9 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, RefObject } from 'react'
 
-export default function useHover() {
+type Ref = HTMLDivElement | HTMLAnchorElement
+type Return = [RefObject<Ref> | null | undefined, boolean]
+
+export default function useHover(): Return {
   const [value, setValue] = useState<boolean>(false)
 
-  const ref = useRef<HTMLDivElement | HTMLAnchorElement>(null)
+  const ref = useRef<Ref>(null)
 
   const handleMouseOver = () => setValue(true)
   const handleMouseOut = () => setValue(false)

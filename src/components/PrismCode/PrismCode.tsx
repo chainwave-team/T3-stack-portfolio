@@ -1,12 +1,14 @@
 /** @jsx jsx */
-import { useRef, useState, useEffect, FC } from 'react'
+import { useRef, useEffect, FC, RefObject } from 'react'
 import { jsx } from 'theme-ui'
 import Prism from 'prismjs'
 import { Global } from '@emotion/core'
 import { useCopyToClipboard } from 'react-use'
 
 import { cssByLang, getPrettyName, ProgrammingLang, ButtonCopy } from './utils'
-import { toolbar, pre, wrapper, dracula } from './style'
+import { toolbar, pre, wrapper } from './style'
+import dracula from '../../styles/prism-dracula'
+import useHover from '../../hooks/useHover'
 
 export interface PrismCodeProps {
   code: string
@@ -15,7 +17,7 @@ export interface PrismCodeProps {
 
 const PrismCode: FC<PrismCodeProps> = ({ code, language = 'markup' }) => {
   const [state, copyToClipboard] = useCopyToClipboard()
-  const [isHover, setHover] = useState(false)
+  const [hoverRef, isHovered] = useHover()
   const codeRef = useRef<HTMLPreElement>(null)
 
   const handleClick = () => {
@@ -29,15 +31,11 @@ const PrismCode: FC<PrismCodeProps> = ({ code, language = 'markup' }) => {
   }, [codeRef, code])
 
   return (
-    <div
-      sx={wrapper}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <div sx={wrapper} ref={hoverRef as RefObject<HTMLDivElement>}>
       <Global styles={dracula} />
       <div sx={toolbar}>
         <ButtonCopy
-          isHover={isHover}
+          isHover={isHovered}
           value={state.value}
           onClick={handleClick}
         />
