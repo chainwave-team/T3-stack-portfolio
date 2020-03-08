@@ -9,10 +9,10 @@ import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
 import PostTagCloud from '../sections/Post/PostTagCloud'
 import BlogFilterBar from '../sections/Blog/BlogFilterBar'
-import useGridMode from '../hooks/useGridMode'
+import useLocalStorage from '../hooks/usePersist'
 
 const BlogTemplate: FC<TemplateBlog> = ({ location, pageContext }) => {
-  const { gridMode, setMode } = useGridMode()
+  const [isGridMode, setGridMode] = useLocalStorage('gridMode', true)
   const { postTags, posts } = pageContext
   const { pathname } = location
 
@@ -20,8 +20,8 @@ const BlogTemplate: FC<TemplateBlog> = ({ location, pageContext }) => {
     <Layout path={pathname}>
       <SEO title="Blog" />
       <BlogHero />
-      <BlogFilterBar onChangeMode={setMode} />
-      <BlogList posts={posts} modeList={!gridMode} />
+      <BlogFilterBar onChangeMode={setGridMode} />
+      <BlogList posts={posts} modeList={!isGridMode} />
       <PostTagCloud tags={postTags} />
     </Layout>
   )

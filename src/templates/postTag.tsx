@@ -8,11 +8,11 @@ import SEO from '../Layout/SEO'
 import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
 import PostTagCloud from '../sections/Post/PostTagCloud'
-import useGridMode from '../hooks/useGridMode'
+import useLocalStorage from '../hooks/usePersist'
 import BlogFilterBar from '../sections/Blog/BlogFilterBar'
 
 const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
-  const { gridMode, setMode } = useGridMode()
+  const [isGridMode, setGridMode] = useLocalStorage('gridMode', true)
   const { currentTag, posts, postTags } = pageContext
   const { pathname } = location
   const title = currentTag?.data.title?.text
@@ -27,8 +27,8 @@ const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
         title={title}
         subTitle={`Tous les articles parlant de : ${title}`}
       />
-      <BlogFilterBar onChangeMode={setMode} />
-      <BlogList posts={posts} modeList={!gridMode} />
+      <BlogFilterBar onChangeMode={setGridMode} />
+      <BlogList posts={posts} modeList={!isGridMode} />
       <PostTagCloud tags={postTags} />
     </Layout>
   )
