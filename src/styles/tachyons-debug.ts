@@ -1,75 +1,14 @@
 import { css } from '@emotion/core'
 
-import { colors } from './theme'
-
-export const globalStyle = css`
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-    font-size: inherit;
-    font-display: block;
-  }
-
-  body {
-    margin: 0;
-    height: 100%;
-  }
-
-  a:focus,
-  button:focus {
-    outline: none;
-  }
-
-  button,
-  a {
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 200ms ease;
-  }
-
-  article {
-    word-break: break-word;
-  }
-
-  .underline {
-    text-decoration: underline;
-  }
-`
-
-export const scrollBar = css`
-  /* Custom ScrollBar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: ${colors.background};
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: ${colors.blue};
-    transition: background 200ms;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${colors.secondary};
-    transition: background 200ms;
-  }
-`
-
-export const tachyonsDebug = css`
+const tachyonsDebug = css`
   /*
-  DEBUG (PESTICIDE)
-  Docs: http://tachyons.io/docs/debug/
-  This is a partial you have to manually include in your
-  build file. It places a different colored outline on
-  each element which can help you debug layout issues.
-  There is also a handy chrome extension that can
-  be found at http://pesticide.io
+    DEBUG (PESTICIDE)
+    Docs: http://tachyons.io/docs/debug/
+    This is a partial you have to manually include in your
+    build file. It places a different colored outline on
+    each element which can help you debug layout issues.
+    There is also a handy chrome extension that can
+    be found at http://pesticide.io
   */
   body {
     outline: 1px solid #2980b9 !important;
@@ -373,3 +312,4 @@ export const tachyonsDebug = css`
     outline: 1px solid #db175b !important;
   }
 `
+export default tachyonsDebug

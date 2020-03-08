@@ -1,3 +1,3 @@
-import theme from '../styles/theme'
+import theme from './theme'
 
 export default theme

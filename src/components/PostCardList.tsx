@@ -5,7 +5,7 @@ import { FC, Fragment } from 'react'
 import { PrismicPost } from '../types'
 import Fade from './Fade'
 import Link from './Link'
-import { hoverStyle } from '../styles/theme'
+import { hoverStyle } from '../gatsby-plugin-theme-ui/theme'
 
 export const PostCard: FC<PrismicPost> = ({
   uid,

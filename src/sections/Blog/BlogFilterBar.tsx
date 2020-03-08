@@ -3,7 +3,7 @@ import { jsx, Flex, Box } from 'theme-ui'
 import { FC } from 'react'
 import Container from '../../components/Container'
 import { GridIcon, ListIcon } from '../../components/Icons'
-import { hoverStyle } from '../../styles/theme'
+import { hoverStyle } from '../../gatsby-plugin-theme-ui/theme'
 
 const iconButtonStyle = {
   ...hoverStyle,
