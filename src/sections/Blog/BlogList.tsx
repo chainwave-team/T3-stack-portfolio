@@ -20,7 +20,7 @@ const BlogList: FC<BlogListProps> = ({ posts = [], modeList = false }) => {
   const List = () =>
     modeList ? <PostCardList posts={posts} /> : <PostCardGrid posts={posts} />
   return (
-    <Container size={modeList ? 'blog' : 'container'} sx={{ my: 5 }}>
+    <Container size={modeList ? 'blog' : 'container'} sx={{ mt: 5, mb: 6 }}>
       {posts.length > 0 ? (
         <List />
       ) : (

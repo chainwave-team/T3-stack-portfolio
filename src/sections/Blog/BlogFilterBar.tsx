@@ -25,10 +25,10 @@ export interface BlogFilterBarProps {
 const BlogFilterBar: FC<BlogFilterBarProps> = ({ onChangeMode }) => (
   <Container size="blog">
     <Flex sx={{ justifyContent: 'flex-end' }}>
-      <Box sx={iconButtonStyle} onClick={() => onChangeMode(false)}>
+      <Box sx={iconButtonStyle} onClick={() => onChangeMode(true)}>
         <GridIcon size={32} />
       </Box>
-      <Box sx={iconButtonStyle} onClick={() => onChangeMode(true)}>
+      <Box sx={iconButtonStyle} onClick={() => onChangeMode(false)}>
         <ListIcon size={32} />
       </Box>
     </Flex>

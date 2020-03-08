@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
@@ -9,17 +9,20 @@ import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
 import PostTagCloud from '../sections/Post/PostTagCloud'
 import BlogFilterBar from '../sections/Blog/BlogFilterBar'
+import useGridMode from '../hooks/useGridMode'
 
 const BlogTemplate: FC<TemplateBlog> = ({ location, pageContext }) => {
-  const [modeList, setModeList] = useState(false)
+  const { gridMode, setMode } = useGridMode()
+  const { postTags, posts } = pageContext
+  const { pathname } = location
 
   return (
-    <Layout path={location.pathname}>
+    <Layout path={pathname}>
       <SEO title="Blog" />
       <BlogHero />
-      <BlogFilterBar onChangeMode={(mode: boolean) => setModeList(mode)} />
-      <BlogList posts={pageContext.posts} modeList={modeList} />
-      <PostTagCloud tags={pageContext.postTags} />
+      <BlogFilterBar onChangeMode={setMode} />
+      <BlogList posts={posts} modeList={!gridMode} />
+      <PostTagCloud tags={postTags} />
     </Layout>
   )
 }
