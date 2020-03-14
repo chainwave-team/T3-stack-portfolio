@@ -41,6 +41,7 @@ export const scrollBar = css`
   /* Custom ScrollBar */
   ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
 
   /* Track */

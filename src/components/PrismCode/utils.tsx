@@ -81,6 +81,7 @@ export const ButtonCopy: FC<ButtonCopyProps> = ({
       border: 'none',
       opacity: isHover ? 1 : 0,
       transition: 'opacity 200ms',
+      fontSize: 0,
       zIndex: 25,
       ':hover': {
         opacity: 1

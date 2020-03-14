@@ -11,14 +11,12 @@ export default css`
    * Adapted for theme-ui/prismic.js by Julien Caron [@junscuzzy]
    */
 
-  pre.line-numbers,
-  code.line-numbers {
-    .line-numbers-rows {
-      border-color: ${dracula.comment} !important;
-      & > span:before {
-        color: ${dracula.comment} !important;
-      }
-    }
+  .line-numbers .line-numbers-rows span:before {
+    color: ${dracula.comment};
+  }
+
+  .line-numbers .line-numbers-rows {
+    border: none !important;
   }
 
   code[class*='language-'],
@@ -28,6 +26,7 @@ export default css`
     text-align: left;
     line-height: 1.5;
     hyphens: none;
+    font-size: 0.85rem;
   }
 
   /* Inline code */
