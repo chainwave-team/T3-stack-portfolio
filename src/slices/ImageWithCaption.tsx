@@ -1,45 +1,40 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui'
-import Img from 'gatsby-image'
+import { FC } from 'react'
+
 import Container from '../components/Container'
 import Fade from '../components/Fade'
-import { ContainerSize } from '../types'
+import { ContainerSize, PrismicImage } from '../types'
+import ImageZoom from '../components/ImageZoom'
 
-export type ImageCaptionSliceProps = {
+export interface ImageCaptionSliceProps {
   slice: {
     slice_label?: ContainerSize
     primary: {
-      image?: {
-        alt?: string
-        localFile?: {
-          childImageSharp?: {
-            fluid: any
-          }
-        }
-      }
+      image?: PrismicImage
       caption?: string
     }
   }
 }
 
-export default function ImageWithCaption({
-  slice: { primary, slice_label }
-}: ImageCaptionSliceProps) {
+const ImageWithCaption: FC<ImageCaptionSliceProps> = ({ slice }) => {
+  const { primary, slice_label: label } = slice
   const { image, caption } = primary
-  if (image && image.localFile && image.localFile.childImageSharp) {
-    const { fluid } = image.localFile.childImageSharp
-    return (
-      <Container size={slice_label || 'blog'}>
-        <div sx={{ my: 5 }}>
-          <Fade>
-            <Img fluid={fluid} alt={image.alt || ''} />
-            {caption ? (
-              <Styled.p sx={{ textAlign: 'center' }}>{caption}</Styled.p>
-            ) : null}
-          </Fade>
-        </div>
-      </Container>
-    )
-  }
-  return null
+  const imageUrl = image?.localFile?.childImageSharp?.fluid?.src
+
+  return imageUrl ? (
+    <Container size={label || 'blog'}>
+      <div sx={{ my: 5 }}>
+        <Fade>
+          <ImageZoom src={imageUrl} alt={image?.alt} />
+
+          {caption ? (
+            <Styled.p sx={{ textAlign: 'center' }}>{caption}</Styled.p>
+          ) : null}
+        </Fade>
+      </div>
+    </Container>
+  ) : null
 }
+
+export default ImageWithCaption

@@ -47,6 +47,7 @@
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "gatsby-transformer-sharp": "^2.2.3",
+    "medium-zoom": "^1.0.5",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.19.0",
     "react": "^16.8.6",
