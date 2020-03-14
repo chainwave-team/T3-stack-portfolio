@@ -35,7 +35,8 @@ const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
       sx={{
         alignItems: 'center',
         minHeight: '100vh',
-        fontFamily: 'mono'
+        fontFamily: 'mono',
+        py: 6
       }}
     >
       <Container size="blog">
@@ -44,9 +45,11 @@ const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
             <Styled.h1>{job}</Styled.h1>
             <Styled.h3 sx={{ color: 'muted' }}>{textarea}</Styled.h3>
 
-            <Flex sx={{ py: 3 }}>
-              <ContactButton title={buttonLabel || ''} />
-              <div sx={{ px: 3 }}>
+            <Flex sx={{ py: 3, flexWrap: 'wrap' }}>
+              <div sx={{ mb: 3 }}>
+                <ContactButton title={buttonLabel || ''} />
+              </div>
+              <div sx={{ px: 3, mb: 3 }}>
                 <SocialIcons />
               </div>
             </Flex>
