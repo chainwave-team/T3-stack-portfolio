@@ -123,6 +123,7 @@ const TechTag = `
 const TechTagRelations = `
     relations {
         tech_tags {
+            uid
             document {
                 ${TechTag}
             }
@@ -132,6 +133,7 @@ const TechTagRelations = `
 
 const PostCanonical = `
     canonical {
+        uid
         document {
             data {
                 title {

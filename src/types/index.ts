@@ -35,6 +35,7 @@ export interface PrismicTechTag {
 
 export interface PrismicTechTagRelation {
   tech_tags: {
+    uid: string
     document: PrismicTechTag[]
   }
 }
@@ -89,6 +90,15 @@ export interface Slice {
   primary?: SliceContent
 }
 
+export interface PostCanonical {
+  uid: string
+  document: Array<{
+    data: {
+      title?: PrismicText
+    }
+  }>
+}
+
 // Posts Types
 
 export interface PrismicPost {
@@ -98,11 +108,7 @@ export interface PrismicPost {
   data: {
     title: PrismicText
     thumbnail?: PrismicImage
-    canonical?: Array<{
-      data: {
-        title?: PrismicText
-      }
-    }>
+    canonical?: PostCanonical
     published_date?: string
     relations?: PrismicTechTagRelation[]
     body?: Slice[] // Slices
