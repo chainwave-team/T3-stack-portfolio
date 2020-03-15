@@ -8,12 +8,14 @@ module.exports = {
   siteMetadata: {
     title: `Julien CARON`,
     description: `Julien CARON, Développeur Web`,
+    siteUrl: `https://juliencaron.eu`,
     author: `@unscuzzy`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sitemap`,
     // 'gatsby-plugin-webpack-bundle-analyzer',
     {
       resolve: 'gatsby-plugin-sharp',
