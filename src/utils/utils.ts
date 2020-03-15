@@ -92,8 +92,6 @@ export function getRelatedPosts(currentPost: PrismicPost, posts: Posts): Posts {
     return hasMatch ? acc : [...acc, curr]
   }, [] as Posts)
 
-  console.log({ allPosts })
-
   // Last return posts without excluded
   return allPosts.filter(({ node }) => !excludes.includes(node.uid)).slice(0, 3)
 }
