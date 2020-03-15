@@ -13,39 +13,31 @@ export interface PostHeroProps {
 }
 
 const PostHero: FC<PostHeroProps> = ({ title, date, readTime }) => (
-  <Container
-    size="blog"
-    sx={{
-      mt: 80, // +/- navbarHeight
-      py: 5
-    }}
-  >
-    <Box sx={{ maxWidth: 600, mx: 'auto' }}>
-      <Styled.h1 as="h1" sx={{ my: 4 }}>
-        {title}
-      </Styled.h1>
+  <Container size="blog" sx={{ mt: 80, py: 5 }}>
+    <Styled.h1 as="h1" sx={{ my: 4 }}>
+      {title}
+    </Styled.h1>
 
-      <Flex
-        sx={{
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap'
-        }}
-      >
-        <Flex sx={{ alignItems: 'center', mb: 2 }}>
-          <Avatar />
-          <Box sx={{ pl: 3 }}>
-            <Styled.p sx={{ my: 0, fontWeight: 'bold' }}>Julien Caron</Styled.p>
-            <Styled.p sx={{ my: 0, fontSize: 0, color: 'muted' }}>
-              {`Publié le ${date}`}
-              {!!readTime && ` - ${readTime} minutes de lecture`}
-            </Styled.p>
-          </Box>
-        </Flex>
-
-        <SocialShareLinks />
+    <Flex
+      sx={{
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap'
+      }}
+    >
+      <Flex sx={{ alignItems: 'center', mb: 2 }}>
+        <Avatar />
+        <Box sx={{ pl: 3 }}>
+          <Styled.p sx={{ my: 0, fontWeight: 'bold' }}>Julien Caron</Styled.p>
+          <Styled.p sx={{ my: 0, fontSize: 0, color: 'muted' }}>
+            {`Publié le ${date}`}
+            {!!readTime && ` - ${readTime} minutes de lecture`}
+          </Styled.p>
+        </Box>
       </Flex>
-    </Box>
+
+      <SocialShareLinks />
+    </Flex>
   </Container>
 )
 

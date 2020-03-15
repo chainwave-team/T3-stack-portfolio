@@ -38,7 +38,7 @@ module.exports = async ({ actions, graphql }) => {
       context: {
         currentPost: edge.node,
         postTags: data.postTags,
-        allPosts: data.posts
+        allPosts: data.posts // TODO : filter related posts here
       }
     })
   })
@@ -73,7 +73,7 @@ module.exports = async ({ actions, graphql }) => {
     path: `/`,
     component: templates.home,
     context: {
-      posts: data.posts,
+      lastPosts: data.posts.slice(0, 3),
       projects: data.projects,
       homepage: data.homepage
     }

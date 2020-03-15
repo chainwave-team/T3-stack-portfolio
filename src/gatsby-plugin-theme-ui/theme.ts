@@ -56,7 +56,7 @@ const theme: Readonly<MyTheme> = {
   sizes: {
     ...sizes,
     container: 1180,
-    blog: 780
+    blog: 680
   },
   buttons: {
     primary: {

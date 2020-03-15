@@ -13,7 +13,7 @@ import HomePortfolio from '../sections/Home/HomePortfolio'
 const HomeServices = loadable(() => import('../sections/Home/HomeServices'))
 
 const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
-  const { posts, projects, homepage } = pageContext
+  const { lastPosts, projects, homepage } = pageContext
   const {
     introduction,
     header_contact_button_label,
@@ -30,7 +30,7 @@ const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
       />
       <HomeServices title={services_introduction.text || ''} items={services} />
       <HomePortfolio projects={projects} />
-      <LastPosts posts={posts} />
+      <LastPosts posts={lastPosts} />
     </Layout>
   )
 }

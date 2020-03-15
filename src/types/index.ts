@@ -158,7 +158,7 @@ export interface Homepage {
 
 export interface Template {
   location: Location
-  pageContext: PrismicPost
+  pageContext: any
 }
 
 export interface ForTemplatePostTag extends PrismicTechTag {
@@ -203,7 +203,7 @@ export interface TemplateBlog extends Template {
 
 export interface TemplateHome extends Template {
   pageContext: {
-    posts: Array<{
+    lastPosts: Array<{
       node: PrismicPost
     }>
     projects: ProjectList
