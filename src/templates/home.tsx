@@ -6,11 +6,11 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/Home/HomeHero'
-import LastPosts from '../components/LastPosts'
-import { TemplateHome } from '../types'
 import HomePortfolio from '../sections/Home/HomePortfolio'
+import { TemplateHome } from '../types'
 
 const HomeServices = loadable(() => import('../sections/Home/HomeServices'))
+const LastPosts = loadable(() => import('../components/LastPosts'))
 
 const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
   const { lastPosts, projects, homepage } = pageContext
@@ -30,7 +30,7 @@ const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
       />
       <HomeServices title={services_introduction.text || ''} items={services} />
       <HomePortfolio projects={projects} />
-      <LastPosts posts={lastPosts} />
+      <LastPosts posts={lastPosts} displayButton />
     </Layout>
   )
 }

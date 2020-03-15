@@ -75,8 +75,8 @@ const PostCardGrid: FC<PostCardGridProps> = ({ posts }) => (
   <Flex
     sx={{
       mx: -settings.gutterSize,
-      my: 4,
-      minHeight: settings.cardHeight * 1.75,
+      my: 5,
+      minHeight: settings.cardHeight * 1.25,
       justifyItems: 'center',
       alignItems: 'center',
       flexWrap: 'wrap'

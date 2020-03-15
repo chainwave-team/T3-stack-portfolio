@@ -41,16 +41,11 @@ const Comments: FC<CommentsProps> = ({ uid, title }) => {
               url={url}
             />
           ) : (
-            <Fragment>
-              <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Button sx={{ m: 3 }} onClick={toggleVisibility}>
-                  Laisser un commentaire
-                </Button>
-                <Button sx={{ m: 3 }} onClick={toggleVisibility}>
-                  Voir les commentaires
-                </Button>
-              </Flex>
-            </Fragment>
+            <Flex sx={{ justifyContent: 'center' }}>
+              <Button sx={{ my: 3, mx: 'auto' }} onClick={toggleVisibility}>
+                Ouvrir les commentaires
+              </Button>
+            </Flex>
           )}
         </Container>
       )}

@@ -12,21 +12,25 @@ export interface LastPostsProps {
   posts: Array<{ node: PrismicPost }>
   title?: string
   button?: string
+  displayButton?: boolean
 }
 
 const LastPosts: FC<LastPostsProps> = ({
   posts,
   title = 'Mes derniers articles',
-  button = 'Voir le blog'
+  button = 'Voir le blog',
+  displayButton = false
 }) => {
   if (!posts || posts.length < 1) return null
   return (
-    <Container section id="blog">
+    <Container sx={{ my: 6 }} id="blog">
       <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
       <PostCardGrid posts={posts.slice(0, 3)} />
-      <Link to="/blog">
-        <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
-      </Link>
+      {displayButton && (
+        <Link to="/blog">
+          <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
+        </Link>
+      )}
     </Container>
   )
 }

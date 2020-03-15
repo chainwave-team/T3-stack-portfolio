@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, Styled, Box, Flex } from 'theme-ui'
+import { jsx, Styled, Flex } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from '../../components/Container'
-import Avatar from '../../components/Avatar'
 import SocialShareLinks from '../../components/SocialShareLinks'
+import AuthorAvatar from '../../components/AuthorAvatar'
 
 export interface PostHeroProps {
   title: string
@@ -25,16 +25,12 @@ const PostHero: FC<PostHeroProps> = ({ title, date, readTime }) => (
         flexWrap: 'wrap'
       }}
     >
-      <Flex sx={{ alignItems: 'center', mb: 2 }}>
-        <Avatar />
-        <Box sx={{ pl: 3 }}>
-          <Styled.p sx={{ my: 0, fontWeight: 'bold' }}>Julien Caron</Styled.p>
-          <Styled.p sx={{ my: 0, fontSize: 0, color: 'muted' }}>
-            {`Publié le ${date}`}
-            {!!readTime && ` - ${readTime} minutes de lecture`}
-          </Styled.p>
-        </Box>
-      </Flex>
+      <AuthorAvatar
+        primary="Julien Caron"
+        secondary={`Publié le ${date}${
+          readTime ? ` - ${readTime} minutes de lecture` : ''
+        }`}
+      />
 
       <SocialShareLinks />
     </Flex>

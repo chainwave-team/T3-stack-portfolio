@@ -14,7 +14,11 @@ export interface AvatarQuery {
   }
 }
 
-const Avatar: FC<GatsbyImageProps> = props => {
+export interface AvatarProps extends GatsbyImageProps {
+  size?: number
+}
+
+const Avatar: FC<AvatarProps> = ({ size = 48, ...props }) => {
   const { prismicOptions }: AvatarQuery = useStaticQuery(
     graphql`
       query {
@@ -31,7 +35,12 @@ const Avatar: FC<GatsbyImageProps> = props => {
   }
 
   return (
-    <Img fixed={fixed} {...props} sx={{ borderRadius: '50%', boxShadow: 2 }} />
+    <Img
+      fixed={fixed}
+      style={{ width: `${size}px`, height: `${size}px` }}
+      sx={{ borderRadius: '100%', boxShadow: 2 }}
+      {...props}
+    />
   )
 }
 
@@ -43,7 +52,7 @@ export const PrismicOptionsAvatar = graphql`
       avatar {
         localFile {
           childImageSharp {
-            fixed(width: 48, height: 48) {
+            fixed(width: 80, height: 80) {
               ...GatsbyImageSharpFixed
             }
           }

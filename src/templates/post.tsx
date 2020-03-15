@@ -1,17 +1,20 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { FC } from 'react'
+import loadable from '@loadable/component'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import PostHero from '../sections/Post/PostHero'
 import PostSlices from '../sections/Post/PostSlices'
-import LastPosts from '../components/LastPosts'
 import PostThumbnail from '../sections/Post/PostThumbnail'
-import Comments from '../components/Comments'
-import PostTagCloud from '../sections/Post/PostTagCloud'
 import { TemplatePost } from '../types'
 import { getRelatedPosts } from '../utils'
+
+const PostBottom = loadable(() => import('../sections/Post/PostBottom'))
+const PostTagCloud = loadable(() => import('../sections/Post/PostTagCloud'))
+const Comments = loadable(() => import('../components/Comments'))
+const LastPosts = loadable(() => import('../components/LastPosts'))
 
 const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
   const { allPosts, postTags, currentPost } = pageContext
@@ -32,11 +35,11 @@ const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
       />
       <PostThumbnail thumbnail={data?.thumbnail} />
       <PostSlices slices={data?.body} />
-      <LastPosts
-        title="Plus d'articles"
-        button="Tous les articles"
-        posts={relatedPosts}
+      <PostBottom
+        authorName="Julien CARON"
+        authorDesc="Salut, moi c’est Julien et j’adore construire des choses qui vivent sur Internet."
       />
+      <LastPosts title="Plus d'articles" posts={relatedPosts} />
       <Comments title={data.title.text} uid={uid} />
       <PostTagCloud tags={postTags} />
     </Layout>
