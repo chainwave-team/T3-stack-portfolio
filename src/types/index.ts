@@ -135,6 +135,14 @@ export interface PrismicProject {
   }
 }
 
+export interface GraphQueryOf<T> {
+  edges: Array<{ node: T }>
+}
+
+export interface PrismicProjectQuery {
+  edges: Array<{ node: PrismicPost }>
+}
+
 export type ProjectList = Array<{ node: PrismicProject }>
 
 export interface Homepage {

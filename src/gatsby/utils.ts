@@ -1,19 +1,25 @@
-module.exports.getPostTags = allPosts => {
+import { PrismicPost, PrismicTechTag } from '../types'
+
+type Posts = Array<{ node: PrismicPost }>
+interface A extends PrismicTechTag {
+  post: string
+}
+
+// eslint-disable-next-line import/prefer-default-export
+export const getPostTags = (allPosts: Posts) => {
   // 1. Get each tag for each post like
-  // { tag: string uid, post: string uid }
-  const tagsAndPost = []
+  const tagsAndPost: A[] = []
 
   allPosts.forEach(({ node: post }) => {
-    const relations = !!post.data && post.data.relations
+    const relations = post?.data?.relations
     if (relations && relations.length > 0) {
       // Pour chaque Tag
       relations.forEach(({ tech_tags }) => {
-        if (tech_tags && tech_tags.document) {
+        if (tech_tags?.document) {
           const el = tech_tags.document[0]
           if (el) {
             tagsAndPost.push({
-              tag: el.uid,
-              data: el.data,
+              ...el,
               post: post.uid
             })
           }
@@ -22,22 +28,22 @@ module.exports.getPostTags = allPosts => {
     }
   })
 
+  interface B extends A {
+    posts: string[]
+  }
+
   // 2. From the last array
-  // Return Reduced tag array of
-  // { tag: uid, data: Tag, posts: [post]}
-  const tmp = tagsAndPost.reduce((prev, curr) => {
-    // Base output
-    const output = {
-      uid: curr.tag,
-      data: curr.data,
+  const tmp: B[] = tagsAndPost.reduce((prev, curr) => {
+    const output: B = {
+      ...curr,
       posts: [curr.post]
     }
 
     // First element
     const isNotEmpty = prev && prev.length > 0
     if (isNotEmpty) {
-      const thisTag = prev.filter(({ uid }) => uid === curr.tag)[0]
-      const otherTag = prev.filter(({ uid }) => uid !== curr.tag)
+      const thisTag = prev.filter(({ uid }) => uid === curr.uid)[0]
+      const otherTag = prev.filter(({ uid }) => uid !== curr.uid)
 
       // If tag doesn't exists in prev
       if (!thisTag) {
@@ -45,7 +51,7 @@ module.exports.getPostTags = allPosts => {
       }
 
       // Here thisTag exists
-      const posts = thisTag.posts || []
+      const posts = thisTag?.posts || []
       thisTag.posts = [...posts, curr.post]
 
       return otherTag && otherTag.length > 0
@@ -54,14 +60,16 @@ module.exports.getPostTags = allPosts => {
     }
 
     return [output]
-  }, [])
+  }, [] as B[])
 
   // 3. Normalize, format
-  // - Calculate posts count
   return tmp.map(tag => {
+    const { uid, data, posts } = tag
     return {
       node: {
-        ...tag,
+        uid,
+        data,
+        posts,
         count: tag.posts.length || 0
       }
     }

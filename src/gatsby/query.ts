@@ -238,43 +238,42 @@ const Post = `
     }
 `
 
-module.exports = {
-  postTags: `{
-        tags: allPrismicTechTags {
-            edges {
-                node {
-                    ${TechTag}
-                }
+const query = `{
+    posts: allPrismicPost(
+        filter: { 
+            lang: { eq: "fr-fr" },
+            uid: {ne: "bonjour-cher-visiteur-bienvenue-sur-mon-article-demo"}
+        }
+        sort: { fields: first_publication_date, order: DESC }
+    ) {
+        edges {
+            node {
+                ${Post}
             }
         }
-    }`,
-  posts: `{
-        posts: allPrismicPost(
-            filter: { 
-                lang: { eq: "fr-fr" },
-                uid: {ne: "bonjour-cher-visiteur-bienvenue-sur-mon-article-demo"}
-            }
-            sort: { fields: first_publication_date, order: DESC }
-        ) {
-            edges {
-                node {
-                    ${Post}
-                }
+    }
+
+    tags: allPrismicTechTags {
+        edges {
+            node {
+                ${TechTag}
             }
         }
-    }`,
-  projects: `{
-        projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
-            edges {
-                node {
-                    ${Project}
-                }
+    }
+
+    projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
+        edges {
+            node {
+                ${Project}
             }
         }
-    }`,
-  homepage: `{
-        homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
-            ${Homepage}
-        }
-    }`
-}
+    }
+
+    homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
+        ${Homepage}
+    }
+
+
+}`
+
+export default query

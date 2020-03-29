@@ -4,4 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-exports.createPages = require('./src/gatsby/createPages')
+require('source-map-support').install()
+require('ts-node').register({
+  compilerOptions: {
+    module: 'commonjs',
+    target: 'es2017'
+  }
+})
+
+exports.createPages = require('./src/gatsby/createPages').createPages
