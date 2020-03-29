@@ -2,7 +2,7 @@
 import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 
-import { PrismicTechTag } from '../types'
+import { PrismicTechTag } from '../types/postsType'
 
 const Tag: FC<PrismicTechTag> = ({ data }) => {
   if (!data?.title?.text) {

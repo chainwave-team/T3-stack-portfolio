@@ -3,13 +3,12 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from '../../components/Container'
-import { ForTemplatePostTag } from '../../types'
+import { NodeArrayOf } from '../../types'
 import Link from '../../components/Link'
+import { ForTemplatePostTag } from '../../types/templates'
 
 export interface PostTagCloudProps {
-  tags: Array<{
-    node: ForTemplatePostTag
-  }>
+  tags: NodeArrayOf<ForTemplatePostTag>
 }
 
 const PostTagCloud: FC<PostTagCloudProps> = ({ tags }) => {

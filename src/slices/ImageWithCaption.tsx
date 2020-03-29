@@ -4,8 +4,9 @@ import { FC } from 'react'
 
 import Container from '../components/Container'
 import Fade from '../components/Fade'
-import { ContainerSize, PrismicImage } from '../types'
+import { ContainerSize } from '../types'
 import ImageZoom from '../components/ImageZoom'
+import { PrismicImage } from '../types/prismicField'
 
 export interface ImageCaptionSliceProps {
   slice: {

@@ -7,7 +7,8 @@ import Carousel from '../../../components/Carousel'
 import Col from '../../../components/Col'
 import ProjectCard from '../../../components/ProjectCard'
 import { getTagsFromRelation } from '../../../utils'
-import { PrismicProject, ProjectList } from '../../../types'
+import { PrismicProject } from '../../../types/postsType'
+import { NodeArrayOf } from '../../../types'
 
 const Mockup = loadable(() => import('../../../components/Mockup'))
 
@@ -45,7 +46,7 @@ const Slide: FC<PrismicProject> = ({
 )
 
 export interface HomePortfolioSliderProps {
-  projects: ProjectList
+  projects: NodeArrayOf<PrismicProject>
 }
 
 const HomePortfolioSlider: FC<HomePortfolioSliderProps> = ({ projects }) => {

@@ -3,7 +3,7 @@ import { jsx, Styled, Flex } from 'theme-ui'
 import { FC } from 'react'
 
 import Container from '../../components/Container'
-import { PrismicPost } from '../../types'
+import { PrismicPost } from '../../types/postsType'
 import Link from '../../components/Link'
 import Button from '../../components/Button'
 import PostCardGrid from '../../components/PostCardGrid'

@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import loadable from '@loadable/component'
 
 import { snakeToPascalCase } from '../../utils'
-import { Slice } from '../../types'
+import { Slice } from '../../types/prismicField'
 
 interface AsyncSliceProps {
   slice: Slice

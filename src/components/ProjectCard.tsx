@@ -2,9 +2,10 @@
 import { jsx, Flex, Styled } from 'theme-ui'
 
 import { FC } from 'react'
-import { PrismicText, PrismicTechTag } from '../types'
 import Html from './Html'
 import TagList from './TagList'
+import { PrismicText } from '../types/prismicField'
+import { PrismicTechTag } from '../types/postsType'
 
 const style = {
   root: {

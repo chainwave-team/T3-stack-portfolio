@@ -22,7 +22,3 @@ function ContactPage({ path }: Props) {
 }
 
 export default ContactPage
-
-// export const pageQuery = graphql`
-//   query {}
-// `

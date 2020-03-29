@@ -3,16 +3,10 @@ import path from 'path'
 
 import query from './query'
 import * as utils from './utils'
-import { GatsbyCreatePages } from './types'
-import {
-  PrismicPost,
-  GraphQueryOf,
-  PrismicProject,
-  PrismicTechTag,
-  Homepage,
-  ForTemplatePostTag,
-  NodeArrayOf
-} from '../types'
+import { GatsbyCreatePages } from '../types/node'
+import { GraphQueryOf, NodeArrayOf } from '../types'
+import { PrismicPost, PrismicProject, PrismicTechTag } from '../types/postsType'
+import { Homepage, ForTemplatePostTag } from '../types/templates'
 
 const { getPostTagsFromPosts, getRelatedPosts } = utils
 

@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
-import { TemplateBlog } from '../types'
+import { TemplateBlog } from '../types/templates'
 import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'
 import PostTagCloud from '../sections/Post/PostTagCloud'

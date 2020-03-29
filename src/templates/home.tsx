@@ -7,7 +7,7 @@ import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/Home/HomeHero'
 import HomePortfolio from '../sections/Home/HomePortfolio'
-import { TemplateHome } from '../types'
+import { TemplateHome } from '../types/templates'
 
 const HomeServices = loadable(() => import('../sections/Home/HomeServices'))
 const LastPosts = loadable(() => import('../components/LastPosts'))

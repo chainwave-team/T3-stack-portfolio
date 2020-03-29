@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { FC } from 'react'
 
 import Layout from '../Layout/Layout'
-import { TemplatePostTag } from '../types'
+import { TemplatePostTag } from '../types/templates'
 import SEO from '../Layout/SEO'
 import BlogHero from '../sections/Blog/BlogHero'
 import BlogList from '../sections/Blog/BlogList'

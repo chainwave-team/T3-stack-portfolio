@@ -8,7 +8,8 @@ import Link from '../../../components/Link'
 import { External, Github } from '../../../components/Icons'
 import TagList from '../../../components/TagList'
 import { getTagsFromRelation } from '../../../utils'
-import { PrismicProject, ProjectList } from '../../../types'
+import { NodeArrayOf } from '../../../types'
+import { PrismicProject } from '../../../types/postsType'
 
 const style = {
   root: {
@@ -93,7 +94,7 @@ const Project: FC<PrismicProject> = ({
 }
 
 export interface HomePortfolioOthersProps {
-  projects: ProjectList
+  projects: NodeArrayOf<PrismicProject>
 }
 
 const HomePortfolioOthers: FC<HomePortfolioOthersProps> = ({ projects }) => {

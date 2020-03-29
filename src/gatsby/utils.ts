@@ -1,10 +1,6 @@
-import {
-  PrismicPost,
-  PrismicTechTag,
-  PrismicTechTagRelation,
-  NodeArrayOf,
-  ForTemplatePostTag
-} from '../types'
+import { NodeArrayOf } from '../types'
+import { PrismicPost, PrismicTechTag } from '../types/postsType'
+import { PrismicTechTagRelation, ForTemplatePostTag } from '../types/templates'
 
 type Posts = NodeArrayOf<PrismicPost>
 interface TechTagAndPostsUid extends PrismicTechTag {

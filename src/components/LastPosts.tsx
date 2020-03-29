@@ -3,13 +3,14 @@ import { jsx, Styled } from 'theme-ui'
 import { FC } from 'react'
 
 import Link from './Link'
-import { PrismicPost } from '../types'
+import { PrismicPost } from '../types/postsType'
 import Container from './Container'
 import Button from './Button'
 import PostCardGrid from './PostCardGrid'
+import { NodeArrayOf } from '../types'
 
 export interface LastPostsProps {
-  posts: Array<{ node: PrismicPost }>
+  posts: NodeArrayOf<PrismicPost>
   title?: string
   button?: string
   displayButton?: boolean

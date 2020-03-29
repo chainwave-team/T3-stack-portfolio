@@ -1,4 +1,4 @@
-import { PrismicTechTagRelation } from '../types'
+import { PrismicTechTagRelation } from '../types/templates'
 
 export function getTagsFromRelation(relations?: PrismicTechTagRelation[]) {
   if (!relations) {

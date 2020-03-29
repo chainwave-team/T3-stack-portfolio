@@ -7,17 +7,18 @@ import Container from '../../../components/Container'
 import Fade from '../../../components/Fade'
 import Button from '../../../components/Button'
 import HomePortfolioSlider from './HomePortfolioSlider'
-import { ProjectList } from '../../../types'
+import { NodeArrayOf } from '../../../types'
+import { PrismicProject } from '../../../types/postsType'
 
 const HomePortfolioOthers = loadable(() => import('./HomePortfolioOthers'))
 
 export interface HomePortfolioProps {
-  projects: ProjectList
+  projects: NodeArrayOf<PrismicProject>
 }
 
 export interface ProjectState {
-  featured: ProjectList | []
-  others: ProjectList | []
+  featured: NodeArrayOf<PrismicProject>
+  others: NodeArrayOf<PrismicProject>
 }
 
 const HomePortfolio: FC<HomePortfolioProps> = ({ projects }) => {

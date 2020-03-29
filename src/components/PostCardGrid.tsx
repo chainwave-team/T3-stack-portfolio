@@ -4,11 +4,12 @@ import { FC, RefObject } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { navigate } from 'gatsby'
 
-import { PrismicPost } from '../types'
+import { NodeArrayOf } from '../types'
 import Fade from './Fade'
 import TagList from './TagList'
 import { getTagsFromRelation } from '../utils'
 import useHover from '../hooks/useHover'
+import { PrismicPost } from '../types/postsType'
 
 const settings = { gutterSize: 3, cardHeight: 250 }
 
@@ -68,7 +69,7 @@ export const PostCard: FC<PrismicPost> = ({
 }
 
 export interface PostCardGridProps {
-  posts: Array<{ node: PrismicPost }>
+  posts: NodeArrayOf<PrismicPost>
 }
 
 const PostCardGrid: FC<PostCardGridProps> = ({ posts }) => (

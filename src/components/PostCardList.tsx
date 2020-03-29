@@ -3,11 +3,12 @@ import { jsx, Styled, Box } from 'theme-ui'
 import { FC, Fragment, RefObject } from 'react'
 import { navigate } from 'gatsby'
 
-import { PrismicPost } from '../types'
+import { PrismicPost } from '../types/postsType'
 import Fade from './Fade'
 import TagList from './TagList'
 import { getTagsFromRelation } from '../utils'
 import useHover from '../hooks/useHover'
+import { NodeArrayOf } from '../types'
 
 export const PostCard: FC<PrismicPost> = ({
   uid,
@@ -48,7 +49,7 @@ export const PostCard: FC<PrismicPost> = ({
 }
 
 export interface PostCardListProps {
-  posts: Array<{ node: PrismicPost }>
+  posts: NodeArrayOf<PrismicPost>
 }
 
 const PostCardList: FC<PostCardListProps> = ({ posts }) => (
