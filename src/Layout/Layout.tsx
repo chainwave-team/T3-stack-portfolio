@@ -10,6 +10,7 @@ import { scrollBar, globalStyle } from '../styles/global'
 import tachyonsDebug from '../styles/tachyons-debug'
 import theme from '../gatsby-plugin-theme-ui/theme'
 import fontFaces from '../styles/fontfaces'
+import BackToTop from '../components/BackToTop'
 
 // Styles (scrollbar & conditional debug CSS)
 const debugCSS = false
@@ -36,6 +37,8 @@ const Layout: FC<LayoutProps> = ({ children, path }) => (
 
         <Footer path={path} />
       </>
+
+      <BackToTop />
     </Styled.root>
   </ThemeProvider>
 )
