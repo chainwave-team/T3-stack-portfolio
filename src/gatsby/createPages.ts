@@ -10,10 +10,11 @@ import {
   PrismicProject,
   PrismicTechTag,
   Homepage,
-  ForTemplatePostTag
+  ForTemplatePostTag,
+  NodeArrayOf
 } from '../types'
 
-const { getPostTags } = utils
+const { getPostTagsFromPosts, getRelatedPosts } = utils
 
 interface Data {
   data: {
@@ -46,19 +47,17 @@ export const createPages: GatsbyCreatePages = async ({
     homepage: data.homepage
   }
 
-  const postTags: Array<{
-    node: ForTemplatePostTag
-  }> = getPostTags(posts)
+  const postTags: NodeArrayOf<ForTemplatePostTag> = getPostTagsFromPosts(posts)
 
   // Create Blog posts
-  posts.forEach(edge => {
+  posts.forEach(({ node }) => {
     createPage({
-      path: `/${edge.node.uid}`,
+      path: `/${node.uid}`,
       component: templates.post,
       context: {
-        currentPost: edge.node,
+        currentPost: node,
         postTags,
-        allPosts: posts // TODO : filter related posts here
+        relatedPosts: getRelatedPosts(node, posts)
       }
     })
   })

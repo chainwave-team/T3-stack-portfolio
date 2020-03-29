@@ -40,12 +40,6 @@ export interface PrismicTechTagRelation {
   }
 }
 
-interface PrismicTechTagQuery {
-  edges: Array<{
-    node: PrismicTechTag
-  }>
-}
-
 export interface PrismicImage {
   alt?: string
   url?: string
@@ -111,12 +105,8 @@ export interface PrismicPost {
     canonical?: PostCanonical
     published_date?: string
     relations?: PrismicTechTagRelation[]
-    body?: Slice[] // Slices
+    body?: Slice[]
   }
-}
-
-export interface PrismicPostQuery {
-  edges: Array<{ node: PrismicPost }>
 }
 
 export interface PrismicProject {
@@ -135,15 +125,11 @@ export interface PrismicProject {
   }
 }
 
+export type NodeArrayOf<T> = Array<{ node: T }>
+
 export interface GraphQueryOf<T> {
-  edges: Array<{ node: T }>
+  edges: NodeArrayOf<T>
 }
-
-export interface PrismicProjectQuery {
-  edges: Array<{ node: PrismicPost }>
-}
-
-export type ProjectList = Array<{ node: PrismicProject }>
 
 export interface Homepage {
   type: string
@@ -162,8 +148,6 @@ export interface Homepage {
 
 // Pages & Templates types
 
-// export interface Page {}
-
 export interface Template {
   location: Location
   pageContext: any
@@ -177,44 +161,30 @@ export interface ForTemplatePostTag extends PrismicTechTag {
 export interface TemplatePost extends Template {
   pageContext: {
     currentPost: PrismicPost
-    allPosts: Array<{
-      node: PrismicPost
-    }>
-    postTags: Array<{
-      node: ForTemplatePostTag
-    }>
+    relatedPosts: NodeArrayOf<PrismicPost>
+    postTags: NodeArrayOf<ForTemplatePostTag>
   }
 }
 
 export interface TemplatePostTag extends Template {
   pageContext: {
     currentTag: ForTemplatePostTag
-    posts: Array<{
-      node: PrismicPost
-    }>
-    postTags: Array<{
-      node: ForTemplatePostTag
-    }>
+    posts: NodeArrayOf<PrismicPost>
+    postTags: NodeArrayOf<ForTemplatePostTag>
   }
 }
 
 export interface TemplateBlog extends Template {
   pageContext: {
-    posts: Array<{
-      node: PrismicPost
-    }>
-    postTags: Array<{
-      node: ForTemplatePostTag
-    }>
+    posts: NodeArrayOf<PrismicPost>
+    postTags: NodeArrayOf<ForTemplatePostTag>
   }
 }
 
 export interface TemplateHome extends Template {
   pageContext: {
-    lastPosts: Array<{
-      node: PrismicPost
-    }>
-    projects: ProjectList
+    posts: NodeArrayOf<PrismicPost>
+    projects: NodeArrayOf<PrismicProject>
     homepage: Homepage
   }
 }

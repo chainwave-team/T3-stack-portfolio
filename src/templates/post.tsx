@@ -9,7 +9,6 @@ import PostHero from '../sections/Post/PostHero'
 import PostSlices from '../sections/Post/PostSlices'
 import PostThumbnail from '../sections/Post/PostThumbnail'
 import { TemplatePost } from '../types'
-import { getRelatedPosts } from '../utils'
 
 const PostBottom = loadable(() => import('../sections/Post/PostBottom'))
 const PostTagCloud = loadable(() => import('../sections/Post/PostTagCloud'))
@@ -17,8 +16,7 @@ const Comments = loadable(() => import('../components/Comments'))
 const LastPosts = loadable(() => import('../components/LastPosts'))
 
 const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
-  const { allPosts, postTags, currentPost } = pageContext
-  const relatedPosts = getRelatedPosts(currentPost, allPosts)
+  const { relatedPosts, postTags, currentPost } = pageContext
   const { uid, data, first_publication_date } = currentPost
   const { pathname } = location
 

@@ -2,6 +2,5 @@ export {
   getTagsFromRelation,
   capitalize,
   snakeToPascalCase,
-  getRandomItem,
-  getRelatedPosts
+  getRandomItem
 } from './utils'
