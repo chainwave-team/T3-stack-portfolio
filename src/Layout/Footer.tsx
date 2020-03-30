@@ -111,6 +111,10 @@ const Footer: FC<{ path: string }> = ({ path }) => {
               <ExternalLink first link={linkedin_url} label="Linkedin" />
               <ExternalLink link={malt_url} label="Malt" />
               <ExternalLink link={github_url} label="Github" />
+              <ExternalLink
+                link={{ url: '/rss.xml' } as PrismicLink}
+                label="RSS"
+              />
             </Col>
           </Row>
         </Fade>

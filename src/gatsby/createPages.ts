@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import path from 'path'
 
-import query from './query'
+import * as query from './query'
 import * as utils from './utils'
 import { GatsbyCreatePages } from '../types/node'
 import { GraphQueryOf, NodeArrayOf } from '../types'
@@ -32,7 +32,7 @@ export const createPages: GatsbyCreatePages = async ({
 }) => {
   const { createPage } = boundActionCreators
 
-  const { data }: Data = await graphql(query)
+  const { data }: Data = await graphql(query.query)
 
   const { posts, tags, projects, homepage } = {
     posts: data.posts.edges.map(el => el),

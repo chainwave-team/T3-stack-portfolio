@@ -221,6 +221,7 @@ const Post = `
     first_publication_date(formatString: "${dateFormat}")
     data {
         published_date(formatString: "${dateFormat}")
+        meta_description
         title {
             ${PrismicText}
         }
@@ -238,7 +239,7 @@ const Post = `
     }
 `
 
-const query = `{
+const postsQuery = `
     posts: allPrismicPost(
         filter: { 
             lang: { eq: "fr-fr" },
@@ -252,7 +253,9 @@ const query = `{
             }
         }
     }
+`
 
+const tagsQuery = `
     tags: allPrismicTechTags {
         edges {
             node {
@@ -260,7 +263,15 @@ const query = `{
             }
         }
     }
+`
 
+const homeQuery = `
+    homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
+        ${Homepage}
+    }
+`
+
+const projectsQuery = `
     projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
         edges {
             node {
@@ -268,12 +279,20 @@ const query = `{
             }
         }
     }
+`
 
-    homepage: prismicHomepage(lang: { eq: "fr-fr" }) {
-        ${Homepage}
-    }
-
-
+const query = `{
+    ${postsQuery}
+    ${tagsQuery}
+    ${homeQuery}
+    ${projectsQuery}
 }`
 
-export default query
+module.exports = {
+  query,
+  postsQuery,
+  tagsQuery,
+  projectsQuery,
+  homeQuery,
+  dateFormat
+}

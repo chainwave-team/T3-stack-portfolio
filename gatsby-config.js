@@ -2,11 +2,17 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
+const moment = require('moment')
+const { postsQuery, dateFormat } = require('./src/gatsby/query')
+
+const siteUrl = `https://juliencaron.eu`
+const author = 'Julien CARON'
+
 module.exports = {
   siteMetadata: {
-    title: `Julien CARON`,
-    description: `Julien CARON, Développeur Web`,
-    siteUrl: `https://juliencaron.eu`,
+    title: author,
+    description: `${author}, Développeur Web`,
+    siteUrl,
     author: `@unscuzzy`
   },
   plugins: [
@@ -21,6 +27,31 @@ module.exports = {
         useMozJpeg: false,
         stripMetadata: true,
         defaultQuality: 85
+      }
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            query: `{${postsQuery}}`,
+            output: '/rss.xml',
+            title: `RSS Feed - ${author}`,
+            description: `${siteUrl}`,
+            serialize: ({ query: { posts } }) =>
+              posts.edges.map(({ node }) => ({
+                title: `${node.data.title.text}`,
+                description: node.data.meta_description || '',
+                author,
+                date: moment(
+                  node.first_publication_date,
+                  dateFormat
+                ).toString(),
+                url: `${siteUrl}/${node.uid}`,
+                guid: `${siteUrl}/${node.uid}`
+              }))
+          }
+        ]
       }
     },
     {
