@@ -2,6 +2,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
+const url = require('url')
 const moment = require('moment')
 const { postsQuery, dateFormat } = require('./src/gatsby/query')
 
@@ -58,20 +59,24 @@ module.exports = {
             title: `RSS Feed - ${author}`,
             description: `${siteUrl}`,
             serialize: ({ query: { posts } }) =>
-              posts.edges.map(({ node }) => ({
-                title: `${node.data.title.text}`,
-                description: node.data.meta_description || '',
-                author,
-                date: getDate(node),
-                url: `${siteUrl}/${node.uid}`,
-                guid: `${siteUrl}/${node.uid}`,
-                enclosure: {
-                  url: `${siteUrl}${node.data.thumbnail.localFile.publicURL ||
-                    ''}`,
-                  type: getMediaType(node.data.thumbnail.localFile.extension),
-                  size: node.data.thumbnail.localFile.size
+              posts.edges.map(({ node }) => {
+                const imageUrl = url.parse(
+                  node.data.thumbnail.localFile.url || ''
+                )
+                return {
+                  title: `${node.data.title.text}`,
+                  description: node.data.meta_description || '',
+                  author,
+                  date: getDate(node),
+                  url: `${siteUrl}/${node.uid}`,
+                  guid: `${siteUrl}/${node.uid}`,
+                  enclosure: {
+                    url: imageUrl.host + imageUrl.pathname,
+                    type: getMediaType(node.data.thumbnail.localFile.extension),
+                    size: node.data.thumbnail.localFile.size
+                  }
                 }
-              }))
+              })
           }
         ]
       }
