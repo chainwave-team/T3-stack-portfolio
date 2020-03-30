@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from '../components/Container'
 import Fade from '../components/Fade'
 import { ContainerSize } from '../types'
 import ImageZoom from '../components/ImageZoom'
@@ -24,7 +23,7 @@ const ImageWithCaption: FC<ImageCaptionSliceProps> = ({ slice }) => {
   const imageUrl = image?.localFile?.childImageSharp?.fluid?.src
 
   return imageUrl ? (
-    <Container size={label || 'blog'}>
+    <Container variant={label || 'blog'}>
       <div sx={{ my: 5 }}>
         <Fade>
           <ImageZoom src={imageUrl} alt={image?.alt} />

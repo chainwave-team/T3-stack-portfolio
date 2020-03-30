@@ -1,4 +1,9 @@
 const sizes = {
+  full: '100%',
+  container: 1180,
+  blog: 680,
+  screenHeight: '100vh',
+  screenWidth: '100vw',
   '0': '0',
   '1': '0.25rem',
   '2': '0.5rem',
@@ -53,10 +58,7 @@ const sizes = {
   '8/12': '66.666667%',
   '9/12': '75%',
   '10/12': '83.333333%',
-  '11/12': '91.666667%',
-  full: '100%',
-  screenHeight: '100vh',
-  screenWidth: '100vw'
+  '11/12': '91.666667%'
 }
 
 export default sizes

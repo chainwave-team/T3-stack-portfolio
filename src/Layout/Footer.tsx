@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
@@ -8,7 +8,6 @@ import BaseLink from '../components/Link'
 import Fade from '../components/Fade'
 import Row from '../components/Row'
 import Col from '../components/Col'
-import Container from '../components/Container'
 import { PrismicLink } from '../types/prismicField'
 
 const style = {

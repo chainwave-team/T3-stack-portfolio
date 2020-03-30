@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, Flex, Styled } from 'theme-ui'
+import { jsx, Flex, Styled, Container } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
-import Container from '../../components/Container'
 import Fade from '../../components/Fade'
 import SocialIcons from '../../components/SocialIcons'
 import ContactButton from '../../components/ContactButton'
@@ -39,7 +38,7 @@ const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
         py: 6
       }}
     >
-      <Container size="blog">
+      <Container variant="blog">
         <Fade>
           <div>
             <Styled.h1>{job}</Styled.h1>

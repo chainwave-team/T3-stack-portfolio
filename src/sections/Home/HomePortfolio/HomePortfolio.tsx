@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container } from 'theme-ui'
 import loadable from '@loadable/component'
 import { useState, FC } from 'react'
 
-import Container from '../../../components/Container'
 import Fade from '../../../components/Fade'
 import Button from '../../../components/Button'
 import HomePortfolioSlider from './HomePortfolioSlider'
@@ -35,7 +34,7 @@ const HomePortfolio: FC<HomePortfolioProps> = ({ projects }) => {
   )
 
   return (
-    <Container id="portfolio" section>
+    <Container id="portfolio" sx={{ my: 7 }}>
       <Fade>
         <HomePortfolioSlider projects={featured} />
 

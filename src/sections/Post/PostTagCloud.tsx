@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from '../../components/Container'
 import { NodeArrayOf } from '../../types'
 import Link from '../../components/Link'
 import { ForTemplatePostTag } from '../../types/templates'

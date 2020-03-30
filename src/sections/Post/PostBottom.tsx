@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
+import { jsx, Styled, Flex, Container } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from '../../components/Container'
 import SocialShareLinks from '../../components/SocialShareLinks'
 import AuthorAvatar from '../../components/AuthorAvatar'
 
@@ -12,7 +11,7 @@ export interface PostBottomProps {
 }
 
 const PostBottom: FC<PostBottomProps> = ({ authorName, authorDesc }) => (
-  <Container size="blog" sx={{ my: 5 }}>
+  <Container variant="blog" sx={{ my: 5 }}>
     <hr />
     <Flex
       sx={{

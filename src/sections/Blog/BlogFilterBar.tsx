@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box, Container } from 'theme-ui'
 import { FC } from 'react'
-import Container from '../../components/Container'
+
 import { GridIcon, ListIcon } from '../../components/Icons'
 import { hoverStyle } from '../../gatsby-plugin-theme-ui/theme'
 
@@ -23,7 +23,7 @@ export interface BlogFilterBarProps {
 }
 
 const BlogFilterBar: FC<BlogFilterBarProps> = ({ onChangeMode }) => (
-  <Container size="blog">
+  <Container variant="blog">
     <Flex sx={{ justifyContent: 'flex-end' }}>
       <Box sx={iconButtonStyle} onClick={() => onChangeMode(true)}>
         <GridIcon size={32} />

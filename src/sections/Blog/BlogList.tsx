@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
+import { jsx, Styled, Flex, Container } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from '../../components/Container'
 import { PrismicPost } from '../../types/postsType'
 import Link from '../../components/Link'
 import Button from '../../components/Button'
@@ -20,7 +19,7 @@ const BlogList: FC<BlogListProps> = ({ posts = [], modeList = false }) => {
   const List = () =>
     modeList ? <PostCardList posts={posts} /> : <PostCardGrid posts={posts} />
   return (
-    <Container size={modeList ? 'blog' : 'container'} sx={{ mt: 5, mb: 6 }}>
+    <Container variant={modeList ? 'blog' : 'container'} sx={{ mt: 5, mb: 6 }}>
       {posts.length > 0 ? (
         <List />
       ) : (

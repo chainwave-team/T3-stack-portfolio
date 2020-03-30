@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
+import { jsx, Styled, Flex, Container } from 'theme-ui'
 import { FC } from 'react'
 
-import Container from '../../components/Container'
 import SocialShareLinks from '../../components/SocialShareLinks'
 import AuthorAvatar from '../../components/AuthorAvatar'
 
@@ -13,7 +12,7 @@ export interface PostHeroProps {
 }
 
 const PostHero: FC<PostHeroProps> = ({ title, date, readTime }) => (
-  <Container size="blog" sx={{ mt: 80, py: 5 }}>
+  <Container variant="blog" sx={{ mt: 80, py: 5 }}>
     <Styled.h1 as="h1" sx={{ my: 4 }}>
       {title}
     </Styled.h1>

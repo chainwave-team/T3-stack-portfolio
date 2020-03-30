@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container } from 'theme-ui'
 import Html from '../components/Html'
-import Container from '../components/Container'
 
 export type TextSliceProps = {
   slice: { primary: { text: { html: string } } }
@@ -9,7 +8,7 @@ export type TextSliceProps = {
 
 export default function Text({ slice }: TextSliceProps) {
   return (
-    <Container sx={{ maxWidth: 'blog' }}>
+    <Container variant="blog">
       <Html html={slice.primary.text.html} />
     </Container>
   )

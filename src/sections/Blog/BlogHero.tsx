@@ -1,8 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import { FC } from 'react'
-
-import Container from '../../components/Container'
 
 export interface BlogHeroProps {
   title?: string
@@ -14,7 +12,7 @@ const BlogHero: FC<BlogHeroProps> = ({
   subTitle = 'Découvrez les derniers articles'
 }) => {
   return (
-    <Container size="blog" sx={{ pt: 6, pb: 4, mt: `80px` }}>
+    <Container variant="blog" sx={{ pt: 6, pb: 4, mt: `80px` }}>
       <Styled.h1 sx={{ my: 3 }}>{title}</Styled.h1>
       {!!subTitle && (
         <Styled.h3 sx={{ color: 'muted', my: 3 }}>{subTitle}</Styled.h3>

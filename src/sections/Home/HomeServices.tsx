@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import uuid from 'uuid'
 import { FC } from 'react'
 
 import Fade from '../../components/Fade'
 import AccordionItem from '../../components/tmp/AccordionItem'
 import Accordion from '../../components/tmp/Accordion'
-import Container from '../../components/Container'
 import Html from '../../components/Html'
 import { ServicesStatus } from '../../types'
 import { PrismicText } from '../../types/prismicField'
@@ -14,7 +13,8 @@ import { PrismicText } from '../../types/prismicField'
 const style = {
   container: {
     width: ['full', 'full', 'blog', 'blog'],
-    maxWidth: 'full'
+    maxWidth: 'full',
+    my: 6
   },
   bg: {
     bg: 'blue',
@@ -78,7 +78,7 @@ const HomeServices: FC<HomeServicesProps> = ({ title, items }) => {
       textarea: item.service_textarea
     }))
   return (
-    <Container section id="skills" sx={style.container}>
+    <Container id="skills" sx={style.container}>
       <Fade>
         <div sx={style.bg}>
           <Styled.h2 sx={{ lineHeight: 1, pb: 4 }}>{title}</Styled.h2>

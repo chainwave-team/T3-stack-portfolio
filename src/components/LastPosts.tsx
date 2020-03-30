@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, Container } from 'theme-ui'
 import { FC } from 'react'
 
 import Link from './Link'
 import { PrismicPost } from '../types/postsType'
-import Container from './Container'
 import Button from './Button'
 import PostCardGrid from './PostCardGrid'
 import { NodeArrayOf } from '../types'

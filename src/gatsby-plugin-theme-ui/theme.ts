@@ -1,5 +1,6 @@
 import { Theme } from 'theme-ui'
 
+import { size } from 'polished'
 import typography from './typography'
 import sizes from './sizes'
 import colors from './colors'
@@ -53,10 +54,14 @@ const theme: Readonly<MyTheme> = {
     'rgba(0, 0, 0, 0.2) 0px 30px 60px -10px, rgba(0, 0, 0, 0.22) 0px 18px 36px -18px'
   ],
   breakpoints,
-  sizes: {
-    ...sizes,
-    container: 1180,
-    blog: 680
+  sizes,
+  layout: {
+    container: {
+      maxWidth: sizes.container
+    },
+    blog: {
+      maxWidth: sizes.blog
+    }
   },
   buttons: {
     primary: {
@@ -76,6 +81,13 @@ const theme: Readonly<MyTheme> = {
       }
     }
   },
+  text: {
+    heading: {
+      fontFamily: 'heading',
+      fontWeight: 'heading',
+      lineHeight: 'heading'
+    }
+  },
   styles: {
     ...typography,
     root: {
@@ -86,6 +98,7 @@ const theme: Readonly<MyTheme> = {
       flexDirection: 'column',
       minHeight: '100vh'
     },
+
     a: linkStyle,
     table: {
       width: '100%',

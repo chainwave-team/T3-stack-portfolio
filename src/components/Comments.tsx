@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from 'theme-ui'
+import { jsx, Styled, Flex, Container } from 'theme-ui'
 import { FC, useState, Fragment } from 'react'
 import loadable from '@loadable/component'
 
-import Container from './Container'
 import Button from './Button'
 
 const AsyncComments = loadable(() => import(`react-disqus-comments`))
@@ -28,7 +27,7 @@ const Comments: FC<CommentsProps> = ({ uid, title }) => {
   return (
     <Fragment>
       {!!url && (
-        <Container sx={{ py: 5, mb: 5, maxWidth: 1080 }} size="container">
+        <Container sx={{ py: 5, mb: 5, maxWidth: 1080 }}>
           <Styled.h2 sx={{ textAlign: 'center', mb: 4 }}>
             Qu&apos;en avez-vous pensé ?
           </Styled.h2>
