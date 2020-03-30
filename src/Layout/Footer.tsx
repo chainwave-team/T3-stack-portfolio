@@ -16,7 +16,8 @@ const style = {
   container: { py: [4, 5] },
   row1: { py: 5 },
   row2: { pt: 4 },
-  copyright: { m: 0, fontFamily: 'mono', color: 'muted' }
+  copyright: { m: 0, fontFamily: 'mono', color: 'muted' },
+  link: { color: 'muted', fontFamily: 'mono', ml: 3 }
 }
 
 interface ExternalLinkProps {
@@ -32,8 +33,8 @@ const ExternalLink: FC<ExternalLinkProps> = ({
 }) => (
   <BaseLink
     to={link.url}
-    target={link.target}
-    sx={{ ml: first ? 0 : 3, color: 'muted', fontFamily: 'mono' }}
+    target={link.target || ''}
+    sx={{ ...style.link, ml: first ? 0 : 3 }}
   >
     {label}
   </BaseLink>
@@ -111,10 +112,9 @@ const Footer: FC<{ path: string }> = ({ path }) => {
               <ExternalLink first link={linkedin_url} label="Linkedin" />
               <ExternalLink link={malt_url} label="Malt" />
               <ExternalLink link={github_url} label="Github" />
-              <ExternalLink
-                link={{ url: '/rss.xml' } as PrismicLink}
-                label="RSS"
-              />
+              <Styled.a href="/rss.xml" sx={style.link}>
+                RSS
+              </Styled.a>
             </Col>
           </Row>
         </Fade>
