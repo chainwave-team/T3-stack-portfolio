@@ -71,7 +71,7 @@ module.exports = {
                   url: `${siteUrl}/${node.uid}`,
                   guid: `${siteUrl}/${node.uid}`,
                   enclosure: {
-                    url: imageUrl.host + imageUrl.pathname,
+                    url: `${imageUrl.protocol}//${imageUrl.host}${imageUrl.pathname}`,
                     type: getMediaType(node.data.thumbnail.localFile.extension),
                     size: node.data.thumbnail.localFile.size
                   }
