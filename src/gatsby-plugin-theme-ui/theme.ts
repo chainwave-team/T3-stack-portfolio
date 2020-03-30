@@ -1,6 +1,5 @@
 import { Theme } from 'theme-ui'
 
-import { size } from 'polished'
 import typography from './typography'
 import sizes from './sizes'
 import colors from './colors'

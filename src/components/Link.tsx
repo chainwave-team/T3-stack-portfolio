@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Link as BaseLink } from 'theme-ui'
 import { FC } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
@@ -28,15 +28,15 @@ const Link: FC<LinkProps> = ({
   if (internal) {
     const props = { ...other, to, onClick: handleClick }
     return (
-      <Styled.a as={GatsbyLink} {...props}>
+      <BaseLink as={GatsbyLink} {...props}>
         {children}
-      </Styled.a>
+      </BaseLink>
     )
   }
   return (
-    <Styled.a href={to} target={target} onClick={handleClick} {...other}>
+    <BaseLink href={to} target={target} onClick={handleClick} {...other}>
       {children}
-    </Styled.a>
+    </BaseLink>
   )
 }
 
