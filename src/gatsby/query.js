@@ -94,6 +94,10 @@ const PostBodyImageWithCaption = `
 const PostThumbnail = `
     thumbnail {
         localFile {
+            size
+            ext
+            extension
+            publicURL
             childImageSharp {
                 fluid(
                     maxWidth: 1180

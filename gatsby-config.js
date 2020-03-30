@@ -8,6 +8,11 @@ const { postsQuery, dateFormat } = require('./src/gatsby/query')
 const siteUrl = `https://juliencaron.eu`
 const author = 'Julien CARON'
 
+// type getDateFn = (node: { first_publication_date: string }) => string
+const getDate = node => {
+  return moment(node.first_publication_date, dateFormat).toString()
+}
+
 module.exports = {
   siteMetadata: {
     title: author,
@@ -43,12 +48,13 @@ module.exports = {
                 title: `${node.data.title.text}`,
                 description: node.data.meta_description || '',
                 author,
-                date: moment(
-                  node.first_publication_date,
-                  dateFormat
-                ).toString(),
+                date: getDate(node),
                 url: `${siteUrl}/${node.uid}`,
-                guid: `${siteUrl}/${node.uid}`
+                guid: `${siteUrl}/${node.uid}`,
+                enclosure: {
+                  url: `${siteUrl}/${node.data.thumbnail.localFile.publicURL ||
+                    ''}`
+                }
               }))
           }
         ]
