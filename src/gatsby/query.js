@@ -97,7 +97,7 @@ const PostThumbnail = `
             size
             ext
             extension
-            publicURL
+            url
             childImageSharp {
                 fluid(
                     maxWidth: 1180

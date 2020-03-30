@@ -13,6 +13,20 @@ const getDate = node => {
   return moment(node.first_publication_date, dateFormat).toString()
 }
 
+const getMediaType = type => {
+  switch (type) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg'
+    case 'gif':
+      return 'image/gif'
+    case 'png':
+      return 'image/png'
+    default:
+      return 'image/*'
+  }
+}
+
 module.exports = {
   siteMetadata: {
     title: author,
@@ -52,9 +66,8 @@ module.exports = {
                 url: `${siteUrl}/${node.uid}`,
                 guid: `${siteUrl}/${node.uid}`,
                 enclosure: {
-                  url: `${siteUrl}${node.data.thumbnail.localFile.publicURL ||
-                    ''}`,
-                  type: `image/${node.data.thumbnail.localFile.extension}`,
+                  url: `${siteUrl}${node.data.thumbnail.localFile.url || ''}`,
+                  type: getMediaType(node.data.thumbnail.localFile.extension),
                   size: node.data.thumbnail.localFile.size
                 }
               }))
