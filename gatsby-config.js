@@ -52,8 +52,10 @@ module.exports = {
                 url: `${siteUrl}/${node.uid}`,
                 guid: `${siteUrl}/${node.uid}`,
                 enclosure: {
-                  url: `${siteUrl}/${node.data.thumbnail.localFile.publicURL ||
-                    ''}`
+                  url: `${siteUrl}${node.data.thumbnail.localFile.publicURL ||
+                    ''}`,
+                  type: `image/${node.data.thumbnail.localFile.extension}`,
+                  size: node.data.thumbnail.localFile.size
                 }
               }))
           }
