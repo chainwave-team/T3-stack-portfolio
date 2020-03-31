@@ -1,3 +1,4 @@
+import { FluidObject } from 'gatsby-image'
 import {
   PrismicText,
   PrismicImage,
@@ -38,7 +39,14 @@ export interface PrismicProject {
     isfeatured?: 'yes' | 'no'
     demo_link?: PrismicLink
     source_link?: PrismicLink
-    full_screen?: PrismicImage
+    full_screen?: {
+      alt: string
+      url: string
+      localFile?: {
+        medium: { fluid: FluidObject }
+        small: { fluid: FluidObject }
+      }
+    }
     html?: PrismicText
     project_type?: {
       document: Array<{ data: { title: PrismicText } }>

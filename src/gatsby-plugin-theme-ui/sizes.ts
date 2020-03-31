@@ -1,6 +1,7 @@
 const sizes = {
   full: '100%',
   container: 1180,
+  medium: 920,
   blog: 680,
   screenHeight: '100vh',
   screenWidth: '100vw',

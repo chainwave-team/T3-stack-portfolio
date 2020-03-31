@@ -6,20 +6,26 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import HomepageHero from '../sections/Home/HomeHero'
-import HomePortfolio from '../sections/Home/HomePortfolio'
 import { TemplateHome } from '../types/templates'
 
 const HomeServices = loadable(() => import('../sections/Home/HomeServices'))
+const HomePortfolio = loadable(() => import('../sections/Home/HomePortfolio'))
 const LastPosts = loadable(() => import('../components/LastPosts'))
 
 const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
-  const { lastPosts, projects, homepage } = pageContext
+  const { lastPosts, homepage } = pageContext
   const {
     introduction,
     header_contact_button_label,
     services_introduction,
-    services
+    services,
+    featured_projects
   } = homepage.data
+
+  // Normalize collection
+  const projects = featured_projects.map(({ project }) => ({
+    node: { ...project.document[0] }
+  }))
 
   return (
     <Layout path={location.pathname}>

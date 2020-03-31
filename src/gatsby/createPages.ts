@@ -34,10 +34,10 @@ export const createPages: GatsbyCreatePages = async ({
 
   const { data }: Data = await graphql(query.query)
 
-  const { posts, /* tags, */ projects, homepage } = {
+  const { posts, /* tags,  projects, */ homepage } = {
     posts: data.posts.edges.map(el => el),
     // tags: data.tags.edges.map(el => el),
-    projects: data.projects.edges.map(el => el),
+    // projects: data.projects.edges.map(el => el),
     homepage: data.homepage
   }
 
@@ -85,7 +85,6 @@ export const createPages: GatsbyCreatePages = async ({
     component: templates.home,
     context: {
       lastPosts: posts.slice(0, 3),
-      projects,
       homepage
     }
   })

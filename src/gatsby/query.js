@@ -151,30 +151,6 @@ const PostCanonical = `
     }
 `
 
-const Homepage = `
-    type
-    data {
-        introduction {
-            ${PrismicText}
-        }
-        title {
-            ${PrismicText}
-        }
-        header_contact_button_label
-        services_introduction {
-            ${PrismicText}
-        }
-        services {
-            status
-            service_title
-            service_textarea {
-                ${PrismicText}
-            }
-        }
-    }
-
-`
-
 const Project = `
     uid
     data {
@@ -186,8 +162,13 @@ const Project = `
             alt
             url
             localFile {
-                childImageSharp {
-                    fluid(quality: 85, maxWidth: 800) {
+                medium: childImageSharp {
+                    fluid(quality: 85, maxWidth: 720) {
+                        ${GatsbyFluid_withWebp}
+                    }
+                }
+                small: childImageSharp {
+                    fluid(quality: 85, maxWidth: 250) {
                         ${GatsbyFluid_withWebp}
                     }
                 }
@@ -221,6 +202,37 @@ const Project = `
             size
         }
     }
+`
+
+const Homepage = `
+    type
+    data {
+        introduction {
+            ${PrismicText}
+        }
+        title {
+            ${PrismicText}
+        }
+        header_contact_button_label
+        services_introduction {
+            ${PrismicText}
+        }
+        services {
+            status
+            service_title
+            service_textarea {
+                ${PrismicText}
+            }
+        }
+        featured_projects {
+            project {
+                document {
+                    ${Project}
+                }
+            }
+        }
+    }
+
 `
 
 const Post = `

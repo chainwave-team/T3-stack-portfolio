@@ -27,6 +27,11 @@ export interface Homepage {
       service_title: string
       service_textarea: PrismicText
     }>
+    featured_projects: Array<{
+      project: {
+        document: PrismicProject[]
+      }
+    }>
   }
 }
 
@@ -63,7 +68,6 @@ export interface TemplateBlog extends Template {
 export interface TemplateHome extends Template {
   pageContext: {
     lastPosts: NodeArrayOf<PrismicPost>
-    projects: NodeArrayOf<PrismicProject>
     homepage: Homepage
   }
 }

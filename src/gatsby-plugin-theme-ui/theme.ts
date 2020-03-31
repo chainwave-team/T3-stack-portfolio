@@ -59,6 +59,10 @@ const theme: Readonly<MyTheme> = {
       maxWidth: sizes.container,
       padding: '0 1em'
     },
+    medium: {
+      maxWidth: sizes.medium,
+      padding: '0 1em'
+    },
     blog: {
       maxWidth: sizes.blog,
       padding: '0 1em'
@@ -129,8 +133,8 @@ const theme: Readonly<MyTheme> = {
     //   padding: 0
     // },
     // li: {
-    //   textDecoration: 'none',
-    //   listStyle: 'none'
+    // textDecoration: 'none',
+    // listStyle: 'none'
     // },
     th: {
       textAlign: 'left',
