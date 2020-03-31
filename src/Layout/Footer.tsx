@@ -15,6 +15,7 @@ const style = {
   container: { py: [4, 5] },
   row1: { py: 5 },
   row2: { pt: 4 },
+  heading: { fontFamily: 'mono', fontSize: 3, m: 0 },
   copyright: { m: 0, fontFamily: 'mono', color: 'muted' },
   link: { color: 'muted', fontFamily: 'mono', ml: 3 }
 }
@@ -86,7 +87,15 @@ const Footer: FC<{ path: string }> = ({ path }) => {
           <Fade>
             <Row sx={style.row1}>
               <Col>
-                <Styled.h3>{footer_text}</Styled.h3>
+                <Styled.p
+                  sx={{
+                    fontWeight: 'heading',
+                    ...style.heading
+                  }}
+                >
+                  Vous avez un projet ?
+                </Styled.p>
+                <Styled.p sx={style.heading}>Parlons-en !</Styled.p>
               </Col>
               <Col>
                 {/* <Link to="/contact">

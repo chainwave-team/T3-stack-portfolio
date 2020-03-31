@@ -38,11 +38,11 @@ const Button: FC<ButtonProps> = ({ variant, setSize, ...props }) => {
         lineHeight: 'inherit',
         textDecoration: 'none',
         fontSize: 'inherit',
-        fontWeight: 'bold',
+        fontWeight: 'body',
         fontFamily: 'mono',
         m: 0,
-        border: '2px solid',
-        borderRadius: 0,
+        border: '1px solid',
+        borderRadius: 4,
         ...padding[setSize || 'medium']
       }}
     />
