@@ -6,7 +6,6 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import PostHero from '../sections/Post/PostHero'
-import PostSlices from '../sections/Post/PostSlices'
 import PostThumbnail from '../sections/Post/PostThumbnail'
 import { TemplatePost } from '../types/templates'
 
@@ -14,6 +13,7 @@ const PostBottom = loadable(() => import('../sections/Post/PostBottom'))
 const PostTagCloud = loadable(() => import('../sections/Post/PostTagCloud'))
 const Comments = loadable(() => import('../components/Comments'))
 const LastPosts = loadable(() => import('../components/LastPosts'))
+const PostSlices = loadable(() => import('../sections/Post/PostSlices'))
 
 const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
   const { relatedPosts, postTags, currentPost } = pageContext

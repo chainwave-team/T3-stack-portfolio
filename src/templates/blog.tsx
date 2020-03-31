@@ -1,15 +1,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { FC } from 'react'
+import loadable from '@loadable/component'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import { TemplateBlog } from '../types/templates'
 import BlogHero from '../sections/Blog/BlogHero'
-import BlogList from '../sections/Blog/BlogList'
-import PostTagCloud from '../sections/Post/PostTagCloud'
-import BlogFilterBar from '../sections/Blog/BlogFilterBar'
 import useLocalStorage from '../hooks/useLocalStorage'
+
+const BlogFilterBar = loadable(() => import('../sections/Blog/BlogFilterBar'))
+const BlogList = loadable(() => import('../sections/Blog/BlogList'))
+const PostTagCloud = loadable(() => import('../sections/Post/PostTagCloud'))
 
 const BlogTemplate: FC<TemplateBlog> = ({ location, pageContext }) => {
   const [isGridMode, setGridMode] = useLocalStorage('gridMode', true)
