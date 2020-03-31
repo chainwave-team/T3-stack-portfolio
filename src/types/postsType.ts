@@ -21,6 +21,8 @@ export interface PrismicPost {
   first_publication_date: string
   data: {
     title: PrismicText
+    meta_title: string
+    meta_description: string
     thumbnail?: PrismicImage
     canonical?: PostCanonical
     published_date?: string

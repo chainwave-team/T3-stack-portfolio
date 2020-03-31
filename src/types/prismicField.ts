@@ -65,6 +65,7 @@ export interface Slice {
 
 export interface PostCanonical {
   uid: string
+  url: string
   document: Array<{
     data: {
       title?: PrismicText

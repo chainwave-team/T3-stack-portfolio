@@ -22,7 +22,11 @@ const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
 
   return (
     <Layout path={pathname}>
-      <SEO title={title} />
+      <SEO
+        title={title}
+        description={currentTag.data?.description?.text}
+        path={pathname}
+      />
       <BlogHero
         title={title}
         subTitle={`Tous les articles parlant de : ${title}`}

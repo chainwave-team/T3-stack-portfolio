@@ -64,7 +64,9 @@ const Project: FC<PrismicProject> = ({
     <div sx={style.item}>
       <div>
         <div style={style.header}>
-          <Styled.h4 style={style.title}>{title.text}</Styled.h4>
+          <Styled.h4 as="h3" style={style.title}>
+            {title.text}
+          </Styled.h4>
           {demo_link?.url && (
             <Link
               sx={style.iconLink}

@@ -18,7 +18,11 @@ const BlogTemplate: FC<TemplateBlog> = ({ location, pageContext }) => {
 
   return (
     <Layout path={pathname}>
-      <SEO title="Blog" />
+      <SEO
+        title="Blog"
+        path={pathname}
+        description="Découvrez les derniers articles du blog"
+      />
       <BlogHero />
       <BlogFilterBar onChangeMode={setGridMode} />
       <BlogList posts={posts} modeList={!isGridMode} />

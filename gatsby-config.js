@@ -33,7 +33,8 @@ module.exports = {
     title: author,
     description: `${author}, Développeur Web`,
     siteUrl,
-    author: `@unscuzzy`
+    author,
+    image: '/images/homescreen.png'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

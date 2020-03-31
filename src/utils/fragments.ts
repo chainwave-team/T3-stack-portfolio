@@ -15,6 +15,8 @@ export const siteMetaData = graphql`
       title
       description
       author
+      siteUrl
+      image
     }
   }
 `

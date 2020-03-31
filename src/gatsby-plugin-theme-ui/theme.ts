@@ -56,10 +56,12 @@ const theme: Readonly<MyTheme> = {
   sizes,
   layout: {
     container: {
-      maxWidth: sizes.container
+      maxWidth: sizes.container,
+      padding: '0 1em'
     },
     blog: {
-      maxWidth: sizes.blog
+      maxWidth: sizes.blog,
+      padding: '0 1em'
     }
   },
   buttons: {

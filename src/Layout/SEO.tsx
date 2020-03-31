@@ -2,17 +2,19 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-type Meta = {
-  name?: string
-  content?: string
-  property?: string
+export interface SEOProps {
+  title: string
+  description?: string
+  lang?: string
 }
 
 type Props = {
   title: string
   description?: string
   lang?: string
-  meta?: Array<Partial<Meta>>
+  type?: 'website' | 'article'
+  path?: string
+  imageUrl?: string
 }
 
 type Query = {
@@ -20,10 +22,19 @@ type Query = {
     title: string
     description?: string
     author?: string
+    siteUrl?: string
+    image?: string
   }
 }
 
-function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
+function SEO({
+  title,
+  description = '',
+  lang = 'fr',
+  type = 'website',
+  path = '/',
+  imageUrl
+}: Props) {
   const { site }: { site: Query } = useStaticQuery(
     graphql`
       query {
@@ -35,6 +46,8 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const url = `${site.siteMetadata.siteUrl}${path}`
+  const image = imageUrl || site?.siteMetadata?.image || ''
 
   return (
     <Helmet
@@ -43,6 +56,7 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={[{ rel: 'canonical', key: url, href: url }]}
       meta={[
         {
           name: `description`,
@@ -53,21 +67,33 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
           content: title
         },
         {
+          property: `og:site_name`,
+          content: site.siteMetadata.description
+        },
+        {
           property: `og:description`,
           content: metaDescription
         },
         {
           property: `og:type`,
-          content: `website`
+          content: type
+        },
+        {
+          property: `og:url`,
+          content: url
+        },
+        {
+          property: `og:image`,
+          content: image
         },
         {
           name: `twitter:card`,
           content: `summary`
         },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author
-        },
+        // {
+        //   name: `twitter:creator`,
+        //   content: site.siteMetadata.author
+        // },
         {
           name: `twitter:title`,
           content: title
@@ -76,7 +102,7 @@ function SEO({ title, description = '', lang = 'fr', meta = [] }: Props) {
           name: `twitter:description`,
           content: metaDescription
         }
-      ].concat(meta)}
+      ]}
     />
   )
 }

@@ -26,7 +26,13 @@ const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
 
   return (
     <Layout path={pathname}>
-      <SEO title={data.title.text} />
+      <SEO
+        type="article"
+        title={data?.meta_title || data.title.text}
+        description={data?.meta_description || ''}
+        path={pathname}
+        imageUrl={data?.thumbnail?.url}
+      />
       <PostHero
         title={data.title.text}
         date={data.published_date || first_publication_date}

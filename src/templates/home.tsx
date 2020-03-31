@@ -23,7 +23,7 @@ const HomeTemplate: FC<TemplateHome> = ({ location, pageContext }) => {
 
   return (
     <Layout path={location.pathname}>
-      <SEO title="Portfolio" />
+      <SEO title="Portfolio" path={location.pathname} />
       <HomepageHero
         textarea={introduction.text}
         buttonLabel={header_contact_button_label}

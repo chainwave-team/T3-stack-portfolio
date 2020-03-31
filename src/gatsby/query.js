@@ -93,6 +93,7 @@ const PostBodyImageWithCaption = `
 
 const PostThumbnail = `
     thumbnail {
+        url
         localFile {
             size
             ext
@@ -139,6 +140,7 @@ const TechTagRelations = `
 const PostCanonical = `
     canonical {
         uid
+        url
         document {
             data {
                 title {
@@ -226,6 +228,7 @@ const Post = `
     first_publication_date(formatString: "${dateFormat}")
     data {
         published_date(formatString: "${dateFormat}")
+        meta_title
         meta_description
         title {
             ${PrismicText}

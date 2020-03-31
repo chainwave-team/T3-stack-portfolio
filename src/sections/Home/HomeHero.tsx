@@ -42,7 +42,9 @@ const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
         <Fade>
           <div>
             <Styled.h1>{job}</Styled.h1>
-            <Styled.h3 sx={{ color: 'muted' }}>{textarea}</Styled.h3>
+            <Styled.h3 as="h2" sx={{ color: 'muted' }}>
+              {textarea}
+            </Styled.h3>
 
             <Flex sx={{ py: 3, flexWrap: 'wrap' }}>
               <div sx={{ mb: 3 }}>

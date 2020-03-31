@@ -1,18 +1,14 @@
-// import { graphql } from 'gatsby'
 import React from 'react'
 import { Styled, Container } from 'theme-ui'
 
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
+import { Template } from '../types/templates'
 
-type Props = {
-  path: string
-}
-
-function ContactPage({ path }: Props) {
+function ContactPage({ location }: Template) {
   return (
-    <Layout path={path}>
-      <SEO title="Portfolio" />
+    <Layout path={location.pathname}>
+      <SEO title="Contact" path={location.pathname} />
       <Container sx={{ my: 6 }}>
         <Styled.h1>Contact</Styled.h1>
       </Container>
