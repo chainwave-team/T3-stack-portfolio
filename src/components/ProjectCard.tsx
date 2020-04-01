@@ -11,6 +11,7 @@ const style = {
   root: {
     flexDirection: 'column',
     justifyContent: 'center',
+    height: '100%',
     px: 3,
     mx: [0, 0, -3]
   },
@@ -38,16 +39,19 @@ export interface ProjectCardProps {
   html?: PrismicText
   projectType?: PrismicText
   tags?: PrismicTechTag[]
+  inverse?: boolean
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({
   title,
   projectType,
   tags,
-  html
+  html,
+  inverse
 }) => {
+  const align = inverse ? 'right' : 'left'
   return (
-    <Flex sx={style.root}>
+    <Flex sx={{ ...style.root, textAlign: align as string }}>
       <Styled.p sx={style.category}>
         {projectType ? projectType.text : ''}
       </Styled.p>

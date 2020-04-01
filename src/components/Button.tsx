@@ -42,7 +42,7 @@ const Button: FC<ButtonProps> = ({ variant, setSize, ...props }) => {
         fontFamily: 'mono',
         m: 0,
         border: '1px solid',
-        borderRadius: 4,
+        borderRadius: 0,
         ...padding[setSize || 'medium']
       }}
     />

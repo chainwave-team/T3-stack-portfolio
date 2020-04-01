@@ -23,7 +23,8 @@ const templates = {
   post: path.resolve('src/templates/post.tsx'),
   postTag: path.resolve('src/templates/postTag.tsx'),
   blog: path.resolve('src/templates/blog.tsx'),
-  home: path.resolve('src/templates/home.tsx')
+  home: path.resolve('src/templates/home.tsx'),
+  portfolio: path.resolve('src/templates/portfolio.tsx')
 }
 
 export const createPages: GatsbyCreatePages = async ({
@@ -34,10 +35,10 @@ export const createPages: GatsbyCreatePages = async ({
 
   const { data }: Data = await graphql(query.query)
 
-  const { posts, /* tags,  projects, */ homepage } = {
+  const { posts, /* tags, */ projects, homepage } = {
     posts: data.posts.edges.map(el => el),
     // tags: data.tags.edges.map(el => el),
-    // projects: data.projects.edges.map(el => el),
+    projects: data.projects.edges.map(el => el),
     homepage: data.homepage
   }
 
@@ -86,6 +87,15 @@ export const createPages: GatsbyCreatePages = async ({
     context: {
       lastPosts: posts.slice(0, 3),
       homepage
+    }
+  })
+
+  // Create the portfolio page
+  createPage({
+    path: `/portfolio`,
+    component: templates.portfolio,
+    context: {
+      projects
     }
   })
 }

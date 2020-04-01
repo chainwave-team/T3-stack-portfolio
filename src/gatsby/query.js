@@ -292,7 +292,7 @@ const homeQuery = `
 `
 
 const projectsQuery = `
-    projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }) {
+    projects: allPrismicProject(filter: { lang: { eq: "fr-fr" } }, sort: {order: DESC, fields: first_publication_date}) {
         edges {
             node {
                 ${Project}

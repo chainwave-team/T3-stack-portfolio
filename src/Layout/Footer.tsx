@@ -80,10 +80,12 @@ const Footer: FC<{ path: string }> = ({ path }) => {
     email: mail
   } = prismicOptions.data
 
+  const pagesWith = ['/', '/portfolio', '/contact']
+
   return (
     <footer id="footer" sx={style.footer}>
       <Container sx={style.container}>
-        {path === '/' && (
+        {pagesWith.includes(path) && (
           <Fade>
             <Row sx={style.row1}>
               <Col>
@@ -95,7 +97,7 @@ const Footer: FC<{ path: string }> = ({ path }) => {
                 >
                   Vous avez un projet ?
                 </Styled.p>
-                <Styled.p sx={style.heading}>Parlons-en !</Styled.p>
+                <Styled.p sx={style.heading}>Dites m'en plus !</Styled.p>
               </Col>
               <Col>
                 {/* <Link to="/contact">

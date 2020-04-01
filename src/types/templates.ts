@@ -71,3 +71,9 @@ export interface TemplateHome extends Template {
     homepage: Homepage
   }
 }
+
+export interface TemplatePortfolio extends Template {
+  pageContext: {
+    projects: NodeArrayOf<PrismicProject>
+  }
+}

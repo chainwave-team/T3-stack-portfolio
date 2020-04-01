@@ -24,14 +24,13 @@ const Menu: FC<MenuProps> = ({ vertical = false, click, path }) => {
   const isHome = path === '/'
   const menu: MenuItem[] = [
     {
-      name: 'Compétences',
+      name: 'Services',
       link: isHome ? 'skills' : '/#skills',
       anchor: isHome
     },
     {
       name: 'Portfolio',
-      link: isHome ? 'portfolio' : '/#portfolio',
-      anchor: isHome
+      link: '/portfolio'
     },
     { name: 'Blog', link: '/blog' }
   ]
