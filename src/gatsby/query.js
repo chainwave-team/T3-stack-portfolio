@@ -163,12 +163,12 @@ const Project = `
             url
             localFile {
                 medium: childImageSharp {
-                    fluid(quality: 85, maxWidth: 720) {
+                    fluid(quality: 100, maxWidth: 750) {
                         ${GatsbyFluid_withWebp}
                     }
                 }
                 small: childImageSharp {
-                    fluid(quality: 85, maxWidth: 250) {
+                    fluid(quality: 100, maxWidth: 250) {
                         ${GatsbyFluid_withWebp}
                     }
                 }

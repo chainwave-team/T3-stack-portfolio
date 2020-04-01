@@ -6,24 +6,14 @@ import { PrismicProject } from '../types/postsType'
 import Mockup from './Mockup'
 import Col from './Col'
 import ProjectCard from './ProjectCard'
-import { getTagsFromRelation } from '../utils'
 
 export interface ProjectSlideProps extends PrismicProject {
   inverse?: boolean
 }
 
-const ProjectSlide: FC<ProjectSlideProps> = ({
-  data: {
-    demo_link,
-    source_link,
-    title,
-    full_screen,
-    project_type,
-    relations,
-    html
-  },
-  inverse
-}) => {
+const ProjectSlide: FC<ProjectSlideProps> = props => {
+  const { data, inverse } = props
+  const { demo_link, source_link, title, full_screen } = data
   return (
     <article sx={{ ':focus': { outline: 'none' } }}>
       <div
@@ -42,13 +32,7 @@ const ProjectSlide: FC<ProjectSlideProps> = ({
           />
         </Col>
         <Col sx={{ width: ['full', 'full', '1/3'] }}>
-          <ProjectCard
-            title={title}
-            html={html}
-            tags={getTagsFromRelation(relations)}
-            projectType={project_type?.document[0].data.title}
-            inverse={inverse}
-          />
+          <ProjectCard {...props} />
         </Col>
       </div>
     </article>
