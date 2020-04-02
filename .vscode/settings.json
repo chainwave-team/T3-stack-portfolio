@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "Fira",
+    "MAILGUN",
     "Scrollable",
     "camelcase",
     "isfeatured",
@@ -68,6 +69,7 @@
     "**/yarn-error.log": true,
     "**/.pnp/": true,
     "**/.pnp.js": true,
-    "**/.": true
+    "**/.": true,
+    "**/.netlify": true
   }
 }

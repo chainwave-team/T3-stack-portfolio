@@ -109,7 +109,7 @@ module.exports = {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `junscuzzy-portfolio`,
-        accessToken: `${process.env.API_KEY}`,
+        accessToken: `${process.env.PRISMIC_API_KEY}`,
         linkResolver: () => post => `/${post.uid}`,
         // htmlSerializer: () => prismicHtmlSerializer,
         lang: 'fr-fr'
