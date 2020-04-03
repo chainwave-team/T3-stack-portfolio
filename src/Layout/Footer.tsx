@@ -4,11 +4,12 @@ import { jsx, Styled, Container } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 
-import BaseLink from '../components/Link'
+import Link from '../components/Link'
 import Fade from '../components/Fade'
 import Row from '../components/Row'
 import Col from '../components/Col'
 import { PrismicLink } from '../types/prismicField'
+import ContactButton from '../components/ContactButton'
 
 const style = {
   footer: { bg: `rgba(0, 0, 0, 1)`, color: 'white' },
@@ -31,16 +32,16 @@ const ExternalLink: FC<ExternalLinkProps> = ({
   label,
   first = false
 }) => (
-  <BaseLink
+  <Link
     to={link.url}
     target={link.target || ''}
     sx={{ ...style.link, ml: first ? 0 : 3 }}
   >
     {label}
-  </BaseLink>
+  </Link>
 )
 
-const Footer: FC<{ path: string }> = ({ path }) => {
+const Footer: FC<{}> = () => {
   const { prismicOptions } = useStaticQuery(
     graphql`
       query Footer {
@@ -75,39 +76,31 @@ const Footer: FC<{ path: string }> = ({ path }) => {
     site_name,
     github_url,
     malt_url,
-    linkedin_url,
-    footer_text,
-    email: mail
+    linkedin_url
   } = prismicOptions.data
-
-  const pagesWith = ['/', '/portfolio', '/contact']
 
   return (
     <footer id="footer" sx={style.footer}>
       <Container sx={style.container}>
-        {pagesWith.includes(path) && (
-          <Fade>
-            <Row sx={style.row1}>
-              <Col>
-                <Styled.p
-                  sx={{
-                    fontWeight: 'heading',
-                    ...style.heading
-                  }}
-                >
-                  Vous avez un projet ?
-                </Styled.p>
-                <Styled.p sx={style.heading}>Dites m'en plus !</Styled.p>
-              </Col>
-              <Col>
-                {/* <Link to="/contact">
-                <Button setSize="large">Contact</Button>
-              </Link> */}
-                <Styled.h3 sx={{ color: 'primary' }}>{mail}</Styled.h3>
-              </Col>
-            </Row>
-          </Fade>
-        )}
+        <Fade>
+          <Row sx={style.row1}>
+            <Col>
+              <Styled.p
+                sx={{
+                  fontWeight: 'heading',
+                  ...style.heading,
+                  color: 'white'
+                }}
+              >
+                Vous avez un projet ?
+              </Styled.p>
+              <Styled.p sx={style.heading}>Dites m'en plus !</Styled.p>
+            </Col>
+            <Col>
+              <ContactButton />
+            </Col>
+          </Row>
+        </Fade>
         <Fade>
           <hr />
         </Fade>

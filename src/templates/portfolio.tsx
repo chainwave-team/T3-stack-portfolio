@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import SEO from '../Layout/SEO'
 import { TemplatePortfolio } from '../types/templates'
-import BlogHero from '../sections/Blog/BlogHero'
+import PageHero from '../components/PageHero'
 
 const ProjectSlide = loadable(() => import('../components/ProjectSlide'))
 
@@ -18,7 +18,7 @@ const HomeTemplate: FC<TemplatePortfolio> = ({ location, pageContext }) => {
   return (
     <Layout path={location.pathname}>
       <SEO title={title} path={location.pathname} description={subTitle} />
-      <BlogHero {...{ title, subTitle }} />
+      <PageHero {...{ title, subTitle }} />
 
       <Container sx={{ py: 5 }}>
         {projects.map(({ node }, i: number) => (

@@ -35,7 +35,7 @@ const Layout: FC<LayoutProps> = ({ children, path }) => (
           {children}
         </main>
 
-        <Footer path={path} />
+        <Footer />
       </>
 
       <BackToTop />

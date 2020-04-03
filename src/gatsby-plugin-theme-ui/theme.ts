@@ -1,31 +1,14 @@
 import { Theme } from 'theme-ui'
 
-import typography from './typography'
+import variants from './variants'
+import styles, { hoverStyle } from './styles'
 import sizes from './sizes'
 import colors from './colors'
 
-export { colors }
+const breakpoints = ['640px', '768px', '1024px', '1280px']
 
-export const hoverStyle = {
-  cursor: 'pointer',
-  transition: 'color 200ms ease',
-  '&:hover, &:focus': {
-    textDecoration: 'none',
-    color: 'secondary'
-  }
-}
-
-const linkStyle = {
-  color: 'primary',
-  textDecoration: 'none',
-  ...hoverStyle
-}
-
-export const breakpoints = ['640px', '768px', '1024px', '1280px']
-
-export type MyTheme = Theme
-
-const theme: Readonly<MyTheme> = {
+const theme: Readonly<Theme> = {
+  radii: [0],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     body: `'Fira Sans Regular','SF Pro Display','-apple-system','BlinkMacSystemFont','San Francisco','Helvetica Neue','Helvetica','Ubuntu','Roboto','Noto','Segoe UI','Arial',sans-serif`,
@@ -44,7 +27,6 @@ const theme: Readonly<MyTheme> = {
     body: 1.75,
     heading: 1.125
   },
-  colors,
   shadows: [
     '0',
     '0px 0px 4px 2px rgba( 0, 0, 0, 0.2 )',
@@ -52,102 +34,14 @@ const theme: Readonly<MyTheme> = {
     '4px 4px 8px 0px rgba( 0, 0, 0, 0.2 )',
     'rgba(0, 0, 0, 0.2) 0px 30px 60px -10px, rgba(0, 0, 0, 0.22) 0px 18px 36px -18px'
   ],
+  colors,
+
   breakpoints,
   sizes,
-  layout: {
-    container: {
-      maxWidth: sizes.container,
-      padding: '0 1em'
-    },
-    medium: {
-      maxWidth: sizes.medium,
-      padding: '0 1em'
-    },
-    blog: {
-      maxWidth: sizes.blog,
-      padding: '0 1em'
-    }
-  },
-  buttons: {
-    primary: {
-      fontWeight: 'bold',
-      color: 'primary',
-      bg: 'transparent',
-      '&:hover': {
-        color: 'secondary'
-      }
-    },
-    secondary: {
-      fontWeight: 'bold',
-      color: 'secondary',
-      bg: 'transparent',
-      '&:hover': {
-        color: 'primary'
-      }
-    }
-  },
-  text: {
-    heading: {
-      fontFamily: 'heading',
-      fontWeight: 'heading',
-      lineHeight: 'heading'
-    }
-  },
-  styles: {
-    ...typography,
-    root: {
-      ...typography.root,
-      bg: 'background',
-      color: 'text',
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '100vh'
-    },
-
-    a: linkStyle,
-    table: {
-      width: '100%',
-      borderCollapse: 'separate',
-      borderSpacing: 0
-    },
-    pre: {
-      fontFamily: 'mono',
-      fontSize: 'inherit'
-    },
-    // Used for inline <code> in textarea
-    code: {
-      fontFamily: 'mono',
-      '&.inline-code': {
-        fontSize: 'body',
-        fontFamily: 'code',
-        lineHeight: 'body',
-        fontWeight: 'body',
-        color: 'dracula.green',
-        bg: 'rgba(0, 0, 0, 0.4)',
-        borderRadius: '0.5rem',
-        px: 2,
-        py: 1
-      }
-    },
-    // ul: {
-    //   padding: 0
-    // },
-    // li: {
-    // textDecoration: 'none',
-    // listStyle: 'none'
-    // },
-    th: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid'
-    },
-    td: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid'
-    },
-    img: {
-      maxWidth: '100%'
-    }
-  }
+  ...variants,
+  styles
 }
 
 export default theme
+
+export { colors, hoverStyle, breakpoints }

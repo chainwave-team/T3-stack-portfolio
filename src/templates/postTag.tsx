@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 import Layout from '../Layout/Layout'
 import { TemplatePostTag } from '../types/templates'
 import SEO from '../Layout/SEO'
-import BlogHero from '../sections/Blog/BlogHero'
+import PageHero from '../components/PageHero'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 const BlogFilterBar = loadable(() => import('../sections/Blog/BlogFilterBar'))
@@ -26,7 +26,7 @@ const PostTagTemplate: FC<TemplatePostTag> = ({ location, pageContext }) => {
         description={currentTag.data?.description?.text}
         path={pathname}
       />
-      <BlogHero
+      <PageHero
         title={title}
         subTitle={`Tous les articles parlant de : ${title}`}
       />

@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled, Container } from 'theme-ui'
+import { jsx, Styled, Container, Button, Box, Flex } from 'theme-ui'
 import { FC } from 'react'
 
 import Link from './Link'
 import { PrismicPost } from '../types/postsType'
-import Button from './Button'
 import PostCardGrid from './PostCardGrid'
 import { NodeArrayOf } from '../types'
 
@@ -27,9 +26,11 @@ const LastPosts: FC<LastPostsProps> = ({
       <Styled.h2 sx={{ textAlign: 'center' }}>{title}</Styled.h2>
       <PostCardGrid posts={posts.slice(0, 3)} />
       {displayButton && (
-        <Link to="/blog">
-          <Button sx={{ m: 'auto', display: 'block' }}>{button}</Button>
-        </Link>
+        <Flex sx={{ justifyContent: 'center' }}>
+          <Link to="/blog" sx={{ m: 'auto', display: 'block' }}>
+            <Button>{button}</Button>
+          </Link>
+        </Flex>
       )}
     </Container>
   )

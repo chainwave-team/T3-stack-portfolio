@@ -1,9 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex, Container } from 'theme-ui'
+import { jsx, Styled, Flex, Container, Button } from 'theme-ui'
 import { FC, useState, Fragment } from 'react'
 import loadable from '@loadable/component'
-
-import Button from './Button'
 
 const AsyncComments = loadable(() => import(`react-disqus-comments`))
 

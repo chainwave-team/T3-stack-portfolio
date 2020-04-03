@@ -18,7 +18,7 @@ const PostTagCloud: FC<PostTagCloudProps> = ({ tags }) => {
   }
 
   return (
-    <div sx={{ backgroundColor: 'black', py: 5 }}>
+    <div sx={{ backgroundColor: 'black', py: 4 }}>
       <Container>
         <Styled.h3 sx={{ textAlign: 'center' }}>
           Parcourir tous les sujets du blog

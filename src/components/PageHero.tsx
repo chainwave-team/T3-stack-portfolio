@@ -2,18 +2,15 @@
 import { jsx, Styled, Container } from 'theme-ui'
 import { FC } from 'react'
 
-export interface BlogHeroProps {
+export interface PageHeroProps {
   title?: string
   subTitle?: string
 }
 
-const BlogHero: FC<BlogHeroProps> = ({
-  title = 'Blog',
-  subTitle = 'Découvrez les derniers articles'
-}) => {
+const PageHero: FC<PageHeroProps> = ({ title = '', subTitle = '' }) => {
   return (
     <Container variant="blog" sx={{ pt: 6, pb: 4, mt: `80px` }}>
-      <Styled.h1 sx={{ my: 3 }}>{title}</Styled.h1>
+      {!!title && <Styled.h1 sx={{ my: 3 }}>{title}</Styled.h1>}
       {!!subTitle && (
         <Styled.h3 sx={{ color: 'muted', my: 3 }}>{subTitle}</Styled.h3>
       )}
@@ -21,4 +18,4 @@ const BlogHero: FC<BlogHeroProps> = ({
   )
 }
 
-export default BlogHero
+export default PageHero

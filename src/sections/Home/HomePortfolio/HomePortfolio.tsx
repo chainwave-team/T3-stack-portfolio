@@ -1,11 +1,18 @@
 /** @jsx jsx */
-import { jsx, Styled, AspectRatio, Grid, Flex, Container } from 'theme-ui'
+import {
+  jsx,
+  Styled,
+  AspectRatio,
+  Grid,
+  Flex,
+  Container,
+  Button
+} from 'theme-ui'
 import { FC, Fragment } from 'react'
 import { size, position, rgba } from 'polished'
 import Img from 'gatsby-image'
 
 import Fade from '../../../components/Fade'
-import Button from '../../../components/Button'
 import { NodeArrayOf } from '../../../types'
 import { PrismicProject } from '../../../types/postsType'
 import Link from '../../../components/Link'

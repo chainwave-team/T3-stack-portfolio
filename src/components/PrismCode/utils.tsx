@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { FC } from 'react'
-import { jsx } from 'theme-ui'
-
-import Button from '../Button'
+import { jsx, Button } from 'theme-ui'
 
 /* eslint-disable import/prefer-default-export */
 export type ProgrammingLang =
@@ -75,7 +73,6 @@ export const ButtonCopy: FC<ButtonCopyProps> = ({
   onClick
 }) => (
   <Button
-    setSize="small"
     onClick={onClick}
     sx={{
       border: 'none',

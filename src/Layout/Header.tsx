@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Box, Container } from 'theme-ui'
+import { jsx, Flex, Box, Container, Button } from 'theme-ui'
 import { useState, useRef, FC } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import Headroom from 'react-headroom'
@@ -10,7 +10,6 @@ import { Link } from 'gatsby'
 import Menu from './Menu'
 import CloseIcon from '../assets/svg/close.svg'
 import MenuIcon from '../assets/svg/menu.svg'
-import Button from '../components/Button'
 
 const iconStyle = {
   fill: 'primary',
