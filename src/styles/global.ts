@@ -40,8 +40,8 @@ export const globalStyle = css`
 export const scrollBar = css`
   /* Custom ScrollBar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
   }
 
   /* Track */
