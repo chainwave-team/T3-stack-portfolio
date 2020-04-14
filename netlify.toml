@@ -1,2 +1,4 @@
 [build]
-    functions = "api"
+    command = "yarn build"
+    functions = "lambdas"
+    publish = "public"

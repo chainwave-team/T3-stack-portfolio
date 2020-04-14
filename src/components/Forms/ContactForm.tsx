@@ -1,12 +1,13 @@
 /** @jsx jsx */
-/* eslint-disable no-template-curly-in-string */
 import { FC, useState } from 'react'
-import { jsx, Input, Box, Grid, Textarea } from 'theme-ui'
+import { jsx, Input, Box, Grid, Textarea, Text, Flex } from 'theme-ui'
 import { useFormik } from 'formik'
-import * as Yup from 'yup'
+
+import axios from 'axios'
 
 import FormControl from './FormControl'
 import SubmitButton from './SubmitButton'
+import Yup from './Yup'
 
 export interface ContactFormValue {
   firstName: string
@@ -16,23 +17,11 @@ export interface ContactFormValue {
 }
 
 const initialValues: ContactFormValue = {
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'johndoe@mail.com',
-  message: "Hi, it's John, what's up ?"
+  firstName: '',
+  lastName: '',
+  email: '',
+  message: ''
 }
-
-Yup.setLocale({
-  mixed: {
-    default: 'Champ invalide',
-    required: 'Champ obligatoire'
-  },
-  string: {
-    min: 'Minimum ${min} charactères',
-    max: 'Maximum ${max} charactères',
-    email: "L'adresse email n'est pas valide"
-  }
-})
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required(),
@@ -44,51 +33,57 @@ const validationSchema = Yup.object().shape({
 })
 
 const ContactForm: FC<{}> = () => {
-  const [isSending, setSending] = useState(false)
-
-  const onSubmit = async (values: ContactFormValue) => {
-    console.log(values)
-    setSending(true)
-    const id = await setTimeout(() => {
-      setSending(false)
-    }, 1000)
-  }
-
+  const [isSent, setIsSent] = useState(false)
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit
+    onSubmit: async (values, action) => {
+      // Send mail using netlify lambda
+      const url = `/.netlify/functions/contact-form`
+      const response = await axios.post(url, values, {
+        headers: { accept: 'Accept: application/json' }
+      })
+
+      if (response.status >= 200 && response.status < 400) {
+        action.resetForm()
+        setIsSent(true)
+      }
+    }
   })
 
-  const isLoading = isSending || formik.isValidating || formik.isSubmitting
+  const handleChange = () => {
+    setIsSent(false)
+  }
+
+  const isLoading = formik.isValidating || formik.isSubmitting
+  const { handleSubmit, isValid, getFieldMeta, getFieldProps } = formik
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={handleSubmit} onChange={handleChange}>
       <Grid columns={[1, 2]} sx={{ rowGap: 0 }}>
-        <FormControl
-          label="Prénom"
-          required
-          {...formik.getFieldMeta('firstName')}
-        >
-          <Input {...formik.getFieldProps('firstName')} />
+        <FormControl label="Prénom" required {...getFieldMeta('firstName')}>
+          <Input {...getFieldProps('firstName')} />
         </FormControl>
 
-        <FormControl label="Nom" required {...formik.getFieldMeta('lastName')}>
-          <Input {...formik.getFieldProps('lastName')} />
+        <FormControl label="Nom" required {...getFieldMeta('lastName')}>
+          <Input {...getFieldProps('lastName')} />
         </FormControl>
       </Grid>
 
-      <FormControl label="Email" required {...formik.getFieldMeta('email')}>
-        <Input {...formik.getFieldProps('email')} />
+      <FormControl label="Email" required {...getFieldMeta('email')}>
+        <Input {...getFieldProps('email')} />
       </FormControl>
 
-      <FormControl label="Message" required {...formik.getFieldMeta('message')}>
-        <Textarea rows={4} {...formik.getFieldProps('message')} />
+      <FormControl label="Message" required {...getFieldMeta('message')}>
+        <Textarea rows={4} {...getFieldProps('message')} />
       </FormControl>
 
       <Box py={2} />
 
-      <SubmitButton isLoading={isLoading} isValid={formik.isValid} />
+      <Flex sx={{ alignItems: 'center' }}>
+        <SubmitButton isLoading={isLoading} isValid={isValid} />
+        {isSent && <Text sx={{ pl: 3 }}>Message envoyé :)</Text>}
+      </Flex>
     </form>
   )
 }
