@@ -12,10 +12,10 @@ import { FC, Fragment } from 'react'
 import { size, position, rgba } from 'polished'
 import Img from 'gatsby-image'
 
-import Fade from '../../../components/Fade'
-import { NodeArrayOf } from '../../../types'
-import { PrismicProject } from '../../../types/postsType'
-import Link from '../../../components/Link'
+import Fade from '../../components/Fade'
+import { NodeArrayOf } from '../../types'
+import { PrismicProject } from '../../types/postsType'
+import Link from '../../components/Link'
 
 const style = {
   ratio: {
