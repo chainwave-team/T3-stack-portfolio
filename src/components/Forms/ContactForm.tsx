@@ -37,17 +37,20 @@ const ContactForm: FC<{}> = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values, action) => {
+    onSubmit: (values, action) => {
       // Send mail using netlify lambda
-      const url = `/.netlify/functions/contact-form`
-      const response = await axios.post(url, values, {
-        headers: { accept: 'Accept: application/json' }
-      })
-
-      if (response.status >= 200 && response.status < 400) {
-        action.resetForm()
-        setIsSent(true)
-      }
+      axios
+        .post(`/.netlify/functions/contact-form`, values, {
+          headers: { accept: 'Accept: application/json' }
+        })
+        .then(response => {
+          if (response.status >= 200 && response.status < 400) {
+            action.resetForm()
+            setIsSent(true)
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(console.error)
     }
   })
 

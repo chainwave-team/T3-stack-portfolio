@@ -1,9 +1,10 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
-})
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+const proxy = require('http-proxy-middleware')
 const url = require('url')
 const moment = require('moment')
+
+require('dotenv').config()
+
 const { postsQuery, dateFormat } = require('./src/gatsby/query')
 
 const siteUrl = `https://juliencaron.eu`
@@ -36,6 +37,7 @@ module.exports = {
     author,
     image: '/images/homescreen.png'
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
@@ -166,5 +168,19 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ]
+  ],
+
+  // for avoiding CORS while developing Netlify Functions locally
+  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': ''
+        }
+      })
+    )
+  }
 }

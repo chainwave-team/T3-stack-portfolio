@@ -1,7 +1,8 @@
 # Ignore output
 .cache
 generators
-public
+./public
+./lambda
 
 # Ignore data .md & assets
 data

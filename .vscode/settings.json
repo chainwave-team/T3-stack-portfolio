@@ -31,9 +31,11 @@
     }
   ],
   "files.exclude": {
+    "**/lambda": true,
     "**/.cache": true,
     "**/generators": true,
-    "**/public": true,
+    "./public": true,
+    "./lambda": true,
     "**/data": true,
     "**/custom_types": true,
     "**/.idea": true,
@@ -65,6 +67,7 @@
     "**/.env.development": true,
     "**/.env.production": true,
     "**/.cache/": true,
+    "**/public": true,
     "**/.DS_Store": true,
     "**/yarn-error.log": true,
     "**/.pnp/": true,
