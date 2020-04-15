@@ -12,26 +12,7 @@
     "rebass",
     "uniqid"
   ],
-  "eslint.validate": [
-    {
-      "language": "javascript",
-      "autoFix": true
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true
-    },
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
   "files.exclude": {
-    "**/lambda": true,
     "**/.cache": true,
     "**/generators": true,
     "./public": true,
