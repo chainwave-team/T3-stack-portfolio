@@ -11,13 +11,12 @@ import { TemplatePost } from '../types/templates'
 
 const PostBottom = loadable(() => import('../sections/Post/PostBottom'))
 const PostTagCloud = loadable(() => import('../sections/Post/PostTagCloud'))
-const Comments = loadable(() => import('../components/Comments'))
 const LastPosts = loadable(() => import('../components/LastPosts'))
 const PostSlices = loadable(() => import('../sections/Post/PostSlices'))
 
 const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
   const { relatedPosts, postTags, currentPost } = pageContext
-  const { uid, data, first_publication_date } = currentPost
+  const { data, first_publication_date } = currentPost
   const { pathname } = location
 
   if (!data?.title?.text) {
@@ -44,7 +43,6 @@ const PostTemplate: FC<TemplatePost> = ({ location, pageContext }) => {
         authorDesc="Salut, moi c’est Julien et j’adore construire des choses qui vivent sur Internet."
       />
       <LastPosts title="Plus d'articles" posts={relatedPosts} />
-      <Comments title={data.title.text} uid={uid} />
       <PostTagCloud tags={postTags} />
     </Layout>
   )
