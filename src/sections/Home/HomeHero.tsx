@@ -6,6 +6,7 @@ import { FC } from 'react'
 import Fade from '../../components/Fade'
 import SocialIcons from '../../components/SocialIcons'
 import ContactButton from '../../components/ContactButton'
+import Link from '../../components/Link'
 
 export interface HomeHeroProps {
   textarea?: string
@@ -45,6 +46,16 @@ const HomeHero: FC<HomeHeroProps> = ({ textarea, buttonLabel = '' }) => {
             <Styled.h3 as="h2" sx={{ color: 'muted' }}>
               {textarea}
             </Styled.h3>
+            <Styled.p as="p" sx={{ color: 'secondary', fontSize: 2 }}>
+              ● Actuellement en Freelance chez
+              {` `}
+              <Link
+                to="https://www.chefclub.tv/fr/"
+                sx={{ color: 'secondary', fontWeight: 'bold' }}
+              >
+                @Chefclub
+              </Link>
+            </Styled.p>
 
             <Flex sx={{ py: 3, flexWrap: 'wrap' }}>
               <div sx={{ mb: 3 }}>
