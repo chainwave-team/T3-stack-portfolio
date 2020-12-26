@@ -3,7 +3,9 @@ const proxy = require('http-proxy-middleware')
 const url = require('url')
 const moment = require('moment')
 
-require('dotenv').config()
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const { postsQuery, dateFormat } = require('./src/gatsby/query')
 
